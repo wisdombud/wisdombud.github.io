@@ -226,19 +226,13 @@
     </header>
     <div class="entry">
       
-        <blockquote>
-<p>EOVA简介</p>
-</blockquote>
-<ul>
+        <ul>
 <li>Eova 是一个 J2EE 快速开发平台。</li>
 <li>Eova 适用于对 UI 布局和性能没有严苛要求的企业级 WEB 后台管理系统。</li>
 <li>是对Jfinal，easyUI的再次封装</li>
 </ul>
 <hr>
-<blockquote>
-<p>EVOA能做什么</p>
-</blockquote>
-<ul>
+<h3 id="EVOA能做什么"><a href="#EVOA能做什么" class="headerlink" title="EVOA能做什么"></a>EVOA能做什么</h3><ul>
 <li><p>简单表数据的显示，分页，无需代码实现。</p>
 </li>
 <li><p>自定义二级三级菜单，随意DIY。</p>
@@ -248,40 +242,18 @@
 <li><p>登录已实现（目前没有注册功能），可添加用户。</p>
 </li>
 <li>DIY查询。</li>
-<li><p>自定义业务（重写业务拦截器）。</p>
-<p> Demo:<br>  public String addBefore(AopContext ac) throws Exception {</p>
-<pre><code>String c = ac.record.get(&quot;kaipiaoAmount&quot;);
-String id = ac.record.getStr(&quot;contractId&quot;);
-String sql = &quot;UPDATE base_contract SET amount=amount-? WHERE id=?;&quot;;
-Db.use(xx.DS_MAIN).update(sql, c, id);
-return super.addBefore(ac);
-</code></pre><p> }</p>
-</li>
+<li>自定义业务（重写业务拦截器）。</li>
 </ul>
-<pre><code>java.util.List&lt;Record&gt; list = ac.records;//获取当前所有数据
-   for (Record o : list) {
-               Integer status = o.get(&quot;status&quot;);
-               if (status == 0) {
-                   o.set(&quot;status&quot;, &quot;在线&quot;);
-               } else {
-                   o.set(&quot;status&quot;, &quot;未连接&quot;);
-               }
-             }
-</code></pre><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> public String addBefore(AopContext ac) throws Exception &#123;</span><br><span class="line">      String c = ac.record.get(&quot;kaipiaoAmount&quot;);</span><br><span class="line">      String id = ac.record.getStr(&quot;contractId&quot;);</span><br><span class="line">      String sql = &quot;UPDATE base_contract SET amount=amount-? WHERE id=?;&quot;;</span><br><span class="line">      Db.use(xx.DS_MAIN).update(sql, c, id);</span><br><span class="line">      return super.addBefore(ac);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> java.util.List&lt;Record&gt; list = ac.records;//获取当前所有数据</span><br><span class="line">    for (Record o : list) &#123;</span><br><span class="line">                Integer status = o.get(&quot;status&quot;);</span><br><span class="line">                if (status == 0) &#123;</span><br><span class="line">                    o.set(&quot;status&quot;, &quot;在线&quot;);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    o.set(&quot;status&quot;, &quot;未连接&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br></pre></td></tr></table></figure>
+<ul>
 <li>自定义按钮（需要html + BS）。</li>
 <li>简单配置实现文件上传。</li>
 </ul>
-<blockquote>
-<p>EVOA的优势</p>
-</blockquote>
-<ul>
+<h3 id="EVOA的优势"><a href="#EVOA的优势" class="headerlink" title="EVOA的优势"></a>EVOA的优势</h3><ul>
 <li>减少了代码编写量，简化了开发过程。</li>
 <li>易于上手</li>
 </ul>
-<blockquote>
-<p>详细介绍:<a href="http://note.youdao.com/share/?id=e74a3bc10cc195a5a4c79c7257fcce9b&amp;type=note" target="_blank" rel="external">有道云笔记链接</a></p>
-</blockquote>
-
+<h3 id="详细介绍-有道云笔记链接"><a href="#详细介绍-有道云笔记链接" class="headerlink" title="详细介绍:有道云笔记链接"></a>详细介绍:<a href="http://note.youdao.com/share/?id=e74a3bc10cc195a5a4c79c7257fcce9b&amp;type=note" target="_blank" rel="external">有道云笔记链接</a></h3>
       
     </div>
     <footer>

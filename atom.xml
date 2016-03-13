@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wisdombud.github.io/"/>
-  <updated>2016-03-13T08:40:00.851Z</updated>
+  <updated>2016-03-13T08:41:43.320Z</updated>
   <id>http://wisdombud.github.io/</id>
   
   <author>
@@ -20,21 +20,15 @@
     <link href="http://wisdombud.github.io/2016/03/13/EOVA%E7%AE%80%E4%BB%8B/"/>
     <id>http://wisdombud.github.io/2016/03/13/EOVA简介/</id>
     <published>2016-03-13T08:38:35.000Z</published>
-    <updated>2016-03-13T08:40:00.851Z</updated>
+    <updated>2016-03-13T08:41:43.320Z</updated>
     
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;EOVA简介&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
+    <content type="html">&lt;ul&gt;
 &lt;li&gt;Eova 是一个 J2EE 快速开发平台。&lt;/li&gt;
 &lt;li&gt;Eova 适用于对 UI 布局和性能没有严苛要求的企业级 WEB 后台管理系统。&lt;/li&gt;
 &lt;li&gt;是对Jfinal，easyUI的再次封装&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;blockquote&gt;
-&lt;p&gt;EVOA能做什么&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
+&lt;h3 id=&quot;EVOA能做什么&quot;&gt;&lt;a href=&quot;#EVOA能做什么&quot; class=&quot;headerlink&quot; title=&quot;EVOA能做什么&quot;&gt;&lt;/a&gt;EVOA能做什么&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;简单表数据的显示，分页，无需代码实现。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;自定义二级三级菜单，随意DIY。&lt;/p&gt;
@@ -44,50 +38,28 @@
 &lt;li&gt;&lt;p&gt;登录已实现（目前没有注册功能），可添加用户。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;DIY查询。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;自定义业务（重写业务拦截器）。&lt;/p&gt;
-&lt;p&gt; Demo:&lt;br&gt;  public String addBefore(AopContext ac) throws Exception {&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;String c = ac.record.get(&amp;quot;kaipiaoAmount&amp;quot;);
-String id = ac.record.getStr(&amp;quot;contractId&amp;quot;);
-String sql = &amp;quot;UPDATE base_contract SET amount=amount-? WHERE id=?;&amp;quot;;
-Db.use(xx.DS_MAIN).update(sql, c, id);
-return super.addBefore(ac);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;自定义业务（重写业务拦截器）。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;java.util.List&amp;lt;Record&amp;gt; list = ac.records;//获取当前所有数据
-   for (Record o : list) {
-               Integer status = o.get(&amp;quot;status&amp;quot;);
-               if (status == 0) {
-                   o.set(&amp;quot;status&amp;quot;, &amp;quot;在线&amp;quot;);
-               } else {
-                   o.set(&amp;quot;status&amp;quot;, &amp;quot;未连接&amp;quot;);
-               }
-             }
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; public String addBefore(AopContext ac) throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      String c = ac.record.get(&amp;quot;kaipiaoAmount&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      String id = ac.record.getStr(&amp;quot;contractId&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      String sql = &amp;quot;UPDATE base_contract SET amount=amount-? WHERE id=?;&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      Db.use(xx.DS_MAIN).update(sql, c, id);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      return super.addBefore(ac);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; java.util.List&amp;lt;Record&amp;gt; list = ac.records;//获取当前所有数据&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    for (Record o : list) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                Integer status = o.get(&amp;quot;status&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                if (status == 0) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    o.set(&amp;quot;status&amp;quot;, &amp;quot;在线&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125; else &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    o.set(&amp;quot;status&amp;quot;, &amp;quot;未连接&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
 &lt;li&gt;自定义按钮（需要html + BS）。&lt;/li&gt;
 &lt;li&gt;简单配置实现文件上传。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;EVOA的优势&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
+&lt;h3 id=&quot;EVOA的优势&quot;&gt;&lt;a href=&quot;#EVOA的优势&quot; class=&quot;headerlink&quot; title=&quot;EVOA的优势&quot;&gt;&lt;/a&gt;EVOA的优势&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;减少了代码编写量，简化了开发过程。&lt;/li&gt;
 &lt;li&gt;易于上手&lt;/li&gt;
 &lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;详细介绍:&lt;a href=&quot;http://note.youdao.com/share/?id=e74a3bc10cc195a5a4c79c7257fcce9b&amp;amp;type=note&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;有道云笔记链接&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
+&lt;h3 id=&quot;详细介绍-有道云笔记链接&quot;&gt;&lt;a href=&quot;#详细介绍-有道云笔记链接&quot; class=&quot;headerlink&quot; title=&quot;详细介绍:有道云笔记链接&quot;&gt;&lt;/a&gt;详细介绍:&lt;a href=&quot;http://note.youdao.com/share/?id=e74a3bc10cc195a5a4c79c7257fcce9b&amp;amp;type=note&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;有道云笔记链接&lt;/a&gt;&lt;/h3&gt;</content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;EOVA简介&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
+      &lt;ul&gt;
 &lt;li&gt;Eova 是一个 J2EE 快速开发平台。&lt;/li&gt;
 &lt;li&gt;Eova 适用于对 UI 布局和性能没有严苛要求的企业级 WEB 后台管理系统。&lt;/li&gt;
-&lt;li&gt;是对Jfinal，
+&lt;li&gt;是对Jfinal，easyUI的再次封装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;EVOA能
     
     </summary>
     
