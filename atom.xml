@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wisdombud.github.io/"/>
-  <updated>2016-03-13T08:42:35.443Z</updated>
+  <updated>2016-03-13T09:15:29.733Z</updated>
   <id>http://wisdombud.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://wisdombud.github.io/2016/03/13/EOVA%E7%AE%80%E4%BB%8B/"/>
     <id>http://wisdombud.github.io/2016/03/13/EOVA简介/</id>
     <published>2016-03-13T08:38:35.000Z</published>
-    <updated>2016-03-13T08:42:35.443Z</updated>
+    <updated>2016-03-13T09:15:29.733Z</updated>
     
     <content type="html">&lt;ul&gt;
 &lt;li&gt;Eova 是一个 J2EE 快速开发平台。&lt;/li&gt;
@@ -61,6 +61,8 @@
     
     </summary>
     
+      <category term="EOVA" scheme="http://wisdombud.github.io/categories/EOVA/"/>
+    
     
       <category term="EOVA" scheme="http://wisdombud.github.io/tags/EOVA/"/>
     
@@ -71,7 +73,7 @@
     <link href="http://wisdombud.github.io/2016/03/11/%E6%97%A5%E5%BF%97/"/>
     <id>http://wisdombud.github.io/2016/03/11/日志/</id>
     <published>2016-03-11T08:38:35.000Z</published>
-    <updated>2016-03-13T08:48:48.530Z</updated>
+    <updated>2016-03-13T09:15:21.868Z</updated>
     
     <content type="html">&lt;h2 id=&quot;为什么需要日志&quot;&gt;&lt;a href=&quot;#为什么需要日志&quot; class=&quot;headerlink&quot; title=&quot;为什么需要日志&quot;&gt;&lt;/a&gt;为什么需要日志&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要能拿出Log证明自己负责的部分没有问题，如果是自己的问题，要从Log里快速找出错误原因。如果没有从Log里找出错误原因，那一定是一件很悲催的事情，特别是在bug不容易重现的情况下。&lt;/p&gt;
@@ -105,6 +107,8 @@
     
     </summary>
     
+      <category term="log" scheme="http://wisdombud.github.io/categories/log/"/>
+    
     
       <category term="log" scheme="http://wisdombud.github.io/tags/log/"/>
     
@@ -115,7 +119,7 @@
     <link href="http://wisdombud.github.io/2016/03/04/java%20web%20%E4%B9%8Bservlet/"/>
     <id>http://wisdombud.github.io/2016/03/04/java web 之servlet/</id>
     <published>2016-03-04T08:38:35.000Z</published>
-    <updated>2016-03-13T08:47:41.500Z</updated>
+    <updated>2016-03-13T09:15:52.339Z</updated>
     
     <content type="html">&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。&lt;br&gt;Servlet运行于支持Java的应用服务器中。从实现上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。&lt;br&gt;最早支持Servlet标准的是JavaSoft的Java Web Server。此后，一些其它的基于Java的Web服务器开始支持标准的Servlet。&lt;/p&gt;
@@ -132,6 +136,8 @@
     
     </summary>
     
+      <category term="J2EE-web" scheme="http://wisdombud.github.io/categories/J2EE-web/"/>
+    
     
       <category term="servlet web" scheme="http://wisdombud.github.io/tags/servlet-web/"/>
     
@@ -142,7 +148,7 @@
     <link href="http://wisdombud.github.io/2016/03/02/WEB%20%E5%BC%80%E5%8F%91%E9%9C%80%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://wisdombud.github.io/2016/03/02/WEB 开发需要解决的问题/</id>
     <published>2016-03-02T08:38:35.000Z</published>
-    <updated>2016-03-13T08:47:39.207Z</updated>
+    <updated>2016-03-13T09:16:02.844Z</updated>
     
     <content type="html">&lt;h2 id=&quot;1-系统架构&quot;&gt;&lt;a href=&quot;#1-系统架构&quot; class=&quot;headerlink&quot; title=&quot;1. 系统架构&quot;&gt;&lt;/a&gt;1. 系统架构&lt;/h2&gt;&lt;h3 id=&quot;1-1-B-S系统架构&quot;&gt;&lt;a href=&quot;#1-1-B-S系统架构&quot; class=&quot;headerlink&quot; title=&quot;1.1 B/S系统架构&quot;&gt;&lt;/a&gt;1.1 B/S系统架构&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://s11.sinaimg.cn/mw690/9707fac3hd144196981fa&amp;amp;690&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;1-2-C-S系统架构&quot;&gt;&lt;a href=&quot;#1-2-C-S系统架构&quot; class=&quot;headerlink&quot; title=&quot;1.2 C/S系统架构&quot;&gt;&lt;/a&gt;1.2 C/S系统架构&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i7.qhimg.com/t01b21f3bbfda590e1e.jpg&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
@@ -190,6 +196,8 @@
     
     </summary>
     
+      <category term="J2EE-web" scheme="http://wisdombud.github.io/categories/J2EE-web/"/>
+    
     
       <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
     
@@ -200,7 +208,7 @@
     <link href="http://wisdombud.github.io/2016/03/01/WEB%20%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9/"/>
     <id>http://wisdombud.github.io/2016/03/01/WEB 基础内容/</id>
     <published>2016-03-01T08:38:35.000Z</published>
-    <updated>2016-03-13T08:47:38.362Z</updated>
+    <updated>2016-03-13T09:15:59.876Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;p&gt;##什么是WEB&lt;br&gt;Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构包括了四个基石：&lt;/p&gt;
@@ -234,6 +242,8 @@
     
     </summary>
     
+      <category term="J2EE-web" scheme="http://wisdombud.github.io/categories/J2EE-web/"/>
+    
     
       <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
     
@@ -244,7 +254,7 @@
     <link href="http://wisdombud.github.io/2016/02/15/javascript%20prototype/"/>
     <id>http://wisdombud.github.io/2016/02/15/javascript prototype/</id>
     <published>2016-02-15T08:38:35.000Z</published>
-    <updated>2016-03-13T09:09:44.476Z</updated>
+    <updated>2016-03-13T09:16:10.563Z</updated>
     
     <content type="html">&lt;h2 id=&quot;js创建对象&quot;&gt;&lt;a href=&quot;#js创建对象&quot; class=&quot;headerlink&quot; title=&quot;js创建对象&quot;&gt;&lt;/a&gt;js创建对象&lt;/h2&gt;&lt;h3 id=&quot;最简单的对象&quot;&gt;&lt;a href=&quot;#最简单的对象&quot; class=&quot;headerlink&quot; title=&quot;最简单的对象&quot;&gt;&lt;/a&gt;最简单的对象&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj=&amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var obj2=new Object();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;稍微复杂点的对象&quot;&gt;&lt;a href=&quot;#稍微复杂点的对象&quot; class=&quot;headerlink&quot; title=&quot;稍微复杂点的对象&quot;&gt;&lt;/a&gt;稍微复杂点的对象&lt;/h3&gt;&lt;blockquote&gt;
@@ -290,8 +300,10 @@
     
     </summary>
     
+      <category term="javacript" scheme="http://wisdombud.github.io/categories/javacript/"/>
     
-      <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
+    
+      <category term="prototype" scheme="http://wisdombud.github.io/tags/prototype/"/>
     
   </entry>
   
@@ -300,7 +312,7 @@
     <link href="http://wisdombud.github.io/2016/02/14/javascript%20new/"/>
     <id>http://wisdombud.github.io/2016/02/14/javascript new/</id>
     <published>2016-02-14T08:38:35.000Z</published>
-    <updated>2016-03-13T09:09:51.420Z</updated>
+    <updated>2016-03-13T09:16:26.890Z</updated>
     
     <content type="html">&lt;p&gt;1.如果一个函数没有返回值，那么如果不使用new来创建变量，那么该变量的值为undefined.如果用了new，那么就是Object.说明一个函数的默认的Prototype是Object.&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Test1(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTest = new Test1(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTest);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function Test1WithoutNew(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTestWithoutNew = Test1WithoutNew(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTestWithoutNew);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -316,6 +328,8 @@
     
     </summary>
     
+      <category term="javacript" scheme="http://wisdombud.github.io/categories/javacript/"/>
+    
     
       <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
     
@@ -326,7 +340,7 @@
     <link href="http://wisdombud.github.io/2016/02/13/javascript%20%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/"/>
     <id>http://wisdombud.github.io/2016/02/13/javascript 作用域和闭包/</id>
     <published>2016-02-13T08:38:35.000Z</published>
-    <updated>2016-03-13T09:09:28.430Z</updated>
+    <updated>2016-03-13T09:16:42.634Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h2 id=&quot;第一章-作用域是什么&quot;&gt;&lt;a href=&quot;#第一章-作用域是什么&quot; class=&quot;headerlink&quot; title=&quot;第一章 作用域是什么&quot;&gt;&lt;/a&gt;第一章 作用域是什么&lt;/h2&gt;&lt;h3 id=&quot;js编译原理&quot;&gt;&lt;a href=&quot;#js编译原理&quot; class=&quot;headerlink&quot; title=&quot;js编译原理&quot;&gt;&lt;/a&gt;js编译原理&lt;/h3&gt;&lt;ol&gt;
@@ -655,8 +669,10 @@ return new String(this.a);
     
     </summary>
     
+      <category term="javacript" scheme="http://wisdombud.github.io/categories/javacript/"/>
     
-      <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
+    
+      <category term="javacript scope" scheme="http://wisdombud.github.io/tags/javacript-scope/"/>
     
   </entry>
   
