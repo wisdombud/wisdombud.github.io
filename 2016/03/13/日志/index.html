@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>EOVA简介 | 技术博客</title>
+  <title>日志简介 | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="EOVA简介"/>
+  <meta property="og:title" content="日志简介"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -216,43 +216,40 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-03-13T08:38:35.000Z"><a href="/2016/03/13/EOVA简介/">2016-03-13</a></time>
+        <time datetime="2016-03-13T08:38:35.000Z"><a href="/2016/03/13/日志/">2016-03-13</a></time>
       
       
   
-    <h1 class="title">EOVA简介</h1>
+    <h1 class="title">日志简介</h1>
   
 
     </header>
     <div class="entry">
       
-        <ul>
-<li>Eova 是一个 J2EE 快速开发平台。</li>
-<li>Eova 适用于对 UI 布局和性能没有严苛要求的企业级 WEB 后台管理系统。</li>
-<li>是对Jfinal，easyUI的再次封装</li>
-</ul>
-<h3 id="EVOA能做什么"><a href="#EVOA能做什么" class="headerlink" title="EVOA能做什么"></a>EVOA能做什么</h3><ul>
-<li><p>简单表数据的显示，分页，无需代码实现。</p>
-</li>
-<li><p>自定义二级三级菜单，随意DIY。</p>
-</li>
-<li><p>已经实现的权限管理模块，可自定义用户组，及权限。</p>
-</li>
-<li><p>登录已实现（目前没有注册功能），可添加用户。</p>
-</li>
-<li>DIY查询。</li>
-<li>自定义业务（重写业务拦截器）。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> public String addBefore(AopContext ac) throws Exception &#123;</span><br><span class="line">      String c = ac.record.get(&quot;kaipiaoAmount&quot;);</span><br><span class="line">      String id = ac.record.getStr(&quot;contractId&quot;);</span><br><span class="line">      String sql = &quot;UPDATE base_contract SET amount=amount-? WHERE id=?;&quot;;</span><br><span class="line">      Db.use(xx.DS_MAIN).update(sql, c, id);</span><br><span class="line">      return super.addBefore(ac);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> java.util.List&lt;Record&gt; list = ac.records;//获取当前所有数据</span><br><span class="line">    for (Record o : list) &#123;</span><br><span class="line">                Integer status = o.get(&quot;status&quot;);</span><br><span class="line">                if (status == 0) &#123;</span><br><span class="line">                    o.set(&quot;status&quot;, &quot;在线&quot;);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    o.set(&quot;status&quot;, &quot;未连接&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>自定义按钮（需要html + BS）。</li>
-<li>简单配置实现文件上传。</li>
-</ul>
-<h3 id="EVOA的优势"><a href="#EVOA的优势" class="headerlink" title="EVOA的优势"></a>EVOA的优势</h3><ul>
-<li>减少了代码编写量，简化了开发过程。</li>
-<li>易于上手</li>
-</ul>
-<h3 id="详细介绍-有道云笔记链接"><a href="#详细介绍-有道云笔记链接" class="headerlink" title="详细介绍:有道云笔记链接"></a>详细介绍:<a href="http://note.youdao.com/share/?id=e74a3bc10cc195a5a4c79c7257fcce9b&amp;type=note" target="_blank" rel="external">有道云笔记链接</a></h3>
+        <h2 id="为什么需要日志"><a href="#为什么需要日志" class="headerlink" title="为什么需要日志"></a>为什么需要日志</h2><blockquote>
+<p>因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要能拿出Log证明自己负责的部分没有问题，如果是自己的问题，要从Log里快速找出错误原因。如果没有从Log里找出错误原因，那一定是一件很悲催的事情，特别是在bug不容易重现的情况下。</p>
+</blockquote>
+<h2 id="哪些地方打日志"><a href="#哪些地方打日志" class="headerlink" title="哪些地方打日志"></a>哪些地方打日志</h2><blockquote>
+<p>   打log的目的是为了迅速排错或在有争议时拿出证据证明自己。基于这个目的，log不在多，只要抓住一切对自己有利的信息，就可以了。
+　</p>
+<h3 id="LOG的级别及对应日志"><a href="#LOG的级别及对应日志" class="headerlink" title="LOG的级别及对应日志　"></a>LOG的级别及对应日志　</h3><p>Log最常用的级别就是DEBUG，INFO，WARN，ERROR，其他的很少用。如何运用合适的Log级别也是非常重要的，在不该用ERROR的地方用了ERROR，可能会给你带来额外的麻烦。<br>　1.ERROR：<br>　　ERROR是错误的意思，但不代表出现异常的地方就该打ERROR。我认为ERROR是相对程序正确运行来说的，如果出现了ERROR那就代表出问题了，开发人员必须要查一下原因，或许是程序问题，或许是环境问题，或许是理论上不该出错的地方出错了。总之，如果你觉得某个地方出问题时需要解决，就打ERROR，如果不需要解决就不要打ERROR。<br>　　举例来说，如果有一个接口。调用者传过来的参数不在你的接受范围内，在这种情况下你不能打ERROR，因为传什么值是用户决定的，并不影响程序正确运行。想象一下，如果你的服务器上有监控程序的话，检测到ERROR或WARN就报警，参数错误你也打ERROR，那运维人员会疯掉的。<br>　　如果做一个对讲机，在解析语音数据包时出错了，那就要打ERROR了，因为这个是理论上不该出错的地方，要不就是你的解析代码有问题，要不就是开发人员在拼凑语音包时存在问题，这个时候需要你来找出问题的原因。所以应该打ERROR。<br>　　2.WARN：<br>　　WARN是指出现了不影响程序正确运行的问题，WARN也是问题但不影响程序正常运行，如果WARN出现的过于频繁或次数太多，那就代表你要检查一下程序或环境或依赖程序是否真的出问题了。<br>　　假如你访问一个接口，设置了一个超时，超时之后会抛异常，你在try块里不该打ERROR也不该打INFO来无视它，这时你应该打WARN，紧紧是警告一下，如果超时过多那就该检查一下了，是不是对方接口有问题了或者是网络环境出问题了。<br>　　3.INFO和DEBUG：<br>　　ERROR和WARN是指有问题，而INFO和DEBUG就是指一般的信息了。在程序出问题时，如果这条log可以帮助你分析问题或查看程序的运行情况，那就应该打个INFO。如果仅仅是为了在调试阶段查看程序是否运行正确那就要打DEBUG。前边讨论的接口参数错误问题，就应该打个INFO了，调用者说你的接口总是返回错误代码，你可以告诉他，是他的哪个参数传错了。</p>
+</blockquote>
+<h3 id="常见日志点"><a href="#常见日志点" class="headerlink" title="常见日志点"></a>常见日志点</h3><blockquote>
+<p>1.函数开始结束处<br>　　在重要函数的开始结束出应该打上log ，这样在看log时会比较直观，什么时候开始什么时候结束就会一目了然，万一中间出异常导致程序退出了，也知道是在哪个函数突然中断的。也同样适用于一个重要逻辑块的开始结束。<br>2.返回结果<br>　　尽量在重要函数或web接口的每个返回分支打印返回结果。在出现不好分析的异常时，从细节下手，这时log会派上用场。如果跟合作方在数据方面出现争议也可以及时拿出证据。<br>3.添加Exception异常的捕获<br>　　如果你在代码中捕获了某种异常，那你要在try块后添加Exception的捕获，以防出现运行时异常中断程序。<br>4.务必打印堆栈信息<br>　　在异常捕获代码中务必要将堆栈信息打印出来，否则打了那么多的log可能会功亏一篑。<br>5.多线程的log<br>　　在多线程的程序中，log最好要标记thredId，否则可能不知道是哪个线程的作业，也无法有条理的来观察一个线程。<br>6.成功失败标志<br>　　如果某个函数是做一件比较关键的事情，那么这件事情成功还是失败了，要打印log，否则关键事件运行结果如何都拿不出证据的话，实在是不能让人信服。<br>7.前后log的关系<br>　　如果是web程序或接口，那log就不是按照你预定的顺序出现的，可能是好几个响应的log穿插在一起的。代码里如果有几条log前后存在一定的数据关系，那么要将这几条log的关联信息打出来，用来确定是针对同一个响应的。如果没有明确的标志，很难说后边的log跟前边的log是同一个响应或者是针对同一条数据。<br>8.关于耗时<br> 　　访问一个第三方接口、上传下载文件等可能耗时的操作，都要记录完成这个操作所耗的时间。否则程序性能出了问题，你不知道是网络原因呢，还是你调用的第三方接口性能出现问题呢，还是你自己程序的问题呢。<br>9.关于数量<br> 　　涉及到数量的操作要打印log，比如查询数据库和批量拷贝文件、上传下载、批量格式转换等批量操作，设计到的数量要打印出来。</p>
+</blockquote>
+<h3 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h3><blockquote>
+<ol>
+<li>有异常一定打日志么？</li>
+</ol>
+</blockquote>
+<h2 id="需要什么样的日志"><a href="#需要什么样的日志" class="headerlink" title="需要什么样的日志"></a>需要什么样的日志</h2><blockquote>
+<p>时间、类名及函数名，行号、线程号等等</p>
+<h2 id="有哪些已经封装好的日志"><a href="#有哪些已经封装好的日志" class="headerlink" title="有哪些已经封装好的日志"></a>有哪些已经封装好的日志</h2><h3 id="slf4j"><a href="#slf4j" class="headerlink" title="slf4j"></a>slf4j</h3><p><a href="http://www.cnblogs.com/f1194361820/p/5096014.html" target="_blank" rel="external">http://www.cnblogs.com/f1194361820/p/5096014.html</a></p>
+<h3 id="log4j配置"><a href="#log4j配置" class="headerlink" title="log4j配置"></a>log4j配置</h3><p><a href="http://summerbell.iteye.com/blog/487736" target="_blank" rel="external">http://summerbell.iteye.com/blog/487736</a></p>
+<h3 id="log4net配置"><a href="#log4net配置" class="headerlink" title="log4net配置"></a>log4net配置</h3><p><a href="http://www.cnblogs.com/jys509/p/4569874.html" target="_blank" rel="external">http://www.cnblogs.com/jys509/p/4569874.html</a><br><a href="http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html" target="_blank" rel="external">http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html</a></p>
+</blockquote>
+<h2 id="如何分析日志"><a href="#如何分析日志" class="headerlink" title="如何分析日志"></a>如何分析日志</h2><p><a href="http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html" target="_blank" rel="external">http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html</a></p>
+
       
     </div>
     <footer>
@@ -261,7 +258,7 @@
         
   
   <div class="tags">
-    <a href="/tags/EOVA/">EOVA</a>
+    <a href="/tags/log/">log</a>
   </div>
 
 <!-- Baidu Button BEGIN -->
@@ -289,8 +286,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
+    <a href="/2016/03/13/java web 之servlet/" class="alignleft prev" >上一页</a>
     
-    <a href="/2016/03/13/WEB 基础内容/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -300,7 +297,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <section id="comment">
 
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-EOVA简介" data-title="EOVA简介" data-url="http://wisdombud.github.io/2016/03/13/EOVA简介/"></div>
+  <div class="ds-thread" data-thread-key="post-日志" data-title="日志简介" data-url="http://wisdombud.github.io/2016/03/13/日志/"></div>
 
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
