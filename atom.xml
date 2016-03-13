@@ -119,7 +119,7 @@
     <link href="http://wisdombud.github.io/2016/03/04/java%20web%20%E4%B9%8Bservlet/"/>
     <id>http://wisdombud.github.io/2016/03/04/java web 之servlet/</id>
     <published>2016-03-04T08:38:35.000Z</published>
-    <updated>2016-03-13T09:15:52.339Z</updated>
+    <updated>2016-03-13T09:18:19.219Z</updated>
     
     <content type="html">&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。&lt;br&gt;Servlet运行于支持Java的应用服务器中。从实现上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。&lt;br&gt;最早支持Servlet标准的是JavaSoft的Java Web Server。此后，一些其它的基于Java的Web服务器开始支持标准的Servlet。&lt;/p&gt;
@@ -139,7 +139,7 @@
       <category term="J2EE-web" scheme="http://wisdombud.github.io/categories/J2EE-web/"/>
     
     
-      <category term="servlet web" scheme="http://wisdombud.github.io/tags/servlet-web/"/>
+      <category term="servlet,web" scheme="http://wisdombud.github.io/tags/servlet-web/"/>
     
   </entry>
   
@@ -254,7 +254,7 @@
     <link href="http://wisdombud.github.io/2016/02/15/javascript%20prototype/"/>
     <id>http://wisdombud.github.io/2016/02/15/javascript prototype/</id>
     <published>2016-02-15T08:38:35.000Z</published>
-    <updated>2016-03-13T09:16:10.563Z</updated>
+    <updated>2016-03-13T09:18:28.975Z</updated>
     
     <content type="html">&lt;h2 id=&quot;js创建对象&quot;&gt;&lt;a href=&quot;#js创建对象&quot; class=&quot;headerlink&quot; title=&quot;js创建对象&quot;&gt;&lt;/a&gt;js创建对象&lt;/h2&gt;&lt;h3 id=&quot;最简单的对象&quot;&gt;&lt;a href=&quot;#最简单的对象&quot; class=&quot;headerlink&quot; title=&quot;最简单的对象&quot;&gt;&lt;/a&gt;最简单的对象&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj=&amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var obj2=new Object();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;稍微复杂点的对象&quot;&gt;&lt;a href=&quot;#稍微复杂点的对象&quot; class=&quot;headerlink&quot; title=&quot;稍微复杂点的对象&quot;&gt;&lt;/a&gt;稍微复杂点的对象&lt;/h3&gt;&lt;blockquote&gt;
@@ -303,7 +303,7 @@
       <category term="javacript" scheme="http://wisdombud.github.io/categories/javacript/"/>
     
     
-      <category term="prototype" scheme="http://wisdombud.github.io/tags/prototype/"/>
+      <category term="prototype,javacript" scheme="http://wisdombud.github.io/tags/prototype-javacript/"/>
     
   </entry>
   
@@ -312,7 +312,7 @@
     <link href="http://wisdombud.github.io/2016/02/14/javascript%20new/"/>
     <id>http://wisdombud.github.io/2016/02/14/javascript new/</id>
     <published>2016-02-14T08:38:35.000Z</published>
-    <updated>2016-03-13T09:16:26.890Z</updated>
+    <updated>2016-03-13T09:18:23.799Z</updated>
     
     <content type="html">&lt;p&gt;1.如果一个函数没有返回值，那么如果不使用new来创建变量，那么该变量的值为undefined.如果用了new，那么就是Object.说明一个函数的默认的Prototype是Object.&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Test1(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTest = new Test1(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTest);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function Test1WithoutNew(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTestWithoutNew = Test1WithoutNew(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTestWithoutNew);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -331,7 +331,7 @@
       <category term="javacript" scheme="http://wisdombud.github.io/categories/javacript/"/>
     
     
-      <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
+      <category term="javacript,new" scheme="http://wisdombud.github.io/tags/javacript-new/"/>
     
   </entry>
   
