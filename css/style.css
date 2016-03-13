@@ -715,6 +715,13 @@ footer .addthis iframe {
   font: 0.9em/1.6 Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;
   text-shadow: 0 0 1px #fff;
 }
+#footer a {
+  color: #0085ff;
+}
+#footer a:hover {
+  color: #0085ff;
+  text-decoration: none;
+}
 .entry .gist {
   background: #eee;
   border: 1px solid #ddd;
