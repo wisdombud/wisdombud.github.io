@@ -67,55 +67,38 @@
   </entry>
   
   <entry>
-    <title>WEB基础</title>
-    <link href="http://wisdombud.github.io/2016/03/13/WEB%20%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9/"/>
-    <id>http://wisdombud.github.io/2016/03/13/WEB 基础内容/</id>
-    <published>2016-03-13T08:38:35.000Z</published>
-    <updated>2016-03-13T08:45:31.426Z</updated>
+    <title>java web 之 servlet</title>
+    <link href="http://wisdombud.github.io/2016/03/04/java%20web%20%E4%B9%8Bservlet/"/>
+    <id>http://wisdombud.github.io/2016/03/04/java web 之servlet/</id>
+    <published>2016-03-04T08:38:35.000Z</published>
+    <updated>2016-03-13T08:47:41.500Z</updated>
     
-    <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;p&gt;##什么是WEB&lt;br&gt;Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构包括了四个基石：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;URI：统一资源标识（URL:统一资源定位 URI+LOCATION）&lt;br&gt;HTTP: 超文本传输协议&lt;br&gt;HyperText（除了HTML外，也可以是带有超链接的XML或JSON）&lt;br&gt;MIME(多用途互联网邮件扩展)&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。&lt;br&gt;Servlet运行于支持Java的应用服务器中。从实现上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。&lt;br&gt;最早支持Servlet标准的是JavaSoft的Java Web Server。此后，一些其它的基于Java的Web服务器开始支持标准的Servlet。&lt;/p&gt;
+&lt;p&gt;Servlet = Service + Applet&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;发展历程&quot;&gt;&lt;a href=&quot;#发展历程&quot; class=&quot;headerlink&quot; title=&quot;发展历程&quot;&gt;&lt;/a&gt;发展历程&lt;/h2&gt;&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;静态内容阶段：在这个最初的阶段，使用Web的主要是一些研究机构。Web由大量的静态HTML文档组成，其中大多是一些学术论文。Web服务器可以被看作是支持超文本的共享文件服务器。&lt;/li&gt;
-&lt;li&gt;CGI程序阶段：在这个阶段，Web服务器增加了一些编程API。通过这些API编写的应用程序，可以向客户端提供一些动态变化的内容。Web服务器与应用程序之间的通信，通过CGI（Common Gateway Interface）协议完成，应用程序被称作CGI程序。&lt;/li&gt;
-&lt;li&gt;脚本语言阶段：在这个阶段，服务器端出现了ASP、PHP、JSP、ColdFusion等支持session的脚本语言技术，浏览器端出现了Java Applet、JavaScript等技术。使用这些技术，可以提供更加丰富的动态内容。&lt;/li&gt;
-&lt;li&gt;瘦客户端应用阶段：在这个阶段，在服务器端出现了独立于Web服务器的应用服务器。同时出现了Web MVC开发模式，各种Web MVC开发框架逐渐流行，并且占据了统治地位。基于这些框架开发的Web应用，通常都是瘦客户端应用，因为它们是在服务器端生成全部的动态内容。&lt;/li&gt;
-&lt;li&gt;RIA应用阶段：在这个阶段，出现了多种RIA（Rich Internet Application）技术，大幅改善了Web应用的用户体验。应用最为广泛的RIA技术是DHTML+Ajax。Ajax技术支持在不刷新页面的情况下动态更新页面中的局部内容。同时诞生了大量的Web前端DHTML开发库，例如Prototype、Dojo、ExtJS、jQuery/jQuery UI等等，很多开发库都支持单页面应用（Single Page Application）的开发。其他的RIA技术还有Adobe公司的Flex、微软公司的Silverlight、Sun公司的JavaFX（现在为Oracle公司所有）等等。&lt;/li&gt;
-&lt;li&gt;移动Web应用阶段：在这个阶段，出现了大量面向移动设备的Web应用开发技术。除了Android、iOS、Windows Phone等操作系统平台原生的开发技术之外，基于HTML5的开发技术也变得非常流行。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;从上述Web开发技术的发展过程看，Web从最初其设计者所构思的主要支持静态文档的阶段，逐渐变得越来越动态化。Web应用的交互模式，变得越来越复杂：从静态文档发展到以内容为主的门户网站、电子商务网站、搜索引擎、社交网站，再到以娱乐为主的大型多人在线游戏、手机游戏。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;参考文献：&quot;&gt;&lt;a href=&quot;#参考文献：&quot; class=&quot;headerlink&quot; title=&quot;参考文献：&quot;&gt;&lt;/a&gt;参考文献：&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;http://coolshell.cn/articles/6043.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Web开发中需要了解的东西&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.jobbole.com/15213/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Web开发：我希望得到的编程学习路线图&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/RubyLouvre/agate/issues/8&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;为什么做java的web开发我们会使用struts2，springMVC和spring这样的框架?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.zhihu.com/question/19834302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;零基础的前端开发初学者应如何系统地学习&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.webclks.com/archives/2806&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;web的前世今生&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/0/03/JSPLife.svg&quot; alt=&quot;servlet&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;参考文献&quot;&gt;&lt;a href=&quot;#参考文献&quot; class=&quot;headerlink&quot; title=&quot;参考文献&quot;&gt;&lt;/a&gt;参考文献&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/Java_Servlet&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;wiki–servlet&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://baike.baidu.com/view/25169.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度百科&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.runoob.com/servlet/servlet-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;菜鸟教程&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/rocomp/p/4808924.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnblogs&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;p&gt;##什么是WEB&lt;br&gt;Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构
+      &lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器
     
     </summary>
     
     
-      <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
+      <category term="servlet web" scheme="http://wisdombud.github.io/tags/servlet-web/"/>
     
   </entry>
   
   <entry>
     <title>WEB开发需要解决的问题</title>
-    <link href="http://wisdombud.github.io/2016/03/13/WEB%20%E5%BC%80%E5%8F%91%E9%9C%80%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://wisdombud.github.io/2016/03/13/WEB 开发需要解决的问题/</id>
-    <published>2016-03-13T08:38:35.000Z</published>
-    <updated>2016-03-13T08:45:20.343Z</updated>
+    <link href="http://wisdombud.github.io/2016/03/02/WEB%20%E5%BC%80%E5%8F%91%E9%9C%80%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://wisdombud.github.io/2016/03/02/WEB 开发需要解决的问题/</id>
+    <published>2016-03-02T08:38:35.000Z</published>
+    <updated>2016-03-13T08:47:39.207Z</updated>
     
     <content type="html">&lt;h2 id=&quot;1-系统架构&quot;&gt;&lt;a href=&quot;#1-系统架构&quot; class=&quot;headerlink&quot; title=&quot;1. 系统架构&quot;&gt;&lt;/a&gt;1. 系统架构&lt;/h2&gt;&lt;h3 id=&quot;1-1-B-S系统架构&quot;&gt;&lt;a href=&quot;#1-1-B-S系统架构&quot; class=&quot;headerlink&quot; title=&quot;1.1 B/S系统架构&quot;&gt;&lt;/a&gt;1.1 B/S系统架构&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://s11.sinaimg.cn/mw690/9707fac3hd144196981fa&amp;amp;690&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;1-2-C-S系统架构&quot;&gt;&lt;a href=&quot;#1-2-C-S系统架构&quot; class=&quot;headerlink&quot; title=&quot;1.2 C/S系统架构&quot;&gt;&lt;/a&gt;1.2 C/S系统架构&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i7.qhimg.com/t01b21f3bbfda590e1e.jpg&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
@@ -169,38 +152,55 @@
   </entry>
   
   <entry>
-    <title>java web 之 servlet</title>
-    <link href="http://wisdombud.github.io/2016/03/13/java%20web%20%E4%B9%8Bservlet/"/>
-    <id>http://wisdombud.github.io/2016/03/13/java web 之servlet/</id>
-    <published>2016-03-13T08:38:35.000Z</published>
-    <updated>2016-03-13T08:45:51.135Z</updated>
+    <title>WEB基础</title>
+    <link href="http://wisdombud.github.io/2016/03/01/WEB%20%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9/"/>
+    <id>http://wisdombud.github.io/2016/03/01/WEB 基础内容/</id>
+    <published>2016-03-01T08:38:35.000Z</published>
+    <updated>2016-03-13T08:47:38.362Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。&lt;br&gt;Servlet运行于支持Java的应用服务器中。从实现上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。&lt;br&gt;最早支持Servlet标准的是JavaSoft的Java Web Server。此后，一些其它的基于Java的Web服务器开始支持标准的Servlet。&lt;/p&gt;
-&lt;p&gt;Servlet = Service + Applet&lt;/p&gt;
+    <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;p&gt;##什么是WEB&lt;br&gt;Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构包括了四个基石：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;URI：统一资源标识（URL:统一资源定位 URI+LOCATION）&lt;br&gt;HTTP: 超文本传输协议&lt;br&gt;HyperText（除了HTML外，也可以是带有超链接的XML或JSON）&lt;br&gt;MIME(多用途互联网邮件扩展)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/0/03/JSPLife.svg&quot; alt=&quot;servlet&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;参考文献&quot;&gt;&lt;a href=&quot;#参考文献&quot; class=&quot;headerlink&quot; title=&quot;参考文献&quot;&gt;&lt;/a&gt;参考文献&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/Java_Servlet&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;wiki–servlet&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://baike.baidu.com/view/25169.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度百科&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.runoob.com/servlet/servlet-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;菜鸟教程&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/rocomp/p/4808924.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnblogs&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;发展历程&quot;&gt;&lt;a href=&quot;#发展历程&quot; class=&quot;headerlink&quot; title=&quot;发展历程&quot;&gt;&lt;/a&gt;发展历程&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;静态内容阶段：在这个最初的阶段，使用Web的主要是一些研究机构。Web由大量的静态HTML文档组成，其中大多是一些学术论文。Web服务器可以被看作是支持超文本的共享文件服务器。&lt;/li&gt;
+&lt;li&gt;CGI程序阶段：在这个阶段，Web服务器增加了一些编程API。通过这些API编写的应用程序，可以向客户端提供一些动态变化的内容。Web服务器与应用程序之间的通信，通过CGI（Common Gateway Interface）协议完成，应用程序被称作CGI程序。&lt;/li&gt;
+&lt;li&gt;脚本语言阶段：在这个阶段，服务器端出现了ASP、PHP、JSP、ColdFusion等支持session的脚本语言技术，浏览器端出现了Java Applet、JavaScript等技术。使用这些技术，可以提供更加丰富的动态内容。&lt;/li&gt;
+&lt;li&gt;瘦客户端应用阶段：在这个阶段，在服务器端出现了独立于Web服务器的应用服务器。同时出现了Web MVC开发模式，各种Web MVC开发框架逐渐流行，并且占据了统治地位。基于这些框架开发的Web应用，通常都是瘦客户端应用，因为它们是在服务器端生成全部的动态内容。&lt;/li&gt;
+&lt;li&gt;RIA应用阶段：在这个阶段，出现了多种RIA（Rich Internet Application）技术，大幅改善了Web应用的用户体验。应用最为广泛的RIA技术是DHTML+Ajax。Ajax技术支持在不刷新页面的情况下动态更新页面中的局部内容。同时诞生了大量的Web前端DHTML开发库，例如Prototype、Dojo、ExtJS、jQuery/jQuery UI等等，很多开发库都支持单页面应用（Single Page Application）的开发。其他的RIA技术还有Adobe公司的Flex、微软公司的Silverlight、Sun公司的JavaFX（现在为Oracle公司所有）等等。&lt;/li&gt;
+&lt;li&gt;移动Web应用阶段：在这个阶段，出现了大量面向移动设备的Web应用开发技术。除了Android、iOS、Windows Phone等操作系统平台原生的开发技术之外，基于HTML5的开发技术也变得非常流行。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;从上述Web开发技术的发展过程看，Web从最初其设计者所构思的主要支持静态文档的阶段，逐渐变得越来越动态化。Web应用的交互模式，变得越来越复杂：从静态文档发展到以内容为主的门户网站、电子商务网站、搜索引擎、社交网站，再到以娱乐为主的大型多人在线游戏、手机游戏。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;参考文献：&quot;&gt;&lt;a href=&quot;#参考文献：&quot; class=&quot;headerlink&quot; title=&quot;参考文献：&quot;&gt;&lt;/a&gt;参考文献：&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://coolshell.cn/articles/6043.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Web开发中需要了解的东西&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.jobbole.com/15213/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Web开发：我希望得到的编程学习路线图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/RubyLouvre/agate/issues/8&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;为什么做java的web开发我们会使用struts2，springMVC和spring这样的框架?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.zhihu.com/question/19834302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;零基础的前端开发初学者应如何系统地学习&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.webclks.com/archives/2806&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;web的前世今生&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器
+      &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;p&gt;##什么是WEB&lt;br&gt;Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构
     
     </summary>
     
     
-      <category term="servlet web" scheme="http://wisdombud.github.io/tags/servlet-web/"/>
+      <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
     
   </entry>
   
   <entry>
     <title>日志简介</title>
-    <link href="http://wisdombud.github.io/2016/03/13/%E6%97%A5%E5%BF%97/"/>
-    <id>http://wisdombud.github.io/2016/03/13/日志/</id>
-    <published>2016-03-13T08:38:35.000Z</published>
-    <updated>2016-03-13T08:46:01.072Z</updated>
+    <link href="http://wisdombud.github.io/2016/03/01/%E6%97%A5%E5%BF%97/"/>
+    <id>http://wisdombud.github.io/2016/03/01/日志/</id>
+    <published>2016-03-01T08:38:35.000Z</published>
+    <updated>2016-03-13T08:47:21.451Z</updated>
     
     <content type="html">&lt;h2 id=&quot;为什么需要日志&quot;&gt;&lt;a href=&quot;#为什么需要日志&quot; class=&quot;headerlink&quot; title=&quot;为什么需要日志&quot;&gt;&lt;/a&gt;为什么需要日志&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要能拿出Log证明自己负责的部分没有问题，如果是自己的问题，要从Log里快速找出错误原因。如果没有从Log里找出错误原因，那一定是一件很悲催的事情，特别是在bug不容易重现的情况下。&lt;/p&gt;

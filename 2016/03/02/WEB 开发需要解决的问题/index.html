@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>日志简介 | 技术博客</title>
+  <title>WEB开发需要解决的问题 | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="日志简介"/>
+  <meta property="og:title" content="WEB开发需要解决的问题"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -216,39 +216,54 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-03-13T08:38:35.000Z"><a href="/2016/03/13/日志/">2016-03-13</a></time>
+        <time datetime="2016-03-02T08:38:35.000Z"><a href="/2016/03/02/WEB 开发需要解决的问题/">2016-03-02</a></time>
       
       
   
-    <h1 class="title">日志简介</h1>
+    <h1 class="title">WEB开发需要解决的问题</h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="为什么需要日志"><a href="#为什么需要日志" class="headerlink" title="为什么需要日志"></a>为什么需要日志</h2><blockquote>
-<p>因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要能拿出Log证明自己负责的部分没有问题，如果是自己的问题，要从Log里快速找出错误原因。如果没有从Log里找出错误原因，那一定是一件很悲催的事情，特别是在bug不容易重现的情况下。</p>
+        <h2 id="1-系统架构"><a href="#1-系统架构" class="headerlink" title="1. 系统架构"></a>1. 系统架构</h2><h3 id="1-1-B-S系统架构"><a href="#1-1-B-S系统架构" class="headerlink" title="1.1 B/S系统架构"></a>1.1 B/S系统架构</h3><p><img src="http://s11.sinaimg.cn/mw690/9707fac3hd144196981fa&amp;690" alt="此处输入图片的描述"></p>
+<h3 id="1-2-C-S系统架构"><a href="#1-2-C-S系统架构" class="headerlink" title="1.2 C/S系统架构"></a>1.2 C/S系统架构</h3><p><img src="http://i7.qhimg.com/t01b21f3bbfda590e1e.jpg" alt="此处输入图片的描述"></p>
+<h3 id="1-3-对比与区别"><a href="#1-3-对比与区别" class="headerlink" title="1.3 对比与区别"></a>1.3 对比与区别</h3><p>1.3.1 概述</p>
+<blockquote>
+<p>C/S结构，即Client/Server(客户机/服务器)结构，是大家熟知的软件系统体系结构，通过将任务合理分配到Client端和Server端，降低了系统的通讯开销，可以充分利用两端硬件环境的优势。早期的软件系统多以此作为首选设计标准。。<br>B/S结构，即Browser/Server(浏览器/服务器)结构，是随着Internet技术的兴起，对C/S结构的一种变化或者改进的结构。在这种 结构下，用户界面完全通过WWW浏览器实现，一部分事务逻辑在前端实现，但是主要事务逻辑在服务器端实现，形成所谓3-tier结构。B/S结构，主要是 利用了不断成熟的WWW浏览器技术，结合浏览器的多种Script语言(VBScript、JavaScript…)和ActiveX技术，用通用浏览器 就实现了原来需要复杂专用软件才能实现的强大功能，并节约了开发成本，是一种全新的软件系统构造技术。随着Windows 98/Windows 2000将浏览器技术植入操作系统内部，这种结构更成为当今应用软件的首选体系结构。</p>
 </blockquote>
-<h2 id="哪些地方打日志"><a href="#哪些地方打日志" class="headerlink" title="哪些地方打日志"></a>哪些地方打日志</h2><blockquote>
-<p>   打log的目的是为了迅速排错或在有争议时拿出证据证明自己。基于这个目的，log不在多，只要抓住一切对自己有利的信息，就可以了。
-　</p>
-<h3 id="LOG的级别及对应日志"><a href="#LOG的级别及对应日志" class="headerlink" title="LOG的级别及对应日志　"></a>LOG的级别及对应日志　</h3><p>Log最常用的级别就是DEBUG，INFO，WARN，ERROR，其他的很少用。如何运用合适的Log级别也是非常重要的，在不该用ERROR的地方用了ERROR，可能会给你带来额外的麻烦。<br>　1.ERROR：<br>　　ERROR是错误的意思，但不代表出现异常的地方就该打ERROR。我认为ERROR是相对程序正确运行来说的，如果出现了ERROR那就代表出问题了，开发人员必须要查一下原因，或许是程序问题，或许是环境问题，或许是理论上不该出错的地方出错了。总之，如果你觉得某个地方出问题时需要解决，就打ERROR，如果不需要解决就不要打ERROR。<br>　　举例来说，如果有一个接口。调用者传过来的参数不在你的接受范围内，在这种情况下你不能打ERROR，因为传什么值是用户决定的，并不影响程序正确运行。想象一下，如果你的服务器上有监控程序的话，检测到ERROR或WARN就报警，参数错误你也打ERROR，那运维人员会疯掉的。<br>　　如果做一个对讲机，在解析语音数据包时出错了，那就要打ERROR了，因为这个是理论上不该出错的地方，要不就是你的解析代码有问题，要不就是开发人员在拼凑语音包时存在问题，这个时候需要你来找出问题的原因。所以应该打ERROR。<br>　　2.WARN：<br>　　WARN是指出现了不影响程序正确运行的问题，WARN也是问题但不影响程序正常运行，如果WARN出现的过于频繁或次数太多，那就代表你要检查一下程序或环境或依赖程序是否真的出问题了。<br>　　假如你访问一个接口，设置了一个超时，超时之后会抛异常，你在try块里不该打ERROR也不该打INFO来无视它，这时你应该打WARN，紧紧是警告一下，如果超时过多那就该检查一下了，是不是对方接口有问题了或者是网络环境出问题了。<br>　　3.INFO和DEBUG：<br>　　ERROR和WARN是指有问题，而INFO和DEBUG就是指一般的信息了。在程序出问题时，如果这条log可以帮助你分析问题或查看程序的运行情况，那就应该打个INFO。如果仅仅是为了在调试阶段查看程序是否运行正确那就要打DEBUG。前边讨论的接口参数错误问题，就应该打个INFO了，调用者说你的接口总是返回错误代码，你可以告诉他，是他的哪个参数传错了。</p>
-</blockquote>
-<h3 id="常见日志点"><a href="#常见日志点" class="headerlink" title="常见日志点"></a>常见日志点</h3><blockquote>
-<p>1.函数开始结束处<br>　　在重要函数的开始结束出应该打上log ，这样在看log时会比较直观，什么时候开始什么时候结束就会一目了然，万一中间出异常导致程序退出了，也知道是在哪个函数突然中断的。也同样适用于一个重要逻辑块的开始结束。<br>2.返回结果<br>　　尽量在重要函数或web接口的每个返回分支打印返回结果。在出现不好分析的异常时，从细节下手，这时log会派上用场。如果跟合作方在数据方面出现争议也可以及时拿出证据。<br>3.添加Exception异常的捕获<br>　　如果你在代码中捕获了某种异常，那你要在try块后添加Exception的捕获，以防出现运行时异常中断程序。<br>4.务必打印堆栈信息<br>　　在异常捕获代码中务必要将堆栈信息打印出来，否则打了那么多的log可能会功亏一篑。<br>5.多线程的log<br>　　在多线程的程序中，log最好要标记thredId，否则可能不知道是哪个线程的作业，也无法有条理的来观察一个线程。<br>6.成功失败标志<br>　　如果某个函数是做一件比较关键的事情，那么这件事情成功还是失败了，要打印log，否则关键事件运行结果如何都拿不出证据的话，实在是不能让人信服。<br>7.前后log的关系<br>　　如果是web程序或接口，那log就不是按照你预定的顺序出现的，可能是好几个响应的log穿插在一起的。代码里如果有几条log前后存在一定的数据关系，那么要将这几条log的关联信息打出来，用来确定是针对同一个响应的。如果没有明确的标志，很难说后边的log跟前边的log是同一个响应或者是针对同一条数据。<br>8.关于耗时<br> 　　访问一个第三方接口、上传下载文件等可能耗时的操作，都要记录完成这个操作所耗的时间。否则程序性能出了问题，你不知道是网络原因呢，还是你调用的第三方接口性能出现问题呢，还是你自己程序的问题呢。<br>9.关于数量<br> 　　涉及到数量的操作要打印log，比如查询数据库和批量拷贝文件、上传下载、批量格式转换等批量操作，设计到的数量要打印出来。</p>
-</blockquote>
-<h3 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h3><blockquote>
+<p>1.3.2 详述</p>
+<blockquote>
+<p>Client/Server一般是建立在局域网的基础上的.Browser/Server一般是建立在广域网的基础上的.<br>1．硬件环境不同:<br>C/S 一般建立在专用的网络上, 小范围里的网络环境, 局域网之间再通过专门服务器提供连接和数据交换服务.<br>B/S 建立在广域网之上的, 不必是专门的网络硬件环境,例与电话上网, 租用设备. 信息自己管理. 有比C/S更强的适应范围, 一般只要有操作系统和浏览器就行<br>2．对安全要求不同<br>C/S 一般面向相对固定的用户群, 对信息安全的控制能力很强. 一般高度机密的信息系统采用C/S 结构适宜. 可以通过B/S发布部分可公开信息.<br>B/S 建立在广域网之上, 对安全的控制能力相对弱, 面向是不可知的用户群.<br>3．对程序架构不同<br>C/S 程序可以更加注重流程, 可以对权限多层次校验, 对系统运行速度可以较少考虑.<br>B/S 对安全以及访问速度的多重的考虑, 建立在需要更加优化的基础之上. 比C/S有更高的要求 B/S结构的程序架构是发展的趋势, 从MS的.Net系列的asp.net, java的servlet，python的django等.<br>4．系统维护不同<br>C/S 程序由于整体性, 必须整体考察, 处理出现的问题以及系统升级. 升级难. 可能是再做一个全新的系统。对于用户来说C/S升级维护需要重新安装一个程序.<br>B/S 构件组成,方面构件个别的更换,实现系统的无缝升级.  对于用户来说最多是刷新下页面。<br>5．操作系统不同<br>C/S 程序可以处理用户面固定, 并且在相同区域, 安全要求高需求, 与操作系统相关. 应该都是相同的系统<br>B/S 建立在广域网上, 面向不同的用户群, 分散地域, 这是C/S无法作到的. 与操作系统平台关系最小.<br>6．对本地接口的调用不同<br>C/S 多是建立的Window平台上,需要对本地API接口操作较多.<br>B/S 建立在浏览器上,浏览器都会有沙箱，对本地API接口操作必须通过浏览器才可以完成.</p>
 <ol>
-<li>有异常一定打日志么？</li>
+<li>通讯协议不同<br>C/S一般是自建通讯协议，大部分是基于TCP或者SOCKET之上重新定义业务通讯协议<br>B/S 通讯协议是HTTP协议，已经规定好通讯协议，不可改变</li>
 </ol>
 </blockquote>
-<h2 id="需要什么样的日志"><a href="#需要什么样的日志" class="headerlink" title="需要什么样的日志"></a>需要什么样的日志</h2><blockquote>
-<p>时间、类名及函数名，行号、线程号等等</p>
-<h2 id="有哪些已经封装好的日志"><a href="#有哪些已经封装好的日志" class="headerlink" title="有哪些已经封装好的日志"></a>有哪些已经封装好的日志</h2><h3 id="slf4j"><a href="#slf4j" class="headerlink" title="slf4j"></a>slf4j</h3><p><a href="http://www.cnblogs.com/f1194361820/p/5096014.html" target="_blank" rel="external">http://www.cnblogs.com/f1194361820/p/5096014.html</a></p>
-<h3 id="log4j配置"><a href="#log4j配置" class="headerlink" title="log4j配置"></a>log4j配置</h3><p><a href="http://summerbell.iteye.com/blog/487736" target="_blank" rel="external">http://summerbell.iteye.com/blog/487736</a></p>
-<h3 id="log4net配置"><a href="#log4net配置" class="headerlink" title="log4net配置"></a>log4net配置</h3><p><a href="http://www.cnblogs.com/jys509/p/4569874.html" target="_blank" rel="external">http://www.cnblogs.com/jys509/p/4569874.html</a><br><a href="http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html" target="_blank" rel="external">http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html</a></p>
+<h2 id="2-前端"><a href="#2-前端" class="headerlink" title="2. 前端"></a>2. 前端</h2><p>指的是浏览器端（B端）的技术，相当于C/S中的C，只是C是固定的（浏览器）</p>
+<p>浏览器固定了哪些东西：</p>
+<blockquote>
+<ol>
+<li>UI的技术：HTML+CSS+JS</li>
+<li>通讯的协议：HTTP</li>
+<li>对本地API的操作：上传文件等</li>
+</ol>
 </blockquote>
-<h2 id="如何分析日志"><a href="#如何分析日志" class="headerlink" title="如何分析日志"></a>如何分析日志</h2><p><a href="http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html" target="_blank" rel="external">http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html</a></p>
+<p>B端存在几种常见的浏览器：Chrome，IE，FireFox等。不同的浏览器基于标准实现的具体细节不一样。因此需要考虑浏览器兼容性问题。</p>
+<h2 id="3-后端"><a href="#3-后端" class="headerlink" title="3. 后端"></a>3. 后端</h2><p>需要解决的问题：</p>
+<ol>
+<li>解析HTTP协议—-一般由WEB服务器完成，tomcat等各种（也可以自己写socket，接收http请求，自己封装）</li>
+<li>业务处理<br> 数据的验证<br> 数据保存</li>
+<li>页面响应</li>
+</ol>
+<p>基本流程是这些，所以抽象出来一些所谓的框架及技术。<br>java：</p>
+<pre><code>&gt; Servlet技术（将HTTP的解析、页面响应与业务处理区分开），分为WEB服务器（Tomcat等）和应用程序（各种war包）
+&gt; 页面响应技术： JSP、servlet、freemarker等等
+&gt; 业务处理：各种MVC的后端框架（spring mvc、Struts等）
+&gt; 数据处理：hibernate、spring jdbc等
+</code></pre><p>python：</p>
+<pre><code>&gt; Python Web服务器网关接口（或者缩写为WSGI，读作“wizgy”），将WEB服务器和应用程序分开
+&gt; django 业务处理各种等
+</code></pre><h2 id="4-参考"><a href="#4-参考" class="headerlink" title="4. 参考"></a>4. 参考</h2><p><a href="http://python.jobbole.com/81523/" target="_blank" rel="external">http://python.jobbole.com/81523/</a><br><a href="http://baike.baidu.com/link?url=JE-Xpf-h0uBKCl3wPK9GQQ0U3tqtcql2ra_d1368tdQQ6FOGpiCunES9MYmH6gTfn5IJPJfBlkvP5C82QYHqOSFmW3BUhegxCCq0ixk7VJz-M9CT0YznLBnzCWc-5jCD" target="_blank" rel="external">http://baike.baidu.com/link?url=JE-Xpf-h0uBKCl3wPK9GQQ0U3tqtcql2ra_d1368tdQQ6FOGpiCunES9MYmH6gTfn5IJPJfBlkvP5C82QYHqOSFmW3BUhegxCCq0ixk7VJz-M9CT0YznLBnzCWc-5jCD</a><br><a href="http://zhidao.baidu.com/link?url=YK05yEAorh3NkdMX2oA1y6pTwZjCl7qMzCdXPgNCRwbbHYb-V6J7nnF0c_PRpolZbfB-T3cLwrKbO-Aph5f4YXdkFkvm-4SL5AXTdGN-DIy" target="_blank" rel="external">http://zhidao.baidu.com/link?url=YK05yEAorh3NkdMX2oA1y6pTwZjCl7qMzCdXPgNCRwbbHYb-V6J7nnF0c_PRpolZbfB-T3cLwrKbO-Aph5f4YXdkFkvm-4SL5AXTdGN-DIy</a></p>
 
       
     </div>
@@ -258,7 +273,7 @@
         
   
   <div class="tags">
-    <a href="/tags/log/">log</a>
+    <a href="/tags/web/">web</a>
   </div>
 
 <!-- Baidu Button BEGIN -->
@@ -286,8 +301,10 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
-    <a href="/2016/03/13/java web 之servlet/" class="alignleft prev" >上一页</a>
+    <a href="/2016/03/04/java web 之servlet/" class="alignleft prev" >上一页</a>
     
+    
+    <a href="/2016/03/01/WEB 基础内容/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -297,7 +314,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <section id="comment">
 
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-日志" data-title="日志简介" data-url="http://wisdombud.github.io/2016/03/13/日志/"></div>
+  <div class="ds-thread" data-thread-key="post-WEB 开发需要解决的问题" data-title="WEB开发需要解决的问题" data-url="http://wisdombud.github.io/2016/03/02/WEB 开发需要解决的问题/"></div>
 
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
