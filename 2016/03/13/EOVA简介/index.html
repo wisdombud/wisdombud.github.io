@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hello world | 技术博客</title>
+  <title>EOVA简介 | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="EOVA简介"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -198,25 +198,158 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">hello world</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-03-11T05:36:54.469Z"><a href="/2016/03/11/hello-world/">2016-03-11</a></time>
-            
-              <h1 class="title"><a href="/2016/03/11/hello-world/">Hello World</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-03-13T08:38:35.000Z"><a href="/2016/03/13/EOVA简介/">2016-03-13</a></time>
+      
+      
+  
+    <h1 class="title">EOVA简介</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>EOVA简介</p>
+</blockquote>
+<ul>
+<li>Eova 是一个 J2EE 快速开发平台。</li>
+<li>Eova 适用于对 UI 布局和性能没有严苛要求的企业级 WEB 后台管理系统。</li>
+<li>是对Jfinal，easyUI的再次封装</li>
+</ul>
+<hr>
+<blockquote>
+<p>EVOA能做什么</p>
+</blockquote>
+<ul>
+<li><p>简单表数据的显示，分页，无需代码实现。</p>
+</li>
+<li><p>自定义二级三级菜单，随意DIY。</p>
+</li>
+<li><p>已经实现的权限管理模块，可自定义用户组，及权限。</p>
+</li>
+<li><p>登录已实现（目前没有注册功能），可添加用户。</p>
+</li>
+<li>DIY查询。</li>
+<li><p>自定义业务（重写业务拦截器）。</p>
+<p> Demo:<br>  public String addBefore(AopContext ac) throws Exception {</p>
+<pre><code>String c = ac.record.get(&quot;kaipiaoAmount&quot;);
+String id = ac.record.getStr(&quot;contractId&quot;);
+String sql = &quot;UPDATE base_contract SET amount=amount-? WHERE id=?;&quot;;
+Db.use(xx.DS_MAIN).update(sql, c, id);
+return super.addBefore(ac);
+</code></pre><p> }</p>
+</li>
+</ul>
+<pre><code>java.util.List&lt;Record&gt; list = ac.records;//获取当前所有数据
+   for (Record o : list) {
+               Integer status = o.get(&quot;status&quot;);
+               if (status == 0) {
+                   o.set(&quot;status&quot;, &quot;在线&quot;);
+               } else {
+                   o.set(&quot;status&quot;, &quot;未连接&quot;);
+               }
+             }
+</code></pre><ul>
+<li>自定义按钮（需要html + BS）。</li>
+<li>简单配置实现文件上传。</li>
+</ul>
+<blockquote>
+<p>EVOA的优势</p>
+</blockquote>
+<ul>
+<li>减少了代码编写量，简化了开发过程。</li>
+<li>易于上手</li>
+</ul>
+<blockquote>
+<p>详细介绍:<a href="http://note.youdao.com/share/?id=e74a3bc10cc195a5a4c79c7257fcce9b&amp;type=note" target="_blank" rel="external">有道云笔记链接</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/EOVA/">EOVA</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2016/03/11/hello-world/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-EOVA简介" data-title="EOVA简介" data-url="http://wisdombud.github.io/2016/03/13/EOVA简介/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
