@@ -239,4 +239,425 @@
     
   </entry>
   
+  <entry>
+    <title>javascript prototype</title>
+    <link href="http://wisdombud.github.io/2016/02/15/javascript%20prototype/"/>
+    <id>http://wisdombud.github.io/2016/02/15/javascript prototype/</id>
+    <published>2016-02-15T08:38:35.000Z</published>
+    <updated>2016-03-13T09:09:44.476Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;js创建对象&quot;&gt;&lt;a href=&quot;#js创建对象&quot; class=&quot;headerlink&quot; title=&quot;js创建对象&quot;&gt;&lt;/a&gt;js创建对象&lt;/h2&gt;&lt;h3 id=&quot;最简单的对象&quot;&gt;&lt;a href=&quot;#最简单的对象&quot; class=&quot;headerlink&quot; title=&quot;最简单的对象&quot;&gt;&lt;/a&gt;最简单的对象&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj=&amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var obj2=new Object();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;稍微复杂点的对象&quot;&gt;&lt;a href=&quot;#稍微复杂点的对象&quot; class=&quot;headerlink&quot; title=&quot;稍微复杂点的对象&quot;&gt;&lt;/a&gt;稍微复杂点的对象&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;写法一 : 定义完成后再添加属性和方法&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj=&amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.a=2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.fn=function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    alert(this);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;写法二 ： 字面量赋值&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a:2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fn:function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        alert(this);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;问题：对象如果要复用的时候怎么办？有没有类？&lt;/p&gt;
+&lt;p&gt;javascript 没有类，没有类，没有类！只有对象！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;function-模拟一个类&quot;&gt;&lt;a href=&quot;#function-模拟一个类&quot; class=&quot;headerlink&quot; title=&quot;function 模拟一个类&quot;&gt;&lt;/a&gt;function 模拟一个类&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function createObj(a,fn)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                var obj=&amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                obj.a=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                obj.fn=fn;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                return obj;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var obj=createObj(2,function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                alert(this.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;足够了么？还有没有问题？&lt;/p&gt;
+&lt;p&gt;上面的这个function的返回的对象是什么？怎么判断创建出来的对象的类型？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;function-的特殊性&quot;&gt;&lt;a href=&quot;#function-的特殊性&quot; class=&quot;headerlink&quot; title=&quot;function 的特殊性&quot;&gt;&lt;/a&gt;function 的特殊性&lt;/h3&gt;&lt;p&gt;１. function可以接受参数，可以根据参数来创建相同类型不同值的对象&lt;/p&gt;
+&lt;p&gt;２. &lt;strong&gt;function作为构造函数（通过new操作符调用）的时候会返回一个对象，构造函数的返回值分为两种情况，当function没有return语句或者return回一个基本类型（bool,int,string,undefined,null）的时候，返回新创建的一个匿名对象，该对象即为函数实例；如果function体内return一个引用类型对象（Array,Function,Object等）时，该对象会覆盖new创建的匿名对象作为返回值。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;３. 那么使用function怎么解决类型识别问题呢，每个function实例对象都会有一个constructor属性（也不是“有”，而是可以对应），这个属性就可以指示其构造是谁，也可以使用instanceof 操作符来做判断对象是否为XXX的实例。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Person(name)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.name=name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.fn=function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    alert(this.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person1=new Person(&amp;apos;Byron&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(person1.constructor==Person);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(person1 instanceof Person);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;再好一点的写法&quot;&gt;&lt;a href=&quot;#再好一点的写法&quot; class=&quot;headerlink&quot; title=&quot;再好一点的写法&quot;&gt;&lt;/a&gt;再好一点的写法&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Person(name)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.name=name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.fn=function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    alert(this.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person1=new Person(&amp;apos;Byron&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person2=new Person(&amp;apos;Frank&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(person1.fn==person2.fn);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;问题：fn&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;终极写法&quot;&gt;&lt;a href=&quot;#终极写法&quot; class=&quot;headerlink&quot; title=&quot;终极写法&quot;&gt;&lt;/a&gt;终极写法&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Person(name)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.name=name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Person.prototype.share=[];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Person.prototype.printName=function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                alert(this.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person1=new Person(&amp;apos;Byron&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person2=new Person(&amp;apos;Frank&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(person1.printName==person2.printName);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;属性访问&quot;&gt;&lt;a href=&quot;#属性访问&quot; class=&quot;headerlink&quot; title=&quot;属性访问&quot;&gt;&lt;/a&gt;属性访问&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var myObj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        a:2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt; --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var myObj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        a:undefined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt; --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var myObj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        get a() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return this.h;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        set a(val)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            this.h=val*2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Object.defineProperty(myObj, &amp;quot;b&amp;quot;, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        get: function() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return 3;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            //enumerable: true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    myObj.a=2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    myObj.hasOwnProperty(&amp;quot;a&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;hasOwnProperty 只会检查属性是否在对象中&lt;br&gt;in 在prototype说~&lt;/p&gt;
+&lt;h2 id=&quot;prototype&quot;&gt;&lt;a href=&quot;#prototype&quot; class=&quot;headerlink&quot; title=&quot;prototype&quot;&gt;&lt;/a&gt;prototype&lt;/h2&gt;&lt;h3 id=&quot;what&quot;&gt;&lt;a href=&quot;#what&quot; class=&quot;headerlink&quot; title=&quot;what&quot;&gt;&lt;/a&gt;what&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;javascript 中的对象有一个特殊的属性：prototype，表示对于其他对象的引用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var oneObj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a:2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var twoObj=Object.create(oneObj);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(twoObj.a);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;尽头&quot;&gt;&lt;a href=&quot;#尽头&quot; class=&quot;headerlink&quot; title=&quot;尽头&quot;&gt;&lt;/a&gt;尽头&lt;/h3&gt;&lt;p&gt;Object.prototype&lt;/p&gt;
+&lt;h3 id=&quot;属性的设置与屏蔽&quot;&gt;&lt;a href=&quot;#属性的设置与屏蔽&quot; class=&quot;headerlink&quot; title=&quot;属性的设置与屏蔽&quot;&gt;&lt;/a&gt;属性的设置与屏蔽&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var oneObj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a:2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;oneObj.b=&amp;apos;b&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;链上存在普通访问的属性，并没有只读，那么会在当前对象添加b&lt;/li&gt;
+&lt;li&gt;链上存在该属性，但被标记为只读，严格模式下会报错，普通模式没有执行&lt;/li&gt;
+&lt;li&gt;链上有属性，并且有setter，会被执行，不会屏蔽&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;js创建对象&quot;&gt;&lt;a href=&quot;#js创建对象&quot; class=&quot;headerlink&quot; title=&quot;js创建对象&quot;&gt;&lt;/a&gt;js创建对象&lt;/h2&gt;&lt;h3 id=&quot;最简单的对象&quot;&gt;&lt;a href=&quot;#最简单的对象&quot; class=&quot;headerlink&quot; titl
+    
+    </summary>
+    
+    
+      <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javacript new</title>
+    <link href="http://wisdombud.github.io/2016/02/14/javascript%20new/"/>
+    <id>http://wisdombud.github.io/2016/02/14/javascript new/</id>
+    <published>2016-02-14T08:38:35.000Z</published>
+    <updated>2016-03-13T09:09:51.420Z</updated>
+    
+    <content type="html">&lt;p&gt;1.如果一个函数没有返回值，那么如果不使用new来创建变量，那么该变量的值为undefined.如果用了new，那么就是Object.说明一个函数的默认的Prototype是Object.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Test1(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTest = new Test1(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTest);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function Test1WithoutNew(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTestWithoutNew = Test1WithoutNew(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTestWithoutNew);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.如果函数有返回值，但是返回值是基本类型。那么new出来的myTest还是object.。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Test1(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return this.a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTest = new Test1(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTest); //Object&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function Test1WithoutNew(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return this.a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTestWithoutNew = Test1WithoutNew(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTestWithoutNew);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3。如果函数的返回值为new出来的对象，那么myTest的值根据new出来的对象而定。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Test1(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return new String(this.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTest = new Test1(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTest);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.如果一个函数没有返回值，那么如果不使用new来创建变量，那么该变量的值为undefined.如果用了new，那么就是Object.说明一个函数的默认的Prototype是Object.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table
+    
+    </summary>
+    
+    
+      <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javascript 作用域与闭包</title>
+    <link href="http://wisdombud.github.io/2016/02/13/javascript%20%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/"/>
+    <id>http://wisdombud.github.io/2016/02/13/javascript 作用域和闭包/</id>
+    <published>2016-02-13T08:38:35.000Z</published>
+    <updated>2016-03-13T09:09:28.430Z</updated>
+    
+    <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;第一章-作用域是什么&quot;&gt;&lt;a href=&quot;#第一章-作用域是什么&quot; class=&quot;headerlink&quot; title=&quot;第一章 作用域是什么&quot;&gt;&lt;/a&gt;第一章 作用域是什么&lt;/h2&gt;&lt;h3 id=&quot;js编译原理&quot;&gt;&lt;a href=&quot;#js编译原理&quot; class=&quot;headerlink&quot; title=&quot;js编译原理&quot;&gt;&lt;/a&gt;js编译原理&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;到底是什么类型的语言？&lt;br&gt;动态、解释型语言？&lt;br&gt;no，它是&lt;strong&gt;编译型&lt;/strong&gt;的语言&lt;br&gt;why？&lt;blockquote&gt;
+&lt;p&gt;不是提前编译的，编译在执行之前的几微妙甚至更短&lt;br&gt;编译结果不能移植&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;编译的过程&lt;blockquote&gt;
+&lt;p&gt;词法分析-&amp;gt;语法分析-&amp;gt;代码生成&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;理解作用域&quot;&gt;&lt;a href=&quot;#理解作用域&quot; class=&quot;headerlink&quot; title=&quot;理解作用域&quot;&gt;&lt;/a&gt;理解作用域&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;js的执行参与者&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;js引擎（v8、xx）：负责编译和执行的过程&lt;/li&gt;
+&lt;li&gt;编译器：词法分析、语法分析、代码生成&lt;/li&gt;
+&lt;li&gt;作用域：收集和维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;code&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var a=2;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;词法分析: var a = 2&lt;br&gt; 语法分析：var a； 作用域是否有a？有忽略，没有声明后放到作用域中&lt;br&gt; 生成代码：a=2；&lt;br&gt; 执行：js引擎会询问作用域有没有a，然后再赋值，如果没有就异常了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;code 2&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function foo(a)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a+b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo(2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ReferenceError异常&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;LHS和RHS&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;LHS:查找赋值操作的目标是谁？ a=&lt;br&gt;RHS：查找谁是赋值操作的源头 console.log(a) 或者 =a&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;function的LHS和RHS&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function foo(a)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a+b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo(2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;LHS: foo(..  a.. b=..&lt;br&gt; RHS: foo.. console.. log… a b  a&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;   不具有一般意义的一些代码&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var foo = function(a)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a+b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo(2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;LHS:foo.. foo(.. a.. b..&lt;br&gt;    RHS:function(.. console.. …&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;注意：上面的LHS和RHS对于最后一个就不对了，编译器可以在代码生成时同时处理声明和值的定义。&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;数一数&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; function foo(a)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var b=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return a+b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var c= foo(2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;LHS:3&lt;br&gt;  RHS:4&lt;/p&gt;
+&lt;h3 id=&quot;作用域嵌套&quot;&gt;&lt;a href=&quot;#作用域嵌套&quot; class=&quot;headerlink&quot; title=&quot;作用域嵌套&quot;&gt;&lt;/a&gt;作用域嵌套&lt;/h3&gt;&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;作用域的嵌套&lt;blockquote&gt;
+&lt;p&gt;向上找一直到全局作用域&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;异常&quot;&gt;&lt;a href=&quot;#异常&quot; class=&quot;headerlink&quot; title=&quot;异常&quot;&gt;&lt;/a&gt;异常&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;LHS和RHS在嵌套时的不同&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;LHS:如果到最后没有找到，那就创建一个(非严格模式)或者抛一个异常（ReferenceError，严格模式）；&lt;br&gt;RHS:如果到最后没有找到，那就抛一个异常（ReferenceError）&lt;br&gt;可以理解&lt;a href=&quot;#code2&quot;&gt;code2&lt;/a&gt;的代码&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;小结&quot;&gt;&lt;a href=&quot;#小结&quot; class=&quot;headerlink&quot; title=&quot;小结&quot;&gt;&lt;/a&gt;小结&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;javascript的编译过程包括：词法分析-&amp;gt;语法分析-&amp;gt;代码生成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;作用域&lt;/strong&gt;可以理解成一套规则，这套规则用来管理引擎如何在当前作用域以及嵌套的子作用域中根据标识符名称进行变量的查找&lt;/li&gt;
+&lt;li&gt;变量查找方法：LHS和RHS&lt;/li&gt;
+&lt;li&gt;作用域的嵌套&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;第二章-词法作用域&quot;&gt;&lt;a href=&quot;#第二章-词法作用域&quot; class=&quot;headerlink&quot; title=&quot;第二章 词法作用域&quot;&gt;&lt;/a&gt;第二章 词法作用域&lt;/h2&gt;&lt;p&gt;作用域的工作模型：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;词法作用域&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;动态作用域（Bash Perl）&lt;h3 id=&quot;词法作用域&quot;&gt;&lt;a href=&quot;#词法作用域&quot; class=&quot;headerlink&quot; title=&quot;词法作用域&quot;&gt;&lt;/a&gt;词法作用域&lt;/h3&gt;&lt;h4 id=&quot;定义与举例&quot;&gt;&lt;a href=&quot;#定义与举例&quot; class=&quot;headerlink&quot; title=&quot;定义与举例&quot;&gt;&lt;/a&gt;定义与举例&lt;/h4&gt;词法作用域是指定义在词法阶段的作用域。&lt;blockquote&gt;
+&lt;p&gt;说人话：词法作用域就是你在写代码时定义在哪，就是哪个的作用域&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;代码示例&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    function foo(a) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        var b=a*2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        function bar(c) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(a,b,c);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        bar(b*3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo(2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(c);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;输出结果是什么？&lt;/li&gt;
+&lt;li&gt;LHS和RHS分别有哪些？&lt;/li&gt;
+&lt;li&gt;作用域有几个？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;查找&quot;&gt;&lt;a href=&quot;#查找&quot; class=&quot;headerlink&quot; title=&quot;查找&quot;&gt;&lt;/a&gt;查找&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;遮蔽效应（全局如果被遮蔽，可以window.a访问）&lt;/li&gt;
+&lt;li&gt;词法作用域只由函数声明时的所处的位置决定&lt;/li&gt;
+&lt;li&gt;词法作用域查找只会查找一级标识符（对象的属性不会查找）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;如何欺骗词法作用域—一定不要使用，只是为了了解&quot;&gt;&lt;a href=&quot;#如何欺骗词法作用域—一定不要使用，只是为了了解&quot; class=&quot;headerlink&quot; title=&quot;如何欺骗词法作用域—一定不要使用，只是为了了解&quot;&gt;&lt;/a&gt;如何欺骗词法作用域—&lt;strong&gt;一定不要使用，只是为了了解&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;不管怎么说，都不要用&lt;/strong&gt;&lt;br&gt;&lt;em&gt;讲的目的只是为了看懂别人这么写的代码&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在执行时，动态的修改词法作用域&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;####eval&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;功能：接收一个字符串作为参数，并将其中的内容看成在写代码时就加进去的一样&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function foo(str, a) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    eval(str);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a, b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var b = 2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo(&amp;quot;var b=3;&amp;quot;, 1);//1,3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;补充：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实际中可以执行一段代码后再传str&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;严格模式： eval会有自己的作用域，不会修改插入的作用域了&lt;/p&gt;
+&lt;p&gt;其它：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;setTimeOut(..) setInterval(..)，第一个参数可以接受字符串&lt;br&gt;new Function(..) 最后一个参数接受代码字符串&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;不管怎么说，都不要用&lt;/strong&gt;&lt;br&gt;&lt;em&gt;讲的目的只是为了看懂别人这么写的代码&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;####with&lt;br&gt;&lt;strong&gt;with 会根据你传递给他的对象中凭空创造一个新的词法作用域&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;正常写法&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a: 1,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b: 2,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    c: 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj.b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj.c);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;简单写法&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    var obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        a: 1,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        b: 2,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        c: 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    with(obj) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        console.log(a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        console.log(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        console.log(c);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ```  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3. 所带来的问题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ```javacript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function test(obj) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;with(obj) {
+    a = 2;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var obj1 = {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;a: 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var obj2 = {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;b: 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; test(obj1);&lt;br&gt; console.log(obj1.a);&lt;br&gt; test(obj2);&lt;br&gt; console.log(obj2.a);&lt;br&gt; console.log(a);&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;gt;缺点：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * 欺骗词法作用域会导致不可预知的结果（对于不懂的人来说）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * 严格模式不支持&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * 性能&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;**不管怎么说，都不要用**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*讲的目的只是为了看懂别人这么写的代码*    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;###小结&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; * 定义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* 欺骗词法作用域 **千万不要使用**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 补充知识&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; 动态作用域&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&amp;gt; 不关心在何处声明，只关心在何处调用&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;gt;&amp;gt; ```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function test1() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(a);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; function bar() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = 3;
+test1();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var a = 2;&lt;br&gt; bar();&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## 函数作用域和块作用域&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 函数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## 提升&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## 闭包&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## 看代码说结果&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码1:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt; var a = 1;&lt;br&gt; function foo() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var b = 2;
+function bar() {
+    var b = &amp;apos;bar2&amp;apos;;
+    console.log(b);
+    function baz() {
+        console.log(a);
+    }
+    baz();
+}
+bar();
+console.log(b);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; foo();&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    bar2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码2:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; a = 2;&lt;br&gt; var a;&lt;br&gt; console.log( a );&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码3:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; console.log( a );&lt;br&gt; var a = 2;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    undefined  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码4:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; foo();&lt;br&gt; function foo() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(&amp;apos;foo&amp;apos;);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    foo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码5:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; //foo();&lt;br&gt; bar();&lt;br&gt; var foo = function bar() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(&amp;apos;foo&amp;apos;);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; };&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    foo is not function&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bar is not defined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码6:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; var foo;&lt;br&gt; function foo() { console.log( “a” ); }&lt;br&gt; function foo() { console.log( “b” ); }&lt;/p&gt;
+&lt;p&gt; foo();&lt;br&gt; foo = true;&lt;br&gt; if (foo) {&lt;/p&gt;
+&lt;p&gt; }&lt;br&gt; else {&lt;/p&gt;
+&lt;p&gt; }&lt;br&gt; foo();&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    b&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo is not a function&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码7:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; var i;&lt;br&gt; for (i=1; i&amp;lt;= 5; i++) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;setTimeout( function timer(){
+    console.log( i );
+}, i*1000);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码8:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var baz;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function foo() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    function bar() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        console.log( a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a = 2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return bar;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;baz = foo();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;baz();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function foo(j){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; function timer(){
+     console.log(j);
+ }
+return timer();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;/p&gt;
+&lt;p&gt; for (var i=1; i&amp;lt;=5; i++) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;setTimeout(foo(i), i*1000 );
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码9:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function foo() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = 2;
+function bar() {
+    console.log( a );
+}
+return bar;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var baz = foo();&lt;br&gt; baz();&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码10:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function foo(a){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(a+b);
+b=a;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; foo(2);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   b is not defined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码11:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function foo(a){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;window.b=a;
+console.log(a+b);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; a=2;&lt;br&gt; foo(2);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码12:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  var foo = function(a){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    console.log(a+b);
+    b=a;
+}
+foo(2);
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码13:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  function foo(a) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    var b=a*2;
+    function bar(c) {
+        console.log(a,b,c);
+    }
+    bar(b*3);
+}
+foo(2);
+console.log(a);
+console.log(b);
+console.log(c);
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    2,4,12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a is not defined;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码14:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function foo(str, a) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;eval(str);
+console.log(a, b);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var b = 2;&lt;br&gt; foo(“var b=3;”, 1);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    1,3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码15:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function test(obj) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;with(obj) {
+    a = 2;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var obj1 = {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;a: 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var obj2 = {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;b: 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; test(obj1);&lt;br&gt; console.log(obj1.a);&lt;br&gt; test(obj2);&lt;br&gt; console.log(obj2.a);&lt;br&gt; console.log(a);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    undefined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码16:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;词法作用域&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  function test1() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(a);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; function bar() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = 3;
+test1();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var a = 2;&lt;br&gt; bar();&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码17:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function Person(name){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.name=name;
+this.fn=function(){
+    alert(this.name);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var person1=new Person(‘Byron’);&lt;br&gt; console.log(person1.constructor==Person);&lt;br&gt; console.log(person1 instanceof Person);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码18:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function Person(name){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.name=name;
+this.fn=function(){
+    alert(this.name);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var person1=new Person(‘Byron’);&lt;br&gt; var person2=new Person(‘Frank’);&lt;br&gt; console.log(person1.fn==person2.fn);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码19:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function Person(name){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.name=name;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; Person.prototype.share=[];&lt;br&gt; Person.prototype.printName=function(){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alert(this.name);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var person1=new Person(‘Byron’);&lt;br&gt; var person2=new Person(‘Frank’);&lt;br&gt; console.log(person1.printName==person2.printName);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码20:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  var myObj = {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get a() {
+    return this.h;
+},
+set a(val){
+    this.h=val*2;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; Object.defineProperty(myObj, “b”, {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get: function() {
+    return 3;
+    //enumerable: true
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; });&lt;br&gt; myObj.a=2;&lt;br&gt; console.log(myObj.a);&lt;br&gt; console.log(myObj.b);&lt;br&gt; myObj.hasOwnProperty(“a”);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码21:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; var oneObj={&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;a:2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var twoObj=Object.create(oneObj);&lt;br&gt; console.log(twoObj.a);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码22:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function Test1(str) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.a = str;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var myTest = new Test1(“test1”);&lt;br&gt; console.log(myTest.a);&lt;br&gt; function Test1WithoutNew(str) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.a = str;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var myTestWithoutNew = Test1WithoutNew(“test1”);&lt;br&gt; console.log(myTestWithoutNew.a);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码23:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function Test1(str) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.a = str;
+return this.a;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var myTest = new Test1(“test1”);&lt;br&gt; console.log(myTest);&lt;br&gt; function Test1WithoutNew(str) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.a = str;
+return this.a;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var myTestWithoutNew = Test1WithoutNew(“test1”);&lt;br&gt; console.log(myTestWithoutNew);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码24:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; function Test1(str) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.a = str;
+return new String(this.a);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; }&lt;br&gt; var myTest = new Test1(“test1”);&lt;br&gt; console.log(myTest);&lt;br&gt;```&lt;br&gt; test1&lt;/p&gt;
+&lt;h2 id=&quot;闭包的作用（如何实现模块化）&quot;&gt;&lt;a href=&quot;#闭包的作用（如何实现模块化）&quot; class=&quot;headerlink&quot; title=&quot;闭包的作用（如何实现模块化）&quot;&gt;&lt;/a&gt;闭包的作用（&lt;strong&gt;如何实现模块化&lt;/strong&gt;）&lt;/h2&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;对象&quot;&gt;&lt;a href=&quot;#对象&quot; class=&quot;headerlink&quot; title=&quot;对象&quot;&gt;&lt;/a&gt;对象&lt;/h2&gt;&lt;h3 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h3&gt;&lt;h2 id=&quot;“类”与面向对象&quot;&gt;&lt;a href=&quot;#“类”与面向对象&quot; class=&quot;headerlink&quot; title=&quot;“类”与面向对象&quot;&gt;&lt;/a&gt;“类”与面向对象&lt;/h2&gt;&lt;h2 id=&quot;原型&quot;&gt;&lt;a href=&quot;#原型&quot; class=&quot;headerlink&quot; title=&quot;原型&quot;&gt;&lt;/a&gt;原型&lt;/h2&gt;&lt;h2 id=&quot;行为委托&quot;&gt;&lt;a href=&quot;#行为委托&quot; class=&quot;headerlink&quot; title=&quot;行为委托&quot;&gt;&lt;/a&gt;行为委托&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;第一章-作用域是什么&quot;&gt;&lt;a href=&quot;#第一章-作用域是什么&quot; class=&quot;headerlink&quot; title=&quot;第一章 作用域是什么&quot;&gt;&lt;/a&gt;第一章 作用域是什么&lt;/h2&gt;&lt;h3 id=&quot;js编译原理&quot;&gt;&lt;a href=&quot;#js
+    
+    </summary>
+    
+    
+      <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
+    
+  </entry>
+  
 </feed>

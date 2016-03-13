@@ -1,0 +1,703 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript 作用域与闭包 | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="javascript 作用域与闭包"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">分类</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-13T08:38:35.000Z"><a href="/2016/02/13/javascript 作用域和闭包/">2016-02-13</a></time>
+      
+      
+  
+    <h1 class="title">javascript 作用域与闭包</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>[TOC]</p>
+<h2 id="第一章-作用域是什么"><a href="#第一章-作用域是什么" class="headerlink" title="第一章 作用域是什么"></a>第一章 作用域是什么</h2><h3 id="js编译原理"><a href="#js编译原理" class="headerlink" title="js编译原理"></a>js编译原理</h3><ol>
+<li>到底是什么类型的语言？<br>动态、解释型语言？<br>no，它是<strong>编译型</strong>的语言<br>why？<blockquote>
+<p>不是提前编译的，编译在执行之前的几微妙甚至更短<br>编译结果不能移植</p>
+</blockquote>
+</li>
+</ol>
+<ol>
+<li>编译的过程<blockquote>
+<p>词法分析-&gt;语法分析-&gt;代码生成</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="理解作用域"><a href="#理解作用域" class="headerlink" title="理解作用域"></a>理解作用域</h3><ol>
+<li><p>js的执行参与者</p>
+<blockquote>
+<ul>
+<li>js引擎（v8、xx）：负责编译和执行的过程</li>
+<li>编译器：词法分析、语法分析、代码生成</li>
+<li>作用域：收集和维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限</li>
+</ul>
+</blockquote>
+</li>
+<li><p>code</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a=2;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>词法分析: var a = 2<br> 语法分析：var a； 作用域是否有a？有忽略，没有声明后放到作用域中<br> 生成代码：a=2；<br> 执行：js引擎会询问作用域有没有a，然后再赋值，如果没有就异常了。</p>
+</blockquote>
+</li>
+<li><p>code 2</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function foo(a)&#123;</span><br><span class="line">    console.log(a+b);</span><br><span class="line">    b=a;</span><br><span class="line">&#125;</span><br><span class="line">foo(2);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ReferenceError异常</p>
+</blockquote>
+</li>
+<li><p>LHS和RHS</p>
+<blockquote>
+<p>LHS:查找赋值操作的目标是谁？ a=<br>RHS：查找谁是赋值操作的源头 console.log(a) 或者 =a</p>
+</blockquote>
+</li>
+<li><p>function的LHS和RHS</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function foo(a)&#123;</span><br><span class="line">    console.log(a+b);</span><br><span class="line">    b=a;</span><br><span class="line">&#125;</span><br><span class="line">foo(2);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>LHS: foo(..  a.. b=..<br> RHS: foo.. console.. log… a b  a</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>   不具有一般意义的一些代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var foo = function(a)&#123;</span><br><span class="line">    console.log(a+b);</span><br><span class="line">    b=a;</span><br><span class="line">&#125;</span><br><span class="line">foo(2);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>LHS:foo.. foo(.. a.. b..<br>    RHS:function(.. console.. …</p>
+</blockquote>
+<p>注意：上面的LHS和RHS对于最后一个就不对了，编译器可以在代码生成时同时处理声明和值的定义。</p>
+<hr>
+<ul>
+<li><p>数一数</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> function foo(a)&#123;</span><br><span class="line">    var b=a;</span><br><span class="line">    return a+b;</span><br><span class="line"> &#125;</span><br><span class="line">var c= foo(2);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>LHS:3<br>  RHS:4</p>
+<h3 id="作用域嵌套"><a href="#作用域嵌套" class="headerlink" title="作用域嵌套"></a>作用域嵌套</h3></blockquote>
+</li>
+</ul>
+<ol>
+<li>作用域的嵌套<blockquote>
+<p>向上找一直到全局作用域</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><ol>
+<li><p>LHS和RHS在嵌套时的不同</p>
+<blockquote>
+<p>LHS:如果到最后没有找到，那就创建一个(非严格模式)或者抛一个异常（ReferenceError，严格模式）；<br>RHS:如果到最后没有找到，那就抛一个异常（ReferenceError）<br>可以理解<a href="#code2">code2</a>的代码</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><blockquote>
+<ul>
+<li>javascript的编译过程包括：词法分析-&gt;语法分析-&gt;代码生成</li>
+<li><strong>作用域</strong>可以理解成一套规则，这套规则用来管理引擎如何在当前作用域以及嵌套的子作用域中根据标识符名称进行变量的查找</li>
+<li>变量查找方法：LHS和RHS</li>
+<li>作用域的嵌套</li>
+</ul>
+</blockquote>
+<h2 id="第二章-词法作用域"><a href="#第二章-词法作用域" class="headerlink" title="第二章 词法作用域"></a>第二章 词法作用域</h2><p>作用域的工作模型：</p>
+<blockquote>
+<ul>
+<li>词法作用域</li>
+</ul>
+<ul>
+<li>动态作用域（Bash Perl）<h3 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h3><h4 id="定义与举例"><a href="#定义与举例" class="headerlink" title="定义与举例"></a>定义与举例</h4>词法作用域是指定义在词法阶段的作用域。<blockquote>
+<p>说人话：词法作用域就是你在写代码时定义在哪，就是哪个的作用域</p>
+</blockquote>
+</li>
+</ul>
+<p>代码示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    function foo(a) &#123;</span><br><span class="line">        var b=a*2;</span><br><span class="line">        function bar(c) &#123;</span><br><span class="line">            console.log(a,b,c);</span><br><span class="line">        &#125;</span><br><span class="line">        bar(b*3);</span><br><span class="line">    &#125;</span><br><span class="line">    foo(2);</span><br><span class="line">    console.log(a);</span><br><span class="line">    console.log(b);</span><br><span class="line">    console.log(c);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol>
+<li>输出结果是什么？</li>
+<li>LHS和RHS分别有哪些？</li>
+<li>作用域有几个？</li>
+</ol>
+<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><ul>
+<li>遮蔽效应（全局如果被遮蔽，可以window.a访问）</li>
+<li>词法作用域只由函数声明时的所处的位置决定</li>
+<li>词法作用域查找只会查找一级标识符（对象的属性不会查找）</li>
+</ul>
+<h3 id="如何欺骗词法作用域—一定不要使用，只是为了了解"><a href="#如何欺骗词法作用域—一定不要使用，只是为了了解" class="headerlink" title="如何欺骗词法作用域—一定不要使用，只是为了了解"></a>如何欺骗词法作用域—<strong>一定不要使用，只是为了了解</strong></h3><p><strong>不管怎么说，都不要用</strong><br><em>讲的目的只是为了看懂别人这么写的代码</em></p>
+<blockquote>
+<p>在执行时，动态的修改词法作用域</p>
+</blockquote>
+<p>####eval</p>
+<blockquote>
+<p>功能：接收一个字符串作为参数，并将其中的内容看成在写代码时就加进去的一样</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function foo(str, a) &#123;</span><br><span class="line">    eval(str);</span><br><span class="line">    console.log(a, b);</span><br><span class="line">&#125;</span><br><span class="line">var b = 2;</span><br><span class="line">foo(&quot;var b=3;&quot;, 1);//1,3</span><br></pre></td></tr></table></figure>
+<p>补充：</p>
+<blockquote>
+<p>实际中可以执行一段代码后再传str</p>
+</blockquote>
+<p>严格模式： eval会有自己的作用域，不会修改插入的作用域了</p>
+<p>其它：</p>
+<blockquote>
+<p>setTimeOut(..) setInterval(..)，第一个参数可以接受字符串<br>new Function(..) 最后一个参数接受代码字符串</p>
+</blockquote>
+<p><strong>不管怎么说，都不要用</strong><br><em>讲的目的只是为了看懂别人这么写的代码</em></p>
+<p>####with<br><strong>with 会根据你传递给他的对象中凭空创造一个新的词法作用域</strong></p>
+<ol>
+<li><p>正常写法</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2,</span><br><span class="line">    c: 3</span><br><span class="line">&#125;</span><br><span class="line">console.log(obj.a);</span><br><span class="line">console.log(obj.b);</span><br><span class="line">console.log(obj.c);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>简单写法</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    var obj = &#123;</span><br><span class="line">        a: 1,</span><br><span class="line">        b: 2,</span><br><span class="line">        c: 3</span><br><span class="line">    &#125;</span><br><span class="line">    with(obj) &#123;</span><br><span class="line">        console.log(a);</span><br><span class="line">        console.log(b);</span><br><span class="line">        console.log(c);</span><br><span class="line">    &#125;</span><br><span class="line">    ```  </span><br><span class="line"></span><br><span class="line">3. 所带来的问题</span><br><span class="line"></span><br><span class="line">    ```javacript</span><br></pre></td></tr></table></figure>
+<p> function test(obj) {</p>
+<pre><code>with(obj) {
+    a = 2;
+}
+</code></pre><p> }<br> var obj1 = {</p>
+<pre><code>a: 1
+</code></pre><p> }<br> var obj2 = {</p>
+<pre><code>b: 1
+</code></pre><p> }<br> test(obj1);<br> console.log(obj1.a);<br> test(obj2);<br> console.log(obj2.a);<br> console.log(a);</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    &gt;缺点：</span><br><span class="line">    * 欺骗词法作用域会导致不可预知的结果（对于不懂的人来说）</span><br><span class="line">    * 严格模式不支持</span><br><span class="line">    * 性能</span><br><span class="line"></span><br><span class="line">**不管怎么说，都不要用**</span><br><span class="line">*讲的目的只是为了看懂别人这么写的代码*    </span><br><span class="line">###小结</span><br><span class="line">&gt; * 定义</span><br><span class="line">* 欺骗词法作用域 **千万不要使用**</span><br><span class="line"></span><br><span class="line">### 补充知识</span><br><span class="line">&gt; 动态作用域</span><br><span class="line">&gt;&gt; 不关心在何处声明，只关心在何处调用</span><br><span class="line">   &gt;&gt; ```javascript</span><br></pre></td></tr></table></figure>
+<p> function test1() {</p>
+<pre><code>console.log(a);
+</code></pre><p> }<br> function bar() {</p>
+<pre><code>var a = 3;
+test1();
+</code></pre><p> }<br> var a = 2;<br> bar();</p>
+<blockquote>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 函数作用域和块作用域</span><br><span class="line">### 函数</span><br><span class="line">## 提升</span><br><span class="line">## 闭包</span><br><span class="line"></span><br><span class="line">## 看代码说结果</span><br><span class="line">####代码1:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+<p> var a = 1;<br> function foo() {</p>
+<pre><code>var b = 2;
+function bar() {
+    var b = &apos;bar2&apos;;
+    console.log(b);
+    function baz() {
+        console.log(a);
+    }
+    baz();
+}
+bar();
+console.log(b);
+</code></pre><p> }<br> foo();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    bar2</span><br><span class="line">    1</span><br><span class="line">    2</span><br><span class="line"></span><br><span class="line">####代码2:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> a = 2;<br> var a;<br> console.log( a );</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    2</span><br><span class="line">####代码3:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> console.log( a );<br> var a = 2;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    undefined  </span><br><span class="line">####代码4:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> foo();<br> function foo() {</p>
+<pre><code>console.log(&apos;foo&apos;);
+</code></pre><p> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    foo</span><br><span class="line">####代码5:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> //foo();<br> bar();<br> var foo = function bar() {</p>
+<pre><code>console.log(&apos;foo&apos;);
+</code></pre><p> };</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    foo is not function</span><br><span class="line">    bar is not defined</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">####代码6:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> var foo;<br> function foo() { console.log( “a” ); }<br> function foo() { console.log( “b” ); }</p>
+<p> foo();<br> foo = true;<br> if (foo) {</p>
+<p> }<br> else {</p>
+<p> }<br> foo();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    b</span><br><span class="line">    foo is not a function</span><br><span class="line"></span><br><span class="line">####代码7:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> var i;<br> for (i=1; i&lt;= 5; i++) {</p>
+<pre><code>setTimeout( function timer(){
+    console.log( i );
+}, i*1000);
+</code></pre><p> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    5</span><br><span class="line">    5</span><br><span class="line">    5</span><br><span class="line">    5</span><br><span class="line">    5</span><br><span class="line">####代码8:</span><br><span class="line">var baz;</span><br><span class="line">function foo() &#123;</span><br><span class="line">    var a;</span><br><span class="line">    function bar() &#123;</span><br><span class="line">        console.log( a );</span><br><span class="line">    &#125;</span><br><span class="line">    a = 2;</span><br><span class="line">    return bar;</span><br><span class="line">&#125;</span><br><span class="line">baz = foo();</span><br><span class="line">baz();</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo(j){</p>
+<pre><code> function timer(){
+     console.log(j);
+ }
+return timer();
+</code></pre><p> }</p>
+<p> for (var i=1; i&lt;=5; i++) {</p>
+<pre><code>setTimeout(foo(i), i*1000 );
+</code></pre><p> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">    2</span><br><span class="line">    3</span><br><span class="line">    4</span><br><span class="line">    5</span><br><span class="line">####代码9:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo() {</p>
+<pre><code>var a = 2;
+function bar() {
+    console.log( a );
+}
+return bar;
+</code></pre><p> }<br> var baz = foo();<br> baz();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    2</span><br><span class="line">####代码10:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo(a){</p>
+<pre><code>console.log(a+b);
+b=a;
+</code></pre><p> }<br> foo(2);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   b is not defined</span><br><span class="line"></span><br><span class="line">####代码11:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo(a){</p>
+<pre><code>window.b=a;
+console.log(a+b);
+</code></pre><p> }<br> a=2;<br> foo(2);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    4</span><br><span class="line">####代码12:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p>  var foo = function(a){</p>
+<pre><code>    console.log(a+b);
+    b=a;
+}
+foo(2);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####代码13:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p>  function foo(a) {</p>
+<pre><code>    var b=a*2;
+    function bar(c) {
+        console.log(a,b,c);
+    }
+    bar(b*3);
+}
+foo(2);
+console.log(a);
+console.log(b);
+console.log(c);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    2,4,12</span><br><span class="line">    a is not defined;</span><br><span class="line">####代码14:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo(str, a) {</p>
+<pre><code>eval(str);
+console.log(a, b);
+</code></pre><p> }<br> var b = 2;<br> foo(“var b=3;”, 1);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    1,3</span><br><span class="line">####代码15:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function test(obj) {</p>
+<pre><code>with(obj) {
+    a = 2;
+}
+</code></pre><p> }<br> var obj1 = {</p>
+<pre><code>a: 1
+</code></pre><p> }<br> var obj2 = {</p>
+<pre><code>b: 1
+</code></pre><p> }<br> test(obj1);<br> console.log(obj1.a);<br> test(obj2);<br> console.log(obj2.a);<br> console.log(a);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    2</span><br><span class="line">    undefined</span><br><span class="line">    2</span><br><span class="line">####代码16:</span><br><span class="line">词法作用域</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p>  function test1() {</p>
+<pre><code>console.log(a);
+</code></pre><p> }<br> function bar() {</p>
+<pre><code>var a = 3;
+test1();
+</code></pre><p> }<br> var a = 2;<br> bar();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   2</span><br><span class="line">####代码17:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Person(name){</p>
+<pre><code>this.name=name;
+this.fn=function(){
+    alert(this.name);
+}
+</code></pre><p> }<br> var person1=new Person(‘Byron’);<br> console.log(person1.constructor==Person);<br> console.log(person1 instanceof Person);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    true</span><br><span class="line">    true</span><br><span class="line">####代码18:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Person(name){</p>
+<pre><code>this.name=name;
+this.fn=function(){
+    alert(this.name);
+}
+</code></pre><p> }<br> var person1=new Person(‘Byron’);<br> var person2=new Person(‘Frank’);<br> console.log(person1.fn==person2.fn);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####代码19:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Person(name){</p>
+<pre><code>this.name=name;
+</code></pre><p> }<br> Person.prototype.share=[];<br> Person.prototype.printName=function(){</p>
+<pre><code>alert(this.name);
+</code></pre><p> }<br> var person1=new Person(‘Byron’);<br> var person2=new Person(‘Frank’);<br> console.log(person1.printName==person2.printName);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####代码20:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p>  var myObj = {</p>
+<pre><code>get a() {
+    return this.h;
+},
+set a(val){
+    this.h=val*2;
+}
+</code></pre><p> }<br> Object.defineProperty(myObj, “b”, {</p>
+<pre><code>get: function() {
+    return 3;
+    //enumerable: true
+}
+</code></pre><p> });<br> myObj.a=2;<br> console.log(myObj.a);<br> console.log(myObj.b);<br> myObj.hasOwnProperty(“a”);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####代码21:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> var oneObj={</p>
+<pre><code>a:2
+</code></pre><p> }<br> var twoObj=Object.create(oneObj);<br> console.log(twoObj.a);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####代码22:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Test1(str) {</p>
+<pre><code>this.a = str;
+</code></pre><p> }<br> var myTest = new Test1(“test1”);<br> console.log(myTest.a);<br> function Test1WithoutNew(str) {</p>
+<pre><code>this.a = str;
+</code></pre><p> }<br> var myTestWithoutNew = Test1WithoutNew(“test1”);<br> console.log(myTestWithoutNew.a);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####代码23:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Test1(str) {</p>
+<pre><code>this.a = str;
+return this.a;
+</code></pre><p> }<br> var myTest = new Test1(“test1”);<br> console.log(myTest);<br> function Test1WithoutNew(str) {</p>
+<pre><code>this.a = str;
+return this.a;
+</code></pre><p> }<br> var myTestWithoutNew = Test1WithoutNew(“test1”);<br> console.log(myTestWithoutNew);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####代码24:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Test1(str) {</p>
+<pre><code>this.a = str;
+return new String(this.a);
+</code></pre><p> }<br> var myTest = new Test1(“test1”);<br> console.log(myTest);<br>```<br> test1</p>
+<h2 id="闭包的作用（如何实现模块化）"><a href="#闭包的作用（如何实现模块化）" class="headerlink" title="闭包的作用（如何实现模块化）"></a>闭包的作用（<strong>如何实现模块化</strong>）</h2></li>
+</ol>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h2 id="“类”与面向对象"><a href="#“类”与面向对象" class="headerlink" title="“类”与面向对象"></a>“类”与面向对象</h2><h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><h2 id="行为委托"><a href="#行为委托" class="headerlink" title="行为委托"></a>行为委托</h2>
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/javacript/">javacript</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/02/14/javascript new/" class="alignleft prev" >上一页</a>
+    
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-javascript 作用域和闭包" data-title="javascript 作用域与闭包" data-url="http://wisdombud.github.io/2016/02/13/javascript 作用域和闭包/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/EOVA/" style="font-size: 10px;">EOVA</a> <a href="/tags/javacript/" style="font-size: 20px;">javacript</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/servlet-web/" style="font-size: 10px;">servlet web</a> <a href="/tags/web/" style="font-size: 15px;">web</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>

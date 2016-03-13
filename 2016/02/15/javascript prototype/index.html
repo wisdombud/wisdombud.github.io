@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript prototype | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="javascript prototype"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">分类</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-02-15T08:38:35.000Z"><a href="/2016/02/15/javascript prototype/">2016-02-15</a></time>
+      
+      
+  
+    <h1 class="title">javascript prototype</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="js创建对象"><a href="#js创建对象" class="headerlink" title="js创建对象"></a>js创建对象</h2><h3 id="最简单的对象"><a href="#最简单的对象" class="headerlink" title="最简单的对象"></a>最简单的对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;&#125;;</span><br><span class="line">var obj2=new Object();</span><br></pre></td></tr></table></figure>
+<h3 id="稍微复杂点的对象"><a href="#稍微复杂点的对象" class="headerlink" title="稍微复杂点的对象"></a>稍微复杂点的对象</h3><blockquote>
+<p>写法一 : 定义完成后再添加属性和方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;&#125;;</span><br><span class="line">obj.a=2;</span><br><span class="line">obj.fn=function()&#123;</span><br><span class="line">    alert(this);</span><br><span class="line">&#125;</span><br><span class="line">console.log(obj)</span><br></pre></td></tr></table></figure></p>
+<p>写法二 ： 字面量赋值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;</span><br><span class="line">    a:2;</span><br><span class="line">    fn:function()&#123;</span><br><span class="line">        alert(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(obj);</span><br></pre></td></tr></table></figure></p>
+<p>问题：对象如果要复用的时候怎么办？有没有类？</p>
+<p>javascript 没有类，没有类，没有类！只有对象！</p>
+</blockquote>
+<h3 id="function-模拟一个类"><a href="#function-模拟一个类" class="headerlink" title="function 模拟一个类"></a>function 模拟一个类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function createObj(a,fn)&#123;</span><br><span class="line">                var obj=&#123;&#125;;</span><br><span class="line">                obj.a=a;</span><br><span class="line">                obj.fn=fn;</span><br><span class="line">                return obj;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            var obj=createObj(2,function()&#123;</span><br><span class="line">                alert(this.a);</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>足够了么？还有没有问题？</p>
+<p>上面的这个function的返回的对象是什么？怎么判断创建出来的对象的类型？</p>
+</blockquote>
+<h3 id="function-的特殊性"><a href="#function-的特殊性" class="headerlink" title="function 的特殊性"></a>function 的特殊性</h3><p>１. function可以接受参数，可以根据参数来创建相同类型不同值的对象</p>
+<p>２. <strong>function作为构造函数（通过new操作符调用）的时候会返回一个对象，构造函数的返回值分为两种情况，当function没有return语句或者return回一个基本类型（bool,int,string,undefined,null）的时候，返回新创建的一个匿名对象，该对象即为函数实例；如果function体内return一个引用类型对象（Array,Function,Object等）时，该对象会覆盖new创建的匿名对象作为返回值。</strong></p>
+<p>３. 那么使用function怎么解决类型识别问题呢，每个function实例对象都会有一个constructor属性（也不是“有”，而是可以对应），这个属性就可以指示其构造是谁，也可以使用instanceof 操作符来做判断对象是否为XXX的实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person(name)&#123;</span><br><span class="line">                this.name=name;</span><br><span class="line">                this.fn=function()&#123;</span><br><span class="line">                    alert(this.name);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            var person1=new Person(&apos;Byron&apos;);</span><br><span class="line">            console.log(person1.constructor==Person);</span><br><span class="line">            console.log(person1 instanceof Person);</span><br></pre></td></tr></table></figure></p>
+<h3 id="再好一点的写法"><a href="#再好一点的写法" class="headerlink" title="再好一点的写法"></a>再好一点的写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person(name)&#123;</span><br><span class="line">                this.name=name;</span><br><span class="line">                this.fn=function()&#123;</span><br><span class="line">                    alert(this.name);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            var person1=new Person(&apos;Byron&apos;);</span><br><span class="line">            var person2=new Person(&apos;Frank&apos;);</span><br><span class="line">            console.log(person1.fn==person2.fn);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>问题：fn</p>
+</blockquote>
+<h3 id="终极写法"><a href="#终极写法" class="headerlink" title="终极写法"></a>终极写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person(name)&#123;</span><br><span class="line">                this.name=name;</span><br><span class="line">            &#125;</span><br><span class="line">            Person.prototype.share=[];</span><br><span class="line">            Person.prototype.printName=function()&#123;</span><br><span class="line">                alert(this.name);</span><br><span class="line">            &#125;</span><br><span class="line">            var person1=new Person(&apos;Byron&apos;);</span><br><span class="line">            var person2=new Person(&apos;Frank&apos;);</span><br><span class="line">            console.log(person1.printName==person2.printName);</span><br></pre></td></tr></table></figure>
+<h2 id="属性访问"><a href="#属性访问" class="headerlink" title="属性访问"></a>属性访问</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var myObj=&#123;</span><br><span class="line">        a:2</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(myObj.a);</span><br><span class="line">    console.log(myObj.b);</span><br><span class="line">&lt;/script&gt; --&gt;</span><br><span class="line">&lt;!-- &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var myObj=&#123;</span><br><span class="line">        a:undefined</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(myObj.a);</span><br><span class="line">    console.log(myObj.b);</span><br><span class="line">&lt;/script&gt; --&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var myObj = &#123;</span><br><span class="line">        get a() &#123;</span><br><span class="line">            return this.h;</span><br><span class="line">        &#125;,</span><br><span class="line">        set a(val)&#123;</span><br><span class="line">            this.h=val*2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Object.defineProperty(myObj, &quot;b&quot;, &#123;</span><br><span class="line">        get: function() &#123;</span><br><span class="line">            return 3;</span><br><span class="line">            //enumerable: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    myObj.a=2;</span><br><span class="line">    console.log(myObj.a);</span><br><span class="line">    console.log(myObj.b);</span><br><span class="line"></span><br><span class="line">    myObj.hasOwnProperty(&quot;a&quot;);</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>hasOwnProperty 只会检查属性是否在对象中<br>in 在prototype说~</p>
+<h2 id="prototype"><a href="#prototype" class="headerlink" title="prototype"></a>prototype</h2><h3 id="what"><a href="#what" class="headerlink" title="what"></a>what</h3><blockquote>
+<p>javascript 中的对象有一个特殊的属性：prototype，表示对于其他对象的引用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var oneObj=&#123;</span><br><span class="line">    a:2</span><br><span class="line">&#125;</span><br><span class="line">var twoObj=Object.create(oneObj);</span><br><span class="line">console.log(twoObj.a);</span><br></pre></td></tr></table></figure>
+<h3 id="尽头"><a href="#尽头" class="headerlink" title="尽头"></a>尽头</h3><p>Object.prototype</p>
+<h3 id="属性的设置与屏蔽"><a href="#属性的设置与屏蔽" class="headerlink" title="属性的设置与屏蔽"></a>属性的设置与屏蔽</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var oneObj=&#123;</span><br><span class="line">    a:2</span><br><span class="line">&#125;</span><br><span class="line">oneObj.b=&apos;b&apos;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>原则：</p>
+<ol>
+<li>链上存在普通访问的属性，并没有只读，那么会在当前对象添加b</li>
+<li>链上存在该属性，但被标记为只读，严格模式下会报错，普通模式没有执行</li>
+<li>链上有属性，并且有setter，会被执行，不会屏蔽</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/javacript/">javacript</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/03/01/WEB 基础内容/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/02/14/javascript new/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-javascript prototype" data-title="javascript prototype" data-url="http://wisdombud.github.io/2016/02/15/javascript prototype/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/EOVA/" style="font-size: 10px;">EOVA</a> <a href="/tags/javacript/" style="font-size: 20px;">javacript</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/servlet-web/" style="font-size: 10px;">servlet web</a> <a href="/tags/web/" style="font-size: 15px;">web</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
