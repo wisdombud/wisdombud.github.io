@@ -67,6 +67,50 @@
   </entry>
   
   <entry>
+    <title>日志简介</title>
+    <link href="http://wisdombud.github.io/2016/03/11/%E6%97%A5%E5%BF%97/"/>
+    <id>http://wisdombud.github.io/2016/03/11/日志/</id>
+    <published>2016-03-11T08:38:35.000Z</published>
+    <updated>2016-03-13T08:48:48.530Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;为什么需要日志&quot;&gt;&lt;a href=&quot;#为什么需要日志&quot; class=&quot;headerlink&quot; title=&quot;为什么需要日志&quot;&gt;&lt;/a&gt;为什么需要日志&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要能拿出Log证明自己负责的部分没有问题，如果是自己的问题，要从Log里快速找出错误原因。如果没有从Log里找出错误原因，那一定是一件很悲催的事情，特别是在bug不容易重现的情况下。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;哪些地方打日志&quot;&gt;&lt;a href=&quot;#哪些地方打日志&quot; class=&quot;headerlink&quot; title=&quot;哪些地方打日志&quot;&gt;&lt;/a&gt;哪些地方打日志&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;   打log的目的是为了迅速排错或在有争议时拿出证据证明自己。基于这个目的，log不在多，只要抓住一切对自己有利的信息，就可以了。
+　&lt;/p&gt;
+&lt;h3 id=&quot;LOG的级别及对应日志&quot;&gt;&lt;a href=&quot;#LOG的级别及对应日志&quot; class=&quot;headerlink&quot; title=&quot;LOG的级别及对应日志　&quot;&gt;&lt;/a&gt;LOG的级别及对应日志　&lt;/h3&gt;&lt;p&gt;Log最常用的级别就是DEBUG，INFO，WARN，ERROR，其他的很少用。如何运用合适的Log级别也是非常重要的，在不该用ERROR的地方用了ERROR，可能会给你带来额外的麻烦。&lt;br&gt;　1.ERROR：&lt;br&gt;　　ERROR是错误的意思，但不代表出现异常的地方就该打ERROR。我认为ERROR是相对程序正确运行来说的，如果出现了ERROR那就代表出问题了，开发人员必须要查一下原因，或许是程序问题，或许是环境问题，或许是理论上不该出错的地方出错了。总之，如果你觉得某个地方出问题时需要解决，就打ERROR，如果不需要解决就不要打ERROR。&lt;br&gt;　　举例来说，如果有一个接口。调用者传过来的参数不在你的接受范围内，在这种情况下你不能打ERROR，因为传什么值是用户决定的，并不影响程序正确运行。想象一下，如果你的服务器上有监控程序的话，检测到ERROR或WARN就报警，参数错误你也打ERROR，那运维人员会疯掉的。&lt;br&gt;　　如果做一个对讲机，在解析语音数据包时出错了，那就要打ERROR了，因为这个是理论上不该出错的地方，要不就是你的解析代码有问题，要不就是开发人员在拼凑语音包时存在问题，这个时候需要你来找出问题的原因。所以应该打ERROR。&lt;br&gt;　　2.WARN：&lt;br&gt;　　WARN是指出现了不影响程序正确运行的问题，WARN也是问题但不影响程序正常运行，如果WARN出现的过于频繁或次数太多，那就代表你要检查一下程序或环境或依赖程序是否真的出问题了。&lt;br&gt;　　假如你访问一个接口，设置了一个超时，超时之后会抛异常，你在try块里不该打ERROR也不该打INFO来无视它，这时你应该打WARN，紧紧是警告一下，如果超时过多那就该检查一下了，是不是对方接口有问题了或者是网络环境出问题了。&lt;br&gt;　　3.INFO和DEBUG：&lt;br&gt;　　ERROR和WARN是指有问题，而INFO和DEBUG就是指一般的信息了。在程序出问题时，如果这条log可以帮助你分析问题或查看程序的运行情况，那就应该打个INFO。如果仅仅是为了在调试阶段查看程序是否运行正确那就要打DEBUG。前边讨论的接口参数错误问题，就应该打个INFO了，调用者说你的接口总是返回错误代码，你可以告诉他，是他的哪个参数传错了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;常见日志点&quot;&gt;&lt;a href=&quot;#常见日志点&quot; class=&quot;headerlink&quot; title=&quot;常见日志点&quot;&gt;&lt;/a&gt;常见日志点&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;1.函数开始结束处&lt;br&gt;　　在重要函数的开始结束出应该打上log ，这样在看log时会比较直观，什么时候开始什么时候结束就会一目了然，万一中间出异常导致程序退出了，也知道是在哪个函数突然中断的。也同样适用于一个重要逻辑块的开始结束。&lt;br&gt;2.返回结果&lt;br&gt;　　尽量在重要函数或web接口的每个返回分支打印返回结果。在出现不好分析的异常时，从细节下手，这时log会派上用场。如果跟合作方在数据方面出现争议也可以及时拿出证据。&lt;br&gt;3.添加Exception异常的捕获&lt;br&gt;　　如果你在代码中捕获了某种异常，那你要在try块后添加Exception的捕获，以防出现运行时异常中断程序。&lt;br&gt;4.务必打印堆栈信息&lt;br&gt;　　在异常捕获代码中务必要将堆栈信息打印出来，否则打了那么多的log可能会功亏一篑。&lt;br&gt;5.多线程的log&lt;br&gt;　　在多线程的程序中，log最好要标记thredId，否则可能不知道是哪个线程的作业，也无法有条理的来观察一个线程。&lt;br&gt;6.成功失败标志&lt;br&gt;　　如果某个函数是做一件比较关键的事情，那么这件事情成功还是失败了，要打印log，否则关键事件运行结果如何都拿不出证据的话，实在是不能让人信服。&lt;br&gt;7.前后log的关系&lt;br&gt;　　如果是web程序或接口，那log就不是按照你预定的顺序出现的，可能是好几个响应的log穿插在一起的。代码里如果有几条log前后存在一定的数据关系，那么要将这几条log的关联信息打出来，用来确定是针对同一个响应的。如果没有明确的标志，很难说后边的log跟前边的log是同一个响应或者是针对同一条数据。&lt;br&gt;8.关于耗时&lt;br&gt; 　　访问一个第三方接口、上传下载文件等可能耗时的操作，都要记录完成这个操作所耗的时间。否则程序性能出了问题，你不知道是网络原因呢，还是你调用的第三方接口性能出现问题呢，还是你自己程序的问题呢。&lt;br&gt;9.关于数量&lt;br&gt; 　　涉及到数量的操作要打印log，比如查询数据库和批量拷贝文件、上传下载、批量格式转换等批量操作，设计到的数量要打印出来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;误区&quot;&gt;&lt;a href=&quot;#误区&quot; class=&quot;headerlink&quot; title=&quot;误区&quot;&gt;&lt;/a&gt;误区&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;有异常一定打日志么？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;需要什么样的日志&quot;&gt;&lt;a href=&quot;#需要什么样的日志&quot; class=&quot;headerlink&quot; title=&quot;需要什么样的日志&quot;&gt;&lt;/a&gt;需要什么样的日志&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;时间、类名及函数名，行号、线程号等等&lt;/p&gt;
+&lt;h2 id=&quot;有哪些已经封装好的日志&quot;&gt;&lt;a href=&quot;#有哪些已经封装好的日志&quot; class=&quot;headerlink&quot; title=&quot;有哪些已经封装好的日志&quot;&gt;&lt;/a&gt;有哪些已经封装好的日志&lt;/h2&gt;&lt;h3 id=&quot;slf4j&quot;&gt;&lt;a href=&quot;#slf4j&quot; class=&quot;headerlink&quot; title=&quot;slf4j&quot;&gt;&lt;/a&gt;slf4j&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/f1194361820/p/5096014.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/f1194361820/p/5096014.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;log4j配置&quot;&gt;&lt;a href=&quot;#log4j配置&quot; class=&quot;headerlink&quot; title=&quot;log4j配置&quot;&gt;&lt;/a&gt;log4j配置&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://summerbell.iteye.com/blog/487736&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://summerbell.iteye.com/blog/487736&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;log4net配置&quot;&gt;&lt;a href=&quot;#log4net配置&quot; class=&quot;headerlink&quot; title=&quot;log4net配置&quot;&gt;&lt;/a&gt;log4net配置&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/jys509/p/4569874.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/jys509/p/4569874.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;如何分析日志&quot;&gt;&lt;a href=&quot;#如何分析日志&quot; class=&quot;headerlink&quot; title=&quot;如何分析日志&quot;&gt;&lt;/a&gt;如何分析日志&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;为什么需要日志&quot;&gt;&lt;a href=&quot;#为什么需要日志&quot; class=&quot;headerlink&quot; title=&quot;为什么需要日志&quot;&gt;&lt;/a&gt;为什么需要日志&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要
+    
+    </summary>
+    
+    
+      <category term="log" scheme="http://wisdombud.github.io/tags/log/"/>
+    
+  </entry>
+  
+  <entry>
     <title>java web 之 servlet</title>
     <link href="http://wisdombud.github.io/2016/03/04/java%20web%20%E4%B9%8Bservlet/"/>
     <id>http://wisdombud.github.io/2016/03/04/java web 之servlet/</id>
@@ -192,50 +236,6 @@
     
     
       <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日志简介</title>
-    <link href="http://wisdombud.github.io/2016/03/01/%E6%97%A5%E5%BF%97/"/>
-    <id>http://wisdombud.github.io/2016/03/01/日志/</id>
-    <published>2016-03-01T08:38:35.000Z</published>
-    <updated>2016-03-13T08:47:21.451Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;为什么需要日志&quot;&gt;&lt;a href=&quot;#为什么需要日志&quot; class=&quot;headerlink&quot; title=&quot;为什么需要日志&quot;&gt;&lt;/a&gt;为什么需要日志&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要能拿出Log证明自己负责的部分没有问题，如果是自己的问题，要从Log里快速找出错误原因。如果没有从Log里找出错误原因，那一定是一件很悲催的事情，特别是在bug不容易重现的情况下。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;哪些地方打日志&quot;&gt;&lt;a href=&quot;#哪些地方打日志&quot; class=&quot;headerlink&quot; title=&quot;哪些地方打日志&quot;&gt;&lt;/a&gt;哪些地方打日志&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;   打log的目的是为了迅速排错或在有争议时拿出证据证明自己。基于这个目的，log不在多，只要抓住一切对自己有利的信息，就可以了。
-　&lt;/p&gt;
-&lt;h3 id=&quot;LOG的级别及对应日志&quot;&gt;&lt;a href=&quot;#LOG的级别及对应日志&quot; class=&quot;headerlink&quot; title=&quot;LOG的级别及对应日志　&quot;&gt;&lt;/a&gt;LOG的级别及对应日志　&lt;/h3&gt;&lt;p&gt;Log最常用的级别就是DEBUG，INFO，WARN，ERROR，其他的很少用。如何运用合适的Log级别也是非常重要的，在不该用ERROR的地方用了ERROR，可能会给你带来额外的麻烦。&lt;br&gt;　1.ERROR：&lt;br&gt;　　ERROR是错误的意思，但不代表出现异常的地方就该打ERROR。我认为ERROR是相对程序正确运行来说的，如果出现了ERROR那就代表出问题了，开发人员必须要查一下原因，或许是程序问题，或许是环境问题，或许是理论上不该出错的地方出错了。总之，如果你觉得某个地方出问题时需要解决，就打ERROR，如果不需要解决就不要打ERROR。&lt;br&gt;　　举例来说，如果有一个接口。调用者传过来的参数不在你的接受范围内，在这种情况下你不能打ERROR，因为传什么值是用户决定的，并不影响程序正确运行。想象一下，如果你的服务器上有监控程序的话，检测到ERROR或WARN就报警，参数错误你也打ERROR，那运维人员会疯掉的。&lt;br&gt;　　如果做一个对讲机，在解析语音数据包时出错了，那就要打ERROR了，因为这个是理论上不该出错的地方，要不就是你的解析代码有问题，要不就是开发人员在拼凑语音包时存在问题，这个时候需要你来找出问题的原因。所以应该打ERROR。&lt;br&gt;　　2.WARN：&lt;br&gt;　　WARN是指出现了不影响程序正确运行的问题，WARN也是问题但不影响程序正常运行，如果WARN出现的过于频繁或次数太多，那就代表你要检查一下程序或环境或依赖程序是否真的出问题了。&lt;br&gt;　　假如你访问一个接口，设置了一个超时，超时之后会抛异常，你在try块里不该打ERROR也不该打INFO来无视它，这时你应该打WARN，紧紧是警告一下，如果超时过多那就该检查一下了，是不是对方接口有问题了或者是网络环境出问题了。&lt;br&gt;　　3.INFO和DEBUG：&lt;br&gt;　　ERROR和WARN是指有问题，而INFO和DEBUG就是指一般的信息了。在程序出问题时，如果这条log可以帮助你分析问题或查看程序的运行情况，那就应该打个INFO。如果仅仅是为了在调试阶段查看程序是否运行正确那就要打DEBUG。前边讨论的接口参数错误问题，就应该打个INFO了，调用者说你的接口总是返回错误代码，你可以告诉他，是他的哪个参数传错了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;常见日志点&quot;&gt;&lt;a href=&quot;#常见日志点&quot; class=&quot;headerlink&quot; title=&quot;常见日志点&quot;&gt;&lt;/a&gt;常见日志点&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;1.函数开始结束处&lt;br&gt;　　在重要函数的开始结束出应该打上log ，这样在看log时会比较直观，什么时候开始什么时候结束就会一目了然，万一中间出异常导致程序退出了，也知道是在哪个函数突然中断的。也同样适用于一个重要逻辑块的开始结束。&lt;br&gt;2.返回结果&lt;br&gt;　　尽量在重要函数或web接口的每个返回分支打印返回结果。在出现不好分析的异常时，从细节下手，这时log会派上用场。如果跟合作方在数据方面出现争议也可以及时拿出证据。&lt;br&gt;3.添加Exception异常的捕获&lt;br&gt;　　如果你在代码中捕获了某种异常，那你要在try块后添加Exception的捕获，以防出现运行时异常中断程序。&lt;br&gt;4.务必打印堆栈信息&lt;br&gt;　　在异常捕获代码中务必要将堆栈信息打印出来，否则打了那么多的log可能会功亏一篑。&lt;br&gt;5.多线程的log&lt;br&gt;　　在多线程的程序中，log最好要标记thredId，否则可能不知道是哪个线程的作业，也无法有条理的来观察一个线程。&lt;br&gt;6.成功失败标志&lt;br&gt;　　如果某个函数是做一件比较关键的事情，那么这件事情成功还是失败了，要打印log，否则关键事件运行结果如何都拿不出证据的话，实在是不能让人信服。&lt;br&gt;7.前后log的关系&lt;br&gt;　　如果是web程序或接口，那log就不是按照你预定的顺序出现的，可能是好几个响应的log穿插在一起的。代码里如果有几条log前后存在一定的数据关系，那么要将这几条log的关联信息打出来，用来确定是针对同一个响应的。如果没有明确的标志，很难说后边的log跟前边的log是同一个响应或者是针对同一条数据。&lt;br&gt;8.关于耗时&lt;br&gt; 　　访问一个第三方接口、上传下载文件等可能耗时的操作，都要记录完成这个操作所耗的时间。否则程序性能出了问题，你不知道是网络原因呢，还是你调用的第三方接口性能出现问题呢，还是你自己程序的问题呢。&lt;br&gt;9.关于数量&lt;br&gt; 　　涉及到数量的操作要打印log，比如查询数据库和批量拷贝文件、上传下载、批量格式转换等批量操作，设计到的数量要打印出来。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;误区&quot;&gt;&lt;a href=&quot;#误区&quot; class=&quot;headerlink&quot; title=&quot;误区&quot;&gt;&lt;/a&gt;误区&lt;/h3&gt;&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;有异常一定打日志么？&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;需要什么样的日志&quot;&gt;&lt;a href=&quot;#需要什么样的日志&quot; class=&quot;headerlink&quot; title=&quot;需要什么样的日志&quot;&gt;&lt;/a&gt;需要什么样的日志&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;时间、类名及函数名，行号、线程号等等&lt;/p&gt;
-&lt;h2 id=&quot;有哪些已经封装好的日志&quot;&gt;&lt;a href=&quot;#有哪些已经封装好的日志&quot; class=&quot;headerlink&quot; title=&quot;有哪些已经封装好的日志&quot;&gt;&lt;/a&gt;有哪些已经封装好的日志&lt;/h2&gt;&lt;h3 id=&quot;slf4j&quot;&gt;&lt;a href=&quot;#slf4j&quot; class=&quot;headerlink&quot; title=&quot;slf4j&quot;&gt;&lt;/a&gt;slf4j&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/f1194361820/p/5096014.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/f1194361820/p/5096014.html&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;log4j配置&quot;&gt;&lt;a href=&quot;#log4j配置&quot; class=&quot;headerlink&quot; title=&quot;log4j配置&quot;&gt;&lt;/a&gt;log4j配置&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://summerbell.iteye.com/blog/487736&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://summerbell.iteye.com/blog/487736&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;log4net配置&quot;&gt;&lt;a href=&quot;#log4net配置&quot; class=&quot;headerlink&quot; title=&quot;log4net配置&quot;&gt;&lt;/a&gt;log4net配置&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/jys509/p/4569874.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/jys509/p/4569874.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;如何分析日志&quot;&gt;&lt;a href=&quot;#如何分析日志&quot; class=&quot;headerlink&quot; title=&quot;如何分析日志&quot;&gt;&lt;/a&gt;如何分析日志&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;为什么需要日志&quot;&gt;&lt;a href=&quot;#为什么需要日志&quot; class=&quot;headerlink&quot; title=&quot;为什么需要日志&quot;&gt;&lt;/a&gt;为什么需要日志&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要
-    
-    </summary>
-    
-    
-      <category term="log" scheme="http://wisdombud.github.io/tags/log/"/>
     
   </entry>
   
