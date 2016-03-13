@@ -119,7 +119,7 @@
     <link href="http://wisdombud.github.io/2016/03/04/java%20web%20%E4%B9%8Bservlet/"/>
     <id>http://wisdombud.github.io/2016/03/04/java web 之servlet/</id>
     <published>2016-03-04T08:38:35.000Z</published>
-    <updated>2016-03-13T09:18:19.219Z</updated>
+    <updated>2016-03-13T09:20:38.338Z</updated>
     
     <content type="html">&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。&lt;br&gt;Servlet运行于支持Java的应用服务器中。从实现上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。&lt;br&gt;最早支持Servlet标准的是JavaSoft的Java Web Server。此后，一些其它的基于Java的Web服务器开始支持标准的Servlet。&lt;/p&gt;
@@ -139,7 +139,9 @@
       <category term="J2EE-web" scheme="http://wisdombud.github.io/categories/J2EE-web/"/>
     
     
-      <category term="servlet,web" scheme="http://wisdombud.github.io/tags/servlet-web/"/>
+      <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
+    
+      <category term="servlet" scheme="http://wisdombud.github.io/tags/servlet/"/>
     
   </entry>
   
