@@ -73,7 +73,7 @@
     <link href="http://wisdombud.github.io/2016/03/11/%E6%97%A5%E5%BF%97/"/>
     <id>http://wisdombud.github.io/2016/03/11/日志/</id>
     <published>2016-03-11T08:38:35.000Z</published>
-    <updated>2016-03-13T09:15:21.868Z</updated>
+    <updated>2016-03-14T12:52:58.166Z</updated>
     
     <content type="html">&lt;h2 id=&quot;为什么需要日志&quot;&gt;&lt;a href=&quot;#为什么需要日志&quot; class=&quot;headerlink&quot; title=&quot;为什么需要日志&quot;&gt;&lt;/a&gt;为什么需要日志&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要能拿出Log证明自己负责的部分没有问题，如果是自己的问题，要从Log里快速找出错误原因。如果没有从Log里找出错误原因，那一定是一件很悲催的事情，特别是在bug不容易重现的情况下。&lt;/p&gt;
