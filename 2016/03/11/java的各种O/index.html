@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>java web 之 servlet | 技术博客</title>
+  <title>java 各种O | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="java web 之 servlet"/>
+  <meta property="og:title" content="java 各种O"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -216,24 +216,78 @@
     <header>
       
   
-    <h1 class="title">java web 之 servlet</h1>
+    <h1 class="title">java 各种O</h1>
   
 
       
         <div class="icon"></div>
-        <time datetime="2016-03-04T08:38:35.000Z"><a href="/2016/03/04/java web 之servlet/">2016-03-04</a></time>
+        <time datetime="2016-03-11T08:38:35.000Z"><a href="/2016/03/11/java的各种O/">2016-03-11</a></time>
+        
+         big-bear
         
       
 
     </header>
     <div class="entry">
       
-        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。<br>Servlet运行于支持Java的应用服务器中。从实现上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。<br>最早支持Servlet标准的是JavaSoft的Java Web Server。此后，一些其它的基于Java的Web服务器开始支持标准的Servlet。</p>
-<p>Servlet = Service + Applet</p>
+        <p>###1各个术语的简介</p>
+<p>#####PO(persistant object)持久对象</p>
+<blockquote>
+<p>最形象的理解就是一个PO就是数据库中的一条记录.PO是在ORM中出现的概念,就是ORM中的O,将数据库中的数据模型映射成为一个java对象.简单的PO就是对应数据库中某一张表的一个记录,多个记录就用PO的集合来表示.PO中不能包含任何对数据库的操作</p>
 </blockquote>
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/0/03/JSPLife.svg" alt="servlet"></p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://zh.wikipedia.org/wiki/Java_Servlet" target="_blank" rel="external">wiki–servlet</a><br><a href="http://baike.baidu.com/view/25169.htm" target="_blank" rel="external">百度百科</a><br><a href="http://www.runoob.com/servlet/servlet-tutorial.html" target="_blank" rel="external">菜鸟教程</a><br><a href="http://www.cnblogs.com/rocomp/p/4808924.html" target="_blank" rel="external">cnblogs</a></p>
+<p>#####DAO(Data Access Objects)数据访问接口</p>
+<blockquote>
+<p>顾名思义就是与数据库打交道,加载业务逻辑和数据库资源之间.DAO模式是J2EE的设计模式,实际上是两个模式的组合,即Data Accessor(数据访问者)模式和ACtive Domain Object(领域对象)模式.Data Accessor模式实现了数据访问和业务逻辑的分离;Active Domain Objecet模式时间了业务数据的对象化封装.(高大上的两种模式是啥子O^O)</p>
+</blockquote>
+<p>#####BO(Bussiness Object)业务对象</p>
+<blockquote>
+<p>封装业务逻辑的java对象,我的理解就是我们的service实现.</p>
+</blockquote>
+<p>#####POJO(Plain Ordinary Java Object)简单的java对象</p>
+<blockquote>
+<p>用来表示普通的Java对象,不是JavaBean,EntityBean或者SessionBean.POJO不担当任何的特殊角色,不继承,也不实现其他Java框架的类或者接口.通常只有property的属性和public的getter和setter</p>
+</blockquote>
+<p>#####DTO(Data Transfer Object)数据传输对象</p>
+<blockquote>
+<p>这个概念也是来源于J2EE的设计模式,用于展示层和服务层之间数据传输对象.通过DTO,服务器只会将view层所需要的数据传输给view层,而不需要吧数据库中全部数据都传递给view层.</p>
+</blockquote>
+<p>#####VO</p>
+<blockquote>
+<ul>
+<li>ViewObject视图对象<br>  用于MVC的View层,把某个制定页面(或组件)的所有数据封装起来.</li>
+<li>value object值对象<br>  用于业务层之间的数据传递.通常是抽象出来的业务对象,可以和表对应,也可以不,根据业务需求来定.</li>
+</ul>
+</blockquote>
+<p>###2常见的一些术语的区别</p>
+<p>#####VO(ViewObject)与DTO</p>
+<blockquote>
+<p>在我们日常开发的过程中,很多情况下VO与DTO通常都是一样的,只是一个POJO(简单的java对象).从实现的角度上看,我们完全可以将DTO与VO合并到一起.但是从设计层面来说(好高大上)，概念上还是应该存在VO和DTO，因为两者有着本质的区别，DTO代表服务层需要接收的数据和返回的数据，而VO代表展示层需要显示的数据。</p>
+<p>网上举了一个关于男女的例子:<br>    展示层与服务层交互的时候,通过DTO传给后台的只有为0和1,但是在展示的时候展示层会显示”男””女”,我们可以考虑将VO和DTO两个概念合并到一起,不用DTO,直接用VO传递给服务层”男””女”,这样也可以实现功能的.但是如果这时候客户要求可以定制风格,可以用”帅哥””美女”来区分性别,这时候显然就不能用VO来完成全部工作了,需要在展示层用两个不同的VO来表示不同的展示形式,而与服务端交互的时候使用DTO来进行数据传输.</p>
+<p>当然上面这个例子的前提是我们没有使用js这样的脚本语言,在web现阶段的开发中,因为js的普遍使用,我们完全可以将VO与DTO合到一起,有js来控制展现形式.但是概念还是要分清楚的,VO只是负责展示,DTO是用来数据传输的.</p>
+</blockquote>
+<p>#####DTO与PO</p>
+<blockquote>
+<p>   在很多只设置到单表操作的业务中,PO与DTO通常也是相同的(DTO和VO经常也是相同的,所以VO与PO也是相同的),当数据模型简单,字段较少的时候,服务层也可以直接将PO交给展示层展示.但是字段较多,而展示层又只需要展示很少的字段;或者展示层要展示的数据涉及到多张表,需要多个PO合并到一起的时候,我们需要DTO来进行数据传输.</p>
+</blockquote>
+<p>#####PO与POJO</p>
+<blockquote>
+<p>PO持久对象是ORM框架中的概念,而POJO是java语言中的概念.PO作为一个持久对象,表示数据库中的一条记录,有insert语句创建,有delete语句删除,PO的生命周期与数据库是密切相关的;而POJO作为java中的一个对象,有new创建,由GC回收,显然要比PO朴素的多.另外PO往往只存在于一个数据库Connection之中,Connection关闭以后,持久化对象就不存在了,而POJO只要不被GC回收就会一直存在的.<br>    想比与POJO,PO起码会多一些用来管理数据库entity状态的属性和方法.但是ORM追求的目标就是让PO在使用上尽量和POJO一直,所以我们在日常使用中PO就可以当成一个POJO使用,区分PO和POJO是hibernate的事情.</p>
+</blockquote>
+<p>#####VO与VO(-.-)</p>
+<blockquote>
+<p>以下纯属个人看法,有异议可以提出来共同探讨一下.<br>    从MCV框架上看,ViewObject是在view层的数据,只用于view层的处理,与其它层完全没有联系(数据交流是DTO的事情).而ValueObject既然是业务处理之间的数据交互,那么它就是modol层的数据.所以完全不是一个东西嘛~</p>
+</blockquote>
+<p>###3相关链接</p>
+<ul>
+<li><a href="http://kb.cnblogs.com/page/522348/" target="_blank" rel="external">浅析VO、DTO、DO、PO的概念、区别和用处</a></li>
+<li><a href="http://www.cnblogs.com/smyhvae/p/4059514.html" target="_blank" rel="external">DAO模式简介</a></li>
+<li><a href="http://www.cnblogs.com/bluepoint2009/p/POJO.html" target="_blank" rel="external">POJO简单java对象</a></li>
+<li><a href="http://wenku.baidu.com/view/9a86348fa0116c175f0e485b.html" target="_blank" rel="external">POJO与PO的区别</a></li>
+</ul>
+<p>###4相关知识</p>
+<blockquote>
+<p>数据访问者模式?领域对象模式?javaSE 23中设计模式?</p>
+</blockquote>
 
       
     </div>
@@ -242,13 +296,13 @@
         
   
   <div class="categories">
-    <a href="/categories/J2EE-web/">J2EE-web</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/web/">web</a>, <a href="/tags/servlet/">servlet</a>
+    <a href="/tags/java/">java</a>
   </div>
 
 <!-- Baidu Button BEGIN -->
@@ -276,10 +330,10 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
-    <a href="/2016/03/11/java的各种O/" class="alignleft prev" >上一页</a>
+    <a href="/2016/03/11/日志/" class="alignleft prev" >上一页</a>
     
     
-    <a href="/2016/03/02/WEB 开发需要解决的问题/" class="alignright next" >下一页</a>
+    <a href="/2016/03/04/java web 之servlet/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -289,7 +343,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <section id="comment">
 
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-java web 之servlet" data-title="java web 之 servlet" data-url="http://wisdombud.github.io/2016/03/04/java web 之servlet/"></div>
+  <div class="ds-thread" data-thread-key="post-java的各种O" data-title="java 各种O" data-url="http://wisdombud.github.io/2016/03/11/java的各种O/"></div>
 
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
