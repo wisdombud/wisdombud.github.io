@@ -230,7 +230,7 @@
     </header>
     <div class="entry">
       
-        <p>###1各个术语的简介</p>
+        <p>###1、各个术语的简介</p>
 <p>#####PO(persistant object)持久对象</p>
 <blockquote>
 <p>最形象的理解就是一个PO就是数据库中的一条记录.PO是在ORM中出现的概念,就是ORM中的O,将数据库中的数据模型映射成为一个java对象.简单的PO就是对应数据库中某一张表的一个记录,多个记录就用PO的集合来表示.PO中不能包含任何对数据库的操作</p>
@@ -258,7 +258,7 @@
 <li>value object值对象<br>  用于业务层之间的数据传递.通常是抽象出来的业务对象,可以和表对应,也可以不,根据业务需求来定.</li>
 </ul>
 </blockquote>
-<p>###2常见的一些术语的区别</p>
+<p>###2、常见的一些术语的区别</p>
 <p>#####VO(ViewObject)与DTO</p>
 <blockquote>
 <p>在我们日常开发的过程中,很多情况下VO与DTO通常都是一样的,只是一个POJO(简单的java对象).从实现的角度上看,我们完全可以将DTO与VO合并到一起.但是从设计层面来说(好高大上)，概念上还是应该存在VO和DTO，因为两者有着本质的区别，DTO代表服务层需要接收的数据和返回的数据，而VO代表展示层需要显示的数据。</p>
@@ -277,14 +277,14 @@
 <blockquote>
 <p>以下纯属个人看法,有异议可以提出来共同探讨一下.<br>    从MCV框架上看,ViewObject是在view层的数据,只用于view层的处理,与其它层完全没有联系(数据交流是DTO的事情).而ValueObject既然是业务处理之间的数据交互,那么它就是modol层的数据.所以完全不是一个东西嘛~</p>
 </blockquote>
-<p>###3相关链接</p>
+<p>###3、相关链接</p>
 <ul>
 <li><a href="http://kb.cnblogs.com/page/522348/" target="_blank" rel="external">浅析VO、DTO、DO、PO的概念、区别和用处</a></li>
 <li><a href="http://www.cnblogs.com/smyhvae/p/4059514.html" target="_blank" rel="external">DAO模式简介</a></li>
 <li><a href="http://www.cnblogs.com/bluepoint2009/p/POJO.html" target="_blank" rel="external">POJO简单java对象</a></li>
 <li><a href="http://wenku.baidu.com/view/9a86348fa0116c175f0e485b.html" target="_blank" rel="external">POJO与PO的区别</a></li>
 </ul>
-<p>###4相关知识</p>
+<p>###4、相关知识</p>
 <blockquote>
 <p>数据访问者模式?领域对象模式?javaSE 23中设计模式?</p>
 </blockquote>

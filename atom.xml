@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wisdombud.github.io/"/>
-  <updated>2016-03-15T02:07:09.979Z</updated>
+  <updated>2016-03-15T02:08:11.728Z</updated>
   <id>http://wisdombud.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://wisdombud.github.io/2016/03/15/java%E7%9A%84%E5%90%84%E7%A7%8DO/"/>
     <id>http://wisdombud.github.io/2016/03/15/java的各种O/</id>
     <published>2016-03-15T08:38:35.000Z</published>
-    <updated>2016-03-15T02:07:09.979Z</updated>
+    <updated>2016-03-15T02:08:11.728Z</updated>
     
-    <content type="html">&lt;p&gt;###1各个术语的简介&lt;/p&gt;
+    <content type="html">&lt;p&gt;###1、各个术语的简介&lt;/p&gt;
 &lt;p&gt;#####PO(persistant object)持久对象&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;最形象的理解就是一个PO就是数据库中的一条记录.PO是在ORM中出现的概念,就是ORM中的O,将数据库中的数据模型映射成为一个java对象.简单的PO就是对应数据库中某一张表的一个记录,多个记录就用PO的集合来表示.PO中不能包含任何对数据库的操作&lt;/p&gt;
@@ -50,7 +50,7 @@
 &lt;li&gt;value object值对象&lt;br&gt;  用于业务层之间的数据传递.通常是抽象出来的业务对象,可以和表对应,也可以不,根据业务需求来定.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;###2常见的一些术语的区别&lt;/p&gt;
+&lt;p&gt;###2、常见的一些术语的区别&lt;/p&gt;
 &lt;p&gt;#####VO(ViewObject)与DTO&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在我们日常开发的过程中,很多情况下VO与DTO通常都是一样的,只是一个POJO(简单的java对象).从实现的角度上看,我们完全可以将DTO与VO合并到一起.但是从设计层面来说(好高大上)，概念上还是应该存在VO和DTO，因为两者有着本质的区别，DTO代表服务层需要接收的数据和返回的数据，而VO代表展示层需要显示的数据。&lt;/p&gt;
@@ -69,14 +69,14 @@
 &lt;blockquote&gt;
 &lt;p&gt;以下纯属个人看法,有异议可以提出来共同探讨一下.&lt;br&gt;    从MCV框架上看,ViewObject是在view层的数据,只用于view层的处理,与其它层完全没有联系(数据交流是DTO的事情).而ValueObject既然是业务处理之间的数据交互,那么它就是modol层的数据.所以完全不是一个东西嘛~&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;###3相关链接&lt;/p&gt;
+&lt;p&gt;###3、相关链接&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://kb.cnblogs.com/page/522348/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;浅析VO、DTO、DO、PO的概念、区别和用处&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/smyhvae/p/4059514.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DAO模式简介&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/bluepoint2009/p/POJO.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;POJO简单java对象&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://wenku.baidu.com/view/9a86348fa0116c175f0e485b.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;POJO与PO的区别&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;###4相关知识&lt;/p&gt;
+&lt;p&gt;###4、相关知识&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;数据访问者模式?领域对象模式?javaSE 23中设计模式?&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -84,10 +84,10 @@
     
     <summary type="html">
     
-      &lt;p&gt;###1各个术语的简介&lt;/p&gt;
+      &lt;p&gt;###1、各个术语的简介&lt;/p&gt;
 &lt;p&gt;#####PO(persistant object)持久对象&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;最形象的理解就是一个PO就是数据库中的一条记录.PO是在ORM中出现的概念,就是ORM中的O,将数据库中的数据模型映射成为一个java
+&lt;p&gt;最形象的理解就是一个PO就是数据库中的一条记录.PO是在ORM中出现的概念,就是ORM中的O,将数据库中的数据模型映射成为一个jav
     
     </summary>
     
