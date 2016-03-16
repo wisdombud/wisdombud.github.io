@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>javacript new | 技术博客</title>
+  <title>java 注解 | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="javacript new"/>
+  <meta property="og:title" content="java 注解"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -216,23 +216,72 @@
     <header>
       
   
-    <h1 class="title">javacript new</h1>
+    <h1 class="title">java 注解</h1>
   
 
       
         <div class="icon"></div>
-        <time datetime="2016-02-14T08:38:35.000Z"><a href="/2016/02/14/javascript new/">2016-02-14</a></time>
+        <time datetime="2016-03-16T08:38:35.000Z"><a href="/2016/03/16/java 注解/">2016-03-16</a></time>
+        
+         走吧走吧
         
       
 
     </header>
     <div class="entry">
       
-        <p>1.如果一个函数没有返回值，那么如果不使用new来创建变量，那么该变量的值为undefined.如果用了new，那么就是Object.说明一个函数的默认的Prototype是Object.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Test1(str) &#123;</span><br><span class="line">    this.a = str;</span><br><span class="line">&#125;</span><br><span class="line">var myTest = new Test1(&quot;test1&quot;);</span><br><span class="line">alert(myTest);</span><br><span class="line">function Test1WithoutNew(str) &#123;</span><br><span class="line">    this.a = str;</span><br><span class="line">&#125;</span><br><span class="line">var myTestWithoutNew = Test1WithoutNew(&quot;test1&quot;);</span><br><span class="line">alert(myTestWithoutNew);</span><br></pre></td></tr></table></figure>
-<p>2.如果函数有返回值，但是返回值是基本类型。那么new出来的myTest还是object.。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Test1(str) &#123;</span><br><span class="line">    this.a = str;</span><br><span class="line">    return this.a;</span><br><span class="line">&#125;</span><br><span class="line">var myTest = new Test1(&quot;test1&quot;);</span><br><span class="line">alert(myTest); //Object</span><br><span class="line"></span><br><span class="line">function Test1WithoutNew(str) &#123;</span><br><span class="line">    this.a = str;</span><br><span class="line">    return this.a;</span><br><span class="line">&#125;</span><br><span class="line">var myTestWithoutNew = Test1WithoutNew(&quot;test1&quot;);</span><br><span class="line">alert(myTestWithoutNew);</span><br></pre></td></tr></table></figure>
-<p>3。如果函数的返回值为new出来的对象，那么myTest的值根据new出来的对象而定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Test1(str) &#123;</span><br><span class="line">    this.a = str;</span><br><span class="line">    return new String(this.a);</span><br><span class="line">&#125;</span><br><span class="line">var myTest = new Test1(&quot;test1&quot;);</span><br><span class="line">alert(myTest);</span><br></pre></td></tr></table></figure></p>
+        <p>[toc]</p>
+<p>##注解是什么</p>
+<blockquote>
+<p>Java提供了一种原程序中的元素关联任何信息和任何元数据的途径和方法。<br>注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。</p>
+</blockquote>
+<p>##注解的作用</p>
+<blockquote>
+<p>注解的作用：分三种。源码/编译/运行时<br>编写文档：通过代码里标识的元数据生成文档<br>代码分析：通过代码里标识的元数据对代码进行分析<br>编译检查：通过代码里标识的元数据让编译器能够实现基本的编译检查</p>
+</blockquote>
+<p>##注解的分类</p>
+<blockquote>
+<p>根据注解在程序的哪个阶段分类<br>源码注解：注解只在源码中存在，编译成.class文件就不存在了<br>编译时注解：注解在源码和.class文件中都存在<br>运行时注解：在运行阶段还会起作用，甚至会影响运行逻辑</p>
+<p>根据来源分类：<br>JDK自带的注解<br>常见的第三方注解<br>自定义注解</p>
+</blockquote>
+<p>##java中常见的注解<br>jdk自带注解</p>
+<blockquote>
+<p>@Override  覆盖了父类的方法。 以后在见到的时候，可以直接相信这个类。<br>@Deprecated   父类有一个方法，已经过时，但是为了兼容以前的类。加这个注释。<br>@Suppvisewarnings<br>当父类的方法加了@Deprecated 之后，子类在引用的时候会有警告。加注释3。忽略警告。<br>这三个都是修饰方法的。</p>
+</blockquote>
+<p>常见第三方注解(Spring) ：</p>
+<blockquote>
+<p>@Autowired    可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作<br>@Service   一般用在service层<br>@Repository  一般用在dao层</p>
+</blockquote>
+<p>##元注解</p>
+<ul>
+<li>元注解的作用就是负责注解其他注解。</li>
+<li>元注解包括：<br>   @Target 注解的作用域<br>   @Retention 注解的生命周期<br>   @Inherited  标识性的，表示这个注解允许子类继承的<br>   @Documented 生成javadoc时会包含注解。</li>
+</ul>
+<p>###@Target 注解的作用域</p>
+<blockquote>
+<p>@Target  说明了Annotation所修饰的对象范围，在Annotation类型的声明中使用了target可更加明晰其修饰的目标。<br>   作用：用于描述注解的使用范围（即：被描述的注解可以用在什么地方）<br> @Target的取值(ElementType)有：<br>    CONSTRUCTOR:用于描述构造器<br>    FIELD:用于描述域<br>    LOCAL_VARIABLE:用于描述局部变量<br>    METHOD:用于描述方法<br>    PACKAGE:用于描述包<br>    PARAMETER:用于描述参数<br>    TYPE:用于描述类、接口(包括注解类型) 或enum声明</p>
+</blockquote>
+<p>###@Retention 注解的生命周期     </p>
+<blockquote>
+<p>@Retention  定义了该Annotation被保留的时间长短（可以在源码上、.class文件中、）<br>    作用：表示需要在什么级别保存该注释信息，用于描述注解的生命周期（即：被描述的注解在什么范围内有效）<br>@Retention的取值（RetentionPoicy）有：<br>    SOURCE:在源文件中有效（即源文件保留）CLASS:在class文件中有效（即class保留）RUNTIME:在运行时有效（即运行时保留）</p>
+</blockquote>
+<h3 id="Inherited-标识性的，表示这个注解允许子类继承的"><a href="#Inherited-标识性的，表示这个注解允许子类继承的" class="headerlink" title="@Inherited  标识性的，表示这个注解允许子类继承的"></a>@Inherited  标识性的，表示这个注解允许子类继承的</h3><blockquote>
+<p>@Inherited 元注解是一个标记注解，@Inherited阐述了某个被标注的类型是被继承的。如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类。<br>    @Inherited annotation类型是被标注过的class的子类所继承。类并不从它所实现的接口继承annotation，方法并不从它所重载的方法继承annotation。</p>
+<h3 id="Documented-生成javadoc时会包含注解。"><a href="#Documented-生成javadoc时会包含注解。" class="headerlink" title="@Documented 生成javadoc时会包含注解。"></a>@Documented 生成javadoc时会包含注解。</h3><p>@Documented用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，因此可以被例如javadoc此类的工具文档化。Documented是一个标记注解，没有成员。</p>
+</blockquote>
+<p>##自定义注解</p>
+<blockquote>
+<p>public @interface Description{<br>     String dese();<br>     String author();<br>     int age() default 18;<br>}</p>
+</blockquote>
+<ul>
+<li>使用@interface关键字定义注解</li>
+<li>方法。成员以无参、无异常的方式声明。</li>
+<li>可以给成员指定默认值。成员的类型是受到限制的。包括java的原始类型和String、Class、Annotation、Enumeration</li>
+<li>如果注解只有一个成员变量，则成员取名为value()，在使用使用时可以忽略成员名和赋值号。</li>
+<li>注解类可以没有成员，没有成员的注解成为标识注解。</li>
+</ul>
+<p>关于自定义注解的使用，希望大家再学习学习<br>使用自定义注解<br>@&lt;注解名&gt;（&lt;成员名1&gt;=&lt;成员值1&gt;，&lt;成员名2&gt;=&lt;成员值2&gt;，…）</p>
+<p><a href="http://www.cnblogs.com/peida/archive/2013/04/24/3036689.html" target="_blank" rel="external">参考文章</a></p>
 
       
     </div>
@@ -241,13 +290,13 @@
         
   
   <div class="categories">
-    <a href="/categories/javacript/">javacript</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/javacript/">javacript</a>, <a href="/tags/new/">new</a>
+    <a href="/tags/Annotation/">Annotation</a>
   </div>
 
 <!-- Baidu Button BEGIN -->
@@ -275,10 +324,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
-    <a href="/2016/02/15/javascript prototype/" class="alignleft prev" >上一页</a>
     
-    
-    <a href="/2016/02/13/javascript 作用域和闭包/" class="alignright next" >下一页</a>
+    <a href="/2016/03/15/java的各种O/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -288,7 +335,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <section id="comment">
 
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-javascript new" data-title="javacript new" data-url="http://wisdombud.github.io/2016/02/14/javascript new/"></div>
+  <div class="ds-thread" data-thread-key="post-java 注解" data-title="java 注解" data-url="http://wisdombud.github.io/2016/03/16/java 注解/"></div>
 
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
