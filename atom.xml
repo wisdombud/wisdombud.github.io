@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wisdombud.github.io/"/>
-  <updated>2016-03-18T02:35:11.987Z</updated>
+  <updated>2016-03-18T02:36:17.287Z</updated>
   <id>http://wisdombud.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>java 注解</title>
+    <title>java通配符之“?”</title>
     <link href="http://wisdombud.github.io/2016/03/18/java%E9%80%9A%E9%85%8D%E7%AC%A6--%E9%97%AE%E5%8F%B7/"/>
     <id>http://wisdombud.github.io/2016/03/18/java通配符--问号/</id>
     <published>2016-03-18T02:33:14.702Z</published>
-    <updated>2016-03-18T02:35:11.987Z</updated>
+    <updated>2016-03-18T02:36:17.287Z</updated>
     
     <content type="html">&lt;h2 id=&quot;简介泛型类和泛型方法&quot;&gt;&lt;a href=&quot;#简介泛型类和泛型方法&quot; class=&quot;headerlink&quot; title=&quot;简介泛型类和泛型方法&quot;&gt;&lt;/a&gt;简介泛型类和泛型方法&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public class Example&amp;lt;T&amp;gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private String test;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private T t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public T getT()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void setT(T t)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        this.t = t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public &amp;lt;E&amp;gt;  E getE(E e)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return e;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;泛型类&quot;&gt;&lt;a href=&quot;#泛型类&quot; class=&quot;headerlink&quot; title=&quot;泛型类&quot;&gt;&lt;/a&gt;泛型类&lt;/h3&gt;&lt;p&gt;上面的类Example就是一个泛型类，它在类名的后面加上&amp;lt; T &amp;gt;，不指定T的类型，却可以在类里面把T当做一个已知的类型来使用。&lt;/p&gt;
