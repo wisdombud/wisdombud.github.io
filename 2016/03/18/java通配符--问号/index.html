@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>日志简介 | 技术博客</title>
+  <title>java 注解 | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="日志简介"/>
+  <meta property="og:title" content="java 注解"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -216,45 +216,64 @@
     <header>
       
   
-    <h1 class="title">日志简介</h1>
+    <h1 class="title">java 注解</h1>
   
 
       
         <div class="icon"></div>
         <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
            <span style=" display: block;  margin: 10px 0; ">
- 	时间：<time style="display:inline" datetime="2016-03-11T08:38:35.000Z">2016-03-11</time></span>
+ 	时间：<time style="display:inline" datetime="2016-03-18T02:33:14.702Z">2016-03-18</time></span>
         
-          <span style=" display: block;  margin: 10px 0; ">作者：joseph</span>
+          <span style=" display: block;  margin: 10px 0; ">作者：走吧走吧</span>
         
       
 
     </header>
     <div class="entry">
       
-        <h2 id="为什么需要日志"><a href="#为什么需要日志" class="headerlink" title="为什么需要日志"></a>为什么需要日志</h2><blockquote>
-<p>因为项目上线后不允许你调试，你只能通过Log来分析问题。项目出问题时，你要能拿出Log证明自己负责的部分没有问题，如果是自己的问题，要从Log里快速找出错误原因。如果没有从Log里找出错误原因，那一定是一件很悲催的事情，特别是在bug不容易重现的情况下。</p>
+        <h2 id="简介泛型类和泛型方法"><a href="#简介泛型类和泛型方法" class="headerlink" title="简介泛型类和泛型方法"></a>简介泛型类和泛型方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Example&lt;T&gt;&#123;</span><br><span class="line">    private String test;</span><br><span class="line">    private T t;</span><br><span class="line">    public T getT()&#123;</span><br><span class="line">        return t;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setT(T t)&#123;</span><br><span class="line">        this.t = t;</span><br><span class="line">    &#125;</span><br><span class="line">    public &lt;E&gt;  E getE(E e)&#123;</span><br><span class="line">        return e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><p>上面的类Example就是一个泛型类，它在类名的后面加上&lt; T &gt;，不指定T的类型，却可以在类里面把T当做一个已知的类型来使用。</p>
+<ul>
+<li>使用1-在声明的时候规定类型<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Example&lt;String&gt; ex = new Example&lt;String&gt;();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这时会把Example类里面所有的T替换为String。<br>常使用的例子，List集合的使用。</p>
+<ul>
+<li>使用2-继承该泛型类<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public Ex1 extends Example&lt;Char&gt;()&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这时，类Ex1的所有方法(继承的)中的T都是Char型。<br>这样做的好处<br>就像一个模板一样，类里面的方法，可以供多个对象来使用。<br>常使用的例子，java在与数据库交互的时候封装的Dao层父类。</p>
+<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><p>上面的getE方法就是泛型方法。</p>
+<ul>
+<li>使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Boolean b = ex.getE(true);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这时返回的类型就Boolen型。</p>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符?"></a>通配符?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = null;</span><br><span class="line">String str = &quot;&quot;;</span><br><span class="line">obj = str;</span><br></pre></td></tr></table></figure>
+<p>上面的代码，是正确的。子类的值可以给基类。</p>
+<p>但是泛型类型的子类型之间是互不相关的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object&gt; objList = new ArrayList&lt;Object&gt;();</span><br><span class="line">List&lt;String&gt; strList = new ArrayList&lt;String&gt;();</span><br><span class="line">objList = strList;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码就会报错。因为strList并不是objList的一个子类。<br>但是如果是 List&lt; ?&gt; list = null;<br>list = objList;<br>list = strList;<br>这样写就可以。</p>
+<blockquote>
+<p>?就是通配符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public void test2(List&lt;?&gt; coll)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h2 id="哪些地方打日志"><a href="#哪些地方打日志" class="headerlink" title="哪些地方打日志"></a>哪些地方打日志</h2><blockquote>
-<p>   打log的目的是为了迅速排错或在有争议时拿出证据证明自己。基于这个目的，log不在多，只要抓住一切对自己有利的信息，就可以了。
-　</p>
-<h3 id="LOG的级别及对应日志"><a href="#LOG的级别及对应日志" class="headerlink" title="LOG的级别及对应日志　"></a>LOG的级别及对应日志　</h3><p>Log最常用的级别就是DEBUG，INFO，WARN，ERROR，其他的很少用。如何运用合适的Log级别也是非常重要的，在不该用ERROR的地方用了ERROR，可能会给你带来额外的麻烦。<br>　1.ERROR：<br>　　ERROR是错误的意思，但不代表出现异常的地方就该打ERROR。我认为ERROR是相对程序正确运行来说的，如果出现了ERROR那就代表出问题了，开发人员必须要查一下原因，或许是程序问题，或许是环境问题，或许是理论上不该出错的地方出错了。总之，如果你觉得某个地方出问题时需要解决，就打ERROR，如果不需要解决就不要打ERROR。<br>　　举例来说，如果有一个接口。调用者传过来的参数不在你的接受范围内，在这种情况下你不能打ERROR，因为传什么值是用户决定的，并不影响程序正确运行。想象一下，如果你的服务器上有监控程序的话，检测到ERROR或WARN就报警，参数错误你也打ERROR，那运维人员会疯掉的。<br>　　如果做一个对讲机，在解析语音数据包时出错了，那就要打ERROR了，因为这个是理论上不该出错的地方，要不就是你的解析代码有问题，要不就是开发人员在拼凑语音包时存在问题，这个时候需要你来找出问题的原因。所以应该打ERROR。<br>　　2.WARN：<br>　　WARN是指出现了不影响程序正确运行的问题，WARN也是问题但不影响程序正常运行，如果WARN出现的过于频繁或次数太多，那就代表你要检查一下程序或环境或依赖程序是否真的出问题了。<br>　　假如你访问一个接口，设置了一个超时，超时之后会抛异常，你在try块里不该打ERROR也不该打INFO来无视它，这时你应该打WARN，紧紧是警告一下，如果超时过多那就该检查一下了，是不是对方接口有问题了或者是网络环境出问题了。<br>　　3.INFO和DEBUG：<br>　　ERROR和WARN是指有问题，而INFO和DEBUG就是指一般的信息了。在程序出问题时，如果这条log可以帮助你分析问题或查看程序的运行情况，那就应该打个INFO。如果仅仅是为了在调试阶段查看程序是否运行正确那就要打DEBUG。前边讨论的接口参数错误问题，就应该打个INFO了，调用者说你的接口总是返回错误代码，你可以告诉他，是他的哪个参数传错了。</p>
+<p>上面的方法，我们就可以构造不同的泛型子类型当做参数。<br>List&lt; String&gt;、List&lt; Char&gt; 等都可以。</p>
+<blockquote>
+<ul>
+<li>List&lt; ?&gt;声明了List中包含的元素类型是未知的。通配符所代表的其实是一组类型，但具体的类型是未知的。List&lt; ?&gt;所声明的就是所有类型都是可以的。但是List&lt; ?&gt;并不等同于objList。objList实际上确定了List中包含的是Object<br>及其子类，在使用的时候都可以通过Object来进行引用。</li>
+<li>List&lt; ?&gt;则其中所包含的元素类型是不确定。其中可能包含的是String，也可能是 Integer。如果它包含了String的话，往里面添加Integer类型的元素就是错误的。正因为类型未知，就不能通过new ArrayList&lt; ?&gt;()的方法来创建一个新的ArrayList对象。因为编译器无法知道具体的类型是什么。但是对于 List&lt; ?&gt;中的元素确总是可以用Object来引用的，因为虽然类型未知，但肯定是Object及其子类。</li>
+</ul>
 </blockquote>
-<h3 id="常见日志点"><a href="#常见日志点" class="headerlink" title="常见日志点"></a>常见日志点</h3><blockquote>
-<p>1.函数开始结束处<br>　　在重要函数的开始结束出应该打上log ，这样在看log时会比较直观，什么时候开始什么时候结束就会一目了然，万一中间出异常导致程序退出了，也知道是在哪个函数突然中断的。也同样适用于一个重要逻辑块的开始结束。<br>2.返回结果<br>　　尽量在重要函数或web接口的每个返回分支打印返回结果。在出现不好分析的异常时，从细节下手，这时log会派上用场。如果跟合作方在数据方面出现争议也可以及时拿出证据。<br>3.添加Exception异常的捕获<br>　　如果你在代码中捕获了某种异常，那你要在try块后添加Exception的捕获，以防出现运行时异常中断程序。<br>4.务必打印堆栈信息<br>　　在异常捕获代码中务必要将堆栈信息打印出来，否则打了那么多的log可能会功亏一篑。<br>5.多线程的log<br>　　在多线程的程序中，log最好要标记thredId，否则可能不知道是哪个线程的作业，也无法有条理的来观察一个线程。<br>6.成功失败标志<br>　　如果某个函数是做一件比较关键的事情，那么这件事情成功还是失败了，要打印log，否则关键事件运行结果如何都拿不出证据的话，实在是不能让人信服。<br>7.前后log的关系<br>　　如果是web程序或接口，那log就不是按照你预定的顺序出现的，可能是好几个响应的log穿插在一起的。代码里如果有几条log前后存在一定的数据关系，那么要将这几条log的关联信息打出来，用来确定是针对同一个响应的。如果没有明确的标志，很难说后边的log跟前边的log是同一个响应或者是针对同一条数据。<br>8.关于耗时<br> 　　访问一个第三方接口、上传下载文件等可能耗时的操作，都要记录完成这个操作所耗的时间。否则程序性能出了问题，你不知道是网络原因呢，还是你调用的第三方接口性能出现问题呢，还是你自己程序的问题呢。<br>9.关于数量<br> 　　涉及到数量的操作要打印log，比如查询数据库和批量拷贝文件、上传下载、批量格式转换等批量操作，设计到的数量要打印出来。</p>
+<h3 id="向上造型一个泛型对象的引用"><a href="#向上造型一个泛型对象的引用" class="headerlink" title="向上造型一个泛型对象的引用"></a>向上造型一个泛型对象的引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? extends XX&gt;</span><br></pre></td></tr></table></figure>
+<p>extends可以理解为小于等于，任意类型要是XX的子类或者是XX。</p>
+<blockquote>
+<p>假设我们有很多箱子，每个箱子里都装有不同的水果，我们需要找到一种方法能够通用的处理任何一箱水果。更通俗的说法，A是B的子类型，我们需要找到一种方法能够将C&lt; A&gt;类型的实例赋给一个C&lt; B&gt;类型的声明。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; apples = new ArrayList&lt;Apple&gt;();</span><br><span class="line">List&lt;? extends Fruit&gt; fruits = apples;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h3><blockquote>
-<ol>
-<li>有异常一定打日志么？</li>
-</ol>
-</blockquote>
-<h2 id="需要什么样的日志"><a href="#需要什么样的日志" class="headerlink" title="需要什么样的日志"></a>需要什么样的日志</h2><blockquote>
-<p>时间、类名及函数名，行号、线程号等等</p>
-<h2 id="有哪些已经封装好的日志"><a href="#有哪些已经封装好的日志" class="headerlink" title="有哪些已经封装好的日志"></a>有哪些已经封装好的日志</h2><h3 id="slf4j"><a href="#slf4j" class="headerlink" title="slf4j"></a>slf4j</h3><p><a href="http://www.cnblogs.com/f1194361820/p/5096014.html" target="_blank" rel="external">http://www.cnblogs.com/f1194361820/p/5096014.html</a></p>
-<h3 id="log4j配置"><a href="#log4j配置" class="headerlink" title="log4j配置"></a>log4j配置</h3><p><a href="http://summerbell.iteye.com/blog/487736" target="_blank" rel="external">http://summerbell.iteye.com/blog/487736</a></p>
-<h3 id="log4net配置"><a href="#log4net配置" class="headerlink" title="log4net配置"></a>log4net配置</h3><p><a href="http://www.cnblogs.com/jys509/p/4569874.html" target="_blank" rel="external">http://www.cnblogs.com/jys509/p/4569874.html</a><br><a href="http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html" target="_blank" rel="external">http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html</a></p>
-</blockquote>
-<h2 id="如何分析日志"><a href="#如何分析日志" class="headerlink" title="如何分析日志"></a>如何分析日志</h2><p><a href="http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html" target="_blank" rel="external">http://www.cnblogs.com/TalkStudy/archive/2007/12/19/1005886.html</a></p>
+<p>Apple是Fruit的子类型，List&lt; Apple&gt; 是 List&lt; ? extends Fruit&gt; 的子类型。</p>
+<h3 id="向下造型一个泛型对象的引用"><a href="#向下造型一个泛型对象的引用" class="headerlink" title="向下造型一个泛型对象的引用"></a>向下造型一个泛型对象的引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? super XX&gt;</span><br></pre></td></tr></table></figure>
+<p>super可以理解为大于等于，任意类型要是XX的父类或者是XX。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Fruit&gt; fruits = new ArrayList&lt;Fruit&gt;();  </span><br><span class="line">List&lt;? super Apple&gt; = fruits;</span><br></pre></td></tr></table></figure></p>
+<p>Apple是Fruit的子类型，List&lt; Fruit&gt; 是 List&lt; ? super Apple&gt; 的父类型。</p>
+<p><a href="http://www.linuxidc.com/Linux/2012-10/72626.htm" target="_blank" rel="external">Java中泛型之类型通配符(?)</a><br><a href="http://blog.csdn.net/chunqiuwei/article/details/8008443" target="_blank" rel="external">java通配符</a></p>
 
       
     </div>
@@ -263,13 +282,13 @@
         
   
   <div class="categories">
-    <a href="/categories/log/">log</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/log/">log</a>
+    <a href="/tags/通配符/">通配符</a>
   </div>
 
 <!-- Baidu Button BEGIN -->
@@ -297,10 +316,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
-    <a href="/2016/03/13/EOVA简介/" class="alignleft prev" >上一页</a>
     
-    
-    <a href="/2016/03/04/java web 之servlet/" class="alignright next" >下一页</a>
+    <a href="/2016/03/16/java 注解/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -310,7 +327,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <section id="comment">
 
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-日志" data-title="日志简介" data-url="http://wisdombud.github.io/2016/03/11/日志/"></div>
+  <div class="ds-thread" data-thread-key="post-java通配符--问号" data-title="java 注解" data-url="http://wisdombud.github.io/2016/03/18/java通配符--问号/"></div>
 
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wisdombud.github.io/"/>
-  <updated>2016-03-16T11:07:35.190Z</updated>
+  <updated>2016-03-18T02:35:11.987Z</updated>
   <id>http://wisdombud.github.io/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java 注解</title>
+    <link href="http://wisdombud.github.io/2016/03/18/java%E9%80%9A%E9%85%8D%E7%AC%A6--%E9%97%AE%E5%8F%B7/"/>
+    <id>http://wisdombud.github.io/2016/03/18/java通配符--问号/</id>
+    <published>2016-03-18T02:33:14.702Z</published>
+    <updated>2016-03-18T02:35:11.987Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;简介泛型类和泛型方法&quot;&gt;&lt;a href=&quot;#简介泛型类和泛型方法&quot; class=&quot;headerlink&quot; title=&quot;简介泛型类和泛型方法&quot;&gt;&lt;/a&gt;简介泛型类和泛型方法&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public class Example&amp;lt;T&amp;gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private String test;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private T t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public T getT()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public void setT(T t)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        this.t = t;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    public &amp;lt;E&amp;gt;  E getE(E e)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return e;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;泛型类&quot;&gt;&lt;a href=&quot;#泛型类&quot; class=&quot;headerlink&quot; title=&quot;泛型类&quot;&gt;&lt;/a&gt;泛型类&lt;/h3&gt;&lt;p&gt;上面的类Example就是一个泛型类，它在类名的后面加上&amp;lt; T &amp;gt;，不指定T的类型，却可以在类里面把T当做一个已知的类型来使用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用1-在声明的时候规定类型&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Example&amp;lt;String&amp;gt; ex = new Example&amp;lt;String&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这时会把Example类里面所有的T替换为String。&lt;br&gt;常使用的例子，List集合的使用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用2-继承该泛型类&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public Ex1 extends Example&amp;lt;Char&amp;gt;()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这时，类Ex1的所有方法(继承的)中的T都是Char型。&lt;br&gt;这样做的好处&lt;br&gt;就像一个模板一样，类里面的方法，可以供多个对象来使用。&lt;br&gt;常使用的例子，java在与数据库交互的时候封装的Dao层父类。&lt;/p&gt;
+&lt;h3 id=&quot;泛型方法&quot;&gt;&lt;a href=&quot;#泛型方法&quot; class=&quot;headerlink&quot; title=&quot;泛型方法&quot;&gt;&lt;/a&gt;泛型方法&lt;/h3&gt;&lt;p&gt;上面的getE方法就是泛型方法。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Boolean b = ex.getE(true);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这时返回的类型就Boolen型。&lt;/p&gt;
+&lt;h2 id=&quot;通配符&quot;&gt;&lt;a href=&quot;#通配符&quot; class=&quot;headerlink&quot; title=&quot;通配符?&quot;&gt;&lt;/a&gt;通配符?&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Object obj = null;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;String str = &amp;quot;&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj = str;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;上面的代码，是正确的。子类的值可以给基类。&lt;/p&gt;
+&lt;p&gt;但是泛型类型的子类型之间是互不相关的。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;List&amp;lt;Object&amp;gt; objList = new ArrayList&amp;lt;Object&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;List&amp;lt;String&amp;gt; strList = new ArrayList&amp;lt;String&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;objList = strList;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这段代码就会报错。因为strList并不是objList的一个子类。&lt;br&gt;但是如果是 List&amp;lt; ?&amp;gt; list = null;&lt;br&gt;list = objList;&lt;br&gt;list = strList;&lt;br&gt;这样写就可以。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;?就是通配符。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public void test2(List&amp;lt;?&amp;gt; coll)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上面的方法，我们就可以构造不同的泛型子类型当做参数。&lt;br&gt;List&amp;lt; String&amp;gt;、List&amp;lt; Char&amp;gt; 等都可以。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;List&amp;lt; ?&amp;gt;声明了List中包含的元素类型是未知的。通配符所代表的其实是一组类型，但具体的类型是未知的。List&amp;lt; ?&amp;gt;所声明的就是所有类型都是可以的。但是List&amp;lt; ?&amp;gt;并不等同于objList。objList实际上确定了List中包含的是Object&lt;br&gt;及其子类，在使用的时候都可以通过Object来进行引用。&lt;/li&gt;
+&lt;li&gt;List&amp;lt; ?&amp;gt;则其中所包含的元素类型是不确定。其中可能包含的是String，也可能是 Integer。如果它包含了String的话，往里面添加Integer类型的元素就是错误的。正因为类型未知，就不能通过new ArrayList&amp;lt; ?&amp;gt;()的方法来创建一个新的ArrayList对象。因为编译器无法知道具体的类型是什么。但是对于 List&amp;lt; ?&amp;gt;中的元素确总是可以用Object来引用的，因为虽然类型未知，但肯定是Object及其子类。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;向上造型一个泛型对象的引用&quot;&gt;&lt;a href=&quot;#向上造型一个泛型对象的引用&quot; class=&quot;headerlink&quot; title=&quot;向上造型一个泛型对象的引用&quot;&gt;&lt;/a&gt;向上造型一个泛型对象的引用&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;? extends XX&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;extends可以理解为小于等于，任意类型要是XX的子类或者是XX。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;假设我们有很多箱子，每个箱子里都装有不同的水果，我们需要找到一种方法能够通用的处理任何一箱水果。更通俗的说法，A是B的子类型，我们需要找到一种方法能够将C&amp;lt; A&amp;gt;类型的实例赋给一个C&amp;lt; B&amp;gt;类型的声明。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;List&amp;lt;Apple&amp;gt; apples = new ArrayList&amp;lt;Apple&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;List&amp;lt;? extends Fruit&amp;gt; fruits = apples;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Apple是Fruit的子类型，List&amp;lt; Apple&amp;gt; 是 List&amp;lt; ? extends Fruit&amp;gt; 的子类型。&lt;/p&gt;
+&lt;h3 id=&quot;向下造型一个泛型对象的引用&quot;&gt;&lt;a href=&quot;#向下造型一个泛型对象的引用&quot; class=&quot;headerlink&quot; title=&quot;向下造型一个泛型对象的引用&quot;&gt;&lt;/a&gt;向下造型一个泛型对象的引用&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;? super XX&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;super可以理解为大于等于，任意类型要是XX的父类或者是XX。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;List&amp;lt;Fruit&amp;gt; fruits = new ArrayList&amp;lt;Fruit&amp;gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;List&amp;lt;? super Apple&amp;gt; = fruits;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Apple是Fruit的子类型，List&amp;lt; Fruit&amp;gt; 是 List&amp;lt; ? super Apple&amp;gt; 的父类型。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.linuxidc.com/Linux/2012-10/72626.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java中泛型之类型通配符(?)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/chunqiuwei/article/details/8008443&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;java通配符&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介泛型类和泛型方法&quot;&gt;&lt;a href=&quot;#简介泛型类和泛型方法&quot; class=&quot;headerlink&quot; title=&quot;简介泛型类和泛型方法&quot;&gt;&lt;/a&gt;简介泛型类和泛型方法&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;t
+    
+    </summary>
+    
+      <category term="java" scheme="http://wisdombud.github.io/categories/java/"/>
+    
+    
+      <category term="通配符" scheme="http://wisdombud.github.io/tags/%E9%80%9A%E9%85%8D%E7%AC%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>java 注解</title>
