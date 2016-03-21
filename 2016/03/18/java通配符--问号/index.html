@@ -232,48 +232,71 @@
     </header>
     <div class="entry">
       
-        <h2 id="简介泛型类和泛型方法"><a href="#简介泛型类和泛型方法" class="headerlink" title="简介泛型类和泛型方法"></a>简介泛型类和泛型方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Example&lt;T&gt;&#123;</span><br><span class="line">    private String test;</span><br><span class="line">    private T t;</span><br><span class="line">    public T getT()&#123;</span><br><span class="line">        return t;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setT(T t)&#123;</span><br><span class="line">        this.t = t;</span><br><span class="line">    &#125;</span><br><span class="line">    public &lt;E&gt;  E getE(E e)&#123;</span><br><span class="line">        return e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><p>上面的类Example就是一个泛型类，它在类名的后面加上&lt; T &gt;，不指定T的类型，却可以在类里面把T当做一个已知的类型来使用。</p>
+        <h2>简介泛型类和泛型方法</h2>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Example&lt;T&gt;&#123;</span><br><span class="line">    private String test;</span><br><span class="line">    private T t;</span><br><span class="line">    public T getT()&#123;</span><br><span class="line">        return t;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setT(T t)&#123;</span><br><span class="line">        this.t = t;</span><br><span class="line">    &#125;</span><br><span class="line">    public &lt;E&gt;  E getE(E e)&#123;</span><br><span class="line">        return e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3>泛型类</h3>
+<p>上面的类Example就是一个泛型类，它在类名的后面加上&lt; T &gt;，不指定T的类型，却可以在类里面把T当做一个已知的类型来使用。</p>
 <ul>
-<li>使用1-在声明的时候规定类型<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Example&lt;String&gt; ex = new Example&lt;String&gt;();</span><br></pre></td></tr></table></figure>
-</li>
+<li>使用1-在声明的时候规定类型
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Example&lt;String&gt; ex = new Example&lt;String&gt;();</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>这时会把Example类里面所有的T替换为String。<br>常使用的例子，List集合的使用。</p>
+<p>这时会把Example类里面所有的T替换为String。
+常使用的例子，List集合的使用。</p>
 <ul>
-<li>使用2-继承该泛型类<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public Ex1 extends Example&lt;Char&gt;()&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>使用2-继承该泛型类
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public Ex1 extends Example&lt;Char&gt;()&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>这时，类Ex1的所有方法(继承的)中的T都是Char型。<br>这样做的好处<br>就像一个模板一样，类里面的方法，可以供多个对象来使用。<br>常使用的例子，java在与数据库交互的时候封装的Dao层父类。</p>
-<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><p>上面的getE方法就是泛型方法。</p>
+<p>这时，类Ex1的所有方法(继承的)中的T都是Char型。
+这样做的好处
+就像一个模板一样，类里面的方法，可以供多个对象来使用。
+常使用的例子，java在与数据库交互的时候封装的Dao层父类。</p>
+<h3>泛型方法</h3>
+<p>上面的getE方法就是泛型方法。</p>
 <ul>
-<li>使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Boolean b = ex.getE(true);</span><br></pre></td></tr></table></figure>
-</li>
+<li>使用
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Boolean b = ex.getE(true);</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>这时返回的类型就Boolen型。</p>
-<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符?"></a>通配符?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = null;</span><br><span class="line">String str = &quot;&quot;;</span><br><span class="line">obj = str;</span><br></pre></td></tr></table></figure>
+<h2>通配符?</h2>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = null;</span><br><span class="line">String str = &quot;&quot;;</span><br><span class="line">obj = str;</span><br></pre></td></tr></table></figure></p>
 <p>上面的代码，是正确的。子类的值可以给基类。</p>
-<p>但是泛型类型的子类型之间是互不相关的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object&gt; objList = new ArrayList&lt;Object&gt;();</span><br><span class="line">List&lt;String&gt; strList = new ArrayList&lt;String&gt;();</span><br><span class="line">objList = strList;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码就会报错。因为strList并不是objList的一个子类。<br>但是如果是 List&lt; ?&gt; list = null;<br>list = objList;<br>list = strList;<br>这样写就可以。</p>
+<p>但是泛型类型的子类型之间是互不相关的。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object&gt; objList = new ArrayList&lt;Object&gt;();</span><br><span class="line">List&lt;String&gt; strList = new ArrayList&lt;String&gt;();</span><br><span class="line">objList = strList;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码就会报错。因为strList并不是objList的一个子类。
+但是如果是 List&lt; ?&gt; list = null;
+list = objList;
+list = strList;
+这样写就可以。</p>
 <blockquote>
-<p>?就是通配符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public void test2(List&lt;?&gt; coll)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>?就是通配符。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public void test2(List&lt;?&gt; coll)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>上面的方法，我们就可以构造不同的泛型子类型当做参数。<br>List&lt; String&gt;、List&lt; Char&gt; 等都可以。</p>
+<p>上面的方法，我们就可以构造不同的泛型子类型当做参数。
+List&lt; String&gt;、List&lt; Char&gt; 等都可以。</p>
 <blockquote>
 <ul>
-<li>List&lt; ?&gt;声明了List中包含的元素类型是未知的。通配符所代表的其实是一组类型，但具体的类型是未知的。List&lt; ?&gt;所声明的就是所有类型都是可以的。但是List&lt; ?&gt;并不等同于objList。objList实际上确定了List中包含的是Object<br>及其子类，在使用的时候都可以通过Object来进行引用。</li>
-<li>List&lt; ?&gt;则其中所包含的元素类型是不确定。其中可能包含的是String，也可能是 Integer。如果它包含了String的话，往里面添加Integer类型的元素就是错误的。正因为类型未知，就不能通过new ArrayList&lt; ?&gt;()的方法来创建一个新的ArrayList对象。因为编译器无法知道具体的类型是什么。但是对于 List&lt; ?&gt;中的元素确总是可以用Object来引用的，因为虽然类型未知，但肯定是Object及其子类。</li>
+<li>List&lt; ?&gt;声明了List中包含的元素类型是未知的。通配符所代表的其实是一组类型，但具体的类型是未知的。List&lt; ?&gt;所声明的就是所有类型都是可以的。但是List&lt; ?&gt;并不等同于objList。objList实际上确定了List中包含的是Object
+及其子类，在使用的时候都可以通过Object来进行引用。</li>
 </ul>
 </blockquote>
-<h3 id="向上造型一个泛型对象的引用"><a href="#向上造型一个泛型对象的引用" class="headerlink" title="向上造型一个泛型对象的引用"></a>向上造型一个泛型对象的引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? extends XX&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>List&lt; ?&gt;则其中所包含的元素类型是不确定。其中可能包含的是String，也可能是 Integer。如果它包含了String的话，往里面添加Integer类型的元素就是错误的。正因为类型未知，就不能通过new ArrayList&lt; ?&gt;()的方法来创建一个新的ArrayList对象。因为编译器无法知道具体的类型是什么。但是对于 List&lt; ?&gt;中的元素确总是可以用Object来引用的，因为虽然类型未知，但肯定是Object及其子类。</li>
+</ul>
+<h3>向上造型一个泛型对象的引用</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? extends XX&gt;</span><br></pre></td></tr></table></figure></p>
 <p>extends可以理解为小于等于，任意类型要是XX的子类或者是XX。</p>
 <blockquote>
-<p>假设我们有很多箱子，每个箱子里都装有不同的水果，我们需要找到一种方法能够通用的处理任何一箱水果。更通俗的说法，A是B的子类型，我们需要找到一种方法能够将C&lt; A&gt;类型的实例赋给一个C&lt; B&gt;类型的声明。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; apples = new ArrayList&lt;Apple&gt;();</span><br><span class="line">List&lt;? extends Fruit&gt; fruits = apples;</span><br></pre></td></tr></table></figure></p>
+<p>假设我们有很多箱子，每个箱子里都装有不同的水果，我们需要找到一种方法能够通用的处理任何一箱水果。更通俗的说法，A是B的子类型，我们需要找到一种方法能够将C&lt; A&gt;类型的实例赋给一个C&lt; B&gt;类型的声明。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; apples = new ArrayList&lt;Apple&gt;();</span><br><span class="line">List&lt;? extends Fruit&gt; fruits = apples;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>Apple是Fruit的子类型，List&lt; Apple&gt; 是 List&lt; ? extends Fruit&gt; 的子类型。</p>
-<h3 id="向下造型一个泛型对象的引用"><a href="#向下造型一个泛型对象的引用" class="headerlink" title="向下造型一个泛型对象的引用"></a>向下造型一个泛型对象的引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? super XX&gt;</span><br></pre></td></tr></table></figure>
-<p>super可以理解为大于等于，任意类型要是XX的父类或者是XX。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Fruit&gt; fruits = new ArrayList&lt;Fruit&gt;();  </span><br><span class="line">List&lt;? super Apple&gt; = fruits;</span><br></pre></td></tr></table></figure></p>
+<h3>向下造型一个泛型对象的引用</h3>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? super XX&gt;</span><br></pre></td></tr></table></figure></p>
+<p>super可以理解为大于等于，任意类型要是XX的父类或者是XX。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Fruit&gt; fruits = new ArrayList&lt;Fruit&gt;();  </span><br><span class="line">List&lt;? super Apple&gt; = fruits;</span><br></pre></td></tr></table></figure></p>
 <p>Apple是Fruit的子类型，List&lt; Fruit&gt; 是 List&lt; ? super Apple&gt; 的父类型。</p>
-<p><a href="http://www.linuxidc.com/Linux/2012-10/72626.htm" target="_blank" rel="external">Java中泛型之类型通配符(?)</a><br><a href="http://blog.csdn.net/chunqiuwei/article/details/8008443" target="_blank" rel="external">java通配符</a></p>
+<p><a href="http://www.linuxidc.com/Linux/2012-10/72626.htm" target="_blank" rel="external">Java中泛型之类型通配符(?)</a>
+<a href="http://blog.csdn.net/chunqiuwei/article/details/8008443" target="_blank" rel="external">java通配符</a></p>
 
       
     </div>
