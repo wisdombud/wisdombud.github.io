@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wisdombud.github.io/"/>
-  <updated>2016-03-24T06:55:26.762Z</updated>
+  <updated>2016-03-24T07:08:04.603Z</updated>
   <id>http://wisdombud.github.io/</id>
   
   <author>
@@ -16,27 +16,394 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>局域网传输速率的限制</title>
+    <link href="http://wisdombud.github.io/2016/03/24/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E9%99%90%E5%88%B6/"/>
+    <id>http://wisdombud.github.io/2016/03/24/局域网传输速率的限制/</id>
+    <published>2016-03-24T08:38:35.000Z</published>
+    <updated>2016-03-24T07:08:04.603Z</updated>
+    
+    <content type="html">&lt;p&gt;####1.网络传输单位和存储单位的区别&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输和文件存储的单位不同,因为1Byte=8bit,所以理论上我们所说的100M传输速度的网络,转换成文件存储可以达到12.5MByte/s.
+当然12.5MByte/s只是一个理论值,在正常的网络传输受到其网络传输环境、网卡接口限制、硬盘读写速率以及CPU等多方面因素，实际传输的速度并不会达到理论值。在百兆的局域网中，通常在10MByte/s左右.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;####2.网卡的限制&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;按照传输速率可以将网卡分为10Mbps、100Mbps、10/100Mbps自适应网卡、1000Mbps以及10GMbps网卡,大多数电脑都采用100Mbps和10/100Mbps的网卡,所以也根据网卡的限制,理论上局域网的最高传输速度只能达到12.5M/s.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;####3.双绞线的限制&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;双绞线常见的有三类、五类、超五类和六类线，三类线已经逐渐的被五类线取代，六类线适用于1Gbps以上的传输,日常构建局域网最常用的就是五类(100M)双绞线,理论值同样是12.5M/s.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####1.网络传输单位和存储单位的区别&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输
+    
+    </summary>
+    
+      <category term="常识" scheme="http://wisdombud.github.io/categories/%E5%B8%B8%E8%AF%86/"/>
+    
+    
+      <category term="net" scheme="http://wisdombud.github.io/tags/net/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java 注解</title>
+    <link href="http://wisdombud.github.io/2016/03/24/java%20%E6%B3%A8%E8%A7%A3/"/>
+    <id>http://wisdombud.github.io/2016/03/24/java 注解/</id>
+    <published>2016-03-24T08:38:35.000Z</published>
+    <updated>2016-03-24T07:08:24.951Z</updated>
+    
+    <content type="html">&lt;h2&gt;注解是什么&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Java提供了一种原程序中的元素关联任何信息和任何元数据的途径和方法。
+注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;注解的作用&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注解的作用：分三种。源码/编译/运行时
+编写文档：通过代码里标识的元数据生成文档
+代码分析：通过代码里标识的元数据对代码进行分析
+编译检查：通过代码里标识的元数据让编译器能够实现基本的编译检查&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;注解的分类&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;根据注解在程序的哪个阶段分类
+源码注解：注解只在源码中存在，编译成.class文件就不存在了
+编译时注解：注解在源码和.class文件中都存在
+运行时注解：在运行阶段还会起作用，甚至会影响运行逻辑&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;根据来源分类：
+JDK自带的注解
+常见的第三方注解
+自定义注解&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;java中常见的注解&lt;/h2&gt;
+&lt;p&gt;jdk自带注解&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;@Override  覆盖了父类的方法。 以后在见到的时候，可以直接相信这个类。
+@Deprecated   父类有一个方法，已经过时，但是为了兼容以前的类。加这个注释。
+@Suppvisewarnings
+当父类的方法加了@Deprecated 之后，子类在引用的时候会有警告。加注释3。忽略警告。
+这三个都是修饰方法的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;常见第三方注解(Spring) ：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;@Autowired    可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作
+@Service   一般用在service层
+@Repository  一般用在dao层&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;元注解&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;元注解的作用就是负责注解其他注解。&lt;/li&gt;
+&lt;li&gt;元注解包括：&lt;br&gt;
+@Target 注解的作用域
+@Retention 注解的生命周期
+@Inherited  标识性的，表示这个注解允许子类继承的
+@Documented 生成javadoc时会包含注解。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;@Target 注解的作用域&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;@Target  说明了Annotation所修饰的对象范围，在Annotation类型的声明中使用了target可更加明晰其修饰的目标。
+作用：用于描述注解的使用范围（即：被描述的注解可以用在什么地方）
+@Target的取值(ElementType)有：
+	CONSTRUCTOR:用于描述构造器
+	FIELD:用于描述域
+	LOCAL_VARIABLE:用于描述局部变量
+	METHOD:用于描述方法
+	PACKAGE:用于描述包
+	PARAMETER:用于描述参数
+	TYPE:用于描述类、接口(包括注解类型) 或enum声明&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;@Retention 注解的生命周期&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;@Retention  定义了该Annotation被保留的时间长短（可以在源码上、.class文件中、）
+作用：表示需要在什么级别保存该注释信息，用于描述注解的生命周期（即：被描述的注解在什么范围内有效）
+@Retention的取值（RetentionPoicy）有：
+	SOURCE:在源文件中有效（即源文件保留）CLASS:在class文件中有效（即class保留）RUNTIME:在运行时有效（即运行时保留）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;@Inherited  标识性的，表示这个注解允许子类继承的&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;@Inherited 元注解是一个标记注解，@Inherited阐述了某个被标注的类型是被继承的。如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类。
+	@Inherited annotation类型是被标注过的class的子类所继承。类并不从它所实现的接口继承annotation，方法并不从它所重载的方法继承annotation。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;@Documented 生成javadoc时会包含注解。&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;@Documented用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，因此可以被例如javadoc此类的工具文档化。Documented是一个标记注解，没有成员。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;自定义注解&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;public @interface Description{
+String dese();
+String author();
+int age() default 18;
+}&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;使用@interface关键字定义注解&lt;/li&gt;
+&lt;li&gt;方法。成员以无参、无异常的方式声明。&lt;/li&gt;
+&lt;li&gt;可以给成员指定默认值。成员的类型是受到限制的。包括java的原始类型和String、Class、Annotation、Enumeration&lt;/li&gt;
+&lt;li&gt;如果注解只有一个成员变量，则成员取名为value()，在使用使用时可以忽略成员名和赋值号。&lt;/li&gt;
+&lt;li&gt;注解类可以没有成员，没有成员的注解成为标识注解。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;关于自定义注解的使用，希望大家再学习学习
+使用自定义注解
+@&amp;lt;注解名&amp;gt;（&amp;lt;成员名1&amp;gt;=&amp;lt;成员值1&amp;gt;，&amp;lt;成员名2&amp;gt;=&amp;lt;成员值2&amp;gt;，...）&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/peida/archive/2013/04/24/3036689.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考文章&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;注解是什么&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Java提供了一种原程序中的元素关联任何信息和任何元数据的途径和方法。
+注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明
+    
+    </summary>
+    
+      <category term="java" scheme="http://wisdombud.github.io/categories/java/"/>
+    
+    
+      <category term="Annotation" scheme="http://wisdombud.github.io/tags/Annotation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>meta keywords</title>
+    <link href="http://wisdombud.github.io/2016/03/24/meta%20keywords/"/>
+    <id>http://wisdombud.github.io/2016/03/24/meta keywords/</id>
+    <published>2016-03-24T08:38:35.000Z</published>
+    <updated>2016-03-24T07:08:35.788Z</updated>
+    
+    <content type="html">&lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
+2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
+3.不要给网页定义过多的关键词，最好保持在10个以下，过多的关键词，搜索引擎将忽略；
+4不要给网页定义与网页描述内容无关的关键词；
+5.由于网页制作者滥用keywords(提供过多的关键词或者提供与网页无关的关键词)，导致目前常用的搜索引擎降低了keywords的重要性。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;keyword设计的初衷是为搜索引擎提供分类参考,但是因为以前可以用更多的关键字来获取更好的搜索引擎排名,所以导致了现在很多搜索引擎将meta的keyword属性看的并不是很重要,甚至特意的避开keyword.
+&lt;a href=&quot;http://www.chinaz.com/web/2011/1019/214529.shtml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于慎用meta keyword的建议的建议&lt;/a&gt;
+如果必须要用keyword的时候，关键字的个数尽量不要太多，关键字太多时常常被搜索引起忽略，所以建议在使用keyword的时候尽量不要太多
+关于meta标签,除了比标识网页关键字之外,还可以用来标识网页的内容,网页重定向等功能.
+&lt;a href=&quot;http://www.haorooms.com/post/html_meta_ds&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;meta标签的补充使用&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
+2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
+
+    
+    </summary>
+    
+      <category term="web" scheme="http://wisdombud.github.io/categories/web/"/>
+    
+    
+      <category term="meta" scheme="http://wisdombud.github.io/tags/meta/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL的日期格式</title>
+    <link href="http://wisdombud.github.io/2016/03/24/MySQL%E7%9A%84%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F/"/>
+    <id>http://wisdombud.github.io/2016/03/24/MySQL的日期格式/</id>
+    <published>2016-03-24T08:38:35.000Z</published>
+    <updated>2016-03-24T07:09:34.397Z</updated>
+    
+    <content type="html">&lt;h2&gt;MySQL的五种时间和日期类型&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;YEAR表示年份：字节数为1，取值范围为“1901——2155”
+DATE表示日期：字节数为4，取值范围为“1000-01-01——9999-12-31”
+TIME表示时间：字节数为3，取值范围为“-838:59:59——838:59:59”
+DATETIME和TIMESTAMP表示日期和时间
+DATETIME：字节数为8，取值范围为“1000-01-01 00:00:00——9999-12-31 23:59:59”
+TIMESTAMP，字节数为4，取值范围为“19700101080001——20380119111407”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;给各种时间日期类型赋值&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给YEAR赋值有3种方式
+&lt;em&gt;方式一：&lt;/em&gt;
+直接插入4位字符串(&amp;quot;1998&amp;quot;)或者4位数字(1998)
+&lt;em&gt;方式二：&lt;/em&gt;
+插入两位字符串(&amp;quot;04&amp;quot;)
+如果范围是&amp;quot;00&amp;quot;-&amp;quot;69&amp;quot;,则相当于插入&amp;quot;2000&amp;quot;-&amp;quot;2069&amp;quot;
+如果范围是&amp;quot;70&amp;quot;-&amp;quot;99&amp;quot;,则相当于插入&amp;quot;1970&amp;quot;-&amp;quot;1999&amp;quot;
+&lt;strong&gt;注：&amp;quot;0&amp;quot;和&amp;quot;00&amp;quot;的效果一样都表示2000年&lt;/strong&gt;
+&lt;em&gt;方式三：&lt;/em&gt;
+插入两位数字(90)
+插入数字和插入字符的区别在于，插入一位0表示的不是2000年，而是0000.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给TIME赋值
+&lt;strong&gt;TIME类型表示为“时：分：秒”，尽管小时范围一般是0~23，但是为了表示某些特殊时间间隔，MySQL将TIME的小时范围扩发了，而且支持负值。&lt;/strong&gt;
+标准格式是&amp;quot;HH：MM：SS&amp;quot;,但是不一定是这种格式,可以是&amp;quot;D HH：MM：SS&amp;quot;、&amp;quot;HH：MM&amp;quot;、&amp;quot;SS&amp;quot;、&amp;quot;D HH&amp;quot;、&amp;quot;D HH：MM&amp;quot;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;D HH：MM：SS&amp;quot;相当于是&amp;quot;（D*24+HH）：MM：SS&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eg：插入的是&amp;quot;2 23:50:50&amp;quot;=&amp;quot;71:50:50&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;HH：MM&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eg:&amp;quot;11:25&amp;quot;=&amp;quot;11:25:00&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;SS&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eg:&amp;quot;30&amp;quot;=&amp;quot;00:00:30&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给DATE赋值
+标准格式是&amp;quot;YYYY-MM-DD&amp;quot;、其他的还有&amp;quot;YYYY@MM@DD&amp;quot;、&amp;quot;YYYY.MM.DD&amp;quot;等
+还可以用&amp;quot;YY-MM-DD&amp;quot;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给DATETIME赋值
+标准格式为&amp;quot;YYYY-MM-DD HH：MM：SS&amp;quot;
+具体赋值方法与上面各种类型的方法相似。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给TIMESTAMP赋值
+TIMESTAMP的取值范围比较小，没有DATETIME的取值范围大，因此输入值时一定要保证在TIMESTAMP的范围之内。它的插入也与插入其他日期和时间数据类型类似。
+&lt;strong&gt;插入当前时间
+第一，可以使用CURRENT_TIMESTAMP；
+第二，输入NULL，系统自动输入当前的TIMESTAMP；
+第三，无任何输入，系统自动输入当前的TIMESTAMP。
+另外有很特殊的一点：TIMESTAMP的数值是与时区相关。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当 MySQL遇到一个日期或时间类型的超出范围或对于该类型不合法的值时，它将该值转换为该类的&amp;quot;零&amp;quot;值。
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;列类型:&amp;quot;零&amp;quot;值&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DATETIME:&amp;apos;0000-00-00 00:00:00&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DATE:&amp;apos;0000-00-00&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TIMESTAMP:00000000000000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TIME:&amp;apos;00:00:00&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;YEAR:0000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;datetime和timestamp的区别&lt;/h2&gt;
+&lt;p&gt;datetime&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;占用8个字节&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;允许为空值，可以自定义值，系统不会自动修改其值。&lt;/li&gt;
+&lt;li&gt;实际格式储存&lt;/li&gt;
+&lt;li&gt;与时区无关&lt;/li&gt;
+&lt;li&gt;不可以设定默认值，所以在不允许为空值的情况下，必须手动指定datetime字段的值才可以成功插入数据。&lt;/li&gt;
+&lt;li&gt;可以在指定datetime字段的值的时候使用now()变量来自动插入系统的当前时间。
+结论：datetime类型适合用来记录数据的原始的创建时间，因为无论你怎么更改记录中其他字段的值，datetime字段的值都不会改变，除非你手动更改它。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;timestamp&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;占用4个字节&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;允许为空值，但是不可以自定义值，所以为空值时没有任何意义。&lt;/li&gt;
+&lt;li&gt;TIMESTAMP值不能早于1970或晚于2037。这说明一个日期，例如&#39;1968-01-01&#39;，虽然对于DATETIME或DATE值是有效的，但对于TIMESTAMP值却无效，如果分配给这样一个对象将被转换为0。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;值以UTC格式保存&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;时区转化 ，存储时对当前的时区进行转换，检索时再转换回当前的时区。&lt;/li&gt;
+&lt;li&gt;默认值为CURRENT_TIMESTAMP()，其实也就是当前的系统时间。&lt;/li&gt;
+&lt;li&gt;数据库会自动修改其值，所以在插入记录时不需要指定timestamp字段的名称和timestamp字段的值，你只需要在设计表的时候添加一个timestamp字段即可，插入后该字段的值会自动变为当前系统时间。&lt;/li&gt;
+&lt;li&gt;若是设置了&lt;strong&gt;ON UPDATE CURRENT_TIMESTAMP&lt;/strong&gt;以后任何时间修改表中的记录时，对应记录的timestamp值会自动被更新为当前的系统时间。
+结论：timestamp类型适合用来记录数据的最后修改时间，因为只要你更改了记录中其他字段的值，timestamp字段的值都会被自动更新。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;timestamp的默认值&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;自动UPDATE 和INSERT 到当前的时间
+&#39;CREATE_TIME&#39; timestamp NOT NULL DEFAULT &lt;strong&gt;CURRENT_TIMESTAMP&lt;/strong&gt;  &lt;strong&gt;ON UPDATE CURRENT_TIMESTAMP&lt;/strong&gt;&lt;br&gt;
+自动INSERT 到当前时间，不过不自动UPDATE
+&#39;CREATE_TIME&#39; timestamp NOT NULL DEFAULT &lt;strong&gt;CURRENT_TIMESTAMP&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;CURRENT_TIMESTAMP&lt;/strong&gt;
+系统时间
+&lt;strong&gt;ON UPDATE CURRENT_TIMESTAMP&lt;/strong&gt;
+修改现有记录的时候都对这个数据列刷新&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/huangzhen/archive/2011/08/21/2147938.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;timestamp的默认值&lt;/a&gt;
+&lt;a href=&quot;http://www.jb51.net/article/31872.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;timestamp的默认值2&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;慧聘中的实际应用&lt;/h2&gt;
+&lt;p&gt;拿慧聘项目职位表为例：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们需要记录职位的创建时间和最新的更新时间。创建时间只在insert的时候新建一个时间戳，而更新时间则是，只要有对这条数据的更新操作，就更改时间戳。
+timestamp的ON UPDATE CURRENT_TIMESTAMP属性，会让数据库来帮我们在update的时候自动更新时间。
+注意：图形化界面来创建表的时候，默认值都是null，不是CURRENT_TIMESTAMP。就是说数据库不会自动在insert的时候，插入当前时间戳。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrnr1.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160308185547.png&quot; alt=&quot;cmd-markdown-logo&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;图形化界面的自动update，需要勾选上图中的 根据当前时间戳更新选项&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Mysql查看表的创建sql&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SHOW CREATE TABLE  BASE_USER&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;MySQL的五种时间和日期类型&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;YEAR表示年份：字节数为1，取值范围为“1901——2155”
+DATE表示日期：字节数为4，取值范围为“1000-01-01——9999-12-31”
+TIME表示时间：字节数为3，取值范围为“
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://wisdombud.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="date" scheme="http://wisdombud.github.io/tags/date/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SSH</title>
     <link href="http://wisdombud.github.io/2016/03/24/SSH%205W%E5%AD%A6%E4%B9%A0/"/>
     <id>http://wisdombud.github.io/2016/03/24/SSH 5W学习/</id>
     <published>2016-03-24T06:28:01.102Z</published>
-    <updated>2016-03-24T06:55:26.762Z</updated>
+    <updated>2016-03-24T07:05:17.328Z</updated>
     
     <content type="html">&lt;h2&gt;what&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;SSH的英文全称为Secure Shell，是IETF（Internet Engineering Task Force）的Network Working Group所制定的一族协议，其目的是要在非安全网络上提供安全的远程登录和其他安全网络服务。 我们可以简单理解为：Rlogin和Telnet等的替代方案。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;1.SSH主要的三个协议&lt;/h3&gt;
-&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;传输层协议:通过服务器认证,数据机密性,信息完整性等支持&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
 &lt;li&gt;用户认证协议:为服务器提供客户端的身份鉴别&lt;/li&gt;
 &lt;li&gt;连接协议:将加密的信息隧道复用成若干个逻辑通道,提供给更高层的应用协议使用;各种高层应用协议可以相对独立于SSH基本体系之外,并依靠这个基本框架,通过连接协议使用SSH的安全机制.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;2.SSH安全验证级别&lt;/h3&gt;
-&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;基于口令的安全验证:只要你知道自己的账号和口令,就可以登录到远程主机.所有传输的数据都会被加密,但是不能保证你正在连接的服务器就是你想要连接的服务器,有可能是冒充的&amp;quot;中间人&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
 &lt;li&gt;基于密匙的安全验证:
 &lt;ul&gt;
 &lt;li&gt;现为自己创建一对密匙,并把公匙放在需要访问的服务器上&lt;/li&gt;
@@ -53,23 +420,30 @@
 &lt;blockquote&gt;
 &lt;p&gt;实现ＳＳＨ安全连接，服务器端和客户端要经理五个阶段：&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;版本协商阶段&lt;/strong&gt;：SSH目前有SSH1和SSH2两个版本,双发通过版本协商确定使用的版本.(本阶段服务器会打开22端口,等待客户端连接;本阶段的报文都是通过明文方式传输)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;密钥和算法协商阶段&lt;/strong&gt;:双方根据本端和对端支持的算法,协商最终使用的算法&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;认证阶段&lt;/strong&gt;:SSH客户端向服务器端发起认证请求,服务器端对客户端进行认证&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;会话请求阶段&lt;/strong&gt;:认证通过后,客户端想服务器端发起会话请求&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;交互会话阶段&lt;/strong&gt;:会话请求通过后,服务器端和客户端进行信息的交互.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;why&lt;/h2&gt;
-&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
 &lt;p&gt;传统的网络服务程序,如ftp/pop/telnet在网络传输的时候都会用明文传送口令和数据,所以在本质上都是不安全的.这些服务器的安全验证方式容易受到&amp;quot;中间人&amp;quot;方式的攻击.
 &amp;quot;中间人&amp;quot;攻击方式--即&amp;quot;中间人&amp;quot;冒充真正的服务器接受你发送给服务器的数据,然后再冒充你把数据传给真正的服务器.服务器和你之间的数据传送很容易被中间人做一些手脚.
 而通过使用ssh,你可以吧所有传输的数据进行加密,避免了&amp;quot;中间人&amp;quot;攻击方式以及DNS欺骗和IP欺骗.另外,使用SSH时传输的数据是经过压缩的,所以可以加快传输的速度.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3&gt;where&lt;/h3&gt;
-&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;首先,最常见的应用就是通过SSH登录到远方的机器执行你想要进行的工作和命令.(SSH在不安全的网路通讯环境中可以通过很强的验证机制和非常安全的通讯环境.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
 &lt;li&gt;其次,通过使用SSH可以本地主机和远程服务器之间是指&amp;quot;加密通道&amp;quot;(SSH的加密通多是通过&amp;quot;端口转发&amp;quot;实现的,你可以在本地端口(没有用到的)和在远程服务器上运行某个服务的端口之间建立&amp;quot;加密通道&amp;quot;.然后只要连接到本地端口.所有对本地端口的请求都被SSH加密并且转发到远程服务器的端口.当然只有远程服务器上运行SSH服务器软件的时候&amp;quot;加密通道&amp;quot;才能工作)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;how&lt;/h3&gt;
@@ -103,7 +477,7 @@ http://blog.csdn.net/oncoding/article/details/4365062&lt;/p&gt;
     <link href="http://wisdombud.github.io/2016/03/24/SQL%20JOIN%20%E8%BF%9E%E6%8E%A5/"/>
     <id>http://wisdombud.github.io/2016/03/24/SQL JOIN 连接/</id>
     <published>2016-03-24T06:28:01.097Z</published>
-    <updated>2016-03-24T06:56:43.044Z</updated>
+    <updated>2016-03-24T07:06:26.414Z</updated>
     
     <content type="html">&lt;h2&gt;1.什么是join(连接)&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -358,10 +732,10 @@ http://blog.csdn.net/oncoding/article/details/4365062&lt;/p&gt;
 &lt;p&gt;可以看出,我们可以看一下3.2里左连接语句的执行结果,然后在加上这个where语句的限制,正好查询结果能够对上,说明where语句是对left join的结果集进行操作的.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;4相关知识点连接:&lt;/h2&gt;
-&lt;p&gt;1.&lt;a href=&quot;http://blog.csdn.net/jiuqiyuliang/article/details/10474221&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;详解SQL Server连接（内连接、外连接、交叉连接）&lt;/a&gt;
-2.&lt;a href=&quot;http://blog.csdn.net/jklfjsdj79hiofo/article/details/40399265&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MySQL Full Join的实现&lt;/a&gt;
-3.&lt;a href=&quot;http://blog.csdn.net/killerggf/article/details/6216102&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQL的内连接与外连接&lt;/a&gt;
-4.&lt;a href=&quot;http://www.xue163.com/wenba/328/3286407.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQL左右连接中的on and和on where的区别&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;1.&lt;a href=&quot;http://blog.csdn.net/jiuqiyuliang/article/details/10474221&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;详解SQL Server连接（内连接、外连接、交叉连接）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.&lt;a href=&quot;http://blog.csdn.net/jklfjsdj79hiofo/article/details/40399265&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MySQL Full Join的实现&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3.&lt;a href=&quot;http://blog.csdn.net/killerggf/article/details/6216102&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQL的内连接与外连接&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;4.&lt;a href=&quot;http://www.xue163.com/wenba/328/3286407.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQL左右连接中的on and和on where的区别&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -713,172 +1087,6 @@ index.html是根目录下的一种资源&lt;/p&gt;
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://wisdombud.github.io/2016/03/24/MySQL%E7%9A%84%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F/"/>
-    <id>http://wisdombud.github.io/2016/03/24/MySQL的日期格式/</id>
-    <published>2016-03-24T06:16:31.084Z</published>
-    <updated>2016-03-24T06:16:31.572Z</updated>
-    
-    <content type="html">&lt;h1&gt;MySQL的日期格式&lt;/h1&gt;
-&lt;p&gt;标签（空格分隔）： 学习内容&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;[toc]
-##MySQL的五种时间和日期类型&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;YEAR表示年份：字节数为1，取值范围为“1901——2155”
-DATE表示日期：字节数为4，取值范围为“1000-01-01——9999-12-31”
-TIME表示时间：字节数为3，取值范围为“-838:59:59——838:59:59”
-DATETIME和TIMESTAMP表示日期和时间
-DATETIME：字节数为8，取值范围为“1000-01-01 00:00:00——9999-12-31 23:59:59”
-TIMESTAMP，字节数为4，取值范围为“19700101080001——20380119111407”
-##给各种时间日期类型赋值&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给YEAR赋值有3种方式
-&lt;em&gt;方式一：&lt;/em&gt;
-直接插入4位字符串(&amp;quot;1998&amp;quot;)或者4位数字(1998)
-&lt;em&gt;方式二：&lt;/em&gt;
-插入两位字符串(&amp;quot;04&amp;quot;)
-如果范围是&amp;quot;00&amp;quot;-&amp;quot;69&amp;quot;,则相当于插入&amp;quot;2000&amp;quot;-&amp;quot;2069&amp;quot;
-如果范围是&amp;quot;70&amp;quot;-&amp;quot;99&amp;quot;,则相当于插入&amp;quot;1970&amp;quot;-&amp;quot;1999&amp;quot;
-&lt;strong&gt;注：&amp;quot;0&amp;quot;和&amp;quot;00&amp;quot;的效果一样都表示2000年&lt;/strong&gt;
-&lt;em&gt;方式三：&lt;/em&gt;
-插入两位数字(90)
-插入数字和插入字符的区别在于，插入一位0表示的不是2000年，而是0000.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给TIME赋值
-&lt;strong&gt;TIME类型表示为“时：分：秒”，尽管小时范围一般是0~23，但是为了表示某些特殊时间间隔，MySQL将TIME的小时范围扩发了，而且支持负值。&lt;/strong&gt;
-标准格式是&amp;quot;HH：MM：SS&amp;quot;,但是不一定是这种格式,可以是&amp;quot;D HH：MM：SS&amp;quot;、&amp;quot;HH：MM&amp;quot;、&amp;quot;SS&amp;quot;、&amp;quot;D HH&amp;quot;、&amp;quot;D HH：MM&amp;quot;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;D HH：MM：SS&amp;quot;相当于是&amp;quot;（D*24+HH）：MM：SS&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eg：插入的是&amp;quot;2 23:50:50&amp;quot;=&amp;quot;71:50:50&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;HH：MM&amp;quot; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eg:&amp;quot;11:25&amp;quot;=&amp;quot;11:25:00&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;SS&amp;quot; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eg:&amp;quot;30&amp;quot;=&amp;quot;00:00:30&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;3&quot;&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给DATE赋值
-标准格式是&amp;quot;YYYY-MM-DD&amp;quot;、其他的还有&amp;quot;YYYY@MM@DD&amp;quot;、&amp;quot;YYYY.MM.DD&amp;quot;等
-还可以用&amp;quot;YY-MM-DD&amp;quot;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;4&quot;&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给DATETIME赋值
-标准格式为&amp;quot;YYYY-MM-DD HH：MM：SS&amp;quot;
-具体赋值方法与上面各种类型的方法相似。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;5&quot;&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给TIMESTAMP赋值
-TIMESTAMP的取值范围比较小，没有DATETIME的取值范围大，因此输入值时一定要保证在TIMESTAMP的范围之内。它的插入也与插入其他日期和时间数据类型类似。
-&lt;strong&gt;插入当前时间
-第一，可以使用CURRENT_TIMESTAMP；
-第二，输入NULL，系统自动输入当前的TIMESTAMP；
-第三，无任何输入，系统自动输入当前的TIMESTAMP。
-另外有很特殊的一点：TIMESTAMP的数值是与时区相关。&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;6&quot;&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当 MySQL遇到一个日期或时间类型的超出范围或对于该类型不合法的值时，它将该值转换为该类的&amp;quot;零&amp;quot;值。
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;列类型:&amp;quot;零&amp;quot;值&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DATETIME:&amp;apos;0000-00-00 00:00:00&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DATE:&amp;apos;0000-00-00&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TIMESTAMP:00000000000000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TIME:&amp;apos;00:00:00&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;YEAR:0000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;##datetime和timestamp的区别
-datetime&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;占用8个字节&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;允许为空值，可以自定义值，系统不会自动修改其值。&lt;/li&gt;
-&lt;li&gt;实际格式储存&lt;/li&gt;
-&lt;li&gt;与时区无关&lt;/li&gt;
-&lt;li&gt;不可以设定默认值，所以在不允许为空值的情况下，必须手动指定datetime字段的值才可以成功插入数据。&lt;/li&gt;
-&lt;li&gt;可以在指定datetime字段的值的时候使用now()变量来自动插入系统的当前时间。
-结论：datetime类型适合用来记录数据的原始的创建时间，因为无论你怎么更改记录中其他字段的值，datetime字段的值都不会改变，除非你手动更改它。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;timestamp&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;占用4个字节&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;允许为空值，但是不可以自定义值，所以为空值时没有任何意义。&lt;/li&gt;
-&lt;li&gt;TIMESTAMP值不能早于1970或晚于2037。这说明一个日期，例如&#39;1968-01-01&#39;，虽然对于DATETIME或DATE值是有效的，但对于TIMESTAMP值却无效，如果分配给这样一个对象将被转换为0。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;ol start=&quot;4&quot;&gt;
-&lt;li&gt;值以UTC格式保存&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;5&quot;&gt;
-&lt;li&gt;时区转化 ，存储时对当前的时区进行转换，检索时再转换回当前的时区。&lt;/li&gt;
-&lt;li&gt;默认值为CURRENT_TIMESTAMP()，其实也就是当前的系统时间。&lt;/li&gt;
-&lt;li&gt;数据库会自动修改其值，所以在插入记录时不需要指定timestamp字段的名称和timestamp字段的值，你只需要在设计表的时候添加一个timestamp字段即可，插入后该字段的值会自动变为当前系统时间。&lt;/li&gt;
-&lt;li&gt;若是设置了&lt;strong&gt;ON UPDATE CURRENT_TIMESTAMP&lt;/strong&gt;以后任何时间修改表中的记录时，对应记录的timestamp值会自动被更新为当前的系统时间。
-结论：timestamp类型适合用来记录数据的最后修改时间，因为只要你更改了记录中其他字段的值，timestamp字段的值都会被自动更新。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;##timestamp的默认值&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;自动UPDATE 和INSERT 到当前的时间
-&#39;CREATE_TIME&#39; timestamp NOT NULL DEFAULT &lt;strong&gt;CURRENT_TIMESTAMP&lt;/strong&gt;  &lt;strong&gt;ON UPDATE CURRENT_TIMESTAMP&lt;/strong&gt;&lt;br&gt;
-自动INSERT 到当前时间，不过不自动UPDATE
-&#39;CREATE_TIME&#39; timestamp NOT NULL DEFAULT &lt;strong&gt;CURRENT_TIMESTAMP&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;CURRENT_TIMESTAMP&lt;/strong&gt;
-系统时间
-&lt;strong&gt;ON UPDATE CURRENT_TIMESTAMP&lt;/strong&gt;
-修改现有记录的时候都对这个数据列刷新&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/huangzhen/archive/2011/08/21/2147938.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;timestamp的默认值&lt;/a&gt;
-&lt;a href=&quot;http://www.jb51.net/article/31872.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;timestamp的默认值2&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;##慧聘中的实际应用
-拿慧聘项目职位表为例：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;我们需要记录职位的创建时间和最新的更新时间。创建时间只在insert的时候新建一个时间戳，而更新时间则是，只要有对这条数据的更新操作，就更改时间戳。
-timestamp的ON UPDATE CURRENT_TIMESTAMP属性，会让数据库来帮我们在update的时候自动更新时间。
-注意：图形化界面来创建表的时候，默认值都是null，不是CURRENT_TIMESTAMP。就是说数据库不会自动在insert的时候，插入当前时间戳。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrnr1.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160308185547.png&quot; alt=&quot;cmd-markdown-logo&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;图形化界面的自动update，需要勾选上图中的 根据当前时间戳更新选项&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;##Mysql查看表的创建sql&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;SHOW CREATE TABLE  BASE_USER&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1&gt;MySQL的日期格式&lt;/h1&gt;
-&lt;p&gt;标签（空格分隔）： 学习内容&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;[toc]
-##MySQL的五种时间和日期类型&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;YEAR表示年份：字节数为1，取值范围为“1901——2155”
-DATE表示日期：字节数为
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>端口映射</title>
     <link href="http://wisdombud.github.io/2016/03/24/%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/"/>
     <id>http://wisdombud.github.io/2016/03/24/端口映射/</id>
@@ -1106,7 +1314,7 @@ CMD可以在function内加载.&lt;/p&gt;
     <link href="http://wisdombud.github.io/2016/03/24/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E6%80%BB%E7%BB%93/"/>
     <id>http://wisdombud.github.io/2016/03/24/前端自动化构建工具总结/</id>
     <published>2016-03-24T06:08:57.783Z</published>
-    <updated>2016-03-24T06:11:37.608Z</updated>
+    <updated>2016-03-24T07:08:10.140Z</updated>
     
     <content type="html">&lt;h2&gt;什么是Gulp&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1525,204 +1733,6 @@ List&amp;lt; String&amp;gt;、List&amp;lt; Char&amp;gt; 等都可以。&lt;/p&gt
     
     
       <category term="通配符" scheme="http://wisdombud.github.io/tags/%E9%80%9A%E9%85%8D%E7%AC%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java 注解</title>
-    <link href="http://wisdombud.github.io/2016/03/16/java%20%E6%B3%A8%E8%A7%A3/"/>
-    <id>http://wisdombud.github.io/2016/03/16/java 注解/</id>
-    <published>2016-03-16T08:38:35.000Z</published>
-    <updated>2016-03-24T06:19:47.555Z</updated>
-    
-    <content type="html">&lt;h2&gt;注解是什么&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Java提供了一种原程序中的元素关联任何信息和任何元数据的途径和方法。
-注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;注解的作用&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;注解的作用：分三种。源码/编译/运行时
-编写文档：通过代码里标识的元数据生成文档
-代码分析：通过代码里标识的元数据对代码进行分析
-编译检查：通过代码里标识的元数据让编译器能够实现基本的编译检查&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;注解的分类&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;根据注解在程序的哪个阶段分类
-源码注解：注解只在源码中存在，编译成.class文件就不存在了
-编译时注解：注解在源码和.class文件中都存在
-运行时注解：在运行阶段还会起作用，甚至会影响运行逻辑&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;根据来源分类：
-JDK自带的注解
-常见的第三方注解
-自定义注解&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;java中常见的注解&lt;/h2&gt;
-&lt;p&gt;jdk自带注解&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;@Override  覆盖了父类的方法。 以后在见到的时候，可以直接相信这个类。
-@Deprecated   父类有一个方法，已经过时，但是为了兼容以前的类。加这个注释。
-@Suppvisewarnings
-当父类的方法加了@Deprecated 之后，子类在引用的时候会有警告。加注释3。忽略警告。
-这三个都是修饰方法的。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;常见第三方注解(Spring) ：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;@Autowired    可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作
-@Service   一般用在service层
-@Repository  一般用在dao层&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;元注解&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;元注解的作用就是负责注解其他注解。&lt;/li&gt;
-&lt;li&gt;元注解包括：&lt;br&gt;
-@Target 注解的作用域
-@Retention 注解的生命周期
-@Inherited  标识性的，表示这个注解允许子类继承的
-@Documented 生成javadoc时会包含注解。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;@Target 注解的作用域&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;@Target  说明了Annotation所修饰的对象范围，在Annotation类型的声明中使用了target可更加明晰其修饰的目标。
-作用：用于描述注解的使用范围（即：被描述的注解可以用在什么地方）
-@Target的取值(ElementType)有：
-	CONSTRUCTOR:用于描述构造器
-	FIELD:用于描述域
-	LOCAL_VARIABLE:用于描述局部变量
-	METHOD:用于描述方法
-	PACKAGE:用于描述包
-	PARAMETER:用于描述参数
-	TYPE:用于描述类、接口(包括注解类型) 或enum声明&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;@Retention 注解的生命周期&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;@Retention  定义了该Annotation被保留的时间长短（可以在源码上、.class文件中、）
-作用：表示需要在什么级别保存该注释信息，用于描述注解的生命周期（即：被描述的注解在什么范围内有效）
-@Retention的取值（RetentionPoicy）有：
-	SOURCE:在源文件中有效（即源文件保留）CLASS:在class文件中有效（即class保留）RUNTIME:在运行时有效（即运行时保留）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;@Inherited  标识性的，表示这个注解允许子类继承的&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;@Inherited 元注解是一个标记注解，@Inherited阐述了某个被标注的类型是被继承的。如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类。
-	@Inherited annotation类型是被标注过的class的子类所继承。类并不从它所实现的接口继承annotation，方法并不从它所重载的方法继承annotation。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;@Documented 生成javadoc时会包含注解。&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;@Documented用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，因此可以被例如javadoc此类的工具文档化。Documented是一个标记注解，没有成员。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;自定义注解&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;public @interface Description{
-String dese();
-String author();
-int age() default 18;
-}&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;使用@interface关键字定义注解&lt;/li&gt;
-&lt;li&gt;方法。成员以无参、无异常的方式声明。&lt;/li&gt;
-&lt;li&gt;可以给成员指定默认值。成员的类型是受到限制的。包括java的原始类型和String、Class、Annotation、Enumeration&lt;/li&gt;
-&lt;li&gt;如果注解只有一个成员变量，则成员取名为value()，在使用使用时可以忽略成员名和赋值号。&lt;/li&gt;
-&lt;li&gt;注解类可以没有成员，没有成员的注解成为标识注解。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;关于自定义注解的使用，希望大家再学习学习
-使用自定义注解
-@&amp;lt;注解名&amp;gt;（&amp;lt;成员名1&amp;gt;=&amp;lt;成员值1&amp;gt;，&amp;lt;成员名2&amp;gt;=&amp;lt;成员值2&amp;gt;，...）&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/peida/archive/2013/04/24/3036689.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考文章&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2&gt;注解是什么&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Java提供了一种原程序中的元素关联任何信息和任何元数据的途径和方法。
-注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明
-    
-    </summary>
-    
-      <category term="java" scheme="http://wisdombud.github.io/categories/java/"/>
-    
-    
-      <category term="Annotation" scheme="http://wisdombud.github.io/tags/Annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>meta keywords</title>
-    <link href="http://wisdombud.github.io/2016/03/15/meta%20keywords/"/>
-    <id>http://wisdombud.github.io/2016/03/15/meta keywords/</id>
-    <published>2016-03-15T08:38:35.000Z</published>
-    <updated>2016-03-24T06:57:56.161Z</updated>
-    
-    <content type="html">&lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
-2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
-3.不要给网页定义过多的关键词，最好保持在10个以下，过多的关键词，搜索引擎将忽略；
-4不要给网页定义与网页描述内容无关的关键词；
-5.由于网页制作者滥用keywords(提供过多的关键词或者提供与网页无关的关键词)，导致目前常用的搜索引擎降低了keywords的重要性。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;keyword设计的初衷是为搜索引擎提供分类参考,但是因为以前可以用更多的关键字来获取更好的搜索引擎排名,所以导致了现在很多搜索引擎将meta的keyword属性看的并不是很重要,甚至特意的避开keyword.
-&lt;a href=&quot;http://www.chinaz.com/web/2011/1019/214529.shtml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于慎用meta keyword的建议的建议&lt;/a&gt;
-如果必须要用keyword的时候，关键字的个数尽量不要太多，关键字太多时常常被搜索引起忽略，所以建议在使用keyword的时候尽量不要太多
-关于meta标签,除了比标识网页关键字之外,还可以用来标识网页的内容,网页重定向等功能.
-&lt;a href=&quot;http://www.haorooms.com/post/html_meta_ds&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;meta标签的补充使用&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
-2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
-
-    
-    </summary>
-    
-      <category term="web" scheme="http://wisdombud.github.io/categories/web/"/>
-    
-    
-      <category term="meta" scheme="http://wisdombud.github.io/tags/meta/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>局域网传输速率的限制</title>
-    <link href="http://wisdombud.github.io/2016/03/15/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E9%99%90%E5%88%B6/"/>
-    <id>http://wisdombud.github.io/2016/03/15/局域网传输速率的限制/</id>
-    <published>2016-03-15T08:38:35.000Z</published>
-    <updated>2016-03-24T06:57:19.937Z</updated>
-    
-    <content type="html">&lt;p&gt;####1.网络传输单位和存储单位的区别&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输和文件存储的单位不同,因为1Byte=8bit,所以理论上我们所说的100M传输速度的网络,转换成文件存储可以达到12.5MByte/s.
-当然12.5MByte/s只是一个理论值,在正常的网络传输受到其网络传输环境、网卡接口限制、硬盘读写速率以及CPU等多方面因素，实际传输的速度并不会达到理论值。在百兆的局域网中，通常在10MByte/s左右.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;####2.网卡的限制&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;按照传输速率可以将网卡分为10Mbps、100Mbps、10/100Mbps自适应网卡、1000Mbps以及10GMbps网卡,大多数电脑都采用100Mbps和10/100Mbps的网卡,所以也根据网卡的限制,理论上局域网的最高传输速度只能达到12.5M/s.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;####3.双绞线的限制&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;双绞线常见的有三类、五类、超五类和六类线，三类线已经逐渐的被五类线取代，六类线适用于1Gbps以上的传输,日常构建局域网最常用的就是五类(100M)双绞线,理论值同样是12.5M/s.&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;####1.网络传输单位和存储单位的区别&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输
-    
-    </summary>
-    
-      <category term="常识" scheme="http://wisdombud.github.io/categories/%E5%B8%B8%E8%AF%86/"/>
-    
-    
-      <category term="net" scheme="http://wisdombud.github.io/tags/net/"/>
     
   </entry>
   

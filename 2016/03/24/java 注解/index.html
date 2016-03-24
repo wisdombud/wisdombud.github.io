@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>局域网传输速率的限制 | 技术博客</title>
+  <title>java 注解 | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="局域网传输速率的限制"/>
+  <meta property="og:title" content="java 注解"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -216,35 +216,119 @@
     <header>
       
   
-    <h1 class="title">局域网传输速率的限制</h1>
+    <h1 class="title">java 注解</h1>
   
 
       
         <div class="icon"></div>
         <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
            <span style=" display: block;  margin: 10px 0; ">
- 	时间：<time style="display:inline" datetime="2016-03-15T08:38:35.000Z">2016-03-15</time></span>
+ 	时间：<time style="display:inline" datetime="2016-03-24T08:38:35.000Z">2016-03-24</time></span>
         
-          <span style=" display: block;  margin: 10px 0; ">作者：big-bear</span>
+          <span style=" display: block;  margin: 10px 0; ">作者：走吧走吧</span>
         
       
 
     </header>
     <div class="entry">
       
-        <p>####1.网络传输单位和存储单位的区别</p>
+        <h2>注解是什么</h2>
 <blockquote>
-<p>平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输和文件存储的单位不同,因为1Byte=8bit,所以理论上我们所说的100M传输速度的网络,转换成文件存储可以达到12.5MByte/s.
-当然12.5MByte/s只是一个理论值,在正常的网络传输受到其网络传输环境、网卡接口限制、硬盘读写速率以及CPU等多方面因素，实际传输的速度并不会达到理论值。在百兆的局域网中，通常在10MByte/s左右.</p>
+<p>Java提供了一种原程序中的元素关联任何信息和任何元数据的途径和方法。
+注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。</p>
 </blockquote>
-<p>####2.网卡的限制</p>
+<h2>注解的作用</h2>
 <blockquote>
-<p>按照传输速率可以将网卡分为10Mbps、100Mbps、10/100Mbps自适应网卡、1000Mbps以及10GMbps网卡,大多数电脑都采用100Mbps和10/100Mbps的网卡,所以也根据网卡的限制,理论上局域网的最高传输速度只能达到12.5M/s.</p>
+<p>注解的作用：分三种。源码/编译/运行时
+编写文档：通过代码里标识的元数据生成文档
+代码分析：通过代码里标识的元数据对代码进行分析
+编译检查：通过代码里标识的元数据让编译器能够实现基本的编译检查</p>
 </blockquote>
-<p>####3.双绞线的限制</p>
+<h2>注解的分类</h2>
 <blockquote>
-<p>双绞线常见的有三类、五类、超五类和六类线，三类线已经逐渐的被五类线取代，六类线适用于1Gbps以上的传输,日常构建局域网最常用的就是五类(100M)双绞线,理论值同样是12.5M/s.</p>
+<p>根据注解在程序的哪个阶段分类
+源码注解：注解只在源码中存在，编译成.class文件就不存在了
+编译时注解：注解在源码和.class文件中都存在
+运行时注解：在运行阶段还会起作用，甚至会影响运行逻辑</p>
 </blockquote>
+<blockquote>
+<p>根据来源分类：
+JDK自带的注解
+常见的第三方注解
+自定义注解</p>
+</blockquote>
+<h2>java中常见的注解</h2>
+<p>jdk自带注解</p>
+<blockquote>
+<p>@Override  覆盖了父类的方法。 以后在见到的时候，可以直接相信这个类。
+@Deprecated   父类有一个方法，已经过时，但是为了兼容以前的类。加这个注释。
+@Suppvisewarnings
+当父类的方法加了@Deprecated 之后，子类在引用的时候会有警告。加注释3。忽略警告。
+这三个都是修饰方法的。</p>
+</blockquote>
+<p>常见第三方注解(Spring) ：</p>
+<blockquote>
+<p>@Autowired    可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作
+@Service   一般用在service层
+@Repository  一般用在dao层</p>
+</blockquote>
+<h2>元注解</h2>
+<ul>
+<li>元注解的作用就是负责注解其他注解。</li>
+<li>元注解包括：<br>
+@Target 注解的作用域
+@Retention 注解的生命周期
+@Inherited  标识性的，表示这个注解允许子类继承的
+@Documented 生成javadoc时会包含注解。</li>
+</ul>
+<h3>@Target 注解的作用域</h3>
+<blockquote>
+<p>@Target  说明了Annotation所修饰的对象范围，在Annotation类型的声明中使用了target可更加明晰其修饰的目标。
+作用：用于描述注解的使用范围（即：被描述的注解可以用在什么地方）
+@Target的取值(ElementType)有：
+	CONSTRUCTOR:用于描述构造器
+	FIELD:用于描述域
+	LOCAL_VARIABLE:用于描述局部变量
+	METHOD:用于描述方法
+	PACKAGE:用于描述包
+	PARAMETER:用于描述参数
+	TYPE:用于描述类、接口(包括注解类型) 或enum声明</p>
+</blockquote>
+<h3>@Retention 注解的生命周期</h3>
+<blockquote>
+<p>@Retention  定义了该Annotation被保留的时间长短（可以在源码上、.class文件中、）
+作用：表示需要在什么级别保存该注释信息，用于描述注解的生命周期（即：被描述的注解在什么范围内有效）
+@Retention的取值（RetentionPoicy）有：
+	SOURCE:在源文件中有效（即源文件保留）CLASS:在class文件中有效（即class保留）RUNTIME:在运行时有效（即运行时保留）</p>
+</blockquote>
+<h3>@Inherited  标识性的，表示这个注解允许子类继承的</h3>
+<blockquote>
+<p>@Inherited 元注解是一个标记注解，@Inherited阐述了某个被标注的类型是被继承的。如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类。
+	@Inherited annotation类型是被标注过的class的子类所继承。类并不从它所实现的接口继承annotation，方法并不从它所重载的方法继承annotation。</p>
+</blockquote>
+<h3>@Documented 生成javadoc时会包含注解。</h3>
+<blockquote>
+<p>@Documented用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，因此可以被例如javadoc此类的工具文档化。Documented是一个标记注解，没有成员。</p>
+</blockquote>
+<h2>自定义注解</h2>
+<blockquote>
+<p>public @interface Description{
+String dese();
+String author();
+int age() default 18;
+}</p>
+</blockquote>
+<ul>
+<li>使用@interface关键字定义注解</li>
+<li>方法。成员以无参、无异常的方式声明。</li>
+<li>可以给成员指定默认值。成员的类型是受到限制的。包括java的原始类型和String、Class、Annotation、Enumeration</li>
+<li>如果注解只有一个成员变量，则成员取名为value()，在使用使用时可以忽略成员名和赋值号。</li>
+<li>注解类可以没有成员，没有成员的注解成为标识注解。</li>
+</ul>
+<p>关于自定义注解的使用，希望大家再学习学习
+使用自定义注解
+@&lt;注解名&gt;（&lt;成员名1&gt;=&lt;成员值1&gt;，&lt;成员名2&gt;=&lt;成员值2&gt;，...）</p>
+<p><a href="http://www.cnblogs.com/peida/archive/2013/04/24/3036689.html" target="_blank" rel="external">参考文章</a></p>
 
       
     </div>
@@ -253,13 +337,13 @@
         
   
   <div class="categories">
-    <a href="/categories/常识/">常识</a>
+    <a href="/categories/java/">java</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/net/">net</a>
+    <a href="/tags/Annotation/">Annotation</a>
   </div>
 
 <!-- Baidu Button BEGIN -->
@@ -287,10 +371,10 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
-    <a href="/2016/03/15/meta keywords/" class="alignleft prev" >上一页</a>
+    <a href="/2016/03/24/局域网传输速率的限制/" class="alignleft prev" >上一页</a>
     
     
-    <a href="/2016/03/15/java的各种O/" class="alignright next" >下一页</a>
+    <a href="/2016/03/24/meta keywords/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -300,7 +384,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <section id="comment">
 
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-局域网传输速率的限制" data-title="局域网传输速率的限制" data-url="http://wisdombud.github.io/2016/03/15/局域网传输速率的限制/"></div>
+  <div class="ds-thread" data-thread-key="post-java 注解" data-title="java 注解" data-url="http://wisdombud.github.io/2016/03/24/java 注解/"></div>
 
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
@@ -374,7 +458,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   
     <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
   
-    <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+    <li><a href="/categories/数据库/">数据库</a><small>2</small></li>
   
   </ul>
 </div>
@@ -384,7 +468,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/AMD/" style="font-size: 10px;">AMD</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javacript/" style="font-size: 20px;">javacript</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/net/" style="font-size: 10px;">net</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/提问/" style="font-size: 10px;">提问</a> <a href="/tags/端口映射/" style="font-size: 10px;">端口映射</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a>
+    <a href="/tags/AMD/" style="font-size: 10px;">AMD</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/date/" style="font-size: 10px;">date</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javacript/" style="font-size: 20px;">javacript</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/net/" style="font-size: 10px;">net</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/提问/" style="font-size: 10px;">提问</a> <a href="/tags/端口映射/" style="font-size: 10px;">端口映射</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a>
   </div>
 </div>
 
