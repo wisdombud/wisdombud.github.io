@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端自动化构建工具--Gulp | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="前端自动化构建工具--Gulp"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">前端自动化构建工具--Gulp</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-03-24T06:08:57.783Z">2016-03-24</time></span>
+        
+          <span style=" display: block;  margin: 10px 0; ">作者：梧桐</span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <h2>什么是Gulp</h2>
+<blockquote>
+<p>Gulp是前端开发过程中对代码进行构建的工具,
+自动化地完成 javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。</p>
+</blockquote>
+<h2>Gulp用法</h2>
+<blockquote>
+<p>1.1 安装node.js
+<a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a>
+1.2 全局安装Gulp
+<code>npm install gulp -g</code>
+1.3 新建package.json文件，项目安装Gulp
+<code>npm init.2全局安装</code>
+<code>npm install gulp --save-dev</code>
+1.4 安装Gulp插件
+<code>npm install gulp-uglify --save-dev</code>
+1.5 新建gulpfile.js文件
+1.6 编写gulpfile.js内容
+<img src="http://ww1.sinaimg.cn/mw690/d3101915gw1f15jm1kseij21ao0skdp4.jpg" alt=""></p>
+</blockquote>
+<h2>Gulp的API</h2>
+<p><a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">Gulp中文网</a></p>
+<h3>1.1 gulp.src(globs[, options])</h3>
+<blockquote>
+<p>src方法是指定需要处理的源文件的路径;
+globs同watch方法；
+options(可选)：类型为Object，有3个属性buffer、read、base；
+options.buffer(Boolean)：默认：true,设置为false，将返回file.content的流并且不缓冲文件，处理大文件时非常有用；
+options.read(Boolean)：默认：true 设置false，将不执行读取文件操作，返回null；
+options.base(String)：设置输出路径以某个路径的某个组成部分为基础向后拼接</p>
+</blockquote>
+<h3>1.2 gulp.dest</h3>
+<blockquote>
+<p>dest方法是指定处理完后文件输出的路径
+path(必填)：类型为String or Function 指定文件输出路径，
+或者定义函数返回文件输出路径亦可；</p>
+</blockquote>
+<h3>1.3 gulp.task(name[, deps], fn)</h3>
+<blockquote>
+<p>task定义一个gulp任务。
+name(必填)：类型为String， 指定任务的名称；
+deps(可选)：类型为StringArray，该任务依赖的任务；
+fn(必填)：类型为Function，该任务调用的插件操作。</p>
+</blockquote>
+<h3>1.4 gulp.watch(glob [, opts], tasks)</h3>
+<blockquote>
+<p>watch用于监听文件变化，文件一修改就会执行指定的任务。
+glob(必填):需要处理的源文件匹配符路径,类型为String或StringArray；
+opts(可选):类型为Object，
+tasks(必填)：类型为StringArray，需要执行的任务的名称数组。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">        cssmin = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</span><br><span class="line">        clean = <span class="built_in">require</span>(<span class="string">'gulp-clean'</span>),</span><br><span class="line">        rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),</span><br><span class="line">        rev = <span class="built_in">require</span>(<span class="string">'gulp-rev'</span>),</span><br><span class="line">        collector = <span class="built_in">require</span>(<span class="string">'gulp-rev-collector'</span>),</span><br><span class="line">        uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line">    <span class="comment">//清除</span></span><br><span class="line">    gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> gulp.src(<span class="string">'dist'</span>, &#123;</span><br><span class="line">            read: <span class="literal">false</span></span><br><span class="line">        &#125;).pipe(clean());</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//css压缩</span></span><br><span class="line">    gulp.task(<span class="string">'testCssmin'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        gulp.src([<span class="string">'css/bootstrap.css'</span>,<span class="string">'css/main.css'</span>, <span class="string">'css/form.css'</span>, <span class="string">'css/form.css'</span>,<span class="string">'css/it-industry.css'</span>])</span><br><span class="line">            .pipe(cssmin())</span><br><span class="line">            .pipe(rename(<span class="function"><span class="keyword">function</span> (<span class="params">path</span>)</span>&#123;</span><br><span class="line">                path.basename += <span class="string">'.min'</span>;</span><br><span class="line">                path.extname =<span class="string">'.css'</span>;</span><br><span class="line">            &#125;))</span><br><span class="line">            .pipe(rev())</span><br><span class="line">            .pipe(gulp.dest(<span class="string">'dist/css'</span>))</span><br><span class="line">            .pipe(rev.manifest())</span><br><span class="line">            .pipe(gulp.dest(<span class="string">'dist/css'</span>));</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//js压缩</span></span><br><span class="line">    gulp.task(<span class="string">'testJsmin'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//递归遍历js文件夹下所有文件</span></span><br><span class="line">        gulp.src(<span class="string">'js/**/*.js'</span>)</span><br><span class="line">            .pipe(uglify())</span><br><span class="line">            <span class="comment">// .pipe(rev())</span></span><br><span class="line">            <span class="comment">// .pipe(gulp.dest('dist/js'))</span></span><br><span class="line">            <span class="comment">// .pipe(rev.manifest())</span></span><br><span class="line">            .pipe(gulp.dest(<span class="string">'dist/js'</span>));</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//替换路径</span></span><br><span class="line">    gulp.task(<span class="string">'rev'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//- 读取 .json 文件以及需要进行css名替换的文件</span></span><br><span class="line">        gulp.src([<span class="string">'dist/css/rev-manifest.json'</span>, <span class="string">'../WEB-INF/jsp/common/header.jsp'</span>])</span><br><span class="line">            <span class="comment">//- 执行文件内css名的替换</span></span><br><span class="line">            .pipe(collector(&#123;</span><br><span class="line">                replaceReved: <span class="literal">true</span></span><br><span class="line">            &#125;))</span><br><span class="line">             <span class="comment">//- 替换后的文件输出的目录</span></span><br><span class="line">            .pipe(gulp.dest(<span class="string">'../WEB-INF/jsp/common/'</span>));</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//监听</span></span><br><span class="line">    gulp.task(<span class="string">'auto'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 监听文件修改，当文件被修改则执行 testJsmin 任务</span></span><br><span class="line">        gulp.watch(<span class="string">'js/*.js'</span>, [<span class="string">'testJsmin'</span>]);</span><br><span class="line">        <span class="comment">// 监听文件修改，当文件被修改则执行 testCssmin 任务</span></span><br><span class="line">        gulp.watch(<span class="string">'css/*.css'</span>, [<span class="string">'testCssmin'</span>]);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//在命令行直接输入 gulp 回车，</span></span><br><span class="line">    gulp.task(<span class="string">'default'</span>, [<span class="string">'clean'</span>,<span class="string">'testCssmin'</span>, <span class="string">'testJsmin'</span>, <span class="string">'rev'</span>]);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2>Gulp VS Grunt</h2>
+<blockquote>
+<p>优点
+1.1 Gulp比Gruntgulp.task更快，利用Node.js强大的流，通过管道连接，速度更快
+1.2 Gulp遵循代码优于配置策略，维护Gulp更容易，无需写繁杂的配置
+1.3 Gulp的每个插件只完成一个功能
+1.4 Gulp的核心API只有5个，学习成本低
+缺点
+1.1 社区不如Grunt完善，插件不够丰富</p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/工具/">工具</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Gulp/">Gulp</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/03/24/AMD与CMD规范/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/03/21/提问的智慧/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-前端自动化构建工具总结" data-title="前端自动化构建工具--Gulp" data-url="http://wisdombud.github.io/2016/03/24/前端自动化构建工具总结/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
+  
+    <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
+  
+    <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
+  
+    <li><a href="/categories/WEB/">WEB</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>3</small></li>
+  
+    <li><a href="/categories/javacript/">javacript</a><small>3</small></li>
+  
+    <li><a href="/categories/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/scm/">scm</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>1</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/常识/">常识</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/AMD/" style="font-size: 10px;">AMD</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javacript/" style="font-size: 20px;">javacript</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/net/" style="font-size: 10px;">net</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/提问/" style="font-size: 10px;">提问</a> <a href="/tags/端口映射/" style="font-size: 10px;">端口映射</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>

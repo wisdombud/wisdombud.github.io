@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>EOVA简介 | 技术博客</title>
+  <title>SVN的trunk &amp;branch &amp;tags | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="EOVA简介"/>
+  <meta property="og:title" content="SVN的trunk &amp;branch &amp;tags"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -216,57 +216,122 @@
     <header>
       
   
-    <h1 class="title">EOVA简介</h1>
+    <h1 class="title">SVN的trunk &amp;branch &amp;tags</h1>
   
 
       
         <div class="icon"></div>
         <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
            <span style=" display: block;  margin: 10px 0; ">
- 	时间：<time style="display:inline" datetime="2016-03-13T08:38:35.000Z">2016-03-13</time></span>
+ 	时间：<time style="display:inline" datetime="2016-03-24T06:17:43.423Z">2016-03-24</time></span>
+        
+          <span style=" display: block;  margin: 10px 0; ">作者：走吧走吧</span>
         
       
 
     </header>
     <div class="entry">
       
-        <ul>
-<li>Eova 是一个 J2EE 快速开发平台。</li>
-<li>Eova 适用于对 UI 布局和性能没有严苛要求的企业级 WEB 后台管理系统。</li>
-<li>是对Jfinal，easyUI的再次封装</li>
-</ul>
-<h3>EVOA能做什么</h3>
-<ul>
-<li>
-<p>简单表数据的显示，分页，无需代码实现。</p>
-</li>
-<li>
-<p>自定义二级三级菜单，随意DIY。</p>
-</li>
-<li>
-<p>已经实现的权限管理模块，可自定义用户组，及权限。</p>
-</li>
-<li>
-<p>登录已实现（目前没有注册功能），可添加用户。</p>
-</li>
-<li>
-<p>DIY查询。</p>
-</li>
-<li>
-<p>自定义业务（重写业务拦截器）。</p>
-</li>
-</ul>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> public String addBefore(AopContext ac) throws Exception &#123;</span><br><span class="line">      String c = ac.record.get(&quot;kaipiaoAmount&quot;);</span><br><span class="line">      String id = ac.record.getStr(&quot;contractId&quot;);</span><br><span class="line">      String sql = &quot;UPDATE base_contract SET amount=amount-? WHERE id=?;&quot;;</span><br><span class="line">      Db.use(xx.DS_MAIN).update(sql, c, id);</span><br><span class="line">      return super.addBefore(ac);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> java.util.List&lt;Record&gt; list = ac.records;//获取当前所有数据</span><br><span class="line">    for (Record o : list) &#123;</span><br><span class="line">                Integer status = o.get(&quot;status&quot;);</span><br><span class="line">                if (status == 0) &#123;</span><br><span class="line">                    o.set(&quot;status&quot;, &quot;在线&quot;);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    o.set(&quot;status&quot;, &quot;未连接&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>自定义按钮（需要html + BS）。</li>
-<li>简单配置实现文件上传。</li>
-</ul>
-<h3>EVOA的优势</h3>
-<ul>
-<li>减少了代码编写量，简化了开发过程。</li>
-<li>易于上手</li>
-</ul>
-<h3>详细介绍:<a href="http://note.youdao.com/share/?id=e74a3bc10cc195a5a4c79c7257fcce9b&amp;type=note" target="_blank" rel="external">有道云笔记链接</a></h3>
+        <h2>trunk(主干)</h2>
+<pre><code>主干目录, 在SVN中, 代码一般是放置在此.
+</code></pre>
+<h2>branch(分支)</h2>
+<pre><code>Branchs目录,和Trunk目录平级， 新建Branch则放置在Branchs目录下.
+</code></pre>
+<h2>tags</h2>
+<pre><code>tags目录为tag存档目录（软件开发版本的标识，一般情况不允许修改）
+</code></pre>
+<h2>应用场景</h2>
+<pre><code>1)客户提出新需求时, 会修改项目中的部分代码, 而此时又有bug需要修复,
+在trunk中修改bug或者开发新需求时,会影响另一方的工作.
+此时应创建branch, 在不干扰trunk的情况下，和trunk并行开发.
+</code></pre>
+<h2>操作</h2>
+<pre><code>标签和分支的操作原理相同，在此只截图了分支操作。
+在工程目录上右键，依次选择&quot;team&quot; -&gt; &quot;Branch/tag...&quot;，
+在弹出窗口的&quot;To URL&quot;中填入分支的地址， 在这里目标revision选择HEAD revision，
+点击ok分支便建立了。
+
+1.右键 --&gt;team --&gt; 分支/标记
+</code></pre>
+<p><img src="http://ww3.sinaimg.cn/mw690/d3101915gw1ez7hdiv7awj20j50kbdjd.jpg" alt="1"></p>
+<pre><code> 2.选择分支路径, 一般会放在branches目录下
+</code></pre>
+<p><img src="http://ww4.sinaimg.cn/small/d3101915gw1ez7hdjofouj20fq0axq4y.jpg" alt="2"></p>
+<pre><code>3.选择版本号，也可选择工作空间的代码
+</code></pre>
+<p><img src="http://ww3.sinaimg.cn/mw690/d3101915gw1ez7hdkm94hj20fq0axdh4.jpg" alt="3"></p>
+<pre><code>4.注释,可选择直接切换至分支
+</code></pre>
+<p><img src="http://ww2.sinaimg.cn/mw690/d3101915gw1ez7hdmfbx6j20fq0ax401.jpg" alt="4"></p>
+<pre><code>5.可以在仓库的branches文件下看到新建的分支
+</code></pre>
+<p><img src="http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdn30uuj20ic09qgn1.jpg" alt="5"></p>
+<pre><code>6.切换至分支或者主干
+</code></pre>
+<p><img src="http://ww4.sinaimg.cn/mw690/d3101915gw1ez7hdor7uij20mi0kqtcn.jpg" alt="6"></p>
+<pre><code>7.选择切换的路径
+</code></pre>
+<p><img src="http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdqk26uj20gu0mtjx0.jpg" alt="7"></p>
+<pre><code>8.切换后， 项目名称后会有分支or主干的标志
+</code></pre>
+<p><img src="http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdquy0dj20c7063t9h.jpg" alt="8">
+<img src="http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdru5vvj20bi05idgf.jpg" alt="8"></p>
+<pre><code>9.合并分支,合并前一定要先更新、提交，保证代码均保存到repository
+</code></pre>
+<p><img src="http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdswxp0j20mg0khq77.jpg" alt=""></p>
+<pre><code>10.选择合并分支的方式，
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>描述</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Merge a range of revisions</td>
+<td style="text-align:center">从主干合并到分支</td>
+</tr>
+<tr>
+<td>Reintegrate a branch</td>
+<td style="text-align:center">从分支合并到主干</td>
+</tr>
+<tr>
+<td>Change-set based merge</td>
+<td style="text-align:center">将主干上的修改合并到分支，需要Collabnet软件</td>
+</tr>
+<tr>
+<td>Merge two different trees</td>
+<td style="text-align:center">合并2个分支到主干</td>
+</tr>
+<tr>
+<td>Manually record merge information</td>
+<td style="text-align:center">从主干到分支，手工指定不需要合并的修改</td>
+</tr>
+<tr>
+<td>Manually remove merge information</td>
+<td style="text-align:center">从主干到分支，手工指定要合并的修改</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://ww4.sinaimg.cn/mw690/d3101915gw1ez7hducg5sj20ur0kbadz.jpg" alt="10"></p>
+<pre><code>11.选择合并的目标url
+</code></pre>
+<p><img src="http://ww2.sinaimg.cn/mw690/d3101915gw1ez7hdvn1eej20ur0kbgp7.jpg" alt="11"></p>
+<pre><code>12.
+</code></pre>
+<p><img src="http://ww3.sinaimg.cn/mw690/d3101915gw1ez7hdwsonyj20ur0kbdkx.jpg" alt="12"></p>
+<pre><code>13.合并操作的结果统计
+</code></pre>
+<p><img src="http://ww2.sinaimg.cn/mw690/d3101915gw1ez7hdxrv4rj20el0eztao.jpg" alt="13"></p>
+<pre><code>14.合并记录
+</code></pre>
+<p><img src="http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdyg41xj20p507lwfz.jpg" alt="14"></p>
+<pre><code>15.合并后的效果,要把合并过来的代码再提交至repository，至此合并分支就结束了，
+</code></pre>
+<p><img src="http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdzyjwqj20r20hawlj.jpg" alt=""></p>
 
       
     </div>
@@ -275,13 +340,13 @@
         
   
   <div class="categories">
-    <a href="/categories/EOVA/">EOVA</a>
+    <a href="/categories/scm/">scm</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/EOVA/">EOVA</a>
+    <a href="/tags/svn/">svn</a>
   </div>
 
 <!-- Baidu Button BEGIN -->
@@ -309,10 +374,10 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
-    <a href="/2016/03/15/java的各种O/" class="alignleft prev" >上一页</a>
+    <a href="/2016/03/24/SQL JOIN 连接/" class="alignleft prev" >上一页</a>
     
     
-    <a href="/2016/03/11/日志/" class="alignright next" >下一页</a>
+    <a href="/2016/03/24/Eclipse新建类详解/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -322,7 +387,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <section id="comment">
 
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="post-EOVA简介" data-title="EOVA简介" data-url="http://wisdombud.github.io/2016/03/13/EOVA简介/"></div>
+  <div class="ds-thread" data-thread-key="post-SVN的trunk &amp;branch &amp;tags" data-title="SVN的trunk &amp;branch &amp;tags" data-url="http://wisdombud.github.io/2016/03/24/SVN的trunk &amp;branch &amp;tags/"></div>
 
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
@@ -368,19 +433,35 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/EOVA/">EOVA</a><small>1</small></li>
+    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
   
     <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
   
     <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
   
+    <li><a href="/categories/WEB/">WEB</a><small>1</small></li>
+  
     <li><a href="/categories/java/">java</a><small>3</small></li>
   
     <li><a href="/categories/javacript/">javacript</a><small>3</small></li>
   
+    <li><a href="/categories/javascript/">javascript</a><small>1</small></li>
+  
     <li><a href="/categories/log/">log</a><small>1</small></li>
   
+    <li><a href="/categories/scm/">scm</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>1</small></li>
+  
     <li><a href="/categories/学习/">学习</a><small>1</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/常识/">常识</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
   
   </ul>
 </div>
@@ -390,7 +471,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/EOVA/" style="font-size: 10px;">EOVA</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javacript/" style="font-size: 20px;">javacript</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/提问/" style="font-size: 10px;">提问</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a>
+    <a href="/tags/AMD/" style="font-size: 10px;">AMD</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javacript/" style="font-size: 20px;">javacript</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/net/" style="font-size: 10px;">net</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/提问/" style="font-size: 10px;">提问</a> <a href="/tags/端口映射/" style="font-size: 10px;">端口映射</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a>
   </div>
 </div>
 

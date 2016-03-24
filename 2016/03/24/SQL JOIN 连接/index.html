@@ -1,0 +1,692 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SQL JOIN 连接 | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="SQL JOIN 连接"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">SQL JOIN 连接</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-03-24T06:28:01.097Z">2016-03-24</time></span>
+        
+          <span style=" display: block;  margin: 10px 0; ">作者：big-bear</span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <h2>1.什么是join(连接)</h2>
+<blockquote>
+<p>JOIN(连接)是sql的操作之一,如果我们想根据两个或以上的表的列之间的关系来对这些表进行查询,就应该考虑使用join</p>
+</blockquote>
+<h2>2.什么时候使用join</h2>
+<blockquote>
+<p>当需要进行多表联查的时候</p>
+</blockquote>
+<h2>3.join(连接)的分类</h2>
+<p>例表:
+学生表student:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>张三</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>李四</td>
+<td>11</td>
+</tr>
+<tr>
+<td>3</td>
+<td>王五</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>成绩表mark:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>marks</th>
+<th>studentId</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>88</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>56</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>58</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>99</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>3.1内连接(INNER JOIN)</strong></h3>
+<p>INNER JOIN是我们最经常用到连接,只返回两个表中连接字段相等的行,我们经常会写到这样的连接查询:
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.<span class="keyword">name</span>,b.mark <span class="keyword">from</span> student <span class="keyword">as</span> a ,marks <span class="keyword">as</span> b <span class="keyword">where</span> a.<span class="keyword">id</span>=b.studentId</span><br></pre></td></tr></table></figure></p>
+<p>也可以写成:
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.<span class="keyword">name</span>,b.marks <span class="keyword">from</span> student <span class="keyword">as</span> a <span class="keyword">inner</span> <span class="keyword">join</span> mark <span class="keyword">as</span> b <span class="keyword">on</span> a.<span class="keyword">id</span>=b.studentId</span><br></pre></td></tr></table></figure></p>
+<p>所以当我们只想要得到两张表的关联信息的时候,我们就可以用inner join 所以结果是;</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td>10</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>58</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>88</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>3.2左/右外连接</strong></h3>
+<p>外链接分为左外连接和右外链接.左连接会返回左表所有的行和右表与之相匹配的行,如果左表的行的数据在右表中没有找到相匹配的数据,那么返回集中相对应的右表的信息就会用null填充.
+例如我们对上边的表进行左连接:
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.<span class="keyword">name</span>,b.mark <span class="keyword">from</span> student <span class="keyword">as</span> a <span class="keyword">left</span> <span class="keyword">join</span> mark <span class="keyword">as</span> b <span class="keyword">on</span> a.<span class="keyword">id</span> = b.studentId</span><br></pre></td></tr></table></figure></p>
+<p>也可以写成
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.<span class="keyword">name</span>,b.mark <span class="keyword">from</span> student <span class="keyword">as</span> a <span class="keyword">left</span> <span class="keyword">join</span> mark <span class="keyword">as</span> b <span class="keyword">on</span> a.<span class="keyword">id</span>=b.studentId</span><br></pre></td></tr></table></figure></p>
+<p>返回结果是:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>李四</td>
+<td>88</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>56</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>58</td>
+</tr>
+<tr>
+<td>王五</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<p>如表中,结果集中将student表中所有的行以及mark表中与student表中相关的行都查找出来,而student表中在mark表中没有相匹配行的&quot;王五&quot;的&quot;mark&quot;就是null
+所以当我们想获得左表中全部消息同时把右表中相关联的信息显示出来的时候,我们就可以用做链接.比如我们想打印一个班级里每个人的成绩,但是有熊孩子交了白卷,但是我们还是要打印出他的名字来,就可以用左连接.</p>
+<p>相同的,右连接就是把右表的所有行都显示出来,然后在左表中有匹配信息的就显示出来,没有匹配的行就显示为null:
+如:
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.<span class="keyword">name</span>,b.mark <span class="keyword">from</span> student <span class="keyword">as</span> a <span class="keyword">right</span> <span class="keyword">join</span> mark <span class="keyword">as</span> b <span class="keyword">on</span> a.<span class="keyword">id</span>=b.studnetId</span><br></pre></td></tr></table></figure></p>
+<p>结果如下:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td>56</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>58</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>88</td>
+</tr>
+<tr>
+<td>null</td>
+<td>99</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>3.3全连接</strong>:</h3>
+<p>全连接full join会返回左表和右表中的所有行。当某行在另一表中没有匹配行，则另一表中的列返回空值,所以当我们不光想知道左右两表的匹配行,还想知道他们没有匹配到的行,就可以用full join例如:
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.<span class="keyword">name</span> ,b.mark <span class="keyword">from</span> student <span class="keyword">as</span> a <span class="keyword">full</span> <span class="keyword">join</span> mark <span class="keyword">as</span> b <span class="keyword">where</span> a.<span class="keyword">id</span>=b.studentid</span><br></pre></td></tr></table></figure></p>
+<p><strong>特别的,mysql是不支持 full join的</strong>(T.T害我来回打了好多遍sql语句),但是可以通过以下语句来实现全连接:
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">FROM</span> student <span class="keyword">AS</span> a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> mark <span class="keyword">AS</span> b <span class="keyword">ON</span> a.<span class="keyword">id</span>=b.studentid <span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">FROM</span> student <span class="keyword">AS</span> a <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> mark <span class="keyword">AS</span> b <span class="keyword">ON</span> a.<span class="keyword">id</span>=b.studentid</span><br></pre></td></tr></table></figure></p>
+<p>如上语句,先执行了左查询,再执行右查询,将两个结果集去重,即如果如下:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>李四</td>
+<td>88</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>56</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>58</td>
+</tr>
+<tr>
+<td>王五</td>
+<td>null</td>
+</tr>
+<tr>
+<td>null</td>
+<td>99</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>3.4交叉连接</strong>:</h3>
+<p>交叉连接(cross join)是一种没有where语句的查询,使用交叉连接会返回两个数据表的笛卡尔积,即他返回的行数是两张表行数乘积.
+//至于情况下使用交叉连接,交叉连接到底有什么用还没有搞清楚-.-</p>
+<p>可以在交叉连接后面跟上where语句,但是这个where语句是对结果集进行操作的,并没有影响到交叉连接本身.
+同样的内外连接都可以在其后跟上where来对结果集进行操作,但是where的条件是作用于结果集而不是在执行内外连接的过程中限制的.</p>
+<h3><strong>3.5相关知识点</strong>:</h3>
+<h4><strong>on and与on where的区别</strong>:</h4>
+<p>on是指限制连接操作的条件,他会影响执行内外执行结果;而where是对内外连接的结果集进行操作的.也就是说,当执行连接语句的时候,会先取on后面跟的条件,多个条件通过and连接,执行完以后会得到一个结果集,得到结果集之后再执行where语句,对结果集进行筛选,得到最后我们想要得到结果集.
+例如我们分别执行下面两条语句:
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.<span class="keyword">name</span>,b.mark <span class="keyword">FROM</span> student <span class="keyword">AS</span> a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> mark <span class="keyword">AS</span> b <span class="keyword">on</span> a.<span class="keyword">id</span> = b.studentid <span class="keyword">AND</span> b.mark=<span class="number">88</span>           //<span class="keyword">ON</span> <span class="keyword">AND</span></span><br><span class="line"><span class="keyword">SELECT</span> a.<span class="keyword">name</span>,b.mark <span class="keyword">FROM</span> student <span class="keyword">AS</span> a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> mark <span class="keyword">AS</span> b <span class="keyword">on</span> a.<span class="keyword">id</span> = b.studentid <span class="keyword">where</span> b.mark=<span class="number">88</span>         //<span class="keyword">ON</span> <span class="keyword">WHERE</span></span><br></pre></td></tr></table></figure></p>
+<p>ON AND 的执行结果:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>李四</td>
+<td>88</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>null</td>
+</tr>
+<tr>
+<td>王五</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>明显的,on and返回的是一个左连接查询的结果集,说明and连接的两个条件都用来当做左连接的限制条件</p>
+</blockquote>
+<p>ON  WHERE的执行结果</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>李四</td>
+<td>88</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>可以看出,我们可以看一下3.2里左连接语句的执行结果,然后在加上这个where语句的限制,正好查询结果能够对上,说明where语句是对left join的结果集进行操作的.</p>
+</blockquote>
+<h2>4相关知识点连接:</h2>
+<p>1.<a href="http://blog.csdn.net/jiuqiyuliang/article/details/10474221" target="_blank" rel="external">详解SQL Server连接（内连接、外连接、交叉连接）</a>
+2.<a href="http://blog.csdn.net/jklfjsdj79hiofo/article/details/40399265" target="_blank" rel="external">MySQL Full Join的实现</a>
+3.<a href="http://blog.csdn.net/killerggf/article/details/6216102" target="_blank" rel="external">SQL的内连接与外连接</a>
+4.<a href="http://www.xue163.com/wenba/328/3286407.html" target="_blank" rel="external">SQL左右连接中的on and和on where的区别</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/数据库/">数据库</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/SQL/">SQL</a>, <a href="/tags/JOIN/">JOIN</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/03/24/SSH 5W学习/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/03/24/SVN的trunk &branch &tags/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-SQL JOIN 连接" data-title="SQL JOIN 连接" data-url="http://wisdombud.github.io/2016/03/24/SQL JOIN 连接/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
+  
+    <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
+  
+    <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
+  
+    <li><a href="/categories/WEB/">WEB</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>3</small></li>
+  
+    <li><a href="/categories/javacript/">javacript</a><small>3</small></li>
+  
+    <li><a href="/categories/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/scm/">scm</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>1</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/常识/">常识</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/AMD/" style="font-size: 10px;">AMD</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javacript/" style="font-size: 20px;">javacript</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/net/" style="font-size: 10px;">net</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/提问/" style="font-size: 10px;">提问</a> <a href="/tags/端口映射/" style="font-size: 10px;">端口映射</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>

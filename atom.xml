@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wisdombud.github.io/"/>
-  <updated>2016-03-22T04:31:39.689Z</updated>
+  <updated>2016-03-24T06:55:26.762Z</updated>
   <id>http://wisdombud.github.io/</id>
   
   <author>
@@ -14,6 +14,1179 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SSH</title>
+    <link href="http://wisdombud.github.io/2016/03/24/SSH%205W%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://wisdombud.github.io/2016/03/24/SSH 5W学习/</id>
+    <published>2016-03-24T06:28:01.102Z</published>
+    <updated>2016-03-24T06:55:26.762Z</updated>
+    
+    <content type="html">&lt;h2&gt;what&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SSH的英文全称为Secure Shell，是IETF（Internet Engineering Task Force）的Network Working Group所制定的一族协议，其目的是要在非安全网络上提供安全的远程登录和其他安全网络服务。 我们可以简单理解为：Rlogin和Telnet等的替代方案。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;1.SSH主要的三个协议&lt;/h3&gt;
+&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;传输层协议:通过服务器认证,数据机密性,信息完整性等支持&lt;/li&gt;
+&lt;li&gt;用户认证协议:为服务器提供客户端的身份鉴别&lt;/li&gt;
+&lt;li&gt;连接协议:将加密的信息隧道复用成若干个逻辑通道,提供给更高层的应用协议使用;各种高层应用协议可以相对独立于SSH基本体系之外,并依靠这个基本框架,通过连接协议使用SSH的安全机制.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2.SSH安全验证级别&lt;/h3&gt;
+&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;基于口令的安全验证:只要你知道自己的账号和口令,就可以登录到远程主机.所有传输的数据都会被加密,但是不能保证你正在连接的服务器就是你想要连接的服务器,有可能是冒充的&amp;quot;中间人&amp;quot;&lt;/li&gt;
+&lt;li&gt;基于密匙的安全验证:
+&lt;ul&gt;
+&lt;li&gt;现为自己创建一对密匙,并把公匙放在需要访问的服务器上&lt;/li&gt;
+&lt;li&gt;客户端软件向服务器发送请求,请求用你的密匙进行安全验证
+-服务器收到请求,在服务器目录下寻找公匙并与你发过来的公匙进行比较.如果公匙相同,服务器就会用公匙加密&amp;quot;质询&amp;quot;并把它发送给客户端软件;&lt;/li&gt;
+&lt;li&gt;客户端软件受到&amp;quot;质询&amp;quot;之后就可以用私匙解密病把它发送给服务器.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;第二种方式可以有效地避免&amp;quot;中间人&amp;quot;攻击方式,相对安全,但是整个登录过程时间比较长,大概要10s左右.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;SSH的工作过程&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实现ＳＳＨ安全连接，服务器端和客户端要经理五个阶段：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;版本协商阶段&lt;/strong&gt;：SSH目前有SSH1和SSH2两个版本,双发通过版本协商确定使用的版本.(本阶段服务器会打开22端口,等待客户端连接;本阶段的报文都是通过明文方式传输)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;密钥和算法协商阶段&lt;/strong&gt;:双方根据本端和对端支持的算法,协商最终使用的算法&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;认证阶段&lt;/strong&gt;:SSH客户端向服务器端发起认证请求,服务器端对客户端进行认证&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;会话请求阶段&lt;/strong&gt;:认证通过后,客户端想服务器端发起会话请求&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交互会话阶段&lt;/strong&gt;:会话请求通过后,服务器端和客户端进行信息的交互.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;why&lt;/h2&gt;
+&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;p&gt;传统的网络服务程序,如ftp/pop/telnet在网络传输的时候都会用明文传送口令和数据,所以在本质上都是不安全的.这些服务器的安全验证方式容易受到&amp;quot;中间人&amp;quot;方式的攻击.
+&amp;quot;中间人&amp;quot;攻击方式--即&amp;quot;中间人&amp;quot;冒充真正的服务器接受你发送给服务器的数据,然后再冒充你把数据传给真正的服务器.服务器和你之间的数据传送很容易被中间人做一些手脚.
+而通过使用ssh,你可以吧所有传输的数据进行加密,避免了&amp;quot;中间人&amp;quot;攻击方式以及DNS欺骗和IP欺骗.另外,使用SSH时传输的数据是经过压缩的,所以可以加快传输的速度.&lt;/p&gt;
+&lt;h3&gt;where&lt;/h3&gt;
+&lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;首先,最常见的应用就是通过SSH登录到远方的机器执行你想要进行的工作和命令.(SSH在不安全的网路通讯环境中可以通过很强的验证机制和非常安全的通讯环境.)&lt;/li&gt;
+&lt;li&gt;其次,通过使用SSH可以本地主机和远程服务器之间是指&amp;quot;加密通道&amp;quot;(SSH的加密通多是通过&amp;quot;端口转发&amp;quot;实现的,你可以在本地端口(没有用到的)和在远程服务器上运行某个服务的端口之间建立&amp;quot;加密通道&amp;quot;.然后只要连接到本地端口.所有对本地端口的请求都被SSH加密并且转发到远程服务器的端口.当然只有远程服务器上运行SSH服务器软件的时候&amp;quot;加密通道&amp;quot;才能工作)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;how&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;putty WINscp&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;相关链接&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;http://blog.csdn.net/macrossdzh/article/details/56919
+http://blog.csdn.net/oncoding/article/details/4365062&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;what&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SSH的英文全称为Secure Shell，是IETF（Internet Engineering Task Force）的Network Working Group所制定的一族协议，其目的是要在非安全网络上提供安全的远程
+    
+    </summary>
+    
+      <category term="常识" scheme="http://wisdombud.github.io/categories/%E5%B8%B8%E8%AF%86/"/>
+    
+    
+      <category term="SSH" scheme="http://wisdombud.github.io/tags/SSH/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SQL JOIN 连接</title>
+    <link href="http://wisdombud.github.io/2016/03/24/SQL%20JOIN%20%E8%BF%9E%E6%8E%A5/"/>
+    <id>http://wisdombud.github.io/2016/03/24/SQL JOIN 连接/</id>
+    <published>2016-03-24T06:28:01.097Z</published>
+    <updated>2016-03-24T06:56:43.044Z</updated>
+    
+    <content type="html">&lt;h2&gt;1.什么是join(连接)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JOIN(连接)是sql的操作之一,如果我们想根据两个或以上的表的列之间的关系来对这些表进行查询,就应该考虑使用join&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;2.什么时候使用join&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当需要进行多表联查的时候&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;3.join(连接)的分类&lt;/h2&gt;
+&lt;p&gt;例表:
+学生表student:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;age&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;李四&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;王五&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;成绩表mark:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;id&lt;/th&gt;
+&lt;th&gt;marks&lt;/th&gt;
+&lt;th&gt;studentId&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;88&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;56&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;58&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;99&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;&lt;strong&gt;3.1内连接(INNER JOIN)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;INNER JOIN是我们最经常用到连接,只返回两个表中连接字段相等的行,我们经常会写到这样的连接查询:
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;name&lt;/span&gt;,b.mark &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; a ,marks &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;where&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;=b.studentId&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;也可以写成:
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;name&lt;/span&gt;,b.marks &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;inner&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;join&lt;/span&gt; mark &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;=b.studentId&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;所以当我们只想要得到两张表的关联信息的时候,我们就可以用inner join 所以结果是;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;marks&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;58&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;李四&lt;/td&gt;
+&lt;td&gt;88&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;&lt;strong&gt;3.2左/右外连接&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;外链接分为左外连接和右外链接.左连接会返回左表所有的行和右表与之相匹配的行,如果左表的行的数据在右表中没有找到相匹配的数据,那么返回集中相对应的右表的信息就会用null填充.
+例如我们对上边的表进行左连接:
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;name&lt;/span&gt;,b.mark &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;join&lt;/span&gt; mark &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; = b.studentId&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;也可以写成
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;name&lt;/span&gt;,b.mark &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;join&lt;/span&gt; mark &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;=b.studentId&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;返回结果是:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;mark&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;李四&lt;/td&gt;
+&lt;td&gt;88&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;56&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;58&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;王五&lt;/td&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如表中,结果集中将student表中所有的行以及mark表中与student表中相关的行都查找出来,而student表中在mark表中没有相匹配行的&amp;quot;王五&amp;quot;的&amp;quot;mark&amp;quot;就是null
+所以当我们想获得左表中全部消息同时把右表中相关联的信息显示出来的时候,我们就可以用做链接.比如我们想打印一个班级里每个人的成绩,但是有熊孩子交了白卷,但是我们还是要打印出他的名字来,就可以用左连接.&lt;/p&gt;
+&lt;p&gt;相同的,右连接就是把右表的所有行都显示出来,然后在左表中有匹配信息的就显示出来,没有匹配的行就显示为null:
+如:
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;name&lt;/span&gt;,b.mark &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;join&lt;/span&gt; mark &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;=b.studnetId&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;结果如下:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;mark&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;56&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;58&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;李四&lt;/td&gt;
+&lt;td&gt;88&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;td&gt;99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;&lt;strong&gt;3.3全连接&lt;/strong&gt;:&lt;/h3&gt;
+&lt;p&gt;全连接full join会返回左表和右表中的所有行。当某行在另一表中没有匹配行，则另一表中的列返回空值,所以当我们不光想知道左右两表的匹配行,还想知道他们没有匹配到的行,就可以用full join例如:
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;name&lt;/span&gt; ,b.mark &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;full&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;join&lt;/span&gt; mark &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;where&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;=b.studentid&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特别的,mysql是不支持 full join的&lt;/strong&gt;(T.T害我来回打了好多遍sql语句),但是可以通过以下语句来实现全连接:
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;AS&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;LEFT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;JOIN&lt;/span&gt; mark &lt;span class=&quot;keyword&quot;&gt;AS&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;=b.studentid &lt;span class=&quot;keyword&quot;&gt;UNION&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; * &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;AS&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;RIGHT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;JOIN&lt;/span&gt; mark &lt;span class=&quot;keyword&quot;&gt;AS&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;=b.studentid&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如上语句,先执行了左查询,再执行右查询,将两个结果集去重,即如果如下:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;mark&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;李四&lt;/td&gt;
+&lt;td&gt;88&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;56&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;58&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;王五&lt;/td&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;td&gt;99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;&lt;strong&gt;3.4交叉连接&lt;/strong&gt;:&lt;/h3&gt;
+&lt;p&gt;交叉连接(cross join)是一种没有where语句的查询,使用交叉连接会返回两个数据表的笛卡尔积,即他返回的行数是两张表行数乘积.
+//至于情况下使用交叉连接,交叉连接到底有什么用还没有搞清楚-.-&lt;/p&gt;
+&lt;p&gt;可以在交叉连接后面跟上where语句,但是这个where语句是对结果集进行操作的,并没有影响到交叉连接本身.
+同样的内外连接都可以在其后跟上where来对结果集进行操作,但是where的条件是作用于结果集而不是在执行内外连接的过程中限制的.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;3.5相关知识点&lt;/strong&gt;:&lt;/h3&gt;
+&lt;h4&gt;&lt;strong&gt;on and与on where的区别&lt;/strong&gt;:&lt;/h4&gt;
+&lt;p&gt;on是指限制连接操作的条件,他会影响执行内外执行结果;而where是对内外连接的结果集进行操作的.也就是说,当执行连接语句的时候,会先取on后面跟的条件,多个条件通过and连接,执行完以后会得到一个结果集,得到结果集之后再执行where语句,对结果集进行筛选,得到最后我们想要得到结果集.
+例如我们分别执行下面两条语句:
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;name&lt;/span&gt;,b.mark &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;AS&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;LEFT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;JOIN&lt;/span&gt; mark &lt;span class=&quot;keyword&quot;&gt;AS&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; = b.studentid &lt;span class=&quot;keyword&quot;&gt;AND&lt;/span&gt; b.mark=&lt;span class=&quot;number&quot;&gt;88&lt;/span&gt;           //&lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;AND&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;name&lt;/span&gt;,b.mark &lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt; student &lt;span class=&quot;keyword&quot;&gt;AS&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;LEFT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;JOIN&lt;/span&gt; mark &lt;span class=&quot;keyword&quot;&gt;AS&lt;/span&gt; b &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; a.&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt; = b.studentid &lt;span class=&quot;keyword&quot;&gt;where&lt;/span&gt; b.mark=&lt;span class=&quot;number&quot;&gt;88&lt;/span&gt;         //&lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;WHERE&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;ON AND 的执行结果:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;mark&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;李四&lt;/td&gt;
+&lt;td&gt;88&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;王五&lt;/td&gt;
+&lt;td&gt;null&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;明显的,on and返回的是一个左连接查询的结果集,说明and连接的两个条件都用来当做左连接的限制条件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ON  WHERE的执行结果&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;mark&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;李四&lt;/td&gt;
+&lt;td&gt;88&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可以看出,我们可以看一下3.2里左连接语句的执行结果,然后在加上这个where语句的限制,正好查询结果能够对上,说明where语句是对left join的结果集进行操作的.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;4相关知识点连接:&lt;/h2&gt;
+&lt;p&gt;1.&lt;a href=&quot;http://blog.csdn.net/jiuqiyuliang/article/details/10474221&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;详解SQL Server连接（内连接、外连接、交叉连接）&lt;/a&gt;
+2.&lt;a href=&quot;http://blog.csdn.net/jklfjsdj79hiofo/article/details/40399265&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MySQL Full Join的实现&lt;/a&gt;
+3.&lt;a href=&quot;http://blog.csdn.net/killerggf/article/details/6216102&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQL的内连接与外连接&lt;/a&gt;
+4.&lt;a href=&quot;http://www.xue163.com/wenba/328/3286407.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQL左右连接中的on and和on where的区别&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;1.什么是join(连接)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JOIN(连接)是sql的操作之一,如果我们想根据两个或以上的表的列之间的关系来对这些表进行查询,就应该考虑使用join&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;2.什么时候使用join&lt;/h2&gt;
+
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://wisdombud.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="SQL" scheme="http://wisdombud.github.io/tags/SQL/"/>
+    
+      <category term="JOIN" scheme="http://wisdombud.github.io/tags/JOIN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SVN的trunk &amp;branch &amp;tags</title>
+    <link href="http://wisdombud.github.io/2016/03/24/SVN%E7%9A%84trunk%20&branch%20&tags/"/>
+    <id>http://wisdombud.github.io/2016/03/24/SVN的trunk &branch &tags/</id>
+    <published>2016-03-24T06:17:43.423Z</published>
+    <updated>2016-03-24T06:21:18.735Z</updated>
+    
+    <content type="html">&lt;h2&gt;trunk(主干)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;主干目录, 在SVN中, 代码一般是放置在此.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;branch(分支)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;Branchs目录,和Trunk目录平级， 新建Branch则放置在Branchs目录下.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;tags&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;tags目录为tag存档目录（软件开发版本的标识，一般情况不允许修改）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;应用场景&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;1)客户提出新需求时, 会修改项目中的部分代码, 而此时又有bug需要修复,
+在trunk中修改bug或者开发新需求时,会影响另一方的工作.
+此时应创建branch, 在不干扰trunk的情况下，和trunk并行开发.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;操作&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;标签和分支的操作原理相同，在此只截图了分支操作。
+在工程目录上右键，依次选择&amp;quot;team&amp;quot; -&amp;gt; &amp;quot;Branch/tag...&amp;quot;，
+在弹出窗口的&amp;quot;To URL&amp;quot;中填入分支的地址， 在这里目标revision选择HEAD revision，
+点击ok分支便建立了。
+
+1.右键 --&amp;gt;team --&amp;gt; 分支/标记
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/mw690/d3101915gw1ez7hdiv7awj20j50kbdjd.jpg&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 2.选择分支路径, 一般会放在branches目录下
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/small/d3101915gw1ez7hdjofouj20fq0axq4y.jpg&quot; alt=&quot;2&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;3.选择版本号，也可选择工作空间的代码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/mw690/d3101915gw1ez7hdkm94hj20fq0axdh4.jpg&quot; alt=&quot;3&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;4.注释,可选择直接切换至分支
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/mw690/d3101915gw1ez7hdmfbx6j20fq0ax401.jpg&quot; alt=&quot;4&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;5.可以在仓库的branches文件下看到新建的分支
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdn30uuj20ic09qgn1.jpg&quot; alt=&quot;5&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;6.切换至分支或者主干
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/mw690/d3101915gw1ez7hdor7uij20mi0kqtcn.jpg&quot; alt=&quot;6&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;7.选择切换的路径
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdqk26uj20gu0mtjx0.jpg&quot; alt=&quot;7&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;8.切换后， 项目名称后会有分支or主干的标志
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdquy0dj20c7063t9h.jpg&quot; alt=&quot;8&quot;&gt;
+&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdru5vvj20bi05idgf.jpg&quot; alt=&quot;8&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;9.合并分支,合并前一定要先更新、提交，保证代码均保存到repository
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdswxp0j20mg0khq77.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;10.选择合并分支的方式，
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Merge a range of revisions&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;从主干合并到分支&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Reintegrate a branch&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;从分支合并到主干&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Change-set based merge&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;将主干上的修改合并到分支，需要Collabnet软件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Merge two different trees&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;合并2个分支到主干&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Manually record merge information&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;从主干到分支，手工指定不需要合并的修改&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Manually remove merge information&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;从主干到分支，手工指定要合并的修改&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/mw690/d3101915gw1ez7hducg5sj20ur0kbadz.jpg&quot; alt=&quot;10&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;11.选择合并的目标url
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/mw690/d3101915gw1ez7hdvn1eej20ur0kbgp7.jpg&quot; alt=&quot;11&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;12.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/mw690/d3101915gw1ez7hdwsonyj20ur0kbdkx.jpg&quot; alt=&quot;12&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;13.合并操作的结果统计
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/mw690/d3101915gw1ez7hdxrv4rj20el0eztao.jpg&quot; alt=&quot;13&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;14.合并记录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdyg41xj20p507lwfz.jpg&quot; alt=&quot;14&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;15.合并后的效果,要把合并过来的代码再提交至repository，至此合并分支就结束了，
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/d3101915gw1ez7hdzyjwqj20r20hawlj.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;trunk(主干)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;主干目录, 在SVN中, 代码一般是放置在此.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;branch(分支)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;Branchs目录,和Trunk目录平级， 新建Branch则放置在Branchs
+    
+    </summary>
+    
+      <category term="scm" scheme="http://wisdombud.github.io/categories/scm/"/>
+    
+    
+      <category term="svn" scheme="http://wisdombud.github.io/tags/svn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Eclipse新建类详解</title>
+    <link href="http://wisdombud.github.io/2016/03/24/Eclipse%E6%96%B0%E5%BB%BA%E7%B1%BB%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://wisdombud.github.io/2016/03/24/Eclipse新建类详解/</id>
+    <published>2016-03-24T06:16:38.476Z</published>
+    <updated>2016-03-24T06:19:37.829Z</updated>
+    
+    <content type="html">&lt;h2&gt;Source Folder、Package&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;源文件，就是存放java源文件(未编译)的文件夹。当然也包括一些package文件夹,还可以包含其他文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;package,source folder,folder&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在eclipse下,package,source folder,folder都是文件夹&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrnr1.com1.z0.glb.clouddn.com/java.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上图中src/main/java 就是source folder
+com.wisdombud.wisdomhr.spider.base就是package&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;异同：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;相同：
+package和source folder一样，除了java文件也可以包含其他文件。
+项目构建后,两者里面的java自动编译成class文件到相应的/web-inf/classes文件夹中,其他文件也会移到/web-inf/classes相应的目录下
+不同：
+1.sourceFolder靠&amp;quot;/&amp;quot;来进行上下级划分，package靠&amp;quot;.&amp;quot;来进行上下级划分。如上图
+2.source folder下能建package,而package下不能建source folder
+3.java文件中的package属性是按package路径来进行赋值的，source folder路径不参与java文件的package属性赋值，再由第二条不同得到结论，所有source folder下的java文件package属性都为空&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;package:当你在建立一个package时,它自动建立到source folder
+下,也只能建立在这个目录之下.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;folder:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;里面可以放入任何文件.包括java源文件,jar文件,其他文件(例如,图片,声音等)。如果里面含有java源文件,不管程序是否正确,eclipse都不会报错,把它们当做普通文件处理。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;package,source folder,folder 之间相互转换 查看参考文章&lt;/p&gt;
+&lt;h2&gt;Enclosing type&lt;/h2&gt;
+&lt;p&gt;新建类的时候，勾上这个选项，表示新建的是一个内部类。而它在哪个类的内部，需要选择。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;内部类是指在一个类的内部再定义一个类。内部的这个类名不需要和文件夹名相同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部类【即类名和文件名相同的类】只能使用public和default）&lt;/li&gt;
+&lt;li&gt;内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和它内部的名为inner的内部类。编译完成后出现outer.class和outer$inner.class两类。所以内部类的成员变量/方法名可以和外部类的相同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用内部类的好处&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;内部类可以很好的实现隐藏
+一般的非内部类，是不允许有 private 与protected权限的，但内部类可以&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;内部类拥有外围类的所有元素的访问权限&lt;/li&gt;
+&lt;li&gt;可以实现多重继承&lt;/li&gt;
+&lt;li&gt;可以避免修改接口而实现同一个类中两种同名方法的调用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Name&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;新建类的名字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Modifiers&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrnr1.com1.z0.glb.clouddn.com/2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这里修饰类的词只有4个选项。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;并且选择上，上面的public和package是互斥的。
+public表示该类是公共的，都可以访问的。
+package表示只有同一个包下的类才可以访问这个类。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;虽然abstract和final可以同时选择，但是这两个是不能同时选择的。
+abstract表示抽象类，类里面一定有抽象方法，抽象方法一定要子类来实现。
+这与final不能继承 互斥。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Superclass&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要继承的父类(单继承)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Interfaces&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要实现的接口(多实现)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;自动生成选项&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrnr1.com1.z0.glb.clouddn.com/3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;public static void main(String[] args)  --入口函数；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Constructors from superclass --生成构造函数；&lt;/li&gt;
+&lt;li&gt;Inherited abstract methods --如果你继承的类存在abstract方法，会自动生成需实现的方法;&lt;/li&gt;
+&lt;li&gt;Generate comments --自动生成注释；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;参考文章&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/slowly-keeping/archive/2012/04/23/2466054.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Source Folder、Package参考文章&lt;/a&gt;
+&lt;a href=&quot;http://www.cnblogs.com/nerxious/archive/2013/01/24/2875649.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;内部类参考文章&lt;/a&gt;
+&lt;a href=&quot;http://android.blog.51cto.com/268543/384844/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;内部类2&lt;/a&gt;
+&lt;a href=&quot;http://andy136566.iteye.com/blog/1061951/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;内部类3&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;Source Folder、Package&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;源文件，就是存放java源文件(未编译)的文件夹。当然也包括一些package文件夹,还可以包含其他文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;package,source fol
+    
+    </summary>
+    
+      <category term="开发工具" scheme="http://wisdombud.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Eclipse" scheme="http://wisdombud.github.io/tags/Eclipse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>域名</title>
+    <link href="http://wisdombud.github.io/2016/03/24/%E5%9F%9F%E5%90%8D/"/>
+    <id>http://wisdombud.github.io/2016/03/24/域名/</id>
+    <published>2016-03-24T06:16:35.039Z</published>
+    <updated>2016-03-24T06:20:42.271Z</updated>
+    
+    <content type="html">&lt;h2&gt;什么是域名&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IP地址是网络通信中唯一标识一台计算机的符号。由4个小于256的数字组成，但是使用时难以书写和记忆。因此在IP地址的基础上又发展出一种符号化的地址方案，来代替数字型的IP地址。每一个符号化的地址都与特定的IP地址对应。这个与网络上的数字型IP地址相对应的字符型地址，就被称为域名。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;域名（Domain Name），是由一串用点分隔的名字组成的Internet上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;域名的例子&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;google.com、baidu.com、163.com 这些都是域名。
+http://mail.163.com/index.html
+这是一个URL，统一资源定位符。
+里面的mail.163.com就是域名。
+index.html是根目录下的一种资源&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;域名的构成&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DNS规定，域名中的标号都由英文字母和数字组成，每一个标号不超过63个字符，也不区分大小写字母。
+标号中除连字符（-）外不能使用其他的标点符号。
+级别最低的域名写在最左边，而级别最高的域名写在最右边。
+由多个标号组成的完整域名总共不超过255个字符。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;域名的基本类型&lt;/h2&gt;
+&lt;p&gt;级别：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;域名可分为不同级别，包括顶级域名、二级域名、三级域名、注册域名。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;顶级域名&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;顶级域名又分为两类：一是国家顶级域名，二是国际顶级域名
+200多个国家都按照ISO3166国家代码分配了顶级域名，例如中国是cn，美国是us，日本是jp等.
+国际域名例如表示工商企业的.com，表示网络提供商的.net，表示非盈利组织的.org等。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;二级域名&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;是指顶级域名之下的域名。
+在国际顶级域名下，它是指域名注册人的网上名称，例如ibm、yahoo、microsoft、wisdomhr等；在国家顶级域名下，它是表示注册企业类别的符号，例如com，edu，gov，net等。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;三级域名&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用字母（ A～Z，a～z，大小写等）、数字（0～9）和连接符（－）组成， 各级域名之间用实点（.）连接，三级域名的长度不能超过20个字符。如无特殊原因，建议采用申请人的英文名（或者缩写）或者汉语拼音名 （或者缩写） 作为三级域名，以保持域名的清晰性和简洁性。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;注册域名查看参考文章。&lt;/p&gt;
+&lt;h2&gt;域名服务器&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;把域名翻译成IP地址的软件称为域名系统。
+它是一种管理名字的方法。
+这种方法是：分不同的组来负责各子系统的名字。
+系统中的每一层叫做一个域，每个域用一个点分开。所谓域名服务器（即Domain Name Server，简称Name Server）实际上就是装有域名系统的主机。它是一种能够实现名字解析的分层结构数据库。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;参考文章&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://baike.baidu.com/link?url=qRVuiCQgHiADm-Qya3TJBKE6YuYyS5rUdT0WWUJK1mkFPEr8oG6C3PBNagNwMGVa14ZmNr2g3lTBCjlSwqCRbK&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;域名百科&lt;/a&gt;
+&lt;a href=&quot;http://baike.baidu.com/link?url=yL7GO0nvypGXRpfdMt7Hl2xIFl8iQyTUVzCLyZatJCiNxIpnm_ycGlkPyFHrF3cDzmV84cGYl030hGZqDI4To_&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;域名服务器百科&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;什么是域名&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IP地址是网络通信中唯一标识一台计算机的符号。由4个小于256的数字组成，但是使用时难以书写和记忆。因此在IP地址的基础上又发展出一种符号化的地址方案，来代替数字型的IP地址。每一个符号化的地址都与特定的IP地址对应。
+    
+    </summary>
+    
+      <category term="常识" scheme="http://wisdombud.github.io/categories/%E5%B8%B8%E8%AF%86/"/>
+    
+    
+      <category term="域名" scheme="http://wisdombud.github.io/tags/%E5%9F%9F%E5%90%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://wisdombud.github.io/2016/03/24/MySQL%E7%9A%84%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F/"/>
+    <id>http://wisdombud.github.io/2016/03/24/MySQL的日期格式/</id>
+    <published>2016-03-24T06:16:31.084Z</published>
+    <updated>2016-03-24T06:16:31.572Z</updated>
+    
+    <content type="html">&lt;h1&gt;MySQL的日期格式&lt;/h1&gt;
+&lt;p&gt;标签（空格分隔）： 学习内容&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;[toc]
+##MySQL的五种时间和日期类型&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;YEAR表示年份：字节数为1，取值范围为“1901——2155”
+DATE表示日期：字节数为4，取值范围为“1000-01-01——9999-12-31”
+TIME表示时间：字节数为3，取值范围为“-838:59:59——838:59:59”
+DATETIME和TIMESTAMP表示日期和时间
+DATETIME：字节数为8，取值范围为“1000-01-01 00:00:00——9999-12-31 23:59:59”
+TIMESTAMP，字节数为4，取值范围为“19700101080001——20380119111407”
+##给各种时间日期类型赋值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给YEAR赋值有3种方式
+&lt;em&gt;方式一：&lt;/em&gt;
+直接插入4位字符串(&amp;quot;1998&amp;quot;)或者4位数字(1998)
+&lt;em&gt;方式二：&lt;/em&gt;
+插入两位字符串(&amp;quot;04&amp;quot;)
+如果范围是&amp;quot;00&amp;quot;-&amp;quot;69&amp;quot;,则相当于插入&amp;quot;2000&amp;quot;-&amp;quot;2069&amp;quot;
+如果范围是&amp;quot;70&amp;quot;-&amp;quot;99&amp;quot;,则相当于插入&amp;quot;1970&amp;quot;-&amp;quot;1999&amp;quot;
+&lt;strong&gt;注：&amp;quot;0&amp;quot;和&amp;quot;00&amp;quot;的效果一样都表示2000年&lt;/strong&gt;
+&lt;em&gt;方式三：&lt;/em&gt;
+插入两位数字(90)
+插入数字和插入字符的区别在于，插入一位0表示的不是2000年，而是0000.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给TIME赋值
+&lt;strong&gt;TIME类型表示为“时：分：秒”，尽管小时范围一般是0~23，但是为了表示某些特殊时间间隔，MySQL将TIME的小时范围扩发了，而且支持负值。&lt;/strong&gt;
+标准格式是&amp;quot;HH：MM：SS&amp;quot;,但是不一定是这种格式,可以是&amp;quot;D HH：MM：SS&amp;quot;、&amp;quot;HH：MM&amp;quot;、&amp;quot;SS&amp;quot;、&amp;quot;D HH&amp;quot;、&amp;quot;D HH：MM&amp;quot;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;D HH：MM：SS&amp;quot;相当于是&amp;quot;（D*24+HH）：MM：SS&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eg：插入的是&amp;quot;2 23:50:50&amp;quot;=&amp;quot;71:50:50&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;HH：MM&amp;quot; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eg:&amp;quot;11:25&amp;quot;=&amp;quot;11:25:00&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;SS&amp;quot; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;eg:&amp;quot;30&amp;quot;=&amp;quot;00:00:30&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给DATE赋值
+标准格式是&amp;quot;YYYY-MM-DD&amp;quot;、其他的还有&amp;quot;YYYY@MM@DD&amp;quot;、&amp;quot;YYYY.MM.DD&amp;quot;等
+还可以用&amp;quot;YY-MM-DD&amp;quot;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给DATETIME赋值
+标准格式为&amp;quot;YYYY-MM-DD HH：MM：SS&amp;quot;
+具体赋值方法与上面各种类型的方法相似。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给TIMESTAMP赋值
+TIMESTAMP的取值范围比较小，没有DATETIME的取值范围大，因此输入值时一定要保证在TIMESTAMP的范围之内。它的插入也与插入其他日期和时间数据类型类似。
+&lt;strong&gt;插入当前时间
+第一，可以使用CURRENT_TIMESTAMP；
+第二，输入NULL，系统自动输入当前的TIMESTAMP；
+第三，无任何输入，系统自动输入当前的TIMESTAMP。
+另外有很特殊的一点：TIMESTAMP的数值是与时区相关。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当 MySQL遇到一个日期或时间类型的超出范围或对于该类型不合法的值时，它将该值转换为该类的&amp;quot;零&amp;quot;值。
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;列类型:&amp;quot;零&amp;quot;值&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DATETIME:&amp;apos;0000-00-00 00:00:00&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DATE:&amp;apos;0000-00-00&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TIMESTAMP:00000000000000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TIME:&amp;apos;00:00:00&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;YEAR:0000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##datetime和timestamp的区别
+datetime&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;占用8个字节&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;允许为空值，可以自定义值，系统不会自动修改其值。&lt;/li&gt;
+&lt;li&gt;实际格式储存&lt;/li&gt;
+&lt;li&gt;与时区无关&lt;/li&gt;
+&lt;li&gt;不可以设定默认值，所以在不允许为空值的情况下，必须手动指定datetime字段的值才可以成功插入数据。&lt;/li&gt;
+&lt;li&gt;可以在指定datetime字段的值的时候使用now()变量来自动插入系统的当前时间。
+结论：datetime类型适合用来记录数据的原始的创建时间，因为无论你怎么更改记录中其他字段的值，datetime字段的值都不会改变，除非你手动更改它。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;timestamp&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;占用4个字节&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;允许为空值，但是不可以自定义值，所以为空值时没有任何意义。&lt;/li&gt;
+&lt;li&gt;TIMESTAMP值不能早于1970或晚于2037。这说明一个日期，例如&#39;1968-01-01&#39;，虽然对于DATETIME或DATE值是有效的，但对于TIMESTAMP值却无效，如果分配给这样一个对象将被转换为0。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;值以UTC格式保存&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;时区转化 ，存储时对当前的时区进行转换，检索时再转换回当前的时区。&lt;/li&gt;
+&lt;li&gt;默认值为CURRENT_TIMESTAMP()，其实也就是当前的系统时间。&lt;/li&gt;
+&lt;li&gt;数据库会自动修改其值，所以在插入记录时不需要指定timestamp字段的名称和timestamp字段的值，你只需要在设计表的时候添加一个timestamp字段即可，插入后该字段的值会自动变为当前系统时间。&lt;/li&gt;
+&lt;li&gt;若是设置了&lt;strong&gt;ON UPDATE CURRENT_TIMESTAMP&lt;/strong&gt;以后任何时间修改表中的记录时，对应记录的timestamp值会自动被更新为当前的系统时间。
+结论：timestamp类型适合用来记录数据的最后修改时间，因为只要你更改了记录中其他字段的值，timestamp字段的值都会被自动更新。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;##timestamp的默认值&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;自动UPDATE 和INSERT 到当前的时间
+&#39;CREATE_TIME&#39; timestamp NOT NULL DEFAULT &lt;strong&gt;CURRENT_TIMESTAMP&lt;/strong&gt;  &lt;strong&gt;ON UPDATE CURRENT_TIMESTAMP&lt;/strong&gt;&lt;br&gt;
+自动INSERT 到当前时间，不过不自动UPDATE
+&#39;CREATE_TIME&#39; timestamp NOT NULL DEFAULT &lt;strong&gt;CURRENT_TIMESTAMP&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;CURRENT_TIMESTAMP&lt;/strong&gt;
+系统时间
+&lt;strong&gt;ON UPDATE CURRENT_TIMESTAMP&lt;/strong&gt;
+修改现有记录的时候都对这个数据列刷新&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/huangzhen/archive/2011/08/21/2147938.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;timestamp的默认值&lt;/a&gt;
+&lt;a href=&quot;http://www.jb51.net/article/31872.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;timestamp的默认值2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##慧聘中的实际应用
+拿慧聘项目职位表为例：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们需要记录职位的创建时间和最新的更新时间。创建时间只在insert的时候新建一个时间戳，而更新时间则是，只要有对这条数据的更新操作，就更改时间戳。
+timestamp的ON UPDATE CURRENT_TIMESTAMP属性，会让数据库来帮我们在update的时候自动更新时间。
+注意：图形化界面来创建表的时候，默认值都是null，不是CURRENT_TIMESTAMP。就是说数据库不会自动在insert的时候，插入当前时间戳。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrnr1.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160308185547.png&quot; alt=&quot;cmd-markdown-logo&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;图形化界面的自动update，需要勾选上图中的 根据当前时间戳更新选项&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;##Mysql查看表的创建sql&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SHOW CREATE TABLE  BASE_USER&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1&gt;MySQL的日期格式&lt;/h1&gt;
+&lt;p&gt;标签（空格分隔）： 学习内容&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;[toc]
+##MySQL的五种时间和日期类型&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;YEAR表示年份：字节数为1，取值范围为“1901——2155”
+DATE表示日期：字节数为
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>端口映射</title>
+    <link href="http://wisdombud.github.io/2016/03/24/%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/"/>
+    <id>http://wisdombud.github.io/2016/03/24/端口映射/</id>
+    <published>2016-03-24T06:16:28.236Z</published>
+    <updated>2016-03-24T06:18:33.443Z</updated>
+    
+    <content type="html">&lt;p&gt;1、端口&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里的端口不是计算机硬件的I/O端口，而是指TCP/IP协议中的端口&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;2、为什么一台服务器可以提供很多种服务呢&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主要是各种服务采用不用的端口分别提供不同的服务。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;3、NAT&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NAT（Network Address Translation，网络地址转换），当在专用网内部的一些主机本来已经分配到了本地IP地址（即仅在本专用网内使用的专用地址），但现在又想和因特网上的主机通信（并不需要加密）时，可使用NAT方法。
+这种方法需要在专用网连接到因特网的路由器上安装NAT软件。装有NAT软件的路由器叫做NAT路由器，它至少有一个有效的外部全球IP地址。这样，所有使用本地地址的主机在和外界通信时，都要在NAT路由器上将其本地地址转换成全球IP地址，才能和因特网连接。
+使用少量的公有IP 地址代表较多的私有IP 地址&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;4、动态端口映射&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;内网的一台电脑要访问外网，它要像NAT网关发送数据包（包括外网IP、端口、本机IP、本机端口），NAT网关会把本机IP和本机端口改为自己公网的IP、一个未使用的端口（端口B）。并且记下这种映射关系，以便后续传输数据。然后将数据包发送给外网，外网收到数据后做出反应。发送数据到NAT网关的B端口，NAT网关会将数据转发给内网的那台电脑，实现内网和外网的通讯。当连接关闭时，NAT网关会释放B端口，以便别的服务可以使用B端口。这就是动态端口映射。也是NAT网关的工作方式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;5、静态端口映射&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在NAT网关上开放一个固定的端口，然后设置此端口收到的数据转发给那个内网的IP和端口。不管有没有连接，这个映射关系一直存在。这样可以让公网主动访问内网的电脑。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;6、&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当整个局域网在Internet上只有一个真正的地址的时候，这个IP地址是属于局域网中的服务器独有的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;7&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A 类：10.0.0.0～10.255.255.255
+B 类：172.16.0.0～172.31.255.255
+C 类：192.168.0.0～192.168.255.255
+上述三个范围内的地址不会在因特网上被分配，因此可以不必向ISP 或注册中心申请而在公司或企业内部自由使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;补充：
+路由器：
+实现了将一个网络的数据包发送到另一个网络。提供异构网互联的机制。
+路由就是指导IP数据库包发送的路径信息。
+路由协议是在路由指导IP数据包发送过程中的事先约定好的规定和标准。&lt;/p&gt;
+&lt;p&gt;路由器NAT模式：在传送数据包的同时还要做网络地址的转化（端口映射）
+路由模式：只传送数据包，不做网络地址转化。
+所以，当内网里传送数据包的时候，不需要NAT&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1、端口&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里的端口不是计算机硬件的I/O端口，而是指TCP/IP协议中的端口&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;2、为什么一台服务器可以提供很多种服务呢&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主要是各种服务采用不用的端口分
+    
+    </summary>
+    
+      <category term="常识" scheme="http://wisdombud.github.io/categories/%E5%B8%B8%E8%AF%86/"/>
+    
+    
+      <category term="端口映射" scheme="http://wisdombud.github.io/tags/%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Session 与 Cookie</title>
+    <link href="http://wisdombud.github.io/2016/03/24/Session%20%E4%B8%8E%20Cookie/"/>
+    <id>http://wisdombud.github.io/2016/03/24/Session 与 Cookie/</id>
+    <published>2016-03-24T06:08:57.787Z</published>
+    <updated>2016-03-24T06:13:44.674Z</updated>
+    
+    <content type="html">&lt;h2&gt;背景&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;因为HTTP协议无状态的，服务器无法区分客户端请求,不能保存每次交互的信息，即当服务器返回与请求相对应的应答之后，这次事务的所有信息就都丢掉了。如果用户发来一个新的请求，服务器也无法知道它是否与上次的请求有联系。所以要想服务器与客户端有联系,就要说Cookie与Session。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Cookie&lt;/h2&gt;
+&lt;h3&gt;定义&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt; Cookie是为了辨别用户身份随HTTP请求一起被传递的数据, 存储在客户端硬盘或内存中，
+内容主要包括：名字，值，过期时间，路径和域。。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Session&lt;/h2&gt;
+&lt;h3&gt;定义&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Session是客户端和服务端之间的一段交互过程的状态信息，保存在服务器端，Session的id保存在客户机的cookie中，也可以不启用Session。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;联系&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;当客户端通过 HTTP 协议访问服务器，服务器需要创建session的时候，
+首先检查请求里是否已包含sessionId，如果已包含，则以前已经为此客户端创建过session，服务器就按照sessionId查询相应信息；也有可能sessionId已经失效，服务器端则会创建新的session；如果客户端请求不包含sessionId，则为此客户端创建一个session，并且生成一个与此session对应的sessionId，sessionId返回给客户端保存，即存储在cookie中，一般cookie的名字默认SEEESIONID.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/mw690/d3101915jw1ezi4aek2jqj211c0ec0w1.jpg&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
+&lt;h3&gt;其他&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Cookie的生命周期属性为Max-age，不同浏览器的设置可能不同。不设置过期时间，这个Cookie生命周期为浏览器会话期间，只要关闭浏览器，Cookie就消失了。如果设置了过期时间，浏览器就会把Cookie保存到硬盘上，再次打开浏览器，这些Cookie依然有效直到超过设定的过期时间。
+Cookie存储在客户端，安全性低，且大小及个数受浏览器限制。
+Session存储在服务器端，安全性高，但影响系统性能，所以Session并不会一直都存在的，一定的时间之后，服务器上的Session就被销毁。
+应用：记住密码、及表单重复提交。
+将用户名和密码以Cookie的方式存放在客户端，客户端请求一个需要登陆的资源时，重新执行一次登录操作，新建Session，并更新Cookie中的SessionId,由此达到记住密码的功能。
+为防止表单的重复提交，为每一次的请求都生成唯一的标识token，并保存在用户的 Session 中，检查请求的token是否与session中的相同，若相同则为不为重复提交，处理请求并删除token，若不同则为重复提交表单。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/yytt123622/article/details/4094990&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考资料&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;背景&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;因为HTTP协议无状态的，服务器无法区分客户端请求,不能保存每次交互的信息，即当服务器返回与请求相对应的应答之后，这次事务的所有信息就都丢掉了。如果用户发来一个新的请求，服务器也无法知道它是否与上次的请求有联系。所以要想服务器与客户端
+    
+    </summary>
+    
+      <category term="WEB" scheme="http://wisdombud.github.io/categories/WEB/"/>
+    
+    
+      <category term="Session" scheme="http://wisdombud.github.io/tags/Session/"/>
+    
+      <category term="Cookie" scheme="http://wisdombud.github.io/tags/Cookie/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AMD与CMD规范</title>
+    <link href="http://wisdombud.github.io/2016/03/24/AMD%E4%B8%8ECMD%E8%A7%84%E8%8C%83/"/>
+    <id>http://wisdombud.github.io/2016/03/24/AMD与CMD规范/</id>
+    <published>2016-03-24T06:08:57.785Z</published>
+    <updated>2016-03-24T06:12:34.728Z</updated>
+    
+    <content type="html">&lt;h2&gt;AMD规范&lt;/h2&gt;
+&lt;h3&gt;定义&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Asynchronous Module Definition，异步模块加载机制。
+描述了模块的定义，依赖关系以及加载机制。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;API&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;define([module-name?], [array-of-dependencies?], [module-factory-or-object]);
+module-name: 模块的标识,可选参数,省略此参数,模块的名字默认为脚本的名字。如果提供了该参数，模块名必须是“顶级”的和绝对的(不允许相对名字);
+array-of-dependencies: 依赖的模块, 可选参数,忽略此参数，默认为[&amp;quot;require&amp;quot;, &amp;quot;exports&amp;quot;, &amp;quot;module&amp;quot;],否则按照位置顺序以参数的形式传入factory;
+module-factory-or-object: 模块初始化要执行的函数或对象,如果为函数,有参数列表则不扫描依赖性,否则扫描依赖性。如果是对象，此对象应该为模块的输出值。
+示例
+define(&#39;test&#39;, [
+    &#39;require&#39;,
+    &#39;wutil&#39;,
+    &#39;template&#39;
+],
+function(require, wutil, template) {
+    //代码
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;(1)require&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;require(&amp;quot;module-name&amp;quot;),返回模块name所代表的模块
+define([&#39;require&#39;], function (require) {
+    var a = require(&#39;a&#39;);
+});
+define(function (require, exports, module) {
+    var a = require(&#39;a&#39;);
+});
+require(Array, Function):当模块name所以代表的模块加载完成且可用时，回调函数Function才开始执行，并且只被执行一次。各个模块按照依赖数组中的位置顺序以参数的形式传入到Function里。
+define(function (require) {
+    require([&#39;a&#39;, &#39;b&#39;], function (a, b) {
+        //代码
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;CMD规范&lt;/h2&gt;
+&lt;h3&gt;定义&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Common Module Definition 即通用模块定义.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;API&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;define(factory);
+factory 为对象、字符串时，表示模块的接口就是该对象、字符串。
+factory 为函数时，表示是模块的构造方法。执行该构造方法，可以得到模块向外提供的接口。factory 方法在执行时，默认会传入三个参数：require、exports 和 module .
+define 也可以接受两个以上参数, define(id?, deps?, factory),我感觉和AMD相同.....
+示例
+define(&#39;hello&#39;, [&#39;jquery&#39;], function(require, exports, module) {
+  // 模块代码
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;(1)require:&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;接受模块标识作为唯一的参数，用来获取其他模块提供的接口.
+define(function( require, exports ){
+    var a = require(&#39;./a&#39;);
+    a.doSomething();
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;(2)exports:&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;factory 的第二个参数，用来向外提供模块接口。
+define(function( require, exports ){
+    exports.foo = &#39;bar&#39;; // 向外提供的属性
+    exports.do = function(){}; // 向外提供的方法
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;(3) module:&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;factory的第三个参数，存储了一些与当前模块相关联的属性与方法。
+module.id 为模块的唯一标识。
+module.uri 根据模块系统的路径解析规则得到模块的绝对路径。
+module.dependencies 表示模块的依赖。
+module.exports 当前模块对外提供的接口。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;异同&lt;/h2&gt;
+&lt;p&gt;AMD规范需要提声明,在依赖数组内.
+CMD可以在function内加载.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;AMD规范&lt;/h2&gt;
+&lt;h3&gt;定义&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Asynchronous Module Definition，异步模块加载机制。
+描述了模块的定义，依赖关系以及加载机制。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;API&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;de
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://wisdombud.github.io/categories/javascript/"/>
+    
+    
+      <category term="AMD" scheme="http://wisdombud.github.io/tags/AMD/"/>
+    
+      <category term="CMD" scheme="http://wisdombud.github.io/tags/CMD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端自动化构建工具--Gulp</title>
+    <link href="http://wisdombud.github.io/2016/03/24/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E6%80%BB%E7%BB%93/"/>
+    <id>http://wisdombud.github.io/2016/03/24/前端自动化构建工具总结/</id>
+    <published>2016-03-24T06:08:57.783Z</published>
+    <updated>2016-03-24T06:11:37.608Z</updated>
+    
+    <content type="html">&lt;h2&gt;什么是Gulp&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Gulp是前端开发过程中对代码进行构建的工具,
+自动化地完成 javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Gulp用法&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.1 安装node.js
+&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Node.js&lt;/a&gt;
+1.2 全局安装Gulp
+&lt;code&gt;npm install gulp -g&lt;/code&gt;
+1.3 新建package.json文件，项目安装Gulp
+&lt;code&gt;npm init.2全局安装&lt;/code&gt;
+&lt;code&gt;npm install gulp --save-dev&lt;/code&gt;
+1.4 安装Gulp插件
+&lt;code&gt;npm install gulp-uglify --save-dev&lt;/code&gt;
+1.5 新建gulpfile.js文件
+1.6 编写gulpfile.js内容
+&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/d3101915gw1f15jm1kseij21ao0skdp4.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Gulp的API&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.gulpjs.com.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gulp中文网&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;1.1 gulp.src(globs[, options])&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;src方法是指定需要处理的源文件的路径;
+globs同watch方法；
+options(可选)：类型为Object，有3个属性buffer、read、base；
+options.buffer(Boolean)：默认：true,设置为false，将返回file.content的流并且不缓冲文件，处理大文件时非常有用；
+options.read(Boolean)：默认：true 设置false，将不执行读取文件操作，返回null；
+options.base(String)：设置输出路径以某个路径的某个组成部分为基础向后拼接&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;1.2 gulp.dest&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;dest方法是指定处理完后文件输出的路径
+path(必填)：类型为String or Function 指定文件输出路径，
+或者定义函数返回文件输出路径亦可；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;1.3 gulp.task(name[, deps], fn)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;task定义一个gulp任务。
+name(必填)：类型为String， 指定任务的名称；
+deps(可选)：类型为StringArray，该任务依赖的任务；
+fn(必填)：类型为Function，该任务调用的插件操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;1.4 gulp.watch(glob [, opts], tasks)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;watch用于监听文件变化，文件一修改就会执行指定的任务。
+glob(必填):需要处理的源文件匹配符路径,类型为String或StringArray；
+opts(可选):类型为Object，
+tasks(必填)：类型为StringArray，需要执行的任务的名称数组。
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; gulp = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp&#39;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        cssmin = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-minify-css&#39;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        clean = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-clean&#39;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        rename = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-rename&#39;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        rev = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-rev&#39;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        collector = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-rev-collector&#39;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        uglify = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-uglify&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//清除&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;clean&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; gulp.src(&lt;span class=&quot;string&quot;&gt;&#39;dist&#39;&lt;/span&gt;, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            read: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;).pipe(clean());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//css压缩&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;testCssmin&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        gulp.src([&lt;span class=&quot;string&quot;&gt;&#39;css/bootstrap.css&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;css/main.css&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;css/form.css&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;css/form.css&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;css/it-industry.css&#39;&lt;/span&gt;])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(cssmin())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(rename(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;path&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                path.basename += &lt;span class=&quot;string&quot;&gt;&#39;.min&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                path.extname =&lt;span class=&quot;string&quot;&gt;&#39;.css&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(rev())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;dist/css&#39;&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(rev.manifest())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;dist/css&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//js压缩&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;testJsmin&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//递归遍历js文件夹下所有文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        gulp.src(&lt;span class=&quot;string&quot;&gt;&#39;js/**/*.js&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(uglify())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// .pipe(rev())&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// .pipe(gulp.dest(&#39;dist/js&#39;))&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// .pipe(rev.manifest())&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;dist/js&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//替换路径&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;rev&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//- 读取 .json 文件以及需要进行css名替换的文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        gulp.src([&lt;span class=&quot;string&quot;&gt;&#39;dist/css/rev-manifest.json&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;../WEB-INF/jsp/common/header.jsp&#39;&lt;/span&gt;])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//- 执行文件内css名的替换&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(collector(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                replaceReved: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             &lt;span class=&quot;comment&quot;&gt;//- 替换后的文件输出的目录&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            .pipe(gulp.dest(&lt;span class=&quot;string&quot;&gt;&#39;../WEB-INF/jsp/common/&#39;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//监听&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;auto&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 监听文件修改，当文件被修改则执行 testJsmin 任务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        gulp.watch(&lt;span class=&quot;string&quot;&gt;&#39;js/*.js&#39;&lt;/span&gt;, [&lt;span class=&quot;string&quot;&gt;&#39;testJsmin&#39;&lt;/span&gt;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 监听文件修改，当文件被修改则执行 testCssmin 任务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        gulp.watch(&lt;span class=&quot;string&quot;&gt;&#39;css/*.css&#39;&lt;/span&gt;, [&lt;span class=&quot;string&quot;&gt;&#39;testCssmin&#39;&lt;/span&gt;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//在命令行直接输入 gulp 回车，&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;default&#39;&lt;/span&gt;, [&lt;span class=&quot;string&quot;&gt;&#39;clean&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;testCssmin&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;testJsmin&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;rev&#39;&lt;/span&gt;]);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Gulp VS Grunt&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;优点
+1.1 Gulp比Gruntgulp.task更快，利用Node.js强大的流，通过管道连接，速度更快
+1.2 Gulp遵循代码优于配置策略，维护Gulp更容易，无需写繁杂的配置
+1.3 Gulp的每个插件只完成一个功能
+1.4 Gulp的核心API只有5个，学习成本低
+缺点
+1.1 社区不如Grunt完善，插件不够丰富&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;什么是Gulp&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Gulp是前端开发过程中对代码进行构建的工具,
+自动化地完成 javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件
+    
+    </summary>
+    
+      <category term="工具" scheme="http://wisdombud.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Gulp" scheme="http://wisdombud.github.io/tags/Gulp/"/>
+    
+  </entry>
   
   <entry>
     <title>提问的智慧</title>
@@ -360,10 +1533,9 @@ List&amp;lt; String&amp;gt;、List&amp;lt; Char&amp;gt; 等都可以。&lt;/p&gt
     <link href="http://wisdombud.github.io/2016/03/16/java%20%E6%B3%A8%E8%A7%A3/"/>
     <id>http://wisdombud.github.io/2016/03/16/java 注解/</id>
     <published>2016-03-16T08:38:35.000Z</published>
-    <updated>2016-03-16T11:07:35.190Z</updated>
+    <updated>2016-03-24T06:19:47.555Z</updated>
     
-    <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2&gt;注解是什么&lt;/h2&gt;
+    <content type="html">&lt;h2&gt;注解是什么&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Java提供了一种原程序中的元素关联任何信息和任何元数据的途径和方法。
 注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。&lt;/p&gt;
@@ -464,11 +1636,10 @@ int age() default 18;
     
     <summary type="html">
     
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2&gt;注解是什么&lt;/h2&gt;
+      &lt;h2&gt;注解是什么&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Java提供了一种原程序中的元素关联任何信息和任何元数据的途径和方法。
-注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举
+注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明
     
     </summary>
     
@@ -476,6 +1647,82 @@ int age() default 18;
     
     
       <category term="Annotation" scheme="http://wisdombud.github.io/tags/Annotation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>meta keywords</title>
+    <link href="http://wisdombud.github.io/2016/03/15/meta%20keywords/"/>
+    <id>http://wisdombud.github.io/2016/03/15/meta keywords/</id>
+    <published>2016-03-15T08:38:35.000Z</published>
+    <updated>2016-03-24T06:57:56.161Z</updated>
+    
+    <content type="html">&lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
+2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
+3.不要给网页定义过多的关键词，最好保持在10个以下，过多的关键词，搜索引擎将忽略；
+4不要给网页定义与网页描述内容无关的关键词；
+5.由于网页制作者滥用keywords(提供过多的关键词或者提供与网页无关的关键词)，导致目前常用的搜索引擎降低了keywords的重要性。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;keyword设计的初衷是为搜索引擎提供分类参考,但是因为以前可以用更多的关键字来获取更好的搜索引擎排名,所以导致了现在很多搜索引擎将meta的keyword属性看的并不是很重要,甚至特意的避开keyword.
+&lt;a href=&quot;http://www.chinaz.com/web/2011/1019/214529.shtml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于慎用meta keyword的建议的建议&lt;/a&gt;
+如果必须要用keyword的时候，关键字的个数尽量不要太多，关键字太多时常常被搜索引起忽略，所以建议在使用keyword的时候尽量不要太多
+关于meta标签,除了比标识网页关键字之外,还可以用来标识网页的内容,网页重定向等功能.
+&lt;a href=&quot;http://www.haorooms.com/post/html_meta_ds&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;meta标签的补充使用&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
+2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
+
+    
+    </summary>
+    
+      <category term="web" scheme="http://wisdombud.github.io/categories/web/"/>
+    
+    
+      <category term="meta" scheme="http://wisdombud.github.io/tags/meta/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>局域网传输速率的限制</title>
+    <link href="http://wisdombud.github.io/2016/03/15/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E9%99%90%E5%88%B6/"/>
+    <id>http://wisdombud.github.io/2016/03/15/局域网传输速率的限制/</id>
+    <published>2016-03-15T08:38:35.000Z</published>
+    <updated>2016-03-24T06:57:19.937Z</updated>
+    
+    <content type="html">&lt;p&gt;####1.网络传输单位和存储单位的区别&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输和文件存储的单位不同,因为1Byte=8bit,所以理论上我们所说的100M传输速度的网络,转换成文件存储可以达到12.5MByte/s.
+当然12.5MByte/s只是一个理论值,在正常的网络传输受到其网络传输环境、网卡接口限制、硬盘读写速率以及CPU等多方面因素，实际传输的速度并不会达到理论值。在百兆的局域网中，通常在10MByte/s左右.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;####2.网卡的限制&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;按照传输速率可以将网卡分为10Mbps、100Mbps、10/100Mbps自适应网卡、1000Mbps以及10GMbps网卡,大多数电脑都采用100Mbps和10/100Mbps的网卡,所以也根据网卡的限制,理论上局域网的最高传输速度只能达到12.5M/s.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;####3.双绞线的限制&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;双绞线常见的有三类、五类、超五类和六类线，三类线已经逐渐的被五类线取代，六类线适用于1Gbps以上的传输,日常构建局域网最常用的就是五类(100M)双绞线,理论值同样是12.5M/s.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####1.网络传输单位和存储单位的区别&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输
+    
+    </summary>
+    
+      <category term="常识" scheme="http://wisdombud.github.io/categories/%E5%B8%B8%E8%AF%86/"/>
+    
+    
+      <category term="net" scheme="http://wisdombud.github.io/tags/net/"/>
     
   </entry>
   
@@ -570,71 +1817,6 @@ int age() default 18;
     
     
       <category term="java" scheme="http://wisdombud.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EOVA简介</title>
-    <link href="http://wisdombud.github.io/2016/03/13/EOVA%E7%AE%80%E4%BB%8B/"/>
-    <id>http://wisdombud.github.io/2016/03/13/EOVA简介/</id>
-    <published>2016-03-13T08:38:35.000Z</published>
-    <updated>2016-03-13T09:15:29.733Z</updated>
-    
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;Eova 是一个 J2EE 快速开发平台。&lt;/li&gt;
-&lt;li&gt;Eova 适用于对 UI 布局和性能没有严苛要求的企业级 WEB 后台管理系统。&lt;/li&gt;
-&lt;li&gt;是对Jfinal，easyUI的再次封装&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;EVOA能做什么&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;简单表数据的显示，分页，无需代码实现。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;自定义二级三级菜单，随意DIY。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;已经实现的权限管理模块，可自定义用户组，及权限。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;登录已实现（目前没有注册功能），可添加用户。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;DIY查询。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;自定义业务（重写业务拦截器）。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; public String addBefore(AopContext ac) throws Exception &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      String c = ac.record.get(&amp;quot;kaipiaoAmount&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      String id = ac.record.getStr(&amp;quot;contractId&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      String sql = &amp;quot;UPDATE base_contract SET amount=amount-? WHERE id=?;&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      Db.use(xx.DS_MAIN).update(sql, c, id);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      return super.addBefore(ac);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; java.util.List&amp;lt;Record&amp;gt; list = ac.records;//获取当前所有数据&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    for (Record o : list) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                Integer status = o.get(&amp;quot;status&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                if (status == 0) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    o.set(&amp;quot;status&amp;quot;, &amp;quot;在线&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125; else &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    o.set(&amp;quot;status&amp;quot;, &amp;quot;未连接&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;自定义按钮（需要html + BS）。&lt;/li&gt;
-&lt;li&gt;简单配置实现文件上传。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;EVOA的优势&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;减少了代码编写量，简化了开发过程。&lt;/li&gt;
-&lt;li&gt;易于上手&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;详细介绍:&lt;a href=&quot;http://note.youdao.com/share/?id=e74a3bc10cc195a5a4c79c7257fcce9b&amp;amp;type=note&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;有道云笔记链接&lt;/a&gt;&lt;/h3&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;Eova 是一个 J2EE 快速开发平台。&lt;/li&gt;
-&lt;li&gt;Eova 适用于对 UI 布局和性能没有严苛要求的企业级 WEB 后台管理系统。&lt;/li&gt;
-&lt;li&gt;是对Jfinal，easyUI的再次封装&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;EVOA能做什么&lt;/h3&gt;
-
-    
-    </summary>
-    
-      <category term="EOVA" scheme="http://wisdombud.github.io/categories/EOVA/"/>
-    
-    
-      <category term="EOVA" scheme="http://wisdombud.github.io/tags/EOVA/"/>
     
   </entry>
   
@@ -868,11 +2050,10 @@ http://zhidao.baidu.com/link?url=YK05yEAorh3NkdMX2oA1y6pTwZjCl7qMzCdXPgNCRwbbHYb
     <link href="http://wisdombud.github.io/2016/03/01/WEB%20%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9/"/>
     <id>http://wisdombud.github.io/2016/03/01/WEB 基础内容/</id>
     <published>2016-03-01T08:38:35.000Z</published>
-    <updated>2016-03-13T09:15:59.876Z</updated>
+    <updated>2016-03-24T06:21:36.830Z</updated>
     
-    <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;p&gt;##什么是WEB
-Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构包括了四个基石：&lt;/p&gt;
+    <content type="html">&lt;h2&gt;什么是WEB&lt;/h2&gt;
+&lt;p&gt;Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构包括了四个基石：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;URI：统一资源标识（URL:统一资源定位 URI+LOCATION）
 HTTP: 超文本传输协议
@@ -907,9 +2088,8 @@ MIME(多用途互联网邮件扩展)&lt;/p&gt;
     
     <summary type="html">
     
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;p&gt;##什么是WEB
-Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构包括了
+      &lt;h2&gt;什么是WEB&lt;/h2&gt;
+&lt;p&gt;Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构包括了四个基石：&lt;
     
     </summary>
     
@@ -917,603 +2097,6 @@ Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同
     
     
       <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript prototype</title>
-    <link href="http://wisdombud.github.io/2016/02/15/javascript%20prototype/"/>
-    <id>http://wisdombud.github.io/2016/02/15/javascript prototype/</id>
-    <published>2016-02-15T08:38:35.000Z</published>
-    <updated>2016-03-13T09:21:09.923Z</updated>
-    
-    <content type="html">&lt;h2&gt;js创建对象&lt;/h2&gt;
-&lt;h3&gt;最简单的对象&lt;/h3&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj=&amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var obj2=new Object();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3&gt;稍微复杂点的对象&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;写法一 : 定义完成后再添加属性和方法
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj=&amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.a=2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.fn=function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    alert(this);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;写法二 ： 字面量赋值
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a:2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fn:function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        alert(this);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;问题：对象如果要复用的时候怎么办？有没有类？&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;javascript 没有类，没有类，没有类！只有对象！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;function 模拟一个类&lt;/h3&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function createObj(a,fn)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                var obj=&amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                obj.a=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                obj.fn=fn;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                return obj;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var obj=createObj(2,function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                alert(this.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;足够了么？还有没有问题？&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;上面的这个function的返回的对象是什么？怎么判断创建出来的对象的类型？&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;function 的特殊性&lt;/h3&gt;
-&lt;p&gt;１. function可以接受参数，可以根据参数来创建相同类型不同值的对象&lt;/p&gt;
-&lt;p&gt;２. &lt;strong&gt;function作为构造函数（通过new操作符调用）的时候会返回一个对象，构造函数的返回值分为两种情况，当function没有return语句或者return回一个基本类型（bool,int,string,undefined,null）的时候，返回新创建的一个匿名对象，该对象即为函数实例；如果function体内return一个引用类型对象（Array,Function,Object等）时，该对象会覆盖new创建的匿名对象作为返回值。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;３. 那么使用function怎么解决类型识别问题呢，每个function实例对象都会有一个constructor属性（也不是“有”，而是可以对应），这个属性就可以指示其构造是谁，也可以使用instanceof 操作符来做判断对象是否为XXX的实例。
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Person(name)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.name=name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.fn=function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    alert(this.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person1=new Person(&amp;apos;Byron&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(person1.constructor==Person);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(person1 instanceof Person);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3&gt;再好一点的写法&lt;/h3&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Person(name)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.name=name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.fn=function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    alert(this.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person1=new Person(&amp;apos;Byron&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person2=new Person(&amp;apos;Frank&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(person1.fn==person2.fn);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;问题：fn&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;终极写法&lt;/h3&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Person(name)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                this.name=name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Person.prototype.share=[];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Person.prototype.printName=function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                alert(this.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person1=new Person(&amp;apos;Byron&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var person2=new Person(&amp;apos;Frank&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(person1.printName==person2.printName);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h2&gt;属性访问&lt;/h2&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var myObj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        a:2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt; --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var myObj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        a:undefined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt; --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var myObj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        get a() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return this.h;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        set a(val)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            this.h=val*2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Object.defineProperty(myObj, &amp;quot;b&amp;quot;, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        get: function() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return 3;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            //enumerable: true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    myObj.a=2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(myObj.b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    myObj.hasOwnProperty(&amp;quot;a&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;hasOwnProperty 只会检查属性是否在对象中
-in 在prototype说~&lt;/p&gt;
-&lt;h2&gt;prototype&lt;/h2&gt;
-&lt;h3&gt;what&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;javascript 中的对象有一个特殊的属性：prototype，表示对于其他对象的引用&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var oneObj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a:2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var twoObj=Object.create(oneObj);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(twoObj.a);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3&gt;尽头&lt;/h3&gt;
-&lt;p&gt;Object.prototype&lt;/p&gt;
-&lt;h3&gt;属性的设置与屏蔽&lt;/h3&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var oneObj=&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a:2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;oneObj.b=&amp;apos;b&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;原则：&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;链上存在普通访问的属性，并没有只读，那么会在当前对象添加b&lt;/li&gt;
-&lt;li&gt;链上存在该属性，但被标记为只读，严格模式下会报错，普通模式没有执行&lt;/li&gt;
-&lt;li&gt;链上有属性，并且有setter，会被执行，不会屏蔽&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2&gt;js创建对象&lt;/h2&gt;
-&lt;h3&gt;最简单的对象&lt;/h3&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span c
-    
-    </summary>
-    
-      <category term="javacript" scheme="http://wisdombud.github.io/categories/javacript/"/>
-    
-    
-      <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
-    
-      <category term="prototype" scheme="http://wisdombud.github.io/tags/prototype/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javacript new</title>
-    <link href="http://wisdombud.github.io/2016/02/14/javascript%20new/"/>
-    <id>http://wisdombud.github.io/2016/02/14/javascript new/</id>
-    <published>2016-02-14T08:38:35.000Z</published>
-    <updated>2016-03-13T09:21:03.501Z</updated>
-    
-    <content type="html">&lt;p&gt;1.如果一个函数没有返回值，那么如果不使用new来创建变量，那么该变量的值为undefined.如果用了new，那么就是Object.说明一个函数的默认的Prototype是Object.&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Test1(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTest = new Test1(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTest);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function Test1WithoutNew(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTestWithoutNew = Test1WithoutNew(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTestWithoutNew);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;2.如果函数有返回值，但是返回值是基本类型。那么new出来的myTest还是object.。&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Test1(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return this.a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTest = new Test1(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTest); //Object&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function Test1WithoutNew(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return this.a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTestWithoutNew = Test1WithoutNew(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTestWithoutNew);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;3。如果函数的返回值为new出来的对象，那么myTest的值根据new出来的对象而定。
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function Test1(str) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    this.a = str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return new String(this.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var myTest = new Test1(&amp;quot;test1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;alert(myTest);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.如果一个函数没有返回值，那么如果不使用new来创建变量，那么该变量的值为undefined.如果用了new，那么就是Object.说明一个函数的默认的Prototype是Object.&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;ta
-    
-    </summary>
-    
-      <category term="javacript" scheme="http://wisdombud.github.io/categories/javacript/"/>
-    
-    
-      <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
-    
-      <category term="new" scheme="http://wisdombud.github.io/tags/new/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript 作用域与闭包</title>
-    <link href="http://wisdombud.github.io/2016/02/13/javascript%20%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/"/>
-    <id>http://wisdombud.github.io/2016/02/13/javascript 作用域和闭包/</id>
-    <published>2016-02-13T08:38:35.000Z</published>
-    <updated>2016-03-13T09:20:57.573Z</updated>
-    
-    <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2&gt;第一章 作用域是什么&lt;/h2&gt;
-&lt;h3&gt;js编译原理&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;到底是什么类型的语言？
-动态、解释型语言？
-no，它是&lt;strong&gt;编译型&lt;/strong&gt;的语言
-why？&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;不是提前编译的，编译在执行之前的几微妙甚至更短
-编译结果不能移植&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;编译的过程&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;词法分析-&amp;gt;语法分析-&amp;gt;代码生成&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;理解作用域&lt;/h3&gt;
-&lt;ol start=&quot;3&quot;&gt;
-&lt;li&gt;js的执行参与者&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;js引擎（v8、xx）：负责编译和执行的过程&lt;/li&gt;
-&lt;li&gt;编译器：词法分析、语法分析、代码生成&lt;/li&gt;
-&lt;li&gt;作用域：收集和维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;4&quot;&gt;
-&lt;li&gt;
-&lt;p&gt;code&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var a=2;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;词法分析: var a = 2
-语法分析：var a； 作用域是否有a？有忽略，没有声明后放到作用域中
-生成代码：a=2；
-执行：js引擎会询问作用域有没有a，然后再赋值，如果没有就异常了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;code 2&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function foo(a)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a+b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo(2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;ReferenceError异常&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;LHS和RHS&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;LHS:查找赋值操作的目标是谁？ a=&lt;br&gt;
-RHS：查找谁是赋值操作的源头 console.log(a) 或者 =a&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;7&quot;&gt;
-&lt;li&gt;
-&lt;p&gt;function的LHS和RHS&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function foo(a)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a+b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo(2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;LHS: foo(..  a.. b=..
-RHS: foo.. console.. log... a b  a&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;p&gt;不具有一般意义的一些代码&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var foo = function(a)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a+b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo(2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;LHS:foo.. foo(.. a.. b..
-RHS:function(.. console.. ...&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;注意：上面的LHS和RHS对于最后一个就不对了，编译器可以在代码生成时同时处理声明和值的定义。&lt;/p&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;数一数&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; function foo(a)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var b=a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return a+b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var c= foo(2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;LHS:3
-RHS:4&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;作用域嵌套&lt;/h3&gt;
-&lt;ol start=&quot;9&quot;&gt;
-&lt;li&gt;作用域的嵌套&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;向上找一直到全局作用域&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;异常&lt;/h3&gt;
-&lt;ol start=&quot;10&quot;&gt;
-&lt;li&gt;LHS和RHS在嵌套时的不同&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;LHS:如果到最后没有找到，那就创建一个(非严格模式)或者抛一个异常（ReferenceError，严格模式）；
-RHS:如果到最后没有找到，那就抛一个异常（ReferenceError）
-可以理解&lt;a href=&quot;#code2&quot;&gt;code2&lt;/a&gt;的代码&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;小结&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;javascript的编译过程包括：词法分析-&amp;gt;语法分析-&amp;gt;代码生成&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;作用域&lt;/strong&gt;可以理解成一套规则，这套规则用来管理引擎如何在当前作用域以及嵌套的子作用域中根据标识符名称进行变量的查找&lt;/li&gt;
-&lt;li&gt;变量查找方法：LHS和RHS&lt;/li&gt;
-&lt;li&gt;作用域的嵌套&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;第二章 词法作用域&lt;/h2&gt;
-&lt;p&gt;作用域的工作模型：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;词法作用域&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;动态作用域（Bash Perl）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;词法作用域&lt;/h3&gt;
-&lt;h4&gt;定义与举例&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;词法作用域是指定义在词法阶段的作用域。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;说人话：词法作用域就是你在写代码时定义在哪，就是哪个的作用域&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;代码示例&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    function foo(a) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        var b=a*2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        function bar(c) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            console.log(a,b,c);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        bar(b*3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo(2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(c);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;输出结果是什么？&lt;/li&gt;
-&lt;li&gt;LHS和RHS分别有哪些？&lt;/li&gt;
-&lt;li&gt;作用域有几个？&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4&gt;查找&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;遮蔽效应（全局如果被遮蔽，可以window.a访问）&lt;/li&gt;
-&lt;li&gt;词法作用域只由函数声明时的所处的位置决定&lt;/li&gt;
-&lt;li&gt;词法作用域查找只会查找一级标识符（对象的属性不会查找）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;如何欺骗词法作用域---&lt;strong&gt;一定不要使用，只是为了了解&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;不管怎么说，都不要用&lt;/strong&gt;
-&lt;em&gt;讲的目的只是为了看懂别人这么写的代码&lt;/em&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在执行时，动态的修改词法作用域&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;####eval&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;功能：接收一个字符串作为参数，并将其中的内容看成在写代码时就加进去的一样&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function foo(str, a) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    eval(str);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(a, b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var b = 2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;foo(&amp;quot;var b=3;&amp;quot;, 1);//1,3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;补充：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;实际中可以执行一段代码后再传str&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;严格模式： eval会有自己的作用域，不会修改插入的作用域了&lt;/p&gt;
-&lt;p&gt;其它：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;setTimeOut(..) setInterval(..)，第一个参数可以接受字符串
-new Function(..) 最后一个参数接受代码字符串&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;不管怎么说，都不要用&lt;/strong&gt;
-&lt;em&gt;讲的目的只是为了看懂别人这么写的代码&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;####with
-&lt;strong&gt;with 会根据你传递给他的对象中凭空创造一个新的词法作用域&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;正常写法&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a: 1,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b: 2,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    c: 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj.a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj.b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;console.log(obj.c);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;简单写法&lt;/p&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    var obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        a: 1,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        b: 2,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        c: 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    with(obj) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        console.log(a);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        console.log(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        console.log(c);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ```  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3. 所带来的问题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ```javacript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function test(obj) {
-with(obj) {
-a = 2;
-}
-}
-var obj1 = {
-a: 1
-}
-var obj2 = {
-b: 1
-}
-test(obj1);
-console.log(obj1.a);
-test(obj2);
-console.log(obj2.a);
-console.log(a);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;gt;缺点：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * 欺骗词法作用域会导致不可预知的结果（对于不懂的人来说）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * 严格模式不支持&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    * 性能&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;**不管怎么说，都不要用**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*讲的目的只是为了看懂别人这么写的代码*    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;###小结&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; * 定义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* 欺骗词法作用域 **千万不要使用**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 补充知识&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; 动态作用域&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&amp;gt; 不关心在何处声明，只关心在何处调用&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;gt;&amp;gt; ```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function test1() {
-console.log(a);
-}
-function bar() {
-var a = 3;
-test1();
-}
-var a = 2;
-bar();&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## 函数作用域和块作用域&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 函数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## 提升&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## 闭包&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;## 看代码说结果&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码1:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;var a = 1;
-function foo() {
-var b = 2;
-function bar() {
-var b = &#39;bar2&#39;;
-console.log(b);
-function baz() {
-console.log(a);
-}
-baz();
-}
-bar();
-console.log(b);
-}
-foo();
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    bar2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码2:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;a = 2;
-var a;
-console.log( a );
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码3:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;console.log( a );
-var a = 2;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    undefined  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码4:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;foo();
-function foo() {
-console.log(&#39;foo&#39;);
-}
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    foo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码5:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;//foo();
-bar();
-var foo = function bar() {
-console.log(&#39;foo&#39;);
-};
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    foo is not function&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    bar is not defined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码6:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;var foo;
-function foo() { console.log( &amp;quot;a&amp;quot; ); }
-function foo() { console.log( &amp;quot;b&amp;quot; ); }&lt;/p&gt;
-&lt;p&gt;foo();
-foo = true;
-if (foo) {&lt;/p&gt;
-&lt;p&gt;}
-else {&lt;/p&gt;
-&lt;p&gt;}
-foo();
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    b&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    foo is not a function&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码7:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;var i;
-for (i=1; i&amp;lt;= 5; i++) {
-setTimeout( function timer(){
-console.log( i );
-}, i*1000);
-}
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码8:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var baz;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function foo() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    function bar() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        console.log( a );&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a = 2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return bar;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;baz = foo();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;baz();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function foo(j){
-function timer(){
-console.log(j);
-}
-return timer();
-}&lt;/p&gt;
-&lt;p&gt;for (var i=1; i&amp;lt;=5; i++) {
-setTimeout(foo(i), i*1000 );
-}
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码9:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function foo() {
-var a = 2;
-function bar() {
-console.log( a );
-}
-return bar;
-}
-var baz = foo();
-baz();
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码10:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function foo(a){
-console.log(a+b);
-b=a;
-}
-foo(2);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   b is not defined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码11:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function foo(a){
-window.b=a;
-console.log(a+b);
-}
-a=2;
-foo(2);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码12:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;var foo = function(a){
-console.log(a+b);
-b=a;
-}
-foo(2);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码13:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function foo(a) {
-var b=a&lt;em&gt;2;
-function bar(c) {
-console.log(a,b,c);
-}
-bar(b&lt;/em&gt;3);
-}
-foo(2);
-console.log(a);
-console.log(b);
-console.log(c);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    2,4,12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a is not defined;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码14:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function foo(str, a) {
-eval(str);
-console.log(a, b);
-}
-var b = 2;
-foo(&amp;quot;var b=3;&amp;quot;, 1);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    1,3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码15:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function test(obj) {
-with(obj) {
-a = 2;
-}
-}
-var obj1 = {
-a: 1
-}
-var obj2 = {
-b: 1
-}
-test(obj1);
-console.log(obj1.a);
-test(obj2);
-console.log(obj2.a);
-console.log(a);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    undefined&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码16:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;词法作用域&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function test1() {
-console.log(a);
-}
-function bar() {
-var a = 3;
-test1();
-}
-var a = 2;
-bar();
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;   2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码17:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function Person(name){
-this.name=name;
-this.fn=function(){
-alert(this.name);
-}
-}
-var person1=new Person(&#39;Byron&#39;);
-console.log(person1.constructor==Person);
-console.log(person1 instanceof Person);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;####代码18:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function Person(name){
-this.name=name;
-this.fn=function(){
-alert(this.name);
-}
-}
-var person1=new Person(&#39;Byron&#39;);
-var person2=new Person(&#39;Frank&#39;);
-console.log(person1.fn==person2.fn);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码19:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function Person(name){
-this.name=name;
-}
-Person.prototype.share=[];
-Person.prototype.printName=function(){
-alert(this.name);
-}
-var person1=new Person(&#39;Byron&#39;);
-var person2=new Person(&#39;Frank&#39;);
-console.log(person1.printName==person2.printName);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码20:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;var myObj = {
-get a() {
-return this.h;
-},
-set a(val){
-this.h=val*2;
-}
-}
-Object.defineProperty(myObj, &amp;quot;b&amp;quot;, {
-get: function() {
-return 3;
-//enumerable: true
-}
-});
-myObj.a=2;
-console.log(myObj.a);
-console.log(myObj.b);
-myObj.hasOwnProperty(&amp;quot;a&amp;quot;);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码21:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;var oneObj={
-a:2
-}
-var twoObj=Object.create(oneObj);
-console.log(twoObj.a);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码22:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function Test1(str) {
-this.a = str;
-}
-var myTest = new Test1(&amp;quot;test1&amp;quot;);
-console.log(myTest.a);
-function Test1WithoutNew(str) {
-this.a = str;
-}
-var myTestWithoutNew = Test1WithoutNew(&amp;quot;test1&amp;quot;);
-console.log(myTestWithoutNew.a);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码23:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function Test1(str) {
-this.a = str;
-return this.a;
-}
-var myTest = new Test1(&amp;quot;test1&amp;quot;);
-console.log(myTest);
-function Test1WithoutNew(str) {
-this.a = str;
-return this.a;
-}
-var myTestWithoutNew = Test1WithoutNew(&amp;quot;test1&amp;quot;);
-console.log(myTestWithoutNew);
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;####代码24:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```javascript&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;function Test1(str) {
-this.a = str;
-return new String(this.a);
-}
-var myTest = new Test1(&amp;quot;test1&amp;quot;);
-console.log(myTest);&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;    test1
-## 闭包的作用（**如何实现模块化**）
-
-## 对象
-### 函数
-
-## “类”与面向对象
-
-## 原型
-
-## 行为委托
-&lt;/code&gt;&lt;/pre&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2&gt;第一章 作用域是什么&lt;/h2&gt;
-&lt;h3&gt;js编译原理&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;到底是什么类型的语言？
-动态、解释型语言？
-no，它是&lt;strong&gt;编译型&lt;/strong&gt;的语言
-why？&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p
-    
-    </summary>
-    
-      <category term="javacript" scheme="http://wisdombud.github.io/categories/javacript/"/>
-    
-    
-      <category term="javacript" scheme="http://wisdombud.github.io/tags/javacript/"/>
-    
-      <category term="scope" scheme="http://wisdombud.github.io/tags/scope/"/>
     
   </entry>
   

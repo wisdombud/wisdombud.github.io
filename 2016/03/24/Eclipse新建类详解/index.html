@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Eclipse新建类详解 | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Eclipse新建类详解"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Eclipse新建类详解</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-03-24T06:16:38.476Z">2016-03-24</time></span>
+        
+          <span style=" display: block;  margin: 10px 0; ">作者：走吧走吧</span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <h2>Source Folder、Package</h2>
+<blockquote>
+<p>源文件，就是存放java源文件(未编译)的文件夹。当然也包括一些package文件夹,还可以包含其他文件</p>
+</blockquote>
+<h3>package,source folder,folder</h3>
+<blockquote>
+<p>在eclipse下,package,source folder,folder都是文件夹</p>
+</blockquote>
+<p><img src="http://7xrnr1.com1.z0.glb.clouddn.com/java.png" alt=""></p>
+<blockquote>
+<p>上图中src/main/java 就是source folder
+com.wisdombud.wisdomhr.spider.base就是package</p>
+</blockquote>
+<p>异同：</p>
+<blockquote>
+<p>相同：
+package和source folder一样，除了java文件也可以包含其他文件。
+项目构建后,两者里面的java自动编译成class文件到相应的/web-inf/classes文件夹中,其他文件也会移到/web-inf/classes相应的目录下
+不同：
+1.sourceFolder靠&quot;/&quot;来进行上下级划分，package靠&quot;.&quot;来进行上下级划分。如上图
+2.source folder下能建package,而package下不能建source folder
+3.java文件中的package属性是按package路径来进行赋值的，source folder路径不参与java文件的package属性赋值，再由第二条不同得到结论，所有source folder下的java文件package属性都为空</p>
+</blockquote>
+<blockquote>
+<p>package:当你在建立一个package时,它自动建立到source folder
+下,也只能建立在这个目录之下.</p>
+</blockquote>
+<p>folder:</p>
+<blockquote>
+<p>里面可以放入任何文件.包括java源文件,jar文件,其他文件(例如,图片,声音等)。如果里面含有java源文件,不管程序是否正确,eclipse都不会报错,把它们当做普通文件处理。</p>
+</blockquote>
+<p>package,source folder,folder 之间相互转换 查看参考文章</p>
+<h2>Enclosing type</h2>
+<p>新建类的时候，勾上这个选项，表示新建的是一个内部类。而它在哪个类的内部，需要选择。</p>
+<blockquote>
+<ul>
+<li>内部类是指在一个类的内部再定义一个类。内部的这个类名不需要和文件夹名相同。</li>
+</ul>
+</blockquote>
+<ul>
+<li>内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部类【即类名和文件名相同的类】只能使用public和default）</li>
+<li>内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和它内部的名为inner的内部类。编译完成后出现outer.class和outer$inner.class两类。所以内部类的成员变量/方法名可以和外部类的相同。</li>
+</ul>
+<p>使用内部类的好处</p>
+<blockquote>
+<ul>
+<li>内部类可以很好的实现隐藏
+一般的非内部类，是不允许有 private 与protected权限的，但内部类可以</li>
+</ul>
+</blockquote>
+<ul>
+<li>内部类拥有外围类的所有元素的访问权限</li>
+<li>可以实现多重继承</li>
+<li>可以避免修改接口而实现同一个类中两种同名方法的调用。</li>
+</ul>
+<h2>Name</h2>
+<blockquote>
+<p>新建类的名字</p>
+</blockquote>
+<h2>Modifiers</h2>
+<p><img src="http://7xrnr1.com1.z0.glb.clouddn.com/2.png" alt=""></p>
+<p>这里修饰类的词只有4个选项。</p>
+<blockquote>
+<ul>
+<li>并且选择上，上面的public和package是互斥的。
+public表示该类是公共的，都可以访问的。
+package表示只有同一个包下的类才可以访问这个类。</li>
+</ul>
+</blockquote>
+<ul>
+<li>虽然abstract和final可以同时选择，但是这两个是不能同时选择的。
+abstract表示抽象类，类里面一定有抽象方法，抽象方法一定要子类来实现。
+这与final不能继承 互斥。</li>
+</ul>
+<h2>Superclass</h2>
+<blockquote>
+<p>要继承的父类(单继承)</p>
+</blockquote>
+<h2>Interfaces</h2>
+<blockquote>
+<p>要实现的接口(多实现)</p>
+</blockquote>
+<h2>自动生成选项</h2>
+<p><img src="http://7xrnr1.com1.z0.glb.clouddn.com/3.png" alt=""></p>
+<blockquote>
+<ul>
+<li>public static void main(String[] args)  --入口函数；</li>
+</ul>
+</blockquote>
+<ul>
+<li>Constructors from superclass --生成构造函数；</li>
+<li>Inherited abstract methods --如果你继承的类存在abstract方法，会自动生成需实现的方法;</li>
+<li>Generate comments --自动生成注释；</li>
+</ul>
+<h2>参考文章</h2>
+<p><a href="http://www.cnblogs.com/slowly-keeping/archive/2012/04/23/2466054.html" target="_blank" rel="external">Source Folder、Package参考文章</a>
+<a href="http://www.cnblogs.com/nerxious/archive/2013/01/24/2875649.html" target="_blank" rel="external">内部类参考文章</a>
+<a href="http://android.blog.51cto.com/268543/384844/" target="_blank" rel="external">内部类2</a>
+<a href="http://andy136566.iteye.com/blog/1061951/" target="_blank" rel="external">内部类3</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/开发工具/">开发工具</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Eclipse/">Eclipse</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/03/24/SVN的trunk &branch &tags/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/03/24/域名/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-Eclipse新建类详解" data-title="Eclipse新建类详解" data-url="http://wisdombud.github.io/2016/03/24/Eclipse新建类详解/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
+  
+    <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
+  
+    <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
+  
+    <li><a href="/categories/WEB/">WEB</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>3</small></li>
+  
+    <li><a href="/categories/javacript/">javacript</a><small>3</small></li>
+  
+    <li><a href="/categories/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/scm/">scm</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>1</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/常识/">常识</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/AMD/" style="font-size: 10px;">AMD</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Gulp/" style="font-size: 10px;">Gulp</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javacript/" style="font-size: 20px;">javacript</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/net/" style="font-size: 10px;">net</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/svn/" style="font-size: 10px;">svn</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/域名/" style="font-size: 10px;">域名</a> <a href="/tags/提问/" style="font-size: 10px;">提问</a> <a href="/tags/端口映射/" style="font-size: 10px;">端口映射</a> <a href="/tags/通配符/" style="font-size: 10px;">通配符</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
