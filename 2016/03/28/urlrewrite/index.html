@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Eclipse | 技术博客</title>
+  <title>urlrewrite基本介绍 | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="urlrewrite基本介绍"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -198,25 +198,213 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">Eclipse</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-03-24T06:16:38.476Z"><a href="/2016/03/24/Eclipse新建类详解/">2016-03-24</a></time>
-            
-              <h1 class="title"><a href="/2016/03/24/Eclipse新建类详解/">Eclipse新建类详解</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">urlrewrite基本介绍</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-03-28T13:32:47.516Z">2016-03-28</time></span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p><strong>what is urlrewrite ?</strong></p>
+</blockquote>
+<p>UrlRewrite就是我们通常说的地址重写，可实现网页的伪静态化。</p>
+<p>example:
+浏览器请求:http://localhost/hello.html
+服务器将把这个请求重定向为：http://localhost/helloAction?method=hello</p>
+<blockquote>
+<p><strong>why is it ?</strong></p>
+</blockquote>
+<ul>
+<li>一：提高安全性，可以有效的避免一些参数名、ID等完全暴露在用户面前，如果用户随便乱输的话，不符合规则的话直接会返回个404或错误页面，这比直接返回500或一大堆服务器错误信息要好的多;</li>
+<li>二：美化URL，去除了那些比如*.do之类的后缀名、长长的参数串等，可以自己组织精简更能反映访问模块内容的URL;</li>
+<li>三：更有利于搜索引擎的收入，通过对URL的一些优化，可以使搜索引擎更好的识别与收录网站的信息;</li>
+</ul>
+<blockquote>
+<p><strong>usual urlrewrite tool</strong></p>
+</blockquote>
+<p>大多数的javaweb框架如springMVC、struts都支持url重写，但是不够灵活。
+tuckey urlrewrite 下载地址http://tuckey.org/urlrewrite/dist/urlrewritefilter-2.6.zip</p>
+<blockquote>
+<p>usage mode</p>
+</blockquote>
+<ul>
+<li>在web.xml中加入拦截器</li>
+</ul>
+<blockquote>
+<pre><code>    &lt;filter&gt;
+    &lt;filter-name&gt;UrlRewriteFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.tuckey.web.filters.urlrewrite.UrlRewriteFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+    &lt;param-name&gt;logLevel&lt;/param-name&gt;
+    &lt;param-value&gt;WARN&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+    &lt;filter-name&gt;UrlRewriteFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;
+    &lt;dispatcher&gt;FORWARD&lt;/dispatcher&gt;
+    &lt;/filter-mapping&gt;
+</code></pre>
+</blockquote>
+<ul>
+<li>在WEB-INF目录下创建urlrewrite.xml配置文件</li>
+</ul>
+<blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE urlrewrite PUBLIC &quot;-//tuckey.org//DTD UrlRewrite3.2//EN&quot;&quot;\\urlrewrite3.2.dtd&quot;&gt;
+&lt;urlrewrite&gt;
+&lt;rule&gt;
+&lt;note&gt;123&lt;/note&gt;
+&lt;note&gt;123&lt;/note&gt;
+&lt;from&gt;/([A-Za-z0-9]+).action&lt;/from&gt;
+&lt;to type=&quot;forward&quot;&gt;/view/$1.jsp&lt;/to&gt;
+&lt;/rule&gt;
+...
+&lt;rule&gt;&lt;/rule&gt;
+&lt;/urlrewrite&gt;
+</code></pre>
+</blockquote>
+<ul>
+<li>
+<p>对urlrewrite.xml节点的简介</p>
+<p>需要转化的链接不能直接写在a标签中，需要写在c:url或其他服务器需要解析的变量中，这样才能对其重      新显示
+note:注释你所配置的信息(可有多个)
+from:代表你在访问网站的时候，浏览器地址栏中显示的URL
+to:代表将浏览器中显示的URL转换后的地址，也就是你网站中真正访问的URL</p>
+<p>example:</p>
+</li>
+</ul>
+<blockquote>
+<pre><code>    &lt;rule&gt;
+    &lt;from&gt;^/page/(.*)$&lt;/from&gt;  
+</code></pre>
+</blockquote>
+<pre><code>    &lt;to&gt;/page/$1.jsp&lt;/to&gt;
+</code></pre>
+<blockquote>
+<pre><code>    &lt;/rule&gt;
+</code></pre>
+</blockquote>
+<pre><code>我们访问 http://localhost:8080/first 
+而实际我们访问的是http://localhost:8080/first.jsp
+</code></pre>
+<blockquote>
+<p>注意事项</p>
+</blockquote>
+<ul>
+<li>urlrewrite.xml是utf-8.所以如果你要在rule上加note标签为中文的话,也一定是要utf-8.</li>
+<li>UrlRewriteFilter 最好是配置在web.xml的前面filter上,不然有可能对有些url转变失去作用.</li>
+<li>urlrewrite属性:有仅只有一个,rule属性::至少一个.</li>
+<li>在写rule的时,如果有多个参数时，中间的连接符号&amp;应该是&amp;</li>
+<li>对于中文参数要使用(.*)作为参数转义.</li>
+</ul>
+<ul>
+<li>具体DTD解释请参考：http://wenku.baidu.com/view/e9a44a3467ec102de2bd89fc.html?re=view</li>
+<li>tuckey urlrewrite官网:http://tuckey.org/urlrewrite</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/web/">web</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/urlrewrite/">urlrewrite</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/03/28/JavaScript基本类型/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/03/28/StringBuilder简介/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-urlrewrite" data-title="urlrewrite基本介绍" data-url="http://wisdombud.github.io/2016/03/28/urlrewrite/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Eclipse | 技术博客</title>
+  <title>StringBuilder | 技术博客</title>
   <meta name="author" content="Joseph">
   
   <meta name="description" content="部门的技术博客">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="StringBuilder"/>
   <meta property="og:site_name" content="技术博客"/>
 
   
@@ -198,25 +198,176 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">Eclipse</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-03-24T06:16:38.476Z"><a href="/2016/03/24/Eclipse新建类详解/">2016-03-24</a></time>
-            
-              <h1 class="title"><a href="/2016/03/24/Eclipse新建类详解/">Eclipse新建类详解</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">StringBuilder</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-03-28T13:32:40.372Z">2016-03-28</time></span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>StringBuilder是什么？</p>
+</blockquote>
+<ul>
+<li>StringBuilder是一个可变的字符序列。
+但StringBuilder在单线程中的性能比StringBuffer高。</li>
+<li><strong>一般用在字符串缓冲区被单个线程使用的时候</strong>。
+如果可能，建议优先采用该类，因为在大多数实现中，它比 StringBuffer 要快。</li>
+<li>StringBuilder类可以用于在无需创建一个新的字符串对象情况下修改字符串</li>
+</ul>
+<blockquote>
+<p>StringBuilder StringBuffer String 区别</p>
+</blockquote>
+<ul>
+<li>StringBuilder提供一个与 StringBuffer 兼容的 API，但不保证同步。</li>
+<li>StringBuilder不是线程安全的，而StringBuffer是线程安全的。</li>
+<li>StringBuilder，StringBuffer可以用于在无需创建一个新的字符串对象情况下修改字符串</li>
+<li>String类是字符串常量，是不可更改的常量。
+因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String</li>
+<li>StringBuffer，StringBuilder是字符串变量，它的对象是可以扩充和修改的。</li>
+</ul>
+<blockquote>
+<p>StringBuilder 的 append 和 insert</p>
+</blockquote>
+<ul>
+<li>append 方法始终将这些字符添加到生成器的末端；</li>
+<li>insert 方法则在指定的点添加字符</li>
+</ul>
+<p>示例:</p>
+<pre><code>System.Text.StringBuilder s = new System.Text.StringBuilder();
+s.append(&quot;start&quot;);
+//s.insert(4,&quot;le&quot;);
+s.append(&quot;le&quot;);
+</code></pre>
+<p><strong>PS:</strong>
+s.append(&quot;le&quot;) 将使字符串生成器包含“startle”，
+而 s.insert(4, &quot;le&quot;) 将更改字符串生成器，使之包含“starlet”。</p>
+<blockquote>
+<p>特殊情况</p>
+</blockquote>
+<ul>
+<li>
+<p>String 对象的字符串拼接其实是被 JVM 解释成了StringBuffer或StringBuilder对象的拼接 String
+效率是远要比 StringBuffer或StringBuilder快。</p>
+<p>String S1 = “This is only a” + “ simple” + “ test”;
+StringBuilder S2 =new StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</p>
+<p>String s1 = “This is only a” + “ simple” + “test”;
+String s2  = “This is only a simple test”;</p>
+</li>
+</ul>
+<p><strong>VM会将s1直接视为s2;</strong></p>
+<ul>
+<li>当然，非字符串拼接StringBuilder比String+String快；</li>
+</ul>
+<p>String S2 = “This is only a”;
+String S3 = “ simple”;
+String S4 = “ test”;
+String S1 = S2 +S3 + S4;</p>
+<p>StringBuilder s =new StringBuilder();
+s.append(&quot;This is only a&quot;);
+s.append(&quot; simple&quot;);
+s.append(&quot; test&quot;);</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/java/">java</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/String/">String</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/03/28/urlrewrite/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/03/24/java 注解/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-StringBuilder简介" data-title="StringBuilder" data-url="http://wisdombud.github.io/2016/03/28/StringBuilder简介/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

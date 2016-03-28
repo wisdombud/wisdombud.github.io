@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wisdombud.github.io/"/>
-  <updated>2016-03-24T07:18:07.445Z</updated>
+  <updated>2016-03-28T13:34:55.467Z</updated>
   <id>http://wisdombud.github.io/</id>
   
   <author>
@@ -16,39 +16,294 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>局域网传输速率的限制</title>
-    <link href="http://wisdombud.github.io/2016/03/24/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E9%99%90%E5%88%B6/"/>
-    <id>http://wisdombud.github.io/2016/03/24/局域网传输速率的限制/</id>
-    <published>2016-03-24T08:38:35.000Z</published>
-    <updated>2016-03-24T07:18:07.445Z</updated>
+    <title>javascript基本类型</title>
+    <link href="http://wisdombud.github.io/2016/03/28/JavaScript%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://wisdombud.github.io/2016/03/28/JavaScript基本类型/</id>
+    <published>2016-03-28T13:33:17.816Z</published>
+    <updated>2016-03-28T13:34:55.467Z</updated>
     
-    <content type="html">&lt;h2&gt;1.网络传输单位和存储单位的区别&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输和文件存储的单位不同,因为1Byte=8bit,所以理论上我们所说的100M传输速度的网络,转换成文件存储可以达到12.5MByte/s.
-当然12.5MByte/s只是一个理论值,在正常的网络传输受到其网络传输环境、网卡接口限制、硬盘读写速率以及CPU等多方面因素，实际传输的速度并不会达到理论值。在百兆的局域网中，通常在10MByte/s左右.&lt;/p&gt;
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;什么是基本类型？&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2&gt;2.网卡的限制&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;基本类型是指直接&lt;strong&gt;包含值&lt;/strong&gt;的类型；&lt;/li&gt;
+&lt;li&gt;基本类型是单个值，而不是复杂的对象，基本类型不是面向对象的；&lt;/li&gt;
+&lt;li&gt;基本类型具有明确的取值范围和数学行为。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;按照传输速率可以将网卡分为10Mbps、100Mbps、10/100Mbps自适应网卡、1000Mbps以及10GMbps网卡,大多数电脑都采用100Mbps和10/100Mbps的网卡,所以也根据网卡的限制,理论上局域网的最高传输速度只能达到12.5M/s.&lt;/p&gt;
+&lt;p&gt;JavaScript基本类型&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2&gt;3.双绞线的限制&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;双绞线常见的有三类、五类、超五类和六类线，三类线已经逐渐的被五类线取代，六类线适用于1Gbps以上的传输,日常构建局域网最常用的就是五类(100M)双绞线,理论值同样是12.5M/s.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;在JavaScript中四种基本（或者五种）的数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;number  数值（整数和实数）。
+JavaScript中所有的数字，无论是整数还是小数，其类型均为Number。
+在程序内部，Number类型的实质是一个64位的浮点数，
+因此，JavaScript中所有的数都是浮点数。
+JavaScript所能表示的数值范围为正负1.7976931348623157乘以10的308次方，
+其最小所能表示的小数为正负5乘以10的负324次方，这两个边界值可以分别通过访问Number对象的MAX_VALUE属性和MIN_VALUE属性来获取。&lt;/p&gt;
+&lt;p&gt;示例:
+var num1 = 012; //八进制的10
+var num1 = 0xA; //十六进制的10
+var a = 0.1;//浮点数值&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;string  字符串型（用“”号或‘&#39;括起来的字符或数值）。
+var str =&#39;123&#39;;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;boolean 布尔型（使True或False表示）。&lt;/p&gt;
+&lt;p&gt;var str = &amp;quot;helloworld&amp;quot;;
+document.write(Boolean(str)); //true&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;null    空值。&lt;/p&gt;
+&lt;p&gt;示例:
+var num = null;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;undefined   声明变量但未对其进行初始化。&lt;/p&gt;
+&lt;p&gt;示例：
+var number;
+document.write(number); //undefined&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h2&gt;1.网络传输单位和存储单位的区别&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输和文
+      &lt;blockquote&gt;
+&lt;p&gt;什么是基本类型？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;基本类型是指直接&lt;strong&gt;包含值&lt;/strong&gt;的类型；&lt;/li&gt;
+&lt;li&gt;基本类型是单个值，而不是复杂的对象，基本类型不是面向对象的；&lt;/li&gt;
+&lt;li&gt;基本类型具有
     
     </summary>
     
-      <category term="常识" scheme="http://wisdombud.github.io/categories/%E5%B8%B8%E8%AF%86/"/>
+      <category term="javacript" scheme="http://wisdombud.github.io/categories/javacript/"/>
     
     
-      <category term="net" scheme="http://wisdombud.github.io/tags/net/"/>
+      <category term="js" scheme="http://wisdombud.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>urlrewrite基本介绍</title>
+    <link href="http://wisdombud.github.io/2016/03/28/urlrewrite/"/>
+    <id>http://wisdombud.github.io/2016/03/28/urlrewrite/</id>
+    <published>2016-03-28T13:32:47.516Z</published>
+    <updated>2016-03-28T13:49:27.032Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;what is urlrewrite ?&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;UrlRewrite就是我们通常说的地址重写，可实现网页的伪静态化。&lt;/p&gt;
+&lt;p&gt;example:
+浏览器请求:http://localhost/hello.html
+服务器将把这个请求重定向为：http://localhost/helloAction?method=hello&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;why is it ?&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;一：提高安全性，可以有效的避免一些参数名、ID等完全暴露在用户面前，如果用户随便乱输的话，不符合规则的话直接会返回个404或错误页面，这比直接返回500或一大堆服务器错误信息要好的多;&lt;/li&gt;
+&lt;li&gt;二：美化URL，去除了那些比如*.do之类的后缀名、长长的参数串等，可以自己组织精简更能反映访问模块内容的URL;&lt;/li&gt;
+&lt;li&gt;三：更有利于搜索引擎的收入，通过对URL的一些优化，可以使搜索引擎更好的识别与收录网站的信息;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;usual urlrewrite tool&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;大多数的javaweb框架如springMVC、struts都支持url重写，但是不够灵活。
+tuckey urlrewrite 下载地址http://tuckey.org/urlrewrite/dist/urlrewritefilter-2.6.zip&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;usage mode&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;在web.xml中加入拦截器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;filter&amp;gt;
+    &amp;lt;filter-name&amp;gt;UrlRewriteFilter&amp;lt;/filter-name&amp;gt;
+    &amp;lt;filter-class&amp;gt;org.tuckey.web.filters.urlrewrite.UrlRewriteFilter&amp;lt;/filter-class&amp;gt;
+    &amp;lt;init-param&amp;gt;
+    &amp;lt;param-name&amp;gt;logLevel&amp;lt;/param-name&amp;gt;
+    &amp;lt;param-value&amp;gt;WARN&amp;lt;/param-value&amp;gt;
+    &amp;lt;/init-param&amp;gt;
+    &amp;lt;/filter&amp;gt;
+    &amp;lt;filter-mapping&amp;gt;
+    &amp;lt;filter-name&amp;gt;UrlRewriteFilter&amp;lt;/filter-name&amp;gt;
+    &amp;lt;url-pattern&amp;gt;/*&amp;lt;/url-pattern&amp;gt;
+    &amp;lt;dispatcher&amp;gt;REQUEST&amp;lt;/dispatcher&amp;gt;
+    &amp;lt;dispatcher&amp;gt;FORWARD&amp;lt;/dispatcher&amp;gt;
+    &amp;lt;/filter-mapping&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;在WEB-INF目录下创建urlrewrite.xml配置文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;!DOCTYPE urlrewrite PUBLIC &amp;quot;-//tuckey.org//DTD UrlRewrite3.2//EN&amp;quot;&amp;quot;\\urlrewrite3.2.dtd&amp;quot;&amp;gt;
+&amp;lt;urlrewrite&amp;gt;
+&amp;lt;rule&amp;gt;
+&amp;lt;note&amp;gt;123&amp;lt;/note&amp;gt;
+&amp;lt;note&amp;gt;123&amp;lt;/note&amp;gt;
+&amp;lt;from&amp;gt;/([A-Za-z0-9]+).action&amp;lt;/from&amp;gt;
+&amp;lt;to type=&amp;quot;forward&amp;quot;&amp;gt;/view/$1.jsp&amp;lt;/to&amp;gt;
+&amp;lt;/rule&amp;gt;
+...
+&amp;lt;rule&amp;gt;&amp;lt;/rule&amp;gt;
+&amp;lt;/urlrewrite&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对urlrewrite.xml节点的简介&lt;/p&gt;
+&lt;p&gt;需要转化的链接不能直接写在a标签中，需要写在c:url或其他服务器需要解析的变量中，这样才能对其重      新显示
+note:注释你所配置的信息(可有多个)
+from:代表你在访问网站的时候，浏览器地址栏中显示的URL
+to:代表将浏览器中显示的URL转换后的地址，也就是你网站中真正访问的URL&lt;/p&gt;
+&lt;p&gt;example:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;rule&amp;gt;
+    &amp;lt;from&amp;gt;^/page/(.*)$&amp;lt;/from&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;to&amp;gt;/page/$1.jsp&amp;lt;/to&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;/rule&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;我们访问 http://localhost:8080/first 
+而实际我们访问的是http://localhost:8080/first.jsp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意事项&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;urlrewrite.xml是utf-8.所以如果你要在rule上加note标签为中文的话,也一定是要utf-8.&lt;/li&gt;
+&lt;li&gt;UrlRewriteFilter 最好是配置在web.xml的前面filter上,不然有可能对有些url转变失去作用.&lt;/li&gt;
+&lt;li&gt;urlrewrite属性:有仅只有一个,rule属性::至少一个.&lt;/li&gt;
+&lt;li&gt;在写rule的时,如果有多个参数时，中间的连接符号&amp;amp;应该是&amp;amp;&lt;/li&gt;
+&lt;li&gt;对于中文参数要使用(.*)作为参数转义.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;具体DTD解释请参考：http://wenku.baidu.com/view/e9a44a3467ec102de2bd89fc.html?re=view&lt;/li&gt;
+&lt;li&gt;tuckey urlrewrite官网:http://tuckey.org/urlrewrite&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;what is urlrewrite ?&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;UrlRewrite就是我们通常说的地址重写，可实现网页的伪静态化。&lt;/p&gt;
+&lt;p&gt;example:
+浏览器请求:http://l
+    
+    </summary>
+    
+      <category term="web" scheme="http://wisdombud.github.io/categories/web/"/>
+    
+    
+      <category term="urlrewrite" scheme="http://wisdombud.github.io/tags/urlrewrite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>StringBuilder</title>
+    <link href="http://wisdombud.github.io/2016/03/28/StringBuilder%E7%AE%80%E4%BB%8B/"/>
+    <id>http://wisdombud.github.io/2016/03/28/StringBuilder简介/</id>
+    <published>2016-03-28T13:32:40.372Z</published>
+    <updated>2016-03-28T13:50:24.228Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;StringBuilder是什么？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;StringBuilder是一个可变的字符序列。
+但StringBuilder在单线程中的性能比StringBuffer高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;一般用在字符串缓冲区被单个线程使用的时候&lt;/strong&gt;。
+如果可能，建议优先采用该类，因为在大多数实现中，它比 StringBuffer 要快。&lt;/li&gt;
+&lt;li&gt;StringBuilder类可以用于在无需创建一个新的字符串对象情况下修改字符串&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;StringBuilder StringBuffer String 区别&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;StringBuilder提供一个与 StringBuffer 兼容的 API，但不保证同步。&lt;/li&gt;
+&lt;li&gt;StringBuilder不是线程安全的，而StringBuffer是线程安全的。&lt;/li&gt;
+&lt;li&gt;StringBuilder，StringBuffer可以用于在无需创建一个新的字符串对象情况下修改字符串&lt;/li&gt;
+&lt;li&gt;String类是字符串常量，是不可更改的常量。
+因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String&lt;/li&gt;
+&lt;li&gt;StringBuffer，StringBuilder是字符串变量，它的对象是可以扩充和修改的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;StringBuilder 的 append 和 insert&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;append 方法始终将这些字符添加到生成器的末端；&lt;/li&gt;
+&lt;li&gt;insert 方法则在指定的点添加字符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;System.Text.StringBuilder s = new System.Text.StringBuilder();
+s.append(&amp;quot;start&amp;quot;);
+//s.insert(4,&amp;quot;le&amp;quot;);
+s.append(&amp;quot;le&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;PS:&lt;/strong&gt;
+s.append(&amp;quot;le&amp;quot;) 将使字符串生成器包含“startle”，
+而 s.insert(4, &amp;quot;le&amp;quot;) 将更改字符串生成器，使之包含“starlet”。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;特殊情况&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;String 对象的字符串拼接其实是被 JVM 解释成了StringBuffer或StringBuilder对象的拼接 String
+效率是远要比 StringBuffer或StringBuilder快。&lt;/p&gt;
+&lt;p&gt;String S1 = “This is only a” + “ simple” + “ test”;
+StringBuilder S2 =new StringBuilder(“This is only a”).append(“ simple”).append(“ test”);&lt;/p&gt;
+&lt;p&gt;String s1 = “This is only a” + “ simple” + “test”;
+String s2  = “This is only a simple test”;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;VM会将s1直接视为s2;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当然，非字符串拼接StringBuilder比String+String快；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;String S2 = “This is only a”;
+String S3 = “ simple”;
+String S4 = “ test”;
+String S1 = S2 +S3 + S4;&lt;/p&gt;
+&lt;p&gt;StringBuilder s =new StringBuilder();
+s.append(&amp;quot;This is only a&amp;quot;);
+s.append(&amp;quot; simple&amp;quot;);
+s.append(&amp;quot; test&amp;quot;);&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;StringBuilder是什么？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;StringBuilder是一个可变的字符序列。
+但StringBuilder在单线程中的性能比StringBuffer高。&lt;/li&gt;
+&lt;li&gt;&lt;strong
+    
+    </summary>
+    
+      <category term="java" scheme="http://wisdombud.github.io/categories/java/"/>
+    
+    
+      <category term="String" scheme="http://wisdombud.github.io/tags/String/"/>
     
   </entry>
   
@@ -171,45 +426,6 @@ int age() default 18;
     
     
       <category term="Annotation" scheme="http://wisdombud.github.io/tags/Annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>meta keywords</title>
-    <link href="http://wisdombud.github.io/2016/03/24/meta%20keywords/"/>
-    <id>http://wisdombud.github.io/2016/03/24/meta keywords/</id>
-    <published>2016-03-24T08:38:35.000Z</published>
-    <updated>2016-03-24T07:08:35.788Z</updated>
-    
-    <content type="html">&lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
-2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
-3.不要给网页定义过多的关键词，最好保持在10个以下，过多的关键词，搜索引擎将忽略；
-4不要给网页定义与网页描述内容无关的关键词；
-5.由于网页制作者滥用keywords(提供过多的关键词或者提供与网页无关的关键词)，导致目前常用的搜索引擎降低了keywords的重要性。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;keyword设计的初衷是为搜索引擎提供分类参考,但是因为以前可以用更多的关键字来获取更好的搜索引擎排名,所以导致了现在很多搜索引擎将meta的keyword属性看的并不是很重要,甚至特意的避开keyword.
-&lt;a href=&quot;http://www.chinaz.com/web/2011/1019/214529.shtml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于慎用meta keyword的建议的建议&lt;/a&gt;
-如果必须要用keyword的时候，关键字的个数尽量不要太多，关键字太多时常常被搜索引起忽略，所以建议在使用keyword的时候尽量不要太多
-关于meta标签,除了比标识网页关键字之外,还可以用来标识网页的内容,网页重定向等功能.
-&lt;a href=&quot;http://www.haorooms.com/post/html_meta_ds&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;meta标签的补充使用&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
-2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
-
-    
-    </summary>
-    
-      <category term="web" scheme="http://wisdombud.github.io/categories/web/"/>
-    
-    
-      <category term="meta" scheme="http://wisdombud.github.io/tags/meta/"/>
     
   </entry>
   
@@ -373,6 +589,82 @@ TIME表示时间：字节数为3，取值范围为“
     
     
       <category term="date" scheme="http://wisdombud.github.io/tags/date/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>局域网传输速率的限制</title>
+    <link href="http://wisdombud.github.io/2016/03/24/%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E9%99%90%E5%88%B6/"/>
+    <id>http://wisdombud.github.io/2016/03/24/局域网传输速率的限制/</id>
+    <published>2016-03-24T08:38:35.000Z</published>
+    <updated>2016-03-24T07:18:07.445Z</updated>
+    
+    <content type="html">&lt;h2&gt;1.网络传输单位和存储单位的区别&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输和文件存储的单位不同,因为1Byte=8bit,所以理论上我们所说的100M传输速度的网络,转换成文件存储可以达到12.5MByte/s.
+当然12.5MByte/s只是一个理论值,在正常的网络传输受到其网络传输环境、网卡接口限制、硬盘读写速率以及CPU等多方面因素，实际传输的速度并不会达到理论值。在百兆的局域网中，通常在10MByte/s左右.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;2.网卡的限制&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;按照传输速率可以将网卡分为10Mbps、100Mbps、10/100Mbps自适应网卡、1000Mbps以及10GMbps网卡,大多数电脑都采用100Mbps和10/100Mbps的网卡,所以也根据网卡的限制,理论上局域网的最高传输速度只能达到12.5M/s.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;3.双绞线的限制&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;双绞线常见的有三类、五类、超五类和六类线，三类线已经逐渐的被五类线取代，六类线适用于1Gbps以上的传输,日常构建局域网最常用的就是五类(100M)双绞线,理论值同样是12.5M/s.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;1.网络传输单位和存储单位的区别&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;平常我们所说的10M或者100M网络,指的是100Mbps(bit per second),100Mbit每秒;而我们通常的100M文件大小,值得是100MByte.100M只是量词,网络传输和文
+    
+    </summary>
+    
+      <category term="常识" scheme="http://wisdombud.github.io/categories/%E5%B8%B8%E8%AF%86/"/>
+    
+    
+      <category term="net" scheme="http://wisdombud.github.io/tags/net/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>meta keywords</title>
+    <link href="http://wisdombud.github.io/2016/03/24/meta%20keywords/"/>
+    <id>http://wisdombud.github.io/2016/03/24/meta keywords/</id>
+    <published>2016-03-24T08:38:35.000Z</published>
+    <updated>2016-03-24T07:08:35.788Z</updated>
+    
+    <content type="html">&lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
+2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
+3.不要给网页定义过多的关键词，最好保持在10个以下，过多的关键词，搜索引擎将忽略；
+4不要给网页定义与网页描述内容无关的关键词；
+5.由于网页制作者滥用keywords(提供过多的关键词或者提供与网页无关的关键词)，导致目前常用的搜索引擎降低了keywords的重要性。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;keyword设计的初衷是为搜索引擎提供分类参考,但是因为以前可以用更多的关键字来获取更好的搜索引擎排名,所以导致了现在很多搜索引擎将meta的keyword属性看的并不是很重要,甚至特意的避开keyword.
+&lt;a href=&quot;http://www.chinaz.com/web/2011/1019/214529.shtml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于慎用meta keyword的建议的建议&lt;/a&gt;
+如果必须要用keyword的时候，关键字的个数尽量不要太多，关键字太多时常常被搜索引起忽略，所以建议在使用keyword的时候尽量不要太多
+关于meta标签,除了比标识网页关键字之外,还可以用来标识网页的内容,网页重定向等功能.
+&lt;a href=&quot;http://www.haorooms.com/post/html_meta_ds&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;meta标签的补充使用&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;标签 meta的 keyword提供了网页的关键字信息,以方便搜索引擎在分类网页的时候使用,具体如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.keywords提供的网页关键词通常是为搜索引擎分类网页使用的；
+2.可以为网页提供多个关键词，多个关键词应该使用空格分开；
+
+    
+    </summary>
+    
+      <category term="web" scheme="http://wisdombud.github.io/categories/web/"/>
+    
+    
+      <category term="meta" scheme="http://wisdombud.github.io/tags/meta/"/>
     
   </entry>
   
@@ -1913,200 +2205,6 @@ http://www.cnblogs.com/wangsaiming/archive/2013/01/11/2856253.html&lt;/p&gt;
     
     
       <category term="log" scheme="http://wisdombud.github.io/tags/log/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java web 之 servlet</title>
-    <link href="http://wisdombud.github.io/2016/03/04/java%20web%20%E4%B9%8Bservlet/"/>
-    <id>http://wisdombud.github.io/2016/03/04/java web 之servlet/</id>
-    <published>2016-03-04T08:38:35.000Z</published>
-    <updated>2016-03-13T09:20:38.338Z</updated>
-    
-    <content type="html">&lt;h2&gt;定义&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。
-Servlet运行于支持Java的应用服务器中。从实现上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。
-最早支持Servlet标准的是JavaSoft的Java Web Server。此后，一些其它的基于Java的Web服务器开始支持标准的Servlet。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Servlet = Service + Applet&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/0/03/JSPLife.svg&quot; alt=&quot;servlet&quot;&gt;&lt;/p&gt;
-&lt;h2&gt;参考文献&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/Java_Servlet&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;wiki--servlet&lt;/a&gt;
-&lt;a href=&quot;http://baike.baidu.com/view/25169.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度百科&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;http://www.runoob.com/servlet/servlet-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;菜鸟教程&lt;/a&gt;
-&lt;a href=&quot;http://www.cnblogs.com/rocomp/p/4808924.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnblogs&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2&gt;定义&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一
-    
-    </summary>
-    
-      <category term="J2EE-web" scheme="http://wisdombud.github.io/categories/J2EE-web/"/>
-    
-    
-      <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
-    
-      <category term="servlet" scheme="http://wisdombud.github.io/tags/servlet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WEB开发需要解决的问题</title>
-    <link href="http://wisdombud.github.io/2016/03/02/WEB%20%E5%BC%80%E5%8F%91%E9%9C%80%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://wisdombud.github.io/2016/03/02/WEB 开发需要解决的问题/</id>
-    <published>2016-03-02T08:38:35.000Z</published>
-    <updated>2016-03-13T09:16:02.844Z</updated>
-    
-    <content type="html">&lt;h2&gt;1. 系统架构&lt;/h2&gt;
-&lt;h3&gt;1.1 B/S系统架构&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;http://s11.sinaimg.cn/mw690/9707fac3hd144196981fa&amp;amp;690&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
-&lt;h3&gt;1.2 C/S系统架构&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;http://i7.qhimg.com/t01b21f3bbfda590e1e.jpg&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
-&lt;h3&gt;1.3 对比与区别&lt;/h3&gt;
-&lt;p&gt;1.3.1 概述&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;C/S结构，即Client/Server(客户机/服务器)结构，是大家熟知的软件系统体系结构，通过将任务合理分配到Client端和Server端，降低了系统的通讯开销，可以充分利用两端硬件环境的优势。早期的软件系统多以此作为首选设计标准。。
-B/S结构，即Browser/Server(浏览器/服务器)结构，是随着Internet技术的兴起，对C/S结构的一种变化或者改进的结构。在这种 结构下，用户界面完全通过WWW浏览器实现，一部分事务逻辑在前端实现，但是主要事务逻辑在服务器端实现，形成所谓3-tier结构。B/S结构，主要是 利用了不断成熟的WWW浏览器技术，结合浏览器的多种Script语言(VBScript、JavaScript…)和ActiveX技术，用通用浏览器 就实现了原来需要复杂专用软件才能实现的强大功能，并节约了开发成本，是一种全新的软件系统构造技术。随着Windows 98/Windows 2000将浏览器技术植入操作系统内部，这种结构更成为当今应用软件的首选体系结构。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;1.3.2 详述&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Client/Server一般是建立在局域网的基础上的.Browser/Server一般是建立在广域网的基础上的.
-1．硬件环境不同:
-C/S 一般建立在专用的网络上, 小范围里的网络环境, 局域网之间再通过专门服务器提供连接和数据交换服务.
-B/S 建立在广域网之上的, 不必是专门的网络硬件环境,例与电话上网, 租用设备. 信息自己管理. 有比C/S更强的适应范围, 一般只要有操作系统和浏览器就行
-2．对安全要求不同
-C/S 一般面向相对固定的用户群, 对信息安全的控制能力很强. 一般高度机密的信息系统采用C/S 结构适宜. 可以通过B/S发布部分可公开信息.
-B/S 建立在广域网之上, 对安全的控制能力相对弱, 面向是不可知的用户群.
-3．对程序架构不同
-C/S 程序可以更加注重流程, 可以对权限多层次校验, 对系统运行速度可以较少考虑.
-B/S 对安全以及访问速度的多重的考虑, 建立在需要更加优化的基础之上. 比C/S有更高的要求 B/S结构的程序架构是发展的趋势, 从MS的.Net系列的asp.net, java的servlet，python的django等.
-4．系统维护不同
-C/S 程序由于整体性, 必须整体考察, 处理出现的问题以及系统升级. 升级难. 可能是再做一个全新的系统。对于用户来说C/S升级维护需要重新安装一个程序.
-B/S 构件组成,方面构件个别的更换,实现系统的无缝升级.  对于用户来说最多是刷新下页面。
-5．操作系统不同
-C/S 程序可以处理用户面固定, 并且在相同区域, 安全要求高需求, 与操作系统相关. 应该都是相同的系统
-B/S 建立在广域网上, 面向不同的用户群, 分散地域, 这是C/S无法作到的. 与操作系统平台关系最小.
-6．对本地接口的调用不同
-C/S 多是建立的Window平台上,需要对本地API接口操作较多.
-B/S 建立在浏览器上,浏览器都会有沙箱，对本地API接口操作必须通过浏览器才可以完成.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;7&quot;&gt;
-&lt;li&gt;通讯协议不同
-C/S一般是自建通讯协议，大部分是基于TCP或者SOCKET之上重新定义业务通讯协议
-B/S 通讯协议是HTTP协议，已经规定好通讯协议，不可改变&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;2. 前端&lt;/h2&gt;
-&lt;p&gt;指的是浏览器端（B端）的技术，相当于C/S中的C，只是C是固定的（浏览器）&lt;/p&gt;
-&lt;p&gt;浏览器固定了哪些东西：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;UI的技术：HTML+CSS+JS&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;通讯的协议：HTTP&lt;/li&gt;
-&lt;li&gt;对本地API的操作：上传文件等&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;B端存在几种常见的浏览器：Chrome，IE，FireFox等。不同的浏览器基于标准实现的具体细节不一样。因此需要考虑浏览器兼容性问题。&lt;/p&gt;
-&lt;h2&gt;3. 后端&lt;/h2&gt;
-&lt;p&gt;需要解决的问题：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;解析HTTP协议----一般由WEB服务器完成，tomcat等各种（也可以自己写socket，接收http请求，自己封装）&lt;/li&gt;
-&lt;li&gt;业务处理
-数据的验证
-数据保存&lt;/li&gt;
-&lt;li&gt;页面响应&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;基本流程是这些，所以抽象出来一些所谓的框架及技术。
-java：
-&amp;gt; Servlet技术（将HTTP的解析、页面响应与业务处理区分开），分为WEB服务器（Tomcat等）和应用程序（各种war包）
-&amp;gt; 页面响应技术： JSP、servlet、freemarker等等
-&amp;gt; 业务处理：各种MVC的后端框架（spring mvc、Struts等）
-&amp;gt; 数据处理：hibernate、spring jdbc等&lt;/p&gt;
-&lt;p&gt;python：
-&amp;gt; Python Web服务器网关接口（或者缩写为WSGI，读作“wizgy”），将WEB服务器和应用程序分开
-&amp;gt; django 业务处理各种等&lt;/p&gt;
-&lt;h2&gt;4. 参考&lt;/h2&gt;
-&lt;p&gt;http://python.jobbole.com/81523/
-http://baike.baidu.com/link?url=JE-Xpf-h0uBKCl3wPK9GQQ0U3tqtcql2ra_d1368tdQQ6FOGpiCunES9MYmH6gTfn5IJPJfBlkvP5C82QYHqOSFmW3BUhegxCCq0ixk7VJz-M9CT0YznLBnzCWc-5jCD
-http://zhidao.baidu.com/link?url=YK05yEAorh3NkdMX2oA1y6pTwZjCl7qMzCdXPgNCRwbbHYb-V6J7nnF0c_PRpolZbfB-T3cLwrKbO-Aph5f4YXdkFkvm-4SL5AXTdGN-DIy&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2&gt;1. 系统架构&lt;/h2&gt;
-&lt;h3&gt;1.1 B/S系统架构&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;http://s11.sinaimg.cn/mw690/9707fac3hd144196981fa&amp;amp;690&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;/p&gt;
-&lt;h3&gt;1.2 C
-    
-    </summary>
-    
-      <category term="J2EE-web" scheme="http://wisdombud.github.io/categories/J2EE-web/"/>
-    
-    
-      <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WEB基础</title>
-    <link href="http://wisdombud.github.io/2016/03/01/WEB%20%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9/"/>
-    <id>http://wisdombud.github.io/2016/03/01/WEB 基础内容/</id>
-    <published>2016-03-01T08:38:35.000Z</published>
-    <updated>2016-03-24T06:21:36.830Z</updated>
-    
-    <content type="html">&lt;h2&gt;什么是WEB&lt;/h2&gt;
-&lt;p&gt;Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构包括了四个基石：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;URI：统一资源标识（URL:统一资源定位 URI+LOCATION）
-HTTP: 超文本传输协议
-HyperText（除了HTML外，也可以是带有超链接的XML或JSON）
-MIME(多用途互联网邮件扩展)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;发展历程&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;静态内容阶段：在这个最初的阶段，使用Web的主要是一些研究机构。Web由大量的静态HTML文档组成，其中大多是一些学术论文。Web服务器可以被看作是支持超文本的共享文件服务器。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;CGI程序阶段：在这个阶段，Web服务器增加了一些编程API。通过这些API编写的应用程序，可以向客户端提供一些动态变化的内容。Web服务器与应用程序之间的通信，通过CGI（Common Gateway Interface）协议完成，应用程序被称作CGI程序。&lt;/li&gt;
-&lt;li&gt;脚本语言阶段：在这个阶段，服务器端出现了ASP、PHP、JSP、ColdFusion等支持session的脚本语言技术，浏览器端出现了Java Applet、JavaScript等技术。使用这些技术，可以提供更加丰富的动态内容。&lt;/li&gt;
-&lt;li&gt;瘦客户端应用阶段：在这个阶段，在服务器端出现了独立于Web服务器的应用服务器。同时出现了Web MVC开发模式，各种Web MVC开发框架逐渐流行，并且占据了统治地位。基于这些框架开发的Web应用，通常都是瘦客户端应用，因为它们是在服务器端生成全部的动态内容。&lt;/li&gt;
-&lt;li&gt;RIA应用阶段：在这个阶段，出现了多种RIA（Rich Internet Application）技术，大幅改善了Web应用的用户体验。应用最为广泛的RIA技术是DHTML+Ajax。Ajax技术支持在不刷新页面的情况下动态更新页面中的局部内容。同时诞生了大量的Web前端DHTML开发库，例如Prototype、Dojo、ExtJS、jQuery/jQuery UI等等，很多开发库都支持单页面应用（Single Page Application）的开发。其他的RIA技术还有Adobe公司的Flex、微软公司的Silverlight、Sun公司的JavaFX（现在为Oracle公司所有）等等。&lt;/li&gt;
-&lt;li&gt;移动Web应用阶段：在这个阶段，出现了大量面向移动设备的Web应用开发技术。除了Android、iOS、Windows Phone等操作系统平台原生的开发技术之外，基于HTML5的开发技术也变得非常流行。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;从上述Web开发技术的发展过程看，Web从最初其设计者所构思的主要支持静态文档的阶段，逐渐变得越来越动态化。Web应用的交互模式，变得越来越复杂：从静态文档发展到以内容为主的门户网站、电子商务网站、搜索引擎、社交网站，再到以娱乐为主的大型多人在线游戏、手机游戏。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;参考文献：&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;http://coolshell.cn/articles/6043.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Web开发中需要了解的东西&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.jobbole.com/15213/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Web开发：我希望得到的编程学习路线图&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/RubyLouvre/agate/issues/8&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;为什么做java的web开发我们会使用struts2，springMVC和spring这样的框架?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.zhihu.com/question/19834302&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;零基础的前端开发初学者应如何系统地学习&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.webclks.com/archives/2806&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;web的前世今生&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2&gt;什么是WEB&lt;/h2&gt;
-&lt;p&gt;Web（万维网World Wide Web的简称）是个包罗万象的万花筒，不同的人从不同的角度观察，对于Web究竟是什么会得出大不相同的观点。作为Web开发者，我们需要从技术上来理解Web。从技术架构层面上看，Web的技术架构包括了四个基石：&lt;
-    
-    </summary>
-    
-      <category term="J2EE-web" scheme="http://wisdombud.github.io/categories/J2EE-web/"/>
-    
-    
-      <category term="web" scheme="http://wisdombud.github.io/tags/web/"/>
     
   </entry>
   
