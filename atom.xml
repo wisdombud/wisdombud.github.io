@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wisdombud.github.io/"/>
-  <updated>2016-03-30T15:45:28.723Z</updated>
+  <updated>2016-03-30T15:47:21.291Z</updated>
   <id>http://wisdombud.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://wisdombud.github.io/2016/03/30/%E5%A6%82%E4%BD%95%E5%86%99%E9%82%AE%E4%BB%B6/"/>
     <id>http://wisdombud.github.io/2016/03/30/如何写邮件/</id>
     <published>2016-03-30T08:38:35.000Z</published>
-    <updated>2016-03-30T15:45:28.723Z</updated>
+    <updated>2016-03-30T15:47:21.291Z</updated>
     
     <content type="html">&lt;h2&gt;关于主题&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -92,11 +92,11 @@ BusinessEmail不是你的情书，所以：)之类的最好慎用。只用在某
 &lt;/blockquote&gt;
 &lt;h2&gt;结尾签名&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;每封邮件在结尾都应签名，这样对方可以清楚的知道发件人信息。虽然你的朋友可能从发件人中认出你，但不要为你的朋友设计这样的工作。
-》1. 签名信息不宜过多
+&lt;p&gt;每封邮件在结尾都应签名，这样对方可以清楚的知道发件人信息。虽然你的朋友可能从发件人中认出你，但不要为你的朋友设计这样的工作。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;签名信息不宜过多
 电子邮件消息末尾加上签名档是必要的。签名档可包括姓名、职务、公司、电话、传真、地址等信息，但信息不宜行数过多，一般不超过4行。你只需将一些必要信息放在上面，对方如果需要更详细的信息，自然会与你联系。
-引用一个短语作为你的签名的一部分是可行的，比如你的座右铭，或公司的宣传口号。但是要分清收件人对象与场合，切记一定要得体。&lt;/p&gt;
-&lt;ol start=&quot;2&quot;&gt;
+引用一个短语作为你的签名的一部分是可行的，比如你的座右铭，或公司的宣传口号。但是要分清收件人对象与场合，切记一定要得体。&lt;/li&gt;
 &lt;li&gt;不要只用一个签名档
 对内、对私、对熟悉的客户等群体的邮件往来，签名档应该进行简化。过于正式的签名档会让与对方显得疏远。你可以在Outlook中设置多个签名档，灵活调用。&lt;/li&gt;
 &lt;li&gt;签名档文字应选择与正文文字匹配，简体、繁体或英文，以免成出现乱码。字号一般应选择比正文字体小一些。&lt;/li&gt;
