@@ -232,103 +232,103 @@
     </header>
     <div class="entry">
       
-        <h2>注解是什么</h2>
+        <h2 id="&#x6CE8;&#x89E3;&#x662F;&#x4EC0;&#x4E48;"><a class="header-anchor" href="#&#x6CE8;&#x89E3;&#x662F;&#x4EC0;&#x4E48;">&#xB6;</a>&#x6CE8;&#x89E3;&#x662F;&#x4EC0;&#x4E48;</h2>
 <blockquote>
-<p>Java提供了一种原程序中的元素关联任何信息和任何元数据的途径和方法。
-注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。</p>
+<p>Java&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x539F;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x5173;&#x8054;&#x4EFB;&#x4F55;&#x4FE1;&#x606F;&#x548C;&#x4EFB;&#x4F55;&#x5143;&#x6570;&#x636E;&#x7684;&#x9014;&#x5F84;&#x548C;&#x65B9;&#x6CD5;&#x3002;<br>
+&#x6CE8;&#x89E3;&#xFF08;Annotation&#xFF09;&#xFF0C;&#x4E5F;&#x53EB;&#x5143;&#x6570;&#x636E;&#x3002;&#x4E00;&#x79CD;&#x4EE3;&#x7801;&#x7EA7;&#x522B;&#x7684;&#x8BF4;&#x660E;&#x3002;&#x5B83;&#x662F;JDK1.5&#x53CA;&#x4EE5;&#x540E;&#x7248;&#x672C;&#x5F15;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#xFF0C;&#x4E0E;&#x7C7B;&#x3001;&#x63A5;&#x53E3;&#x3001;&#x679A;&#x4E3E;&#x662F;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x5C42;&#x6B21;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x58F0;&#x660E;&#x5728;&#x5305;&#x3001;&#x7C7B;&#x3001;&#x5B57;&#x6BB5;&#x3001;&#x65B9;&#x6CD5;&#x3001;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3001;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x7B49;&#x7684;&#x524D;&#x9762;&#xFF0C;&#x7528;&#x6765;&#x5BF9;&#x8FD9;&#x4E9B;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#xFF0C;&#x6CE8;&#x91CA;&#x3002;</p>
 </blockquote>
-<h2>注解的作用</h2>
+<h2 id="&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;"><a class="header-anchor" href="#&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;">&#xB6;</a>&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;</h2>
 <blockquote>
-<p>注解的作用：分三种。源码/编译/运行时
-编写文档：通过代码里标识的元数据生成文档
-代码分析：通过代码里标识的元数据对代码进行分析
-编译检查：通过代码里标识的元数据让编译器能够实现基本的编译检查</p>
+<p>&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#xFF1A;&#x5206;&#x4E09;&#x79CD;&#x3002;&#x6E90;&#x7801;/&#x7F16;&#x8BD1;/&#x8FD0;&#x884C;&#x65F6;<br>
+&#x7F16;&#x5199;&#x6587;&#x6863;&#xFF1A;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x91CC;&#x6807;&#x8BC6;&#x7684;&#x5143;&#x6570;&#x636E;&#x751F;&#x6210;&#x6587;&#x6863;<br>
+&#x4EE3;&#x7801;&#x5206;&#x6790;&#xFF1A;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x91CC;&#x6807;&#x8BC6;&#x7684;&#x5143;&#x6570;&#x636E;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x5206;&#x6790;<br>
+&#x7F16;&#x8BD1;&#x68C0;&#x67E5;&#xFF1A;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x91CC;&#x6807;&#x8BC6;&#x7684;&#x5143;&#x6570;&#x636E;&#x8BA9;&#x7F16;&#x8BD1;&#x5668;&#x80FD;&#x591F;&#x5B9E;&#x73B0;&#x57FA;&#x672C;&#x7684;&#x7F16;&#x8BD1;&#x68C0;&#x67E5;</p>
 </blockquote>
-<h2>注解的分类</h2>
+<h2 id="&#x6CE8;&#x89E3;&#x7684;&#x5206;&#x7C7B;"><a class="header-anchor" href="#&#x6CE8;&#x89E3;&#x7684;&#x5206;&#x7C7B;">&#xB6;</a>&#x6CE8;&#x89E3;&#x7684;&#x5206;&#x7C7B;</h2>
 <blockquote>
-<p>根据注解在程序的哪个阶段分类
-源码注解：注解只在源码中存在，编译成.class文件就不存在了
-编译时注解：注解在源码和.class文件中都存在
-运行时注解：在运行阶段还会起作用，甚至会影响运行逻辑</p>
+<p>&#x6839;&#x636E;&#x6CE8;&#x89E3;&#x5728;&#x7A0B;&#x5E8F;&#x7684;&#x54EA;&#x4E2A;&#x9636;&#x6BB5;&#x5206;&#x7C7B;<br>
+&#x6E90;&#x7801;&#x6CE8;&#x89E3;&#xFF1A;&#x6CE8;&#x89E3;&#x53EA;&#x5728;&#x6E90;&#x7801;&#x4E2D;&#x5B58;&#x5728;&#xFF0C;&#x7F16;&#x8BD1;&#x6210;.class&#x6587;&#x4EF6;&#x5C31;&#x4E0D;&#x5B58;&#x5728;&#x4E86;<br>
+&#x7F16;&#x8BD1;&#x65F6;&#x6CE8;&#x89E3;&#xFF1A;&#x6CE8;&#x89E3;&#x5728;&#x6E90;&#x7801;&#x548C;.class&#x6587;&#x4EF6;&#x4E2D;&#x90FD;&#x5B58;&#x5728;<br>
+&#x8FD0;&#x884C;&#x65F6;&#x6CE8;&#x89E3;&#xFF1A;&#x5728;&#x8FD0;&#x884C;&#x9636;&#x6BB5;&#x8FD8;&#x4F1A;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x751A;&#x81F3;&#x4F1A;&#x5F71;&#x54CD;&#x8FD0;&#x884C;&#x903B;&#x8F91;</p>
 </blockquote>
 <blockquote>
-<p>根据来源分类：
-JDK自带的注解
-常见的第三方注解
-自定义注解</p>
+<p>&#x6839;&#x636E;&#x6765;&#x6E90;&#x5206;&#x7C7B;&#xFF1A;<br>
+JDK&#x81EA;&#x5E26;&#x7684;&#x6CE8;&#x89E3;<br>
+&#x5E38;&#x89C1;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x6CE8;&#x89E3;<br>
+&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x89E3;</p>
 </blockquote>
-<h2>java中常见的注解</h2>
-<p>jdk自带注解</p>
+<h2 id="java&#x4E2D;&#x5E38;&#x89C1;&#x7684;&#x6CE8;&#x89E3;"><a class="header-anchor" href="#java&#x4E2D;&#x5E38;&#x89C1;&#x7684;&#x6CE8;&#x89E3;">&#xB6;</a>java&#x4E2D;&#x5E38;&#x89C1;&#x7684;&#x6CE8;&#x89E3;</h2>
+<p>jdk&#x81EA;&#x5E26;&#x6CE8;&#x89E3;</p>
 <blockquote>
-<p>@Override  覆盖了父类的方法。 以后在见到的时候，可以直接相信这个类。
-@Deprecated   父类有一个方法，已经过时，但是为了兼容以前的类。加这个注释。
-@Suppvisewarnings
-当父类的方法加了@Deprecated 之后，子类在引用的时候会有警告。加注释3。忽略警告。
-这三个都是修饰方法的。</p>
+<p>@Override  &#x8986;&#x76D6;&#x4E86;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x4EE5;&#x540E;&#x5728;&#x89C1;&#x5230;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x76F8;&#x4FE1;&#x8FD9;&#x4E2A;&#x7C7B;&#x3002;<br>
+@Deprecated   &#x7236;&#x7C7B;&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5DF2;&#x7ECF;&#x8FC7;&#x65F6;&#xFF0C;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x4EE5;&#x524D;&#x7684;&#x7C7B;&#x3002;&#x52A0;&#x8FD9;&#x4E2A;&#x6CE8;&#x91CA;&#x3002;<br>
+@Suppvisewarnings<br>
+&#x5F53;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x52A0;&#x4E86;@Deprecated &#x4E4B;&#x540E;&#xFF0C;&#x5B50;&#x7C7B;&#x5728;&#x5F15;&#x7528;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x6709;&#x8B66;&#x544A;&#x3002;&#x52A0;&#x6CE8;&#x91CA;3&#x3002;&#x5FFD;&#x7565;&#x8B66;&#x544A;&#x3002;<br>
+&#x8FD9;&#x4E09;&#x4E2A;&#x90FD;&#x662F;&#x4FEE;&#x9970;&#x65B9;&#x6CD5;&#x7684;&#x3002;</p>
 </blockquote>
-<p>常见第三方注解(Spring) ：</p>
+<p>&#x5E38;&#x89C1;&#x7B2C;&#x4E09;&#x65B9;&#x6CE8;&#x89E3;(Spring) &#xFF1A;</p>
 <blockquote>
-<p>@Autowired    可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作
-@Service   一般用在service层
-@Repository  一般用在dao层</p>
+<p>@Autowired    &#x53EF;&#x4EE5;&#x5BF9;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x3001;&#x65B9;&#x6CD5;&#x548C;&#x6784;&#x9020;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x6807;&#x6CE8;&#xFF0C;&#x6765;&#x5B8C;&#x6210;&#x81EA;&#x52A8;&#x88C5;&#x914D;&#x7684;&#x5DE5;&#x4F5C;<br>
+@Service   &#x4E00;&#x822C;&#x7528;&#x5728;service&#x5C42;<br>
+@Repository  &#x4E00;&#x822C;&#x7528;&#x5728;dao&#x5C42;</p>
 </blockquote>
-<h2>元注解</h2>
+<h2 id="&#x5143;&#x6CE8;&#x89E3;"><a class="header-anchor" href="#&#x5143;&#x6CE8;&#x89E3;">&#xB6;</a>&#x5143;&#x6CE8;&#x89E3;</h2>
 <ul>
-<li>元注解的作用就是负责注解其他注解。</li>
-<li>元注解包括：<br>
-@Target 注解的作用域
-@Retention 注解的生命周期
-@Inherited  标识性的，表示这个注解允许子类继承的
-@Documented 生成javadoc时会包含注解。</li>
+<li>&#x5143;&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8D1F;&#x8D23;&#x6CE8;&#x89E3;&#x5176;&#x4ED6;&#x6CE8;&#x89E3;&#x3002;</li>
+<li>&#x5143;&#x6CE8;&#x89E3;&#x5305;&#x62EC;&#xFF1A;<br>
+@Target &#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x57DF;<br>
+@Retention &#x6CE8;&#x89E3;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;<br>
+@Inherited  &#x6807;&#x8BC6;&#x6027;&#x7684;&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x6CE8;&#x89E3;&#x5141;&#x8BB8;&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#x7684;<br>
+@Documented &#x751F;&#x6210;javadoc&#x65F6;&#x4F1A;&#x5305;&#x542B;&#x6CE8;&#x89E3;&#x3002;</li>
 </ul>
-<h3>@Target 注解的作用域</h3>
+<h3 id="target-&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x57DF;"><a class="header-anchor" href="#target-&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x57DF;">&#xB6;</a>@Target &#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x57DF;</h3>
 <blockquote>
-<p>@Target  说明了Annotation所修饰的对象范围，在Annotation类型的声明中使用了target可更加明晰其修饰的目标。
-作用：用于描述注解的使用范围（即：被描述的注解可以用在什么地方）
-@Target的取值(ElementType)有：
-	CONSTRUCTOR:用于描述构造器
-	FIELD:用于描述域
-	LOCAL_VARIABLE:用于描述局部变量
-	METHOD:用于描述方法
-	PACKAGE:用于描述包
-	PARAMETER:用于描述参数
-	TYPE:用于描述类、接口(包括注解类型) 或enum声明</p>
+<p>@Target  &#x8BF4;&#x660E;&#x4E86;Annotation&#x6240;&#x4FEE;&#x9970;&#x7684;&#x5BF9;&#x8C61;&#x8303;&#x56F4;&#xFF0C;&#x5728;Annotation&#x7C7B;&#x578B;&#x7684;&#x58F0;&#x660E;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;target&#x53EF;&#x66F4;&#x52A0;&#x660E;&#x6670;&#x5176;&#x4FEE;&#x9970;&#x7684;&#x76EE;&#x6807;&#x3002;<br>
+&#x4F5C;&#x7528;&#xFF1A;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x6CE8;&#x89E3;&#x7684;&#x4F7F;&#x7528;&#x8303;&#x56F4;&#xFF08;&#x5373;&#xFF1A;&#x88AB;&#x63CF;&#x8FF0;&#x7684;&#x6CE8;&#x89E3;&#x53EF;&#x4EE5;&#x7528;&#x5728;&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#xFF09;<br>
+@Target&#x7684;&#x53D6;&#x503C;(ElementType)&#x6709;&#xFF1A;<br>
+	CONSTRUCTOR:&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x6784;&#x9020;&#x5668;<br>
+	FIELD:&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x57DF;<br>
+	LOCAL_VARIABLE:&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5C40;&#x90E8;&#x53D8;&#x91CF;<br>
+	METHOD:&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x65B9;&#x6CD5;<br>
+	PACKAGE:&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5305;<br>
+	PARAMETER:&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x53C2;&#x6570;<br>
+	TYPE:&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x7C7B;&#x3001;&#x63A5;&#x53E3;(&#x5305;&#x62EC;&#x6CE8;&#x89E3;&#x7C7B;&#x578B;) &#x6216;enum&#x58F0;&#x660E;</p>
 </blockquote>
-<h3>@Retention 注解的生命周期</h3>
+<h3 id="retention-&#x6CE8;&#x89E3;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"><a class="header-anchor" href="#retention-&#x6CE8;&#x89E3;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;">&#xB6;</a>@Retention &#x6CE8;&#x89E3;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h3>
 <blockquote>
-<p>@Retention  定义了该Annotation被保留的时间长短（可以在源码上、.class文件中、）
-作用：表示需要在什么级别保存该注释信息，用于描述注解的生命周期（即：被描述的注解在什么范围内有效）
-@Retention的取值（RetentionPoicy）有：
-	SOURCE:在源文件中有效（即源文件保留）CLASS:在class文件中有效（即class保留）RUNTIME:在运行时有效（即运行时保留）</p>
+<p>@Retention  &#x5B9A;&#x4E49;&#x4E86;&#x8BE5;Annotation&#x88AB;&#x4FDD;&#x7559;&#x7684;&#x65F6;&#x95F4;&#x957F;&#x77ED;&#xFF08;&#x53EF;&#x4EE5;&#x5728;&#x6E90;&#x7801;&#x4E0A;&#x3001;.class&#x6587;&#x4EF6;&#x4E2D;&#x3001;&#xFF09;<br>
+&#x4F5C;&#x7528;&#xFF1A;&#x8868;&#x793A;&#x9700;&#x8981;&#x5728;&#x4EC0;&#x4E48;&#x7EA7;&#x522B;&#x4FDD;&#x5B58;&#x8BE5;&#x6CE8;&#x91CA;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x6CE8;&#x89E3;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x5373;&#xFF1A;&#x88AB;&#x63CF;&#x8FF0;&#x7684;&#x6CE8;&#x89E3;&#x5728;&#x4EC0;&#x4E48;&#x8303;&#x56F4;&#x5185;&#x6709;&#x6548;&#xFF09;<br>
+@Retention&#x7684;&#x53D6;&#x503C;&#xFF08;RetentionPoicy&#xFF09;&#x6709;&#xFF1A;<br>
+	SOURCE:&#x5728;&#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x6709;&#x6548;&#xFF08;&#x5373;&#x6E90;&#x6587;&#x4EF6;&#x4FDD;&#x7559;&#xFF09;CLASS:&#x5728;class&#x6587;&#x4EF6;&#x4E2D;&#x6709;&#x6548;&#xFF08;&#x5373;class&#x4FDD;&#x7559;&#xFF09;RUNTIME:&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x6709;&#x6548;&#xFF08;&#x5373;&#x8FD0;&#x884C;&#x65F6;&#x4FDD;&#x7559;&#xFF09;</p>
 </blockquote>
-<h3>@Inherited  标识性的，表示这个注解允许子类继承的</h3>
+<h3 id="inherited-&#x6807;&#x8BC6;&#x6027;&#x7684;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x6CE8;&#x89E3;&#x5141;&#x8BB8;&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#x7684;"><a class="header-anchor" href="#inherited-&#x6807;&#x8BC6;&#x6027;&#x7684;-&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x6CE8;&#x89E3;&#x5141;&#x8BB8;&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#x7684;">&#xB6;</a>@Inherited  &#x6807;&#x8BC6;&#x6027;&#x7684;&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x6CE8;&#x89E3;&#x5141;&#x8BB8;&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#x7684;</h3>
 <blockquote>
-<p>@Inherited 元注解是一个标记注解，@Inherited阐述了某个被标注的类型是被继承的。如果一个使用了@Inherited修饰的annotation类型被用于一个class，则这个annotation将被用于该class的子类。
-	@Inherited annotation类型是被标注过的class的子类所继承。类并不从它所实现的接口继承annotation，方法并不从它所重载的方法继承annotation。</p>
+<p>@Inherited &#x5143;&#x6CE8;&#x89E3;&#x662F;&#x4E00;&#x4E2A;&#x6807;&#x8BB0;&#x6CE8;&#x89E3;&#xFF0C;@Inherited&#x9610;&#x8FF0;&#x4E86;&#x67D0;&#x4E2A;&#x88AB;&#x6807;&#x6CE8;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x88AB;&#x7EE7;&#x627F;&#x7684;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x4E86;@Inherited&#x4FEE;&#x9970;&#x7684;annotation&#x7C7B;&#x578B;&#x88AB;&#x7528;&#x4E8E;&#x4E00;&#x4E2A;class&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;annotation&#x5C06;&#x88AB;&#x7528;&#x4E8E;&#x8BE5;class&#x7684;&#x5B50;&#x7C7B;&#x3002;<br>
+	@Inherited annotation&#x7C7B;&#x578B;&#x662F;&#x88AB;&#x6807;&#x6CE8;&#x8FC7;&#x7684;class&#x7684;&#x5B50;&#x7C7B;&#x6240;&#x7EE7;&#x627F;&#x3002;&#x7C7B;&#x5E76;&#x4E0D;&#x4ECE;&#x5B83;&#x6240;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;&#x7EE7;&#x627F;annotation&#xFF0C;&#x65B9;&#x6CD5;&#x5E76;&#x4E0D;&#x4ECE;&#x5B83;&#x6240;&#x91CD;&#x8F7D;&#x7684;&#x65B9;&#x6CD5;&#x7EE7;&#x627F;annotation&#x3002;</p>
 </blockquote>
-<h3>@Documented 生成javadoc时会包含注解。</h3>
+<h3 id="documented-&#x751F;&#x6210;javadoc&#x65F6;&#x4F1A;&#x5305;&#x542B;&#x6CE8;&#x89E3;"><a class="header-anchor" href="#documented-&#x751F;&#x6210;javadoc&#x65F6;&#x4F1A;&#x5305;&#x542B;&#x6CE8;&#x89E3;">&#xB6;</a>@Documented &#x751F;&#x6210;javadoc&#x65F6;&#x4F1A;&#x5305;&#x542B;&#x6CE8;&#x89E3;&#x3002;</h3>
 <blockquote>
-<p>@Documented用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，因此可以被例如javadoc此类的工具文档化。Documented是一个标记注解，没有成员。</p>
+<p>@Documented&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5176;&#x5B83;&#x7C7B;&#x578B;&#x7684;annotation&#x5E94;&#x8BE5;&#x88AB;&#x4F5C;&#x4E3A;&#x88AB;&#x6807;&#x6CE8;&#x7684;&#x7A0B;&#x5E8F;&#x6210;&#x5458;&#x7684;&#x516C;&#x5171;API&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x88AB;&#x4F8B;&#x5982;javadoc&#x6B64;&#x7C7B;&#x7684;&#x5DE5;&#x5177;&#x6587;&#x6863;&#x5316;&#x3002;Documented&#x662F;&#x4E00;&#x4E2A;&#x6807;&#x8BB0;&#x6CE8;&#x89E3;&#xFF0C;&#x6CA1;&#x6709;&#x6210;&#x5458;&#x3002;</p>
 </blockquote>
-<h2>自定义注解</h2>
+<h2 id="&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x89E3;"><a class="header-anchor" href="#&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x89E3;">&#xB6;</a>&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x89E3;</h2>
 <blockquote>
-<p>public @interface Description{
-String dese();
-String author();
-int age() default 18;
+<p>public @interface Description{<br>
+String dese();<br>
+String author();<br>
+int age() default 18;<br>
 }</p>
 </blockquote>
 <ul>
-<li>使用@interface关键字定义注解</li>
-<li>方法。成员以无参、无异常的方式声明。</li>
-<li>可以给成员指定默认值。成员的类型是受到限制的。包括java的原始类型和String、Class、Annotation、Enumeration</li>
-<li>如果注解只有一个成员变量，则成员取名为value()，在使用使用时可以忽略成员名和赋值号。</li>
-<li>注解类可以没有成员，没有成员的注解成为标识注解。</li>
+<li>&#x4F7F;&#x7528;@interface&#x5173;&#x952E;&#x5B57;&#x5B9A;&#x4E49;&#x6CE8;&#x89E3;</li>
+<li>&#x65B9;&#x6CD5;&#x3002;&#x6210;&#x5458;&#x4EE5;&#x65E0;&#x53C2;&#x3001;&#x65E0;&#x5F02;&#x5E38;&#x7684;&#x65B9;&#x5F0F;&#x58F0;&#x660E;&#x3002;</li>
+<li>&#x53EF;&#x4EE5;&#x7ED9;&#x6210;&#x5458;&#x6307;&#x5B9A;&#x9ED8;&#x8BA4;&#x503C;&#x3002;&#x6210;&#x5458;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x53D7;&#x5230;&#x9650;&#x5236;&#x7684;&#x3002;&#x5305;&#x62EC;java&#x7684;&#x539F;&#x59CB;&#x7C7B;&#x578B;&#x548C;String&#x3001;Class&#x3001;Annotation&#x3001;Enumeration</li>
+<li>&#x5982;&#x679C;&#x6CE8;&#x89E3;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x5219;&#x6210;&#x5458;&#x53D6;&#x540D;&#x4E3A;value()&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x4F7F;&#x7528;&#x65F6;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x6210;&#x5458;&#x540D;&#x548C;&#x8D4B;&#x503C;&#x53F7;&#x3002;</li>
+<li>&#x6CE8;&#x89E3;&#x7C7B;&#x53EF;&#x4EE5;&#x6CA1;&#x6709;&#x6210;&#x5458;&#xFF0C;&#x6CA1;&#x6709;&#x6210;&#x5458;&#x7684;&#x6CE8;&#x89E3;&#x6210;&#x4E3A;&#x6807;&#x8BC6;&#x6CE8;&#x89E3;&#x3002;</li>
 </ul>
-<p>关于自定义注解的使用，希望大家再学习学习
-使用自定义注解
-@&lt;注解名&gt;（&lt;成员名1&gt;=&lt;成员值1&gt;，&lt;成员名2&gt;=&lt;成员值2&gt;，...）</p>
-<p><a href="http://www.cnblogs.com/peida/archive/2013/04/24/3036689.html" target="_blank" rel="external">参考文章</a></p>
+<p>&#x5173;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x89E3;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x5E0C;&#x671B;&#x5927;&#x5BB6;&#x518D;&#x5B66;&#x4E60;&#x5B66;&#x4E60;<br>
+&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x89E3;<br>
+@&lt;&#x6CE8;&#x89E3;&#x540D;&gt;&#xFF08;&lt;&#x6210;&#x5458;&#x540D;1&gt;=&lt;&#x6210;&#x5458;&#x503C;1&gt;&#xFF0C;&lt;&#x6210;&#x5458;&#x540D;2&gt;=&lt;&#x6210;&#x5458;&#x503C;2&gt;&#xFF0C;&#x2026;&#xFF09;</p>
+<p><a href="http://www.cnblogs.com/peida/archive/2013/04/24/3036689.html" target="_blank" rel="external">&#x53C2;&#x8003;&#x6587;&#x7AE0;</a></p>
 
       
     </div>
@@ -371,10 +371,10 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
-    <a href="/2016/03/24/MySQL的日期格式/" class="alignleft prev" >上一页</a>
+    <a href="/2016/03/28/StringBuilder简介/" class="alignleft prev" >上一页</a>
     
     
-    <a href="/2016/03/24/局域网传输速率的限制/" class="alignright next" >下一页</a>
+    <a href="/2016/03/24/MySQL的日期格式/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -430,8 +430,6 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
-  
     <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
   
     <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
@@ -469,7 +467,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
         <embed tplayername="SWF" splayername="SWF"
-            type="application/x-shockwave-flash" src="http://wisdombud.github.io/tagcloud.swf"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
             mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
             id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
             quality="high" wmode="transparent" allowscriptaccess="always"

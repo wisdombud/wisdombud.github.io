@@ -232,79 +232,79 @@
     </header>
     <div class="entry">
       
-        <h2>AMD规范</h2>
-<h3>定义</h3>
-<pre><code>Asynchronous Module Definition，异步模块加载机制。
-描述了模块的定义，依赖关系以及加载机制。
+        <h2 id="amd&#x89C4;&#x8303;"><a class="header-anchor" href="#amd&#x89C4;&#x8303;">&#xB6;</a>AMD&#x89C4;&#x8303;</h2>
+<h3 id="&#x5B9A;&#x4E49;"><a class="header-anchor" href="#&#x5B9A;&#x4E49;">&#xB6;</a>&#x5B9A;&#x4E49;</h3>
+<pre><code>Asynchronous Module Definition&#xFF0C;&#x5F02;&#x6B65;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#x3002;
+&#x63CF;&#x8FF0;&#x4E86;&#x6A21;&#x5757;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x4EE5;&#x53CA;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#x3002;
 </code></pre>
-<h3>API</h3>
+<h3 id="api"><a class="header-anchor" href="#api">&#xB6;</a>API</h3>
 <pre><code>define([module-name?], [array-of-dependencies?], [module-factory-or-object]);
-module-name: 模块的标识,可选参数,省略此参数,模块的名字默认为脚本的名字。如果提供了该参数，模块名必须是“顶级”的和绝对的(不允许相对名字);
-array-of-dependencies: 依赖的模块, 可选参数,忽略此参数，默认为[&quot;require&quot;, &quot;exports&quot;, &quot;module&quot;],否则按照位置顺序以参数的形式传入factory;
-module-factory-or-object: 模块初始化要执行的函数或对象,如果为函数,有参数列表则不扫描依赖性,否则扫描依赖性。如果是对象，此对象应该为模块的输出值。
-示例
-define('test', [
-    'require',
-    'wutil',
-    'template'
+module-name: &#x6A21;&#x5757;&#x7684;&#x6807;&#x8BC6;,&#x53EF;&#x9009;&#x53C2;&#x6570;,&#x7701;&#x7565;&#x6B64;&#x53C2;&#x6570;,&#x6A21;&#x5757;&#x7684;&#x540D;&#x5B57;&#x9ED8;&#x8BA4;&#x4E3A;&#x811A;&#x672C;&#x7684;&#x540D;&#x5B57;&#x3002;&#x5982;&#x679C;&#x63D0;&#x4F9B;&#x4E86;&#x8BE5;&#x53C2;&#x6570;&#xFF0C;&#x6A21;&#x5757;&#x540D;&#x5FC5;&#x987B;&#x662F;&#x201C;&#x9876;&#x7EA7;&#x201D;&#x7684;&#x548C;&#x7EDD;&#x5BF9;&#x7684;(&#x4E0D;&#x5141;&#x8BB8;&#x76F8;&#x5BF9;&#x540D;&#x5B57;);
+array-of-dependencies: &#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757;, &#x53EF;&#x9009;&#x53C2;&#x6570;,&#x5FFD;&#x7565;&#x6B64;&#x53C2;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;[&quot;require&quot;, &quot;exports&quot;, &quot;module&quot;],&#x5426;&#x5219;&#x6309;&#x7167;&#x4F4D;&#x7F6E;&#x987A;&#x5E8F;&#x4EE5;&#x53C2;&#x6570;&#x7684;&#x5F62;&#x5F0F;&#x4F20;&#x5165;factory;
+module-factory-or-object: &#x6A21;&#x5757;&#x521D;&#x59CB;&#x5316;&#x8981;&#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;&#x6216;&#x5BF9;&#x8C61;,&#x5982;&#x679C;&#x4E3A;&#x51FD;&#x6570;,&#x6709;&#x53C2;&#x6570;&#x5217;&#x8868;&#x5219;&#x4E0D;&#x626B;&#x63CF;&#x4F9D;&#x8D56;&#x6027;,&#x5426;&#x5219;&#x626B;&#x63CF;&#x4F9D;&#x8D56;&#x6027;&#x3002;&#x5982;&#x679C;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x6B64;&#x5BF9;&#x8C61;&#x5E94;&#x8BE5;&#x4E3A;&#x6A21;&#x5757;&#x7684;&#x8F93;&#x51FA;&#x503C;&#x3002;
+&#x793A;&#x4F8B;
+define(&apos;test&apos;, [
+    &apos;require&apos;,
+    &apos;wutil&apos;,
+    &apos;template&apos;
 ],
 function(require, wutil, template) {
-    //代码
+    //&#x4EE3;&#x7801;
 });
 </code></pre>
-<h4>(1)require</h4>
-<pre><code>require(&quot;module-name&quot;),返回模块name所代表的模块
-define(['require'], function (require) {
-    var a = require('a');
+<h4 id="1require"><a class="header-anchor" href="#1-require">&#xB6;</a>(1)require</h4>
+<pre><code>require(&quot;module-name&quot;),&#x8FD4;&#x56DE;&#x6A21;&#x5757;name&#x6240;&#x4EE3;&#x8868;&#x7684;&#x6A21;&#x5757;
+define([&apos;require&apos;], function (require) {
+    var a = require(&apos;a&apos;);
 });
 define(function (require, exports, module) {
-    var a = require('a');
+    var a = require(&apos;a&apos;);
 });
-require(Array, Function):当模块name所以代表的模块加载完成且可用时，回调函数Function才开始执行，并且只被执行一次。各个模块按照依赖数组中的位置顺序以参数的形式传入到Function里。
+require(Array, Function):&#x5F53;&#x6A21;&#x5757;name&#x6240;&#x4EE5;&#x4EE3;&#x8868;&#x7684;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x4E14;&#x53EF;&#x7528;&#x65F6;&#xFF0C;&#x56DE;&#x8C03;&#x51FD;&#x6570;Function&#x624D;&#x5F00;&#x59CB;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x88AB;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x3002;&#x5404;&#x4E2A;&#x6A21;&#x5757;&#x6309;&#x7167;&#x4F9D;&#x8D56;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x987A;&#x5E8F;&#x4EE5;&#x53C2;&#x6570;&#x7684;&#x5F62;&#x5F0F;&#x4F20;&#x5165;&#x5230;Function&#x91CC;&#x3002;
 define(function (require) {
-    require(['a', 'b'], function (a, b) {
-        //代码
+    require([&apos;a&apos;, &apos;b&apos;], function (a, b) {
+        //&#x4EE3;&#x7801;
     });
 });
 </code></pre>
-<h2>CMD规范</h2>
-<h3>定义</h3>
-<pre><code>Common Module Definition 即通用模块定义.
+<h2 id="cmd&#x89C4;&#x8303;"><a class="header-anchor" href="#cmd&#x89C4;&#x8303;">&#xB6;</a>CMD&#x89C4;&#x8303;</h2>
+<h3 id="&#x5B9A;&#x4E49;"><a class="header-anchor" href="#&#x5B9A;&#x4E49;-v2">&#xB6;</a>&#x5B9A;&#x4E49;</h3>
+<pre><code>Common Module Definition &#x5373;&#x901A;&#x7528;&#x6A21;&#x5757;&#x5B9A;&#x4E49;.
 </code></pre>
-<h3>API</h3>
+<h3 id="api"><a class="header-anchor" href="#api-v2">&#xB6;</a>API</h3>
 <pre><code>define(factory);
-factory 为对象、字符串时，表示模块的接口就是该对象、字符串。
-factory 为函数时，表示是模块的构造方法。执行该构造方法，可以得到模块向外提供的接口。factory 方法在执行时，默认会传入三个参数：require、exports 和 module .
-define 也可以接受两个以上参数, define(id?, deps?, factory),我感觉和AMD相同.....
-示例
-define('hello', ['jquery'], function(require, exports, module) {
-  // 模块代码
+factory &#x4E3A;&#x5BF9;&#x8C61;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x6A21;&#x5757;&#x7684;&#x63A5;&#x53E3;&#x5C31;&#x662F;&#x8BE5;&#x5BF9;&#x8C61;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x3002;
+factory &#x4E3A;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x662F;&#x6A21;&#x5757;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x3002;&#x6267;&#x884C;&#x8BE5;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6A21;&#x5757;&#x5411;&#x5916;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#x3002;factory &#x65B9;&#x6CD5;&#x5728;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4F1A;&#x4F20;&#x5165;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;require&#x3001;exports &#x548C; module .
+define &#x4E5F;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x4EE5;&#x4E0A;&#x53C2;&#x6570;, define(id?, deps?, factory),&#x6211;&#x611F;&#x89C9;&#x548C;AMD&#x76F8;&#x540C;.....
+&#x793A;&#x4F8B;
+define(&apos;hello&apos;, [&apos;jquery&apos;], function(require, exports, module) {
+  // &#x6A21;&#x5757;&#x4EE3;&#x7801;
 });
 </code></pre>
-<h4>(1)require:</h4>
-<pre><code>接受模块标识作为唯一的参数，用来获取其他模块提供的接口.
+<h4 id="1require"><a class="header-anchor" href="#1-require-v2">&#xB6;</a>(1)require:</h4>
+<pre><code>&#x63A5;&#x53D7;&#x6A21;&#x5757;&#x6807;&#x8BC6;&#x4F5C;&#x4E3A;&#x552F;&#x4E00;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;.
 define(function( require, exports ){
-    var a = require('./a');
+    var a = require(&apos;./a&apos;);
     a.doSomething();
 });
 </code></pre>
-<h4>(2)exports:</h4>
-<pre><code>factory 的第二个参数，用来向外提供模块接口。
+<h4 id="2exports"><a class="header-anchor" href="#2-exports">&#xB6;</a>(2)exports:</h4>
+<pre><code>factory &#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x5411;&#x5916;&#x63D0;&#x4F9B;&#x6A21;&#x5757;&#x63A5;&#x53E3;&#x3002;
 define(function( require, exports ){
-    exports.foo = 'bar'; // 向外提供的属性
-    exports.do = function(){}; // 向外提供的方法
+    exports.foo = &apos;bar&apos;; // &#x5411;&#x5916;&#x63D0;&#x4F9B;&#x7684;&#x5C5E;&#x6027;
+    exports.do = function(){}; // &#x5411;&#x5916;&#x63D0;&#x4F9B;&#x7684;&#x65B9;&#x6CD5;
 });
 </code></pre>
-<h4>(3) module:</h4>
-<pre><code>factory的第三个参数，存储了一些与当前模块相关联的属性与方法。
-module.id 为模块的唯一标识。
-module.uri 根据模块系统的路径解析规则得到模块的绝对路径。
-module.dependencies 表示模块的依赖。
-module.exports 当前模块对外提供的接口。
+<h4 id="3-module"><a class="header-anchor" href="#3-module">&#xB6;</a>(3) module:</h4>
+<pre><code>factory&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5B58;&#x50A8;&#x4E86;&#x4E00;&#x4E9B;&#x4E0E;&#x5F53;&#x524D;&#x6A21;&#x5757;&#x76F8;&#x5173;&#x8054;&#x7684;&#x5C5E;&#x6027;&#x4E0E;&#x65B9;&#x6CD5;&#x3002;
+module.id &#x4E3A;&#x6A21;&#x5757;&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x3002;
+module.uri &#x6839;&#x636E;&#x6A21;&#x5757;&#x7CFB;&#x7EDF;&#x7684;&#x8DEF;&#x5F84;&#x89E3;&#x6790;&#x89C4;&#x5219;&#x5F97;&#x5230;&#x6A21;&#x5757;&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;
+module.dependencies &#x8868;&#x793A;&#x6A21;&#x5757;&#x7684;&#x4F9D;&#x8D56;&#x3002;
+module.exports &#x5F53;&#x524D;&#x6A21;&#x5757;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#x3002;
 </code></pre>
-<h2>异同</h2>
-<p>AMD规范需要提声明,在依赖数组内.
-CMD可以在function内加载.</p>
+<h2 id="&#x5F02;&#x540C;"><a class="header-anchor" href="#&#x5F02;&#x540C;">&#xB6;</a>&#x5F02;&#x540C;</h2>
+<p>AMD&#x89C4;&#x8303;&#x9700;&#x8981;&#x63D0;&#x58F0;&#x660E;,&#x5728;&#x4F9D;&#x8D56;&#x6570;&#x7EC4;&#x5185;.<br>
+CMD&#x53EF;&#x4EE5;&#x5728;function&#x5185;&#x52A0;&#x8F7D;.</p>
 
       
     </div>
@@ -406,8 +406,6 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
-  
     <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
   
     <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
@@ -445,7 +443,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
         <embed tplayername="SWF" splayername="SWF"
-            type="application/x-shockwave-flash" src="http://wisdombud.github.io/tagcloud.swf"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
             mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
             id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
             quality="high" wmode="transparent" allowscriptaccess="always"

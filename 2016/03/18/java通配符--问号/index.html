@@ -232,71 +232,71 @@
     </header>
     <div class="entry">
       
-        <h2>简介泛型类和泛型方法</h2>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Example&lt;T&gt;&#123;</span><br><span class="line">    private String test;</span><br><span class="line">    private T t;</span><br><span class="line">    public T getT()&#123;</span><br><span class="line">        return t;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setT(T t)&#123;</span><br><span class="line">        this.t = t;</span><br><span class="line">    &#125;</span><br><span class="line">    public &lt;E&gt;  E getE(E e)&#123;</span><br><span class="line">        return e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3>泛型类</h3>
-<p>上面的类Example就是一个泛型类，它在类名的后面加上&lt; T &gt;，不指定T的类型，却可以在类里面把T当做一个已知的类型来使用。</p>
+        <h2 id="&#x7B80;&#x4ECB;&#x6CDB;&#x578B;&#x7C7B;&#x548C;&#x6CDB;&#x578B;&#x65B9;&#x6CD5;"><a class="header-anchor" href="#&#x7B80;&#x4ECB;&#x6CDB;&#x578B;&#x7C7B;&#x548C;&#x6CDB;&#x578B;&#x65B9;&#x6CD5;">&#xB6;</a>&#x7B80;&#x4ECB;&#x6CDB;&#x578B;&#x7C7B;&#x548C;&#x6CDB;&#x578B;&#x65B9;&#x6CD5;</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Example&lt;T&gt;{</span><br><span class="line">    private String test;</span><br><span class="line">    private T t;</span><br><span class="line">    public T getT(){</span><br><span class="line">        return t;</span><br><span class="line">    }</span><br><span class="line">    public void setT(T t){</span><br><span class="line">        this.t = t;</span><br><span class="line">    }</span><br><span class="line">    public &lt;E&gt;  E getE(E e){</span><br><span class="line">        return e;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="&#x6CDB;&#x578B;&#x7C7B;"><a class="header-anchor" href="#&#x6CDB;&#x578B;&#x7C7B;">&#xB6;</a>&#x6CDB;&#x578B;&#x7C7B;</h3>
+<p>&#x4E0A;&#x9762;&#x7684;&#x7C7B;Example&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x7C7B;&#xFF0C;&#x5B83;&#x5728;&#x7C7B;&#x540D;&#x7684;&#x540E;&#x9762;&#x52A0;&#x4E0A;&lt; T &gt;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;T&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5374;&#x53EF;&#x4EE5;&#x5728;&#x7C7B;&#x91CC;&#x9762;&#x628A;T&#x5F53;&#x505A;&#x4E00;&#x4E2A;&#x5DF2;&#x77E5;&#x7684;&#x7C7B;&#x578B;&#x6765;&#x4F7F;&#x7528;&#x3002;</p>
 <ul>
-<li>使用1-在声明的时候规定类型
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Example&lt;String&gt; ex = new Example&lt;String&gt;();</span><br></pre></td></tr></table></figure></li>
+<li>&#x4F7F;&#x7528;1-&#x5728;&#x58F0;&#x660E;&#x7684;&#x65F6;&#x5019;&#x89C4;&#x5B9A;&#x7C7B;&#x578B;</li>
 </ul>
-<p>这时会把Example类里面所有的T替换为String。
-常使用的例子，List集合的使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Example&lt;String&gt; ex = new Example&lt;String&gt;();</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x65F6;&#x4F1A;&#x628A;Example&#x7C7B;&#x91CC;&#x9762;&#x6240;&#x6709;&#x7684;T&#x66FF;&#x6362;&#x4E3A;String&#x3002;<br>
+&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;List&#x96C6;&#x5408;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
 <ul>
-<li>使用2-继承该泛型类
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public Ex1 extends Example&lt;Char&gt;()&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>&#x4F7F;&#x7528;2-&#x7EE7;&#x627F;&#x8BE5;&#x6CDB;&#x578B;&#x7C7B;</li>
 </ul>
-<p>这时，类Ex1的所有方法(继承的)中的T都是Char型。
-这样做的好处
-就像一个模板一样，类里面的方法，可以供多个对象来使用。
-常使用的例子，java在与数据库交互的时候封装的Dao层父类。</p>
-<h3>泛型方法</h3>
-<p>上面的getE方法就是泛型方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public Ex1 extends Example&lt;Char&gt;(){</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x65F6;&#xFF0C;&#x7C7B;Ex1&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;(&#x7EE7;&#x627F;&#x7684;)&#x4E2D;&#x7684;T&#x90FD;&#x662F;Char&#x578B;&#x3002;<br>
+&#x8FD9;&#x6837;&#x505A;&#x7684;&#x597D;&#x5904;<br>
+&#x5C31;&#x50CF;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x4E00;&#x6837;&#xFF0C;&#x7C7B;&#x91CC;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x4F9B;&#x591A;&#x4E2A;&#x5BF9;&#x8C61;&#x6765;&#x4F7F;&#x7528;&#x3002;<br>
+&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;java&#x5728;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x4EA4;&#x4E92;&#x7684;&#x65F6;&#x5019;&#x5C01;&#x88C5;&#x7684;Dao&#x5C42;&#x7236;&#x7C7B;&#x3002;</p>
+<h3 id="&#x6CDB;&#x578B;&#x65B9;&#x6CD5;"><a class="header-anchor" href="#&#x6CDB;&#x578B;&#x65B9;&#x6CD5;">&#xB6;</a>&#x6CDB;&#x578B;&#x65B9;&#x6CD5;</h3>
+<p>&#x4E0A;&#x9762;&#x7684;getE&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x6CDB;&#x578B;&#x65B9;&#x6CD5;&#x3002;</p>
 <ul>
-<li>使用
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Boolean b = ex.getE(true);</span><br></pre></td></tr></table></figure></li>
+<li>&#x4F7F;&#x7528;</li>
 </ul>
-<p>这时返回的类型就Boolen型。</p>
-<h2>通配符?</h2>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = null;</span><br><span class="line">String str = &quot;&quot;;</span><br><span class="line">obj = str;</span><br></pre></td></tr></table></figure></p>
-<p>上面的代码，是正确的。子类的值可以给基类。</p>
-<p>但是泛型类型的子类型之间是互不相关的。
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object&gt; objList = new ArrayList&lt;Object&gt;();</span><br><span class="line">List&lt;String&gt; strList = new ArrayList&lt;String&gt;();</span><br><span class="line">objList = strList;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码就会报错。因为strList并不是objList的一个子类。
-但是如果是 List&lt; ?&gt; list = null;
-list = objList;
-list = strList;
-这样写就可以。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Boolean b = ex.getE(true);</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x65F6;&#x8FD4;&#x56DE;&#x7684;&#x7C7B;&#x578B;&#x5C31;Boolen&#x578B;&#x3002;</p>
+<h2 id="&#x901A;&#x914D;&#x7B26;"><a class="header-anchor" href="#&#x901A;&#x914D;&#x7B26;">&#xB6;</a>&#x901A;&#x914D;&#x7B26;?</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = null;</span><br><span class="line">String str = &quot;&quot;;</span><br><span class="line">obj = str;</span><br></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;&#x5B50;&#x7C7B;&#x7684;&#x503C;&#x53EF;&#x4EE5;&#x7ED9;&#x57FA;&#x7C7B;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x6CDB;&#x578B;&#x7C7B;&#x578B;&#x7684;&#x5B50;&#x7C7B;&#x578B;&#x4E4B;&#x95F4;&#x662F;&#x4E92;&#x4E0D;&#x76F8;&#x5173;&#x7684;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object&gt; objList = new ArrayList&lt;Object&gt;();</span><br><span class="line">List&lt;String&gt; strList = new ArrayList&lt;String&gt;();</span><br><span class="line">objList = strList;</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#x3002;&#x56E0;&#x4E3A;strList&#x5E76;&#x4E0D;&#x662F;objList&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x7C7B;&#x3002;<br>
+&#x4F46;&#x662F;&#x5982;&#x679C;&#x662F; List&lt; ?&gt; list = null;<br>
+list = objList;<br>
+list = strList;<br>
+&#x8FD9;&#x6837;&#x5199;&#x5C31;&#x53EF;&#x4EE5;&#x3002;</p>
 <blockquote>
-<p>?就是通配符。
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public void test2(List&lt;?&gt; coll)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>?&#x5C31;&#x662F;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
 </blockquote>
-<p>上面的方法，我们就可以构造不同的泛型子类型当做参数。
-List&lt; String&gt;、List&lt; Char&gt; 等都可以。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public void test2(List&lt;?&gt; coll){</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x6784;&#x9020;&#x4E0D;&#x540C;&#x7684;&#x6CDB;&#x578B;&#x5B50;&#x7C7B;&#x578B;&#x5F53;&#x505A;&#x53C2;&#x6570;&#x3002;<br>
+List&lt; String&gt;&#x3001;List&lt; Char&gt; &#x7B49;&#x90FD;&#x53EF;&#x4EE5;&#x3002;</p>
 <blockquote>
 <ul>
-<li>List&lt; ?&gt;声明了List中包含的元素类型是未知的。通配符所代表的其实是一组类型，但具体的类型是未知的。List&lt; ?&gt;所声明的就是所有类型都是可以的。但是List&lt; ?&gt;并不等同于objList。objList实际上确定了List中包含的是Object
-及其子类，在使用的时候都可以通过Object来进行引用。</li>
+<li>List&lt; ?&gt;&#x58F0;&#x660E;&#x4E86;List&#x4E2D;&#x5305;&#x542B;&#x7684;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x662F;&#x672A;&#x77E5;&#x7684;&#x3002;&#x901A;&#x914D;&#x7B26;&#x6240;&#x4EE3;&#x8868;&#x7684;&#x5176;&#x5B9E;&#x662F;&#x4E00;&#x7EC4;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x5177;&#x4F53;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x672A;&#x77E5;&#x7684;&#x3002;List&lt; ?&gt;&#x6240;&#x58F0;&#x660E;&#x7684;&#x5C31;&#x662F;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x90FD;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#x3002;&#x4F46;&#x662F;List&lt; ?&gt;&#x5E76;&#x4E0D;&#x7B49;&#x540C;&#x4E8E;objList&#x3002;objList&#x5B9E;&#x9645;&#x4E0A;&#x786E;&#x5B9A;&#x4E86;List&#x4E2D;&#x5305;&#x542B;&#x7684;&#x662F;Object<br>
+&#x53CA;&#x5176;&#x5B50;&#x7C7B;&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Object&#x6765;&#x8FDB;&#x884C;&#x5F15;&#x7528;&#x3002;</li>
 </ul>
 </blockquote>
 <ul>
-<li>List&lt; ?&gt;则其中所包含的元素类型是不确定。其中可能包含的是String，也可能是 Integer。如果它包含了String的话，往里面添加Integer类型的元素就是错误的。正因为类型未知，就不能通过new ArrayList&lt; ?&gt;()的方法来创建一个新的ArrayList对象。因为编译器无法知道具体的类型是什么。但是对于 List&lt; ?&gt;中的元素确总是可以用Object来引用的，因为虽然类型未知，但肯定是Object及其子类。</li>
+<li>List&lt; ?&gt;&#x5219;&#x5176;&#x4E2D;&#x6240;&#x5305;&#x542B;&#x7684;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x3002;&#x5176;&#x4E2D;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x7684;&#x662F;String&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F; Integer&#x3002;&#x5982;&#x679C;&#x5B83;&#x5305;&#x542B;&#x4E86;String&#x7684;&#x8BDD;&#xFF0C;&#x5F80;&#x91CC;&#x9762;&#x6DFB;&#x52A0;Integer&#x7C7B;&#x578B;&#x7684;&#x5143;&#x7D20;&#x5C31;&#x662F;&#x9519;&#x8BEF;&#x7684;&#x3002;&#x6B63;&#x56E0;&#x4E3A;&#x7C7B;&#x578B;&#x672A;&#x77E5;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;new ArrayList&lt; ?&gt;()&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;ArrayList&#x5BF9;&#x8C61;&#x3002;&#x56E0;&#x4E3A;&#x7F16;&#x8BD1;&#x5668;&#x65E0;&#x6CD5;&#x77E5;&#x9053;&#x5177;&#x4F53;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x4EC0;&#x4E48;&#x3002;&#x4F46;&#x662F;&#x5BF9;&#x4E8E; List&lt; ?&gt;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x786E;&#x603B;&#x662F;&#x53EF;&#x4EE5;&#x7528;Object&#x6765;&#x5F15;&#x7528;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x867D;&#x7136;&#x7C7B;&#x578B;&#x672A;&#x77E5;&#xFF0C;&#x4F46;&#x80AF;&#x5B9A;&#x662F;Object&#x53CA;&#x5176;&#x5B50;&#x7C7B;&#x3002;</li>
 </ul>
-<h3>向上造型一个泛型对象的引用</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? extends XX&gt;</span><br></pre></td></tr></table></figure></p>
-<p>extends可以理解为小于等于，任意类型要是XX的子类或者是XX。</p>
+<h3 id="&#x5411;&#x4E0A;&#x9020;&#x578B;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;"><a class="header-anchor" href="#&#x5411;&#x4E0A;&#x9020;&#x578B;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;">&#xB6;</a>&#x5411;&#x4E0A;&#x9020;&#x578B;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? extends XX&gt;</span><br></pre></td></tr></table></figure>
+<p>extends&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;&#xFF0C;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x8981;&#x662F;XX&#x7684;&#x5B50;&#x7C7B;&#x6216;&#x8005;&#x662F;XX&#x3002;</p>
 <blockquote>
-<p>假设我们有很多箱子，每个箱子里都装有不同的水果，我们需要找到一种方法能够通用的处理任何一箱水果。更通俗的说法，A是B的子类型，我们需要找到一种方法能够将C&lt; A&gt;类型的实例赋给一个C&lt; B&gt;类型的声明。
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; apples = new ArrayList&lt;Apple&gt;();</span><br><span class="line">List&lt;? extends Fruit&gt; fruits = apples;</span><br></pre></td></tr></table></figure></p>
+<p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709;&#x5F88;&#x591A;&#x7BB1;&#x5B50;&#xFF0C;&#x6BCF;&#x4E2A;&#x7BB1;&#x5B50;&#x91CC;&#x90FD;&#x88C5;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x6C34;&#x679C;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x627E;&#x5230;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x901A;&#x7528;&#x7684;&#x5904;&#x7406;&#x4EFB;&#x4F55;&#x4E00;&#x7BB1;&#x6C34;&#x679C;&#x3002;&#x66F4;&#x901A;&#x4FD7;&#x7684;&#x8BF4;&#x6CD5;&#xFF0C;A&#x662F;B&#x7684;&#x5B50;&#x7C7B;&#x578B;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x627E;&#x5230;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x5C06;C&lt; A&gt;&#x7C7B;&#x578B;&#x7684;&#x5B9E;&#x4F8B;&#x8D4B;&#x7ED9;&#x4E00;&#x4E2A;C&lt; B&gt;&#x7C7B;&#x578B;&#x7684;&#x58F0;&#x660E;&#x3002;</p>
 </blockquote>
-<p>Apple是Fruit的子类型，List&lt; Apple&gt; 是 List&lt; ? extends Fruit&gt; 的子类型。</p>
-<h3>向下造型一个泛型对象的引用</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? super XX&gt;</span><br></pre></td></tr></table></figure></p>
-<p>super可以理解为大于等于，任意类型要是XX的父类或者是XX。
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Fruit&gt; fruits = new ArrayList&lt;Fruit&gt;();  </span><br><span class="line">List&lt;? super Apple&gt; = fruits;</span><br></pre></td></tr></table></figure></p>
-<p>Apple是Fruit的子类型，List&lt; Fruit&gt; 是 List&lt; ? super Apple&gt; 的父类型。</p>
-<p><a href="http://www.linuxidc.com/Linux/2012-10/72626.htm" target="_blank" rel="external">Java中泛型之类型通配符(?)</a>
-<a href="http://blog.csdn.net/chunqiuwei/article/details/8008443" target="_blank" rel="external">java通配符</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; apples = new ArrayList&lt;Apple&gt;();</span><br><span class="line">List&lt;? extends Fruit&gt; fruits = apples;</span><br></pre></td></tr></table></figure>
+<p>Apple&#x662F;Fruit&#x7684;&#x5B50;&#x7C7B;&#x578B;&#xFF0C;List&lt; Apple&gt; &#x662F; List&lt; ? extends Fruit&gt; &#x7684;&#x5B50;&#x7C7B;&#x578B;&#x3002;</p>
+<h3 id="&#x5411;&#x4E0B;&#x9020;&#x578B;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;"><a class="header-anchor" href="#&#x5411;&#x4E0B;&#x9020;&#x578B;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;">&#xB6;</a>&#x5411;&#x4E0B;&#x9020;&#x578B;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? super XX&gt;</span><br></pre></td></tr></table></figure>
+<p>super&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#xFF0C;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x8981;&#x662F;XX&#x7684;&#x7236;&#x7C7B;&#x6216;&#x8005;&#x662F;XX&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Fruit&gt; fruits = new ArrayList&lt;Fruit&gt;();  </span><br><span class="line">List&lt;? super Apple&gt; = fruits;</span><br></pre></td></tr></table></figure>
+<p>Apple&#x662F;Fruit&#x7684;&#x5B50;&#x7C7B;&#x578B;&#xFF0C;List&lt; Fruit&gt; &#x662F; List&lt; ? super Apple&gt; &#x7684;&#x7236;&#x7C7B;&#x578B;&#x3002;</p>
+<p><a href="http://www.linuxidc.com/Linux/2012-10/72626.htm" target="_blank" rel="external">Java&#x4E2D;&#x6CDB;&#x578B;&#x4E4B;&#x7C7B;&#x578B;&#x901A;&#x914D;&#x7B26;(?)</a><br>
+<a href="http://blog.csdn.net/chunqiuwei/article/details/8008443" target="_blank" rel="external">java&#x901A;&#x914D;&#x7B26;</a></p>
 
       
     </div>
@@ -398,8 +398,6 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
-  
     <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
   
     <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
@@ -437,7 +435,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
         <embed tplayername="SWF" splayername="SWF"
-            type="application/x-shockwave-flash" src="http://wisdombud.github.io/tagcloud.swf"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
             mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
             id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
             quality="high" wmode="transparent" allowscriptaccess="always"

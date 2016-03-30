@@ -232,77 +232,77 @@
     </header>
     <div class="entry">
       
-        <h2>what</h2>
+        <h2 id="what"><a class="header-anchor" href="#what">&#xB6;</a>what</h2>
 <blockquote>
-<p>SSH的英文全称为Secure Shell，是IETF（Internet Engineering Task Force）的Network Working Group所制定的一族协议，其目的是要在非安全网络上提供安全的远程登录和其他安全网络服务。 我们可以简单理解为：Rlogin和Telnet等的替代方案。</p>
+<p>SSH&#x7684;&#x82F1;&#x6587;&#x5168;&#x79F0;&#x4E3A;Secure Shell&#xFF0C;&#x662F;IETF&#xFF08;Internet Engineering Task Force&#xFF09;&#x7684;Network Working Group&#x6240;&#x5236;&#x5B9A;&#x7684;&#x4E00;&#x65CF;&#x534F;&#x8BAE;&#xFF0C;&#x5176;&#x76EE;&#x7684;&#x662F;&#x8981;&#x5728;&#x975E;&#x5B89;&#x5168;&#x7F51;&#x7EDC;&#x4E0A;&#x63D0;&#x4F9B;&#x5B89;&#x5168;&#x7684;&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x548C;&#x5176;&#x4ED6;&#x5B89;&#x5168;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x3002; &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x4E3A;&#xFF1A;Rlogin&#x548C;Telnet&#x7B49;&#x7684;&#x66FF;&#x4EE3;&#x65B9;&#x6848;&#x3002;</p>
 </blockquote>
-<h3>1.SSH主要的三个协议</h3>
+<h3 id="1ssh&#x4E3B;&#x8981;&#x7684;&#x4E09;&#x4E2A;&#x534F;&#x8BAE;"><a class="header-anchor" href="#1-ssh&#x4E3B;&#x8981;&#x7684;&#x4E09;&#x4E2A;&#x534F;&#x8BAE;">&#xB6;</a>1.SSH&#x4E3B;&#x8981;&#x7684;&#x4E09;&#x4E2A;&#x534F;&#x8BAE;</h3>
 <blockquote>
 <ul>
-<li>传输层协议:通过服务器认证,数据机密性,信息完整性等支持</li>
+<li>&#x4F20;&#x8F93;&#x5C42;&#x534F;&#x8BAE;:&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5668;&#x8BA4;&#x8BC1;,&#x6570;&#x636E;&#x673A;&#x5BC6;&#x6027;,&#x4FE1;&#x606F;&#x5B8C;&#x6574;&#x6027;&#x7B49;&#x652F;&#x6301;</li>
 </ul>
 </blockquote>
 <ul>
-<li>用户认证协议:为服务器提供客户端的身份鉴别</li>
-<li>连接协议:将加密的信息隧道复用成若干个逻辑通道,提供给更高层的应用协议使用;各种高层应用协议可以相对独立于SSH基本体系之外,并依靠这个基本框架,通过连接协议使用SSH的安全机制.</li>
+<li>&#x7528;&#x6237;&#x8BA4;&#x8BC1;&#x534F;&#x8BAE;:&#x4E3A;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x4F9B;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8EAB;&#x4EFD;&#x9274;&#x522B;</li>
+<li>&#x8FDE;&#x63A5;&#x534F;&#x8BAE;:&#x5C06;&#x52A0;&#x5BC6;&#x7684;&#x4FE1;&#x606F;&#x96A7;&#x9053;&#x590D;&#x7528;&#x6210;&#x82E5;&#x5E72;&#x4E2A;&#x903B;&#x8F91;&#x901A;&#x9053;,&#x63D0;&#x4F9B;&#x7ED9;&#x66F4;&#x9AD8;&#x5C42;&#x7684;&#x5E94;&#x7528;&#x534F;&#x8BAE;&#x4F7F;&#x7528;;&#x5404;&#x79CD;&#x9AD8;&#x5C42;&#x5E94;&#x7528;&#x534F;&#x8BAE;&#x53EF;&#x4EE5;&#x76F8;&#x5BF9;&#x72EC;&#x7ACB;&#x4E8E;SSH&#x57FA;&#x672C;&#x4F53;&#x7CFB;&#x4E4B;&#x5916;,&#x5E76;&#x4F9D;&#x9760;&#x8FD9;&#x4E2A;&#x57FA;&#x672C;&#x6846;&#x67B6;,&#x901A;&#x8FC7;&#x8FDE;&#x63A5;&#x534F;&#x8BAE;&#x4F7F;&#x7528;SSH&#x7684;&#x5B89;&#x5168;&#x673A;&#x5236;.</li>
 </ul>
-<h3>2.SSH安全验证级别</h3>
+<h3 id="2ssh&#x5B89;&#x5168;&#x9A8C;&#x8BC1;&#x7EA7;&#x522B;"><a class="header-anchor" href="#2-ssh&#x5B89;&#x5168;&#x9A8C;&#x8BC1;&#x7EA7;&#x522B;">&#xB6;</a>2.SSH&#x5B89;&#x5168;&#x9A8C;&#x8BC1;&#x7EA7;&#x522B;</h3>
 <blockquote>
 <ul>
-<li>基于口令的安全验证:只要你知道自己的账号和口令,就可以登录到远程主机.所有传输的数据都会被加密,但是不能保证你正在连接的服务器就是你想要连接的服务器,有可能是冒充的&quot;中间人&quot;</li>
+<li>&#x57FA;&#x4E8E;&#x53E3;&#x4EE4;&#x7684;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;:&#x53EA;&#x8981;&#x4F60;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x7684;&#x8D26;&#x53F7;&#x548C;&#x53E3;&#x4EE4;,&#x5C31;&#x53EF;&#x4EE5;&#x767B;&#x5F55;&#x5230;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;.&#x6240;&#x6709;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x88AB;&#x52A0;&#x5BC6;,&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x4F60;&#x6B63;&#x5728;&#x8FDE;&#x63A5;&#x7684;&#x670D;&#x52A1;&#x5668;&#x5C31;&#x662F;&#x4F60;&#x60F3;&#x8981;&#x8FDE;&#x63A5;&#x7684;&#x670D;&#x52A1;&#x5668;,&#x6709;&#x53EF;&#x80FD;&#x662F;&#x5192;&#x5145;&#x7684;&quot;&#x4E2D;&#x95F4;&#x4EBA;&quot;</li>
 </ul>
 </blockquote>
 <ul>
-<li>基于密匙的安全验证:
+<li>&#x57FA;&#x4E8E;&#x5BC6;&#x5319;&#x7684;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;:
 <ul>
-<li>现为自己创建一对密匙,并把公匙放在需要访问的服务器上</li>
-<li>客户端软件向服务器发送请求,请求用你的密匙进行安全验证
--服务器收到请求,在服务器目录下寻找公匙并与你发过来的公匙进行比较.如果公匙相同,服务器就会用公匙加密&quot;质询&quot;并把它发送给客户端软件;</li>
-<li>客户端软件受到&quot;质询&quot;之后就可以用私匙解密病把它发送给服务器.</li>
+<li>&#x73B0;&#x4E3A;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x4E00;&#x5BF9;&#x5BC6;&#x5319;,&#x5E76;&#x628A;&#x516C;&#x5319;&#x653E;&#x5728;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;</li>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x8F6F;&#x4EF6;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x8BF7;&#x6C42;,&#x8BF7;&#x6C42;&#x7528;&#x4F60;&#x7684;&#x5BC6;&#x5319;&#x8FDB;&#x884C;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;<br>
+-&#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;&#x8BF7;&#x6C42;,&#x5728;&#x670D;&#x52A1;&#x5668;&#x76EE;&#x5F55;&#x4E0B;&#x5BFB;&#x627E;&#x516C;&#x5319;&#x5E76;&#x4E0E;&#x4F60;&#x53D1;&#x8FC7;&#x6765;&#x7684;&#x516C;&#x5319;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;.&#x5982;&#x679C;&#x516C;&#x5319;&#x76F8;&#x540C;,&#x670D;&#x52A1;&#x5668;&#x5C31;&#x4F1A;&#x7528;&#x516C;&#x5319;&#x52A0;&#x5BC6;&quot;&#x8D28;&#x8BE2;&quot;&#x5E76;&#x628A;&#x5B83;&#x53D1;&#x9001;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x8F6F;&#x4EF6;;</li>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x8F6F;&#x4EF6;&#x53D7;&#x5230;&quot;&#x8D28;&#x8BE2;&quot;&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x79C1;&#x5319;&#x89E3;&#x5BC6;&#x75C5;&#x628A;&#x5B83;&#x53D1;&#x9001;&#x7ED9;&#x670D;&#x52A1;&#x5668;.</li>
 </ul>
 </li>
 </ul>
 <blockquote>
-<p>第二种方式可以有效地避免&quot;中间人&quot;攻击方式,相对安全,但是整个登录过程时间比较长,大概要10s左右.</p>
+<p>&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x5730;&#x907F;&#x514D;&quot;&#x4E2D;&#x95F4;&#x4EBA;&quot;&#x653B;&#x51FB;&#x65B9;&#x5F0F;,&#x76F8;&#x5BF9;&#x5B89;&#x5168;,&#x4F46;&#x662F;&#x6574;&#x4E2A;&#x767B;&#x5F55;&#x8FC7;&#x7A0B;&#x65F6;&#x95F4;&#x6BD4;&#x8F83;&#x957F;,&#x5927;&#x6982;&#x8981;10s&#x5DE6;&#x53F3;.</p>
 </blockquote>
-<h3>SSH的工作过程</h3>
+<h3 id="ssh&#x7684;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;"><a class="header-anchor" href="#ssh&#x7684;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;">&#xB6;</a>SSH&#x7684;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;</h3>
 <blockquote>
-<p>实现ＳＳＨ安全连接，服务器端和客户端要经理五个阶段：</p>
+<p>&#x5B9E;&#x73B0;&#xFF33;&#xFF33;&#xFF28;&#x5B89;&#x5168;&#x8FDE;&#x63A5;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x8981;&#x7ECF;&#x7406;&#x4E94;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;</p>
 </blockquote>
 <blockquote>
 <ul>
-<li><strong>版本协商阶段</strong>：SSH目前有SSH1和SSH2两个版本,双发通过版本协商确定使用的版本.(本阶段服务器会打开22端口,等待客户端连接;本阶段的报文都是通过明文方式传输)</li>
+<li><strong>&#x7248;&#x672C;&#x534F;&#x5546;&#x9636;&#x6BB5;</strong>&#xFF1A;SSH&#x76EE;&#x524D;&#x6709;SSH1&#x548C;SSH2&#x4E24;&#x4E2A;&#x7248;&#x672C;,&#x53CC;&#x53D1;&#x901A;&#x8FC7;&#x7248;&#x672C;&#x534F;&#x5546;&#x786E;&#x5B9A;&#x4F7F;&#x7528;&#x7684;&#x7248;&#x672C;.(&#x672C;&#x9636;&#x6BB5;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x6253;&#x5F00;22&#x7AEF;&#x53E3;,&#x7B49;&#x5F85;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;;&#x672C;&#x9636;&#x6BB5;&#x7684;&#x62A5;&#x6587;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x660E;&#x6587;&#x65B9;&#x5F0F;&#x4F20;&#x8F93;)</li>
 </ul>
 </blockquote>
 <ul>
-<li><strong>密钥和算法协商阶段</strong>:双方根据本端和对端支持的算法,协商最终使用的算法</li>
-<li><strong>认证阶段</strong>:SSH客户端向服务器端发起认证请求,服务器端对客户端进行认证</li>
-<li><strong>会话请求阶段</strong>:认证通过后,客户端想服务器端发起会话请求</li>
-<li><strong>交互会话阶段</strong>:会话请求通过后,服务器端和客户端进行信息的交互.</li>
+<li><strong>&#x5BC6;&#x94A5;&#x548C;&#x7B97;&#x6CD5;&#x534F;&#x5546;&#x9636;&#x6BB5;</strong>:&#x53CC;&#x65B9;&#x6839;&#x636E;&#x672C;&#x7AEF;&#x548C;&#x5BF9;&#x7AEF;&#x652F;&#x6301;&#x7684;&#x7B97;&#x6CD5;,&#x534F;&#x5546;&#x6700;&#x7EC8;&#x4F7F;&#x7528;&#x7684;&#x7B97;&#x6CD5;</li>
+<li><strong>&#x8BA4;&#x8BC1;&#x9636;&#x6BB5;</strong>:SSH&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x53D1;&#x8D77;&#x8BA4;&#x8BC1;&#x8BF7;&#x6C42;,&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5BF9;&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x884C;&#x8BA4;&#x8BC1;</li>
+<li><strong>&#x4F1A;&#x8BDD;&#x8BF7;&#x6C42;&#x9636;&#x6BB5;</strong>:&#x8BA4;&#x8BC1;&#x901A;&#x8FC7;&#x540E;,&#x5BA2;&#x6237;&#x7AEF;&#x60F3;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x53D1;&#x8D77;&#x4F1A;&#x8BDD;&#x8BF7;&#x6C42;</li>
+<li><strong>&#x4EA4;&#x4E92;&#x4F1A;&#x8BDD;&#x9636;&#x6BB5;</strong>:&#x4F1A;&#x8BDD;&#x8BF7;&#x6C42;&#x901A;&#x8FC7;&#x540E;,&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x884C;&#x4FE1;&#x606F;&#x7684;&#x4EA4;&#x4E92;.</li>
 </ul>
-<h2>why</h2>
+<h2 id="why"><a class="header-anchor" href="#why">&#xB6;</a>why</h2>
 <blockquote>
-<p>传统的网络服务程序,如ftp/pop/telnet在网络传输的时候都会用明文传送口令和数据,所以在本质上都是不安全的.这些服务器的安全验证方式容易受到&quot;中间人&quot;方式的攻击.
-&quot;中间人&quot;攻击方式--即&quot;中间人&quot;冒充真正的服务器接受你发送给服务器的数据,然后再冒充你把数据传给真正的服务器.服务器和你之间的数据传送很容易被中间人做一些手脚.
-而通过使用ssh,你可以吧所有传输的数据进行加密,避免了&quot;中间人&quot;攻击方式以及DNS欺骗和IP欺骗.另外,使用SSH时传输的数据是经过压缩的,所以可以加快传输的速度.</p>
+<p>&#x4F20;&#x7EDF;&#x7684;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x7A0B;&#x5E8F;,&#x5982;ftp/pop/telnet&#x5728;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x7528;&#x660E;&#x6587;&#x4F20;&#x9001;&#x53E3;&#x4EE4;&#x548C;&#x6570;&#x636E;,&#x6240;&#x4EE5;&#x5728;&#x672C;&#x8D28;&#x4E0A;&#x90FD;&#x662F;&#x4E0D;&#x5B89;&#x5168;&#x7684;.&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;&#x65B9;&#x5F0F;&#x5BB9;&#x6613;&#x53D7;&#x5230;&quot;&#x4E2D;&#x95F4;&#x4EBA;&quot;&#x65B9;&#x5F0F;&#x7684;&#x653B;&#x51FB;.<br>
+&quot;&#x4E2D;&#x95F4;&#x4EBA;&quot;&#x653B;&#x51FB;&#x65B9;&#x5F0F;&#x2013;&#x5373;&quot;&#x4E2D;&#x95F4;&#x4EBA;&quot;&#x5192;&#x5145;&#x771F;&#x6B63;&#x7684;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x53D7;&#x4F60;&#x53D1;&#x9001;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6570;&#x636E;,&#x7136;&#x540E;&#x518D;&#x5192;&#x5145;&#x4F60;&#x628A;&#x6570;&#x636E;&#x4F20;&#x7ED9;&#x771F;&#x6B63;&#x7684;&#x670D;&#x52A1;&#x5668;.&#x670D;&#x52A1;&#x5668;&#x548C;&#x4F60;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x4F20;&#x9001;&#x5F88;&#x5BB9;&#x6613;&#x88AB;&#x4E2D;&#x95F4;&#x4EBA;&#x505A;&#x4E00;&#x4E9B;&#x624B;&#x811A;.<br>
+&#x800C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;ssh,&#x4F60;&#x53EF;&#x4EE5;&#x5427;&#x6240;&#x6709;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;,&#x907F;&#x514D;&#x4E86;&quot;&#x4E2D;&#x95F4;&#x4EBA;&quot;&#x653B;&#x51FB;&#x65B9;&#x5F0F;&#x4EE5;&#x53CA;DNS&#x6B3A;&#x9A97;&#x548C;IP&#x6B3A;&#x9A97;.&#x53E6;&#x5916;,&#x4F7F;&#x7528;SSH&#x65F6;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x662F;&#x7ECF;&#x8FC7;&#x538B;&#x7F29;&#x7684;,&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x52A0;&#x5FEB;&#x4F20;&#x8F93;&#x7684;&#x901F;&#x5EA6;.</p>
 </blockquote>
-<h3>where</h3>
+<h3 id="where"><a class="header-anchor" href="#where">&#xB6;</a>where</h3>
 <blockquote>
 <ul>
-<li>首先,最常见的应用就是通过SSH登录到远方的机器执行你想要进行的工作和命令.(SSH在不安全的网路通讯环境中可以通过很强的验证机制和非常安全的通讯环境.)</li>
+<li>&#x9996;&#x5148;,&#x6700;&#x5E38;&#x89C1;&#x7684;&#x5E94;&#x7528;&#x5C31;&#x662F;&#x901A;&#x8FC7;SSH&#x767B;&#x5F55;&#x5230;&#x8FDC;&#x65B9;&#x7684;&#x673A;&#x5668;&#x6267;&#x884C;&#x4F60;&#x60F3;&#x8981;&#x8FDB;&#x884C;&#x7684;&#x5DE5;&#x4F5C;&#x548C;&#x547D;&#x4EE4;.(SSH&#x5728;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x7F51;&#x8DEF;&#x901A;&#x8BAF;&#x73AF;&#x5883;&#x4E2D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5F88;&#x5F3A;&#x7684;&#x9A8C;&#x8BC1;&#x673A;&#x5236;&#x548C;&#x975E;&#x5E38;&#x5B89;&#x5168;&#x7684;&#x901A;&#x8BAF;&#x73AF;&#x5883;.)</li>
 </ul>
 </blockquote>
 <ul>
-<li>其次,通过使用SSH可以本地主机和远程服务器之间是指&quot;加密通道&quot;(SSH的加密通多是通过&quot;端口转发&quot;实现的,你可以在本地端口(没有用到的)和在远程服务器上运行某个服务的端口之间建立&quot;加密通道&quot;.然后只要连接到本地端口.所有对本地端口的请求都被SSH加密并且转发到远程服务器的端口.当然只有远程服务器上运行SSH服务器软件的时候&quot;加密通道&quot;才能工作)</li>
+<li>&#x5176;&#x6B21;,&#x901A;&#x8FC7;&#x4F7F;&#x7528;SSH&#x53EF;&#x4EE5;&#x672C;&#x5730;&#x4E3B;&#x673A;&#x548C;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x662F;&#x6307;&quot;&#x52A0;&#x5BC6;&#x901A;&#x9053;&quot;(SSH&#x7684;&#x52A0;&#x5BC6;&#x901A;&#x591A;&#x662F;&#x901A;&#x8FC7;&quot;&#x7AEF;&#x53E3;&#x8F6C;&#x53D1;&quot;&#x5B9E;&#x73B0;&#x7684;,&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x672C;&#x5730;&#x7AEF;&#x53E3;(&#x6CA1;&#x6709;&#x7528;&#x5230;&#x7684;)&#x548C;&#x5728;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x8FD0;&#x884C;&#x67D0;&#x4E2A;&#x670D;&#x52A1;&#x7684;&#x7AEF;&#x53E3;&#x4E4B;&#x95F4;&#x5EFA;&#x7ACB;&quot;&#x52A0;&#x5BC6;&#x901A;&#x9053;&quot;.&#x7136;&#x540E;&#x53EA;&#x8981;&#x8FDE;&#x63A5;&#x5230;&#x672C;&#x5730;&#x7AEF;&#x53E3;.&#x6240;&#x6709;&#x5BF9;&#x672C;&#x5730;&#x7AEF;&#x53E3;&#x7684;&#x8BF7;&#x6C42;&#x90FD;&#x88AB;SSH&#x52A0;&#x5BC6;&#x5E76;&#x4E14;&#x8F6C;&#x53D1;&#x5230;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x7AEF;&#x53E3;.&#x5F53;&#x7136;&#x53EA;&#x6709;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x8FD0;&#x884C;SSH&#x670D;&#x52A1;&#x5668;&#x8F6F;&#x4EF6;&#x7684;&#x65F6;&#x5019;&quot;&#x52A0;&#x5BC6;&#x901A;&#x9053;&quot;&#x624D;&#x80FD;&#x5DE5;&#x4F5C;)</li>
 </ul>
-<h3>how</h3>
+<h3 id="how"><a class="header-anchor" href="#how">&#xB6;</a>how</h3>
 <blockquote>
 <p>putty WINscp</p>
 </blockquote>
-<h3>相关链接</h3>
+<h3 id="&#x76F8;&#x5173;&#x94FE;&#x63A5;"><a class="header-anchor" href="#&#x76F8;&#x5173;&#x94FE;&#x63A5;">&#xB6;</a>&#x76F8;&#x5173;&#x94FE;&#x63A5;</h3>
 <blockquote>
-<p>http://blog.csdn.net/macrossdzh/article/details/56919
-http://blog.csdn.net/oncoding/article/details/4365062</p>
+<p><a href="http://blog.csdn.net/macrossdzh/article/details/56919" target="_blank" rel="external">http://blog.csdn.net/macrossdzh/article/details/56919</a><br>
+<a href="http://blog.csdn.net/oncoding/article/details/4365062" target="_blank" rel="external">http://blog.csdn.net/oncoding/article/details/4365062</a></p>
 </blockquote>
 
       
@@ -405,8 +405,6 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
-  
     <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
   
     <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
@@ -444,7 +442,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
         <embed tplayername="SWF" splayername="SWF"
-            type="application/x-shockwave-flash" src="http://wisdombud.github.io/tagcloud.swf"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
             mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
             id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
             quality="high" wmode="transparent" allowscriptaccess="always"

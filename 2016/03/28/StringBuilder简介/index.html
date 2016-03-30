@@ -231,66 +231,66 @@
     <div class="entry">
       
         <blockquote>
-<p>StringBuilder是什么？</p>
+<p>StringBuilder&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</p>
 </blockquote>
 <ul>
-<li>StringBuilder是一个可变的字符序列。
-但StringBuilder在单线程中的性能比StringBuffer高。</li>
-<li><strong>一般用在字符串缓冲区被单个线程使用的时候</strong>。
-如果可能，建议优先采用该类，因为在大多数实现中，它比 StringBuffer 要快。</li>
-<li>StringBuilder类可以用于在无需创建一个新的字符串对象情况下修改字符串</li>
+<li>StringBuilder&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x53D8;&#x7684;&#x5B57;&#x7B26;&#x5E8F;&#x5217;&#x3002;<br>
+&#x4F46;StringBuilder&#x5728;&#x5355;&#x7EBF;&#x7A0B;&#x4E2D;&#x7684;&#x6027;&#x80FD;&#x6BD4;StringBuffer&#x9AD8;&#x3002;</li>
+<li><strong>&#x4E00;&#x822C;&#x7528;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x7F13;&#x51B2;&#x533A;&#x88AB;&#x5355;&#x4E2A;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;</strong>&#x3002;<br>
+&#x5982;&#x679C;&#x53EF;&#x80FD;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F18;&#x5148;&#x91C7;&#x7528;&#x8BE5;&#x7C7B;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x5927;&#x591A;&#x6570;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x5B83;&#x6BD4; StringBuffer &#x8981;&#x5FEB;&#x3002;</li>
+<li>StringBuilder&#x7C7B;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5728;&#x65E0;&#x9700;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#x60C5;&#x51B5;&#x4E0B;&#x4FEE;&#x6539;&#x5B57;&#x7B26;&#x4E32;</li>
 </ul>
 <blockquote>
-<p>StringBuilder StringBuffer String 区别</p>
+<p>StringBuilder StringBuffer String &#x533A;&#x522B;</p>
 </blockquote>
 <ul>
-<li>StringBuilder提供一个与 StringBuffer 兼容的 API，但不保证同步。</li>
-<li>StringBuilder不是线程安全的，而StringBuffer是线程安全的。</li>
-<li>StringBuilder，StringBuffer可以用于在无需创建一个新的字符串对象情况下修改字符串</li>
-<li>String类是字符串常量，是不可更改的常量。
-因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String</li>
-<li>StringBuffer，StringBuilder是字符串变量，它的对象是可以扩充和修改的。</li>
+<li>StringBuilder&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x4E0E; StringBuffer &#x517C;&#x5BB9;&#x7684; API&#xFF0C;&#x4F46;&#x4E0D;&#x4FDD;&#x8BC1;&#x540C;&#x6B65;&#x3002;</li>
+<li>StringBuilder&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x800C;StringBuffer&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x3002;</li>
+<li>StringBuilder&#xFF0C;StringBuffer&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5728;&#x65E0;&#x9700;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#x60C5;&#x51B5;&#x4E0B;&#x4FEE;&#x6539;&#x5B57;&#x7B26;&#x4E32;</li>
+<li>String&#x7C7B;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#xFF0C;&#x662F;&#x4E0D;&#x53EF;&#x66F4;&#x6539;&#x7684;&#x5E38;&#x91CF;&#x3002;<br>
+&#x56E0;&#x6B64;&#x5728;&#x6BCF;&#x6B21;&#x5BF9; String &#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x6539;&#x53D8;&#x7684;&#x65F6;&#x5019;&#x5176;&#x5B9E;&#x90FD;&#x7B49;&#x540C;&#x4E8E;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684; String &#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x6307;&#x9488;&#x6307;&#x5411;&#x65B0;&#x7684; String</li>
+<li>StringBuffer&#xFF0C;StringBuilder&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x53D8;&#x91CF;&#xFF0C;&#x5B83;&#x7684;&#x5BF9;&#x8C61;&#x662F;&#x53EF;&#x4EE5;&#x6269;&#x5145;&#x548C;&#x4FEE;&#x6539;&#x7684;&#x3002;</li>
 </ul>
 <blockquote>
-<p>StringBuilder 的 append 和 insert</p>
+<p>StringBuilder &#x7684; append &#x548C; insert</p>
 </blockquote>
 <ul>
-<li>append 方法始终将这些字符添加到生成器的末端；</li>
-<li>insert 方法则在指定的点添加字符</li>
+<li>append &#x65B9;&#x6CD5;&#x59CB;&#x7EC8;&#x5C06;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x6DFB;&#x52A0;&#x5230;&#x751F;&#x6210;&#x5668;&#x7684;&#x672B;&#x7AEF;&#xFF1B;</li>
+<li>insert &#x65B9;&#x6CD5;&#x5219;&#x5728;&#x6307;&#x5B9A;&#x7684;&#x70B9;&#x6DFB;&#x52A0;&#x5B57;&#x7B26;</li>
 </ul>
-<p>示例:</p>
+<p>&#x793A;&#x4F8B;:</p>
 <pre><code>System.Text.StringBuilder s = new System.Text.StringBuilder();
 s.append(&quot;start&quot;);
 //s.insert(4,&quot;le&quot;);
 s.append(&quot;le&quot;);
 </code></pre>
-<p><strong>PS:</strong>
-s.append(&quot;le&quot;) 将使字符串生成器包含“startle”，
-而 s.insert(4, &quot;le&quot;) 将更改字符串生成器，使之包含“starlet”。</p>
+<p><strong>PS:</strong><br>
+s.append(&#x201C;le&#x201D;) &#x5C06;&#x4F7F;&#x5B57;&#x7B26;&#x4E32;&#x751F;&#x6210;&#x5668;&#x5305;&#x542B;&#x201C;startle&#x201D;&#xFF0C;<br>
+&#x800C; s.insert(4, &#x201C;le&#x201D;) &#x5C06;&#x66F4;&#x6539;&#x5B57;&#x7B26;&#x4E32;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x4F7F;&#x4E4B;&#x5305;&#x542B;&#x201C;starlet&#x201D;&#x3002;</p>
 <blockquote>
-<p>特殊情况</p>
+<p>&#x7279;&#x6B8A;&#x60C5;&#x51B5;</p>
 </blockquote>
 <ul>
 <li>
-<p>String 对象的字符串拼接其实是被 JVM 解释成了StringBuffer或StringBuilder对象的拼接 String
-效率是远要比 StringBuffer或StringBuilder快。</p>
-<p>String S1 = “This is only a” + “ simple” + “ test”;
-StringBuilder S2 =new StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</p>
-<p>String s1 = “This is only a” + “ simple” + “test”;
-String s2  = “This is only a simple test”;</p>
+<p>String &#x5BF9;&#x8C61;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#x5176;&#x5B9E;&#x662F;&#x88AB; JVM &#x89E3;&#x91CA;&#x6210;&#x4E86;StringBuffer&#x6216;StringBuilder&#x5BF9;&#x8C61;&#x7684;&#x62FC;&#x63A5; String<br>
+&#x6548;&#x7387;&#x662F;&#x8FDC;&#x8981;&#x6BD4; StringBuffer&#x6216;StringBuilder&#x5FEB;&#x3002;</p>
+<p>String S1 = &#x201C;This is only a&#x201D; + &#x201C; simple&#x201D; + &#x201C; test&#x201D;;<br>
+StringBuilder S2 =new StringBuilder(&#x201C;This is only a&#x201D;).append(&#x201C; simple&#x201D;).append(&#x201C; test&#x201D;);</p>
+<p>String s1 = &#x201C;This is only a&#x201D; + &#x201C; simple&#x201D; + &#x201C;test&#x201D;;<br>
+String s2  = &#x201C;This is only a simple test&#x201D;;</p>
 </li>
 </ul>
-<p><strong>VM会将s1直接视为s2;</strong></p>
+<p><strong>VM&#x4F1A;&#x5C06;s1&#x76F4;&#x63A5;&#x89C6;&#x4E3A;s2;</strong></p>
 <ul>
-<li>当然，非字符串拼接StringBuilder比String+String快；</li>
+<li>&#x5F53;&#x7136;&#xFF0C;&#x975E;&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;StringBuilder&#x6BD4;String+String&#x5FEB;&#xFF1B;</li>
 </ul>
-<p>String S2 = “This is only a”;
-String S3 = “ simple”;
-String S4 = “ test”;
+<p>String S2 = &#x201C;This is only a&#x201D;;<br>
+String S3 = &#x201C; simple&#x201D;;<br>
+String S4 = &#x201C; test&#x201D;;<br>
 String S1 = S2 +S3 + S4;</p>
-<p>StringBuilder s =new StringBuilder();
-s.append(&quot;This is only a&quot;);
-s.append(&quot; simple&quot;);
+<p>StringBuilder s =new StringBuilder();<br>
+s.append(&#x201C;This is only a&#x201D;);<br>
+s.append(&quot; simple&quot;);<br>
 s.append(&quot; test&quot;);</p>
 
       
@@ -337,7 +337,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
     <a href="/2016/03/28/urlrewrite/" class="alignleft prev" >上一页</a>
     
     
-    <a href="/2016/03/24/MySQL的日期格式/" class="alignright next" >下一页</a>
+    <a href="/2016/03/24/java 注解/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -393,8 +393,6 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
-  
     <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
   
     <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
@@ -432,7 +430,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
         <embed tplayername="SWF" splayername="SWF"
-            type="application/x-shockwave-flash" src="http://wisdombud.github.io/tagcloud.swf"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
             mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
             id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
             quality="high" wmode="transparent" allowscriptaccess="always"

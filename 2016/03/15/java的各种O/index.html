@@ -232,74 +232,74 @@
     </header>
     <div class="entry">
       
-        <h3>1、各个术语的简介</h3>
-<h5>PO(persistant object)持久对象</h5>
+        <h3 id="1-&#x5404;&#x4E2A;&#x672F;&#x8BED;&#x7684;&#x7B80;&#x4ECB;"><a class="header-anchor" href="#1-&#x5404;&#x4E2A;&#x672F;&#x8BED;&#x7684;&#x7B80;&#x4ECB;">&#xB6;</a>1&#x3001;&#x5404;&#x4E2A;&#x672F;&#x8BED;&#x7684;&#x7B80;&#x4ECB;</h3>
+<h5 id="popersistant-object&#x6301;&#x4E45;&#x5BF9;&#x8C61;"><a class="header-anchor" href="#po-persistant-object-&#x6301;&#x4E45;&#x5BF9;&#x8C61;">&#xB6;</a>PO(persistant object)&#x6301;&#x4E45;&#x5BF9;&#x8C61;</h5>
 <blockquote>
-<p>最形象的理解就是一个PO就是数据库中的一条记录.PO是在ORM中出现的概念,就是ORM中的O,将数据库中的数据模型映射成为一个java对象.简单的PO就是对应数据库中某一张表的一个记录,多个记录就用PO的集合来表示.PO中不能包含任何对数据库的操作</p>
+<p>&#x6700;&#x5F62;&#x8C61;&#x7684;&#x7406;&#x89E3;&#x5C31;&#x662F;&#x4E00;&#x4E2A;PO&#x5C31;&#x662F;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x4E00;&#x6761;&#x8BB0;&#x5F55;.PO&#x662F;&#x5728;ORM&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x6982;&#x5FF5;,&#x5C31;&#x662F;ORM&#x4E2D;&#x7684;O,&#x5C06;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x6A21;&#x578B;&#x6620;&#x5C04;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;java&#x5BF9;&#x8C61;.&#x7B80;&#x5355;&#x7684;PO&#x5C31;&#x662F;&#x5BF9;&#x5E94;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x67D0;&#x4E00;&#x5F20;&#x8868;&#x7684;&#x4E00;&#x4E2A;&#x8BB0;&#x5F55;,&#x591A;&#x4E2A;&#x8BB0;&#x5F55;&#x5C31;&#x7528;PO&#x7684;&#x96C6;&#x5408;&#x6765;&#x8868;&#x793A;.PO&#x4E2D;&#x4E0D;&#x80FD;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x64CD;&#x4F5C;</p>
 </blockquote>
-<h5>DAO(Data Access Objects)数据访问接口</h5>
+<h5 id="daodata-access-objects&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x63A5;&#x53E3;"><a class="header-anchor" href="#dao-data-access-objects-&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x63A5;&#x53E3;">&#xB6;</a>DAO(Data Access Objects)&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x63A5;&#x53E3;</h5>
 <blockquote>
-<p>顾名思义就是与数据库打交道,加载业务逻辑和数据库资源之间.DAO模式是J2EE的设计模式,实际上是两个模式的组合,即Data Accessor(数据访问者)模式和ACtive Domain Object(领域对象)模式.Data Accessor模式实现了数据访问和业务逻辑的分离;Active Domain Objecet模式时间了业务数据的对象化封装.(高大上的两种模式是啥子O^O)</p>
+<p>&#x987E;&#x540D;&#x601D;&#x4E49;&#x5C31;&#x662F;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x6253;&#x4EA4;&#x9053;,&#x52A0;&#x8F7D;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x548C;&#x6570;&#x636E;&#x5E93;&#x8D44;&#x6E90;&#x4E4B;&#x95F4;.DAO&#x6A21;&#x5F0F;&#x662F;J2EE&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;,&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E24;&#x4E2A;&#x6A21;&#x5F0F;&#x7684;&#x7EC4;&#x5408;,&#x5373;Data Accessor(&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8005;)&#x6A21;&#x5F0F;&#x548C;ACtive Domain Object(&#x9886;&#x57DF;&#x5BF9;&#x8C61;)&#x6A21;&#x5F0F;.Data Accessor&#x6A21;&#x5F0F;&#x5B9E;&#x73B0;&#x4E86;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x548C;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x7684;&#x5206;&#x79BB;;Active Domain Objecet&#x6A21;&#x5F0F;&#x65F6;&#x95F4;&#x4E86;&#x4E1A;&#x52A1;&#x6570;&#x636E;&#x7684;&#x5BF9;&#x8C61;&#x5316;&#x5C01;&#x88C5;.(&#x9AD8;&#x5927;&#x4E0A;&#x7684;&#x4E24;&#x79CD;&#x6A21;&#x5F0F;&#x662F;&#x5565;&#x5B50;O^O)</p>
 </blockquote>
-<h5>BO(Bussiness Object)业务对象</h5>
+<h5 id="bobussiness-object&#x4E1A;&#x52A1;&#x5BF9;&#x8C61;"><a class="header-anchor" href="#bo-bussiness-object-&#x4E1A;&#x52A1;&#x5BF9;&#x8C61;">&#xB6;</a>BO(Bussiness Object)&#x4E1A;&#x52A1;&#x5BF9;&#x8C61;</h5>
 <blockquote>
-<p>封装业务逻辑的java对象,我的理解就是我们的service实现.</p>
+<p>&#x5C01;&#x88C5;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x7684;java&#x5BF9;&#x8C61;,&#x6211;&#x7684;&#x7406;&#x89E3;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x7684;service&#x5B9E;&#x73B0;.</p>
 </blockquote>
-<h5>POJO(Plain Ordinary Java Object)简单的java对象</h5>
+<h5 id="pojoplain-ordinary-java-object&#x7B80;&#x5355;&#x7684;java&#x5BF9;&#x8C61;"><a class="header-anchor" href="#pojo-plain-ordinary-java-object-&#x7B80;&#x5355;&#x7684;java&#x5BF9;&#x8C61;">&#xB6;</a>POJO(Plain Ordinary Java Object)&#x7B80;&#x5355;&#x7684;java&#x5BF9;&#x8C61;</h5>
 <blockquote>
-<p>用来表示普通的Java对象,不是JavaBean,EntityBean或者SessionBean.POJO不担当任何的特殊角色,不继承,也不实现其他Java框架的类或者接口.通常只有property的属性和public的getter和setter</p>
+<p>&#x7528;&#x6765;&#x8868;&#x793A;&#x666E;&#x901A;&#x7684;Java&#x5BF9;&#x8C61;,&#x4E0D;&#x662F;JavaBean,EntityBean&#x6216;&#x8005;SessionBean.POJO&#x4E0D;&#x62C5;&#x5F53;&#x4EFB;&#x4F55;&#x7684;&#x7279;&#x6B8A;&#x89D2;&#x8272;,&#x4E0D;&#x7EE7;&#x627F;,&#x4E5F;&#x4E0D;&#x5B9E;&#x73B0;&#x5176;&#x4ED6;Java&#x6846;&#x67B6;&#x7684;&#x7C7B;&#x6216;&#x8005;&#x63A5;&#x53E3;.&#x901A;&#x5E38;&#x53EA;&#x6709;property&#x7684;&#x5C5E;&#x6027;&#x548C;public&#x7684;getter&#x548C;setter</p>
 </blockquote>
-<h5>DTO(Data Transfer Object)数据传输对象</h5>
+<h5 id="dtodata-transfer-object&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5BF9;&#x8C61;"><a class="header-anchor" href="#dto-data-transfer-object-&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5BF9;&#x8C61;">&#xB6;</a>DTO(Data Transfer Object)&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5BF9;&#x8C61;</h5>
 <blockquote>
-<p>这个概念也是来源于J2EE的设计模式,用于展示层和服务层之间数据传输对象.通过DTO,服务器只会将view层所需要的数据传输给view层,而不需要吧数据库中全部数据都传递给view层.</p>
+<p>&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x4E5F;&#x662F;&#x6765;&#x6E90;&#x4E8E;J2EE&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;,&#x7528;&#x4E8E;&#x5C55;&#x793A;&#x5C42;&#x548C;&#x670D;&#x52A1;&#x5C42;&#x4E4B;&#x95F4;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5BF9;&#x8C61;.&#x901A;&#x8FC7;DTO,&#x670D;&#x52A1;&#x5668;&#x53EA;&#x4F1A;&#x5C06;view&#x5C42;&#x6240;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7ED9;view&#x5C42;,&#x800C;&#x4E0D;&#x9700;&#x8981;&#x5427;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x5168;&#x90E8;&#x6570;&#x636E;&#x90FD;&#x4F20;&#x9012;&#x7ED9;view&#x5C42;.</p>
 </blockquote>
-<h5>VO</h5>
+<h5 id="vo"><a class="header-anchor" href="#vo">&#xB6;</a>VO</h5>
 <blockquote>
 <ul>
-<li>ViewObject视图对象
-用于MVC的View层,把某个制定页面(或组件)的所有数据封装起来.</li>
+<li>ViewObject&#x89C6;&#x56FE;&#x5BF9;&#x8C61;<br>
+&#x7528;&#x4E8E;MVC&#x7684;View&#x5C42;,&#x628A;&#x67D0;&#x4E2A;&#x5236;&#x5B9A;&#x9875;&#x9762;(&#x6216;&#x7EC4;&#x4EF6;)&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5C01;&#x88C5;&#x8D77;&#x6765;.</li>
 </ul>
 </blockquote>
 <ul>
-<li>value object值对象
-用于业务层之间的数据传递.通常是抽象出来的业务对象,可以和表对应,也可以不,根据业务需求来定.</li>
+<li>value object&#x503C;&#x5BF9;&#x8C61;<br>
+&#x7528;&#x4E8E;&#x4E1A;&#x52A1;&#x5C42;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x4F20;&#x9012;.&#x901A;&#x5E38;&#x662F;&#x62BD;&#x8C61;&#x51FA;&#x6765;&#x7684;&#x4E1A;&#x52A1;&#x5BF9;&#x8C61;,&#x53EF;&#x4EE5;&#x548C;&#x8868;&#x5BF9;&#x5E94;,&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;,&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#x6765;&#x5B9A;.</li>
 </ul>
-<h3>2、常见的一些术语的区别</h3>
-<h5>VO(ViewObject)与DTO</h5>
+<h3 id="2-&#x5E38;&#x89C1;&#x7684;&#x4E00;&#x4E9B;&#x672F;&#x8BED;&#x7684;&#x533A;&#x522B;"><a class="header-anchor" href="#2-&#x5E38;&#x89C1;&#x7684;&#x4E00;&#x4E9B;&#x672F;&#x8BED;&#x7684;&#x533A;&#x522B;">&#xB6;</a>2&#x3001;&#x5E38;&#x89C1;&#x7684;&#x4E00;&#x4E9B;&#x672F;&#x8BED;&#x7684;&#x533A;&#x522B;</h3>
+<h5 id="voviewobject&#x4E0E;dto"><a class="header-anchor" href="#vo-viewobject-&#x4E0E;dto">&#xB6;</a>VO(ViewObject)&#x4E0E;DTO</h5>
 <blockquote>
-<p>在我们日常开发的过程中,很多情况下VO与DTO通常都是一样的,只是一个POJO(简单的java对象).从实现的角度上看,我们完全可以将DTO与VO合并到一起.但是从设计层面来说(好高大上)，概念上还是应该存在VO和DTO，因为两者有着本质的区别，DTO代表服务层需要接收的数据和返回的数据，而VO代表展示层需要显示的数据。</p>
+<p>&#x5728;&#x6211;&#x4EEC;&#x65E5;&#x5E38;&#x5F00;&#x53D1;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;,&#x5F88;&#x591A;&#x60C5;&#x51B5;&#x4E0B;VO&#x4E0E;DTO&#x901A;&#x5E38;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;,&#x53EA;&#x662F;&#x4E00;&#x4E2A;POJO(&#x7B80;&#x5355;&#x7684;java&#x5BF9;&#x8C61;).&#x4ECE;&#x5B9E;&#x73B0;&#x7684;&#x89D2;&#x5EA6;&#x4E0A;&#x770B;,&#x6211;&#x4EEC;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x5C06;DTO&#x4E0E;VO&#x5408;&#x5E76;&#x5230;&#x4E00;&#x8D77;.&#x4F46;&#x662F;&#x4ECE;&#x8BBE;&#x8BA1;&#x5C42;&#x9762;&#x6765;&#x8BF4;(&#x597D;&#x9AD8;&#x5927;&#x4E0A;)&#xFF0C;&#x6982;&#x5FF5;&#x4E0A;&#x8FD8;&#x662F;&#x5E94;&#x8BE5;&#x5B58;&#x5728;VO&#x548C;DTO&#xFF0C;&#x56E0;&#x4E3A;&#x4E24;&#x8005;&#x6709;&#x7740;&#x672C;&#x8D28;&#x7684;&#x533A;&#x522B;&#xFF0C;DTO&#x4EE3;&#x8868;&#x670D;&#x52A1;&#x5C42;&#x9700;&#x8981;&#x63A5;&#x6536;&#x7684;&#x6570;&#x636E;&#x548C;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x800C;VO&#x4EE3;&#x8868;&#x5C55;&#x793A;&#x5C42;&#x9700;&#x8981;&#x663E;&#x793A;&#x7684;&#x6570;&#x636E;&#x3002;</p>
 </blockquote>
 <blockquote>
-<p>网上举了一个关于男女的例子:
-展示层与服务层交互的时候,通过DTO传给后台的只有为0和1,但是在展示的时候展示层会显示&quot;男&quot;&quot;女&quot;,我们可以考虑将VO和DTO两个概念合并到一起,不用DTO,直接用VO传递给服务层&quot;男&quot;&quot;女&quot;,这样也可以实现功能的.但是如果这时候客户要求可以定制风格,可以用&quot;帅哥&quot;&quot;美女&quot;来区分性别,这时候显然就不能用VO来完成全部工作了,需要在展示层用两个不同的VO来表示不同的展示形式,而与服务端交互的时候使用DTO来进行数据传输.</p>
+<p>&#x7F51;&#x4E0A;&#x4E3E;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x7537;&#x5973;&#x7684;&#x4F8B;&#x5B50;:<br>
+&#x5C55;&#x793A;&#x5C42;&#x4E0E;&#x670D;&#x52A1;&#x5C42;&#x4EA4;&#x4E92;&#x7684;&#x65F6;&#x5019;,&#x901A;&#x8FC7;DTO&#x4F20;&#x7ED9;&#x540E;&#x53F0;&#x7684;&#x53EA;&#x6709;&#x4E3A;0&#x548C;1,&#x4F46;&#x662F;&#x5728;&#x5C55;&#x793A;&#x7684;&#x65F6;&#x5019;&#x5C55;&#x793A;&#x5C42;&#x4F1A;&#x663E;&#x793A;&quot;&#x7537;&quot;&#x201C;&#x5973;&#x201D;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5C06;VO&#x548C;DTO&#x4E24;&#x4E2A;&#x6982;&#x5FF5;&#x5408;&#x5E76;&#x5230;&#x4E00;&#x8D77;,&#x4E0D;&#x7528;DTO,&#x76F4;&#x63A5;&#x7528;VO&#x4F20;&#x9012;&#x7ED9;&#x670D;&#x52A1;&#x5C42;&quot;&#x7537;&quot;&#x201C;&#x5973;&#x201D;,&#x8FD9;&#x6837;&#x4E5F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x529F;&#x80FD;&#x7684;.&#x4F46;&#x662F;&#x5982;&#x679C;&#x8FD9;&#x65F6;&#x5019;&#x5BA2;&#x6237;&#x8981;&#x6C42;&#x53EF;&#x4EE5;&#x5B9A;&#x5236;&#x98CE;&#x683C;,&#x53EF;&#x4EE5;&#x7528;&quot;&#x5E05;&#x54E5;&quot;&quot;&#x7F8E;&#x5973;&quot;&#x6765;&#x533A;&#x5206;&#x6027;&#x522B;,&#x8FD9;&#x65F6;&#x5019;&#x663E;&#x7136;&#x5C31;&#x4E0D;&#x80FD;&#x7528;VO&#x6765;&#x5B8C;&#x6210;&#x5168;&#x90E8;&#x5DE5;&#x4F5C;&#x4E86;,&#x9700;&#x8981;&#x5728;&#x5C55;&#x793A;&#x5C42;&#x7528;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;VO&#x6765;&#x8868;&#x793A;&#x4E0D;&#x540C;&#x7684;&#x5C55;&#x793A;&#x5F62;&#x5F0F;,&#x800C;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x4EA4;&#x4E92;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;DTO&#x6765;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x8F93;.</p>
 </blockquote>
 <blockquote>
-<p>当然上面这个例子的前提是我们没有使用js这样的脚本语言,在web现阶段的开发中,因为js的普遍使用,我们完全可以将VO与DTO合到一起,有js来控制展现形式.但是概念还是要分清楚的,VO只是负责展示,DTO是用来数据传输的.</p>
+<p>&#x5F53;&#x7136;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x7684;&#x524D;&#x63D0;&#x662F;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x4F7F;&#x7528;js&#x8FD9;&#x6837;&#x7684;&#x811A;&#x672C;&#x8BED;&#x8A00;,&#x5728;web&#x73B0;&#x9636;&#x6BB5;&#x7684;&#x5F00;&#x53D1;&#x4E2D;,&#x56E0;&#x4E3A;js&#x7684;&#x666E;&#x904D;&#x4F7F;&#x7528;,&#x6211;&#x4EEC;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x5C06;VO&#x4E0E;DTO&#x5408;&#x5230;&#x4E00;&#x8D77;,&#x6709;js&#x6765;&#x63A7;&#x5236;&#x5C55;&#x73B0;&#x5F62;&#x5F0F;.&#x4F46;&#x662F;&#x6982;&#x5FF5;&#x8FD8;&#x662F;&#x8981;&#x5206;&#x6E05;&#x695A;&#x7684;,VO&#x53EA;&#x662F;&#x8D1F;&#x8D23;&#x5C55;&#x793A;,DTO&#x662F;&#x7528;&#x6765;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7684;.</p>
 </blockquote>
-<h5>DTO与PO</h5>
+<h5 id="dto&#x4E0E;po"><a class="header-anchor" href="#dto&#x4E0E;po">&#xB6;</a>DTO&#x4E0E;PO</h5>
 <blockquote>
-<p>在很多只设置到单表操作的业务中,PO与DTO通常也是相同的(DTO和VO经常也是相同的,所以VO与PO也是相同的),当数据模型简单,字段较少的时候,服务层也可以直接将PO交给展示层展示.但是字段较多,而展示层又只需要展示很少的字段;或者展示层要展示的数据涉及到多张表,需要多个PO合并到一起的时候,我们需要DTO来进行数据传输.</p>
+<p>&#x5728;&#x5F88;&#x591A;&#x53EA;&#x8BBE;&#x7F6E;&#x5230;&#x5355;&#x8868;&#x64CD;&#x4F5C;&#x7684;&#x4E1A;&#x52A1;&#x4E2D;,PO&#x4E0E;DTO&#x901A;&#x5E38;&#x4E5F;&#x662F;&#x76F8;&#x540C;&#x7684;(DTO&#x548C;VO&#x7ECF;&#x5E38;&#x4E5F;&#x662F;&#x76F8;&#x540C;&#x7684;,&#x6240;&#x4EE5;VO&#x4E0E;PO&#x4E5F;&#x662F;&#x76F8;&#x540C;&#x7684;),&#x5F53;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7B80;&#x5355;,&#x5B57;&#x6BB5;&#x8F83;&#x5C11;&#x7684;&#x65F6;&#x5019;,&#x670D;&#x52A1;&#x5C42;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;PO&#x4EA4;&#x7ED9;&#x5C55;&#x793A;&#x5C42;&#x5C55;&#x793A;.&#x4F46;&#x662F;&#x5B57;&#x6BB5;&#x8F83;&#x591A;,&#x800C;&#x5C55;&#x793A;&#x5C42;&#x53C8;&#x53EA;&#x9700;&#x8981;&#x5C55;&#x793A;&#x5F88;&#x5C11;&#x7684;&#x5B57;&#x6BB5;;&#x6216;&#x8005;&#x5C55;&#x793A;&#x5C42;&#x8981;&#x5C55;&#x793A;&#x7684;&#x6570;&#x636E;&#x6D89;&#x53CA;&#x5230;&#x591A;&#x5F20;&#x8868;,&#x9700;&#x8981;&#x591A;&#x4E2A;PO&#x5408;&#x5E76;&#x5230;&#x4E00;&#x8D77;&#x7684;&#x65F6;&#x5019;,&#x6211;&#x4EEC;&#x9700;&#x8981;DTO&#x6765;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x8F93;.</p>
 </blockquote>
-<h5>PO与POJO</h5>
+<h5 id="po&#x4E0E;pojo"><a class="header-anchor" href="#po&#x4E0E;pojo">&#xB6;</a>PO&#x4E0E;POJO</h5>
 <blockquote>
-<p>PO持久对象是ORM框架中的概念,而POJO是java语言中的概念.PO作为一个持久对象,表示数据库中的一条记录,有insert语句创建,有delete语句删除,PO的生命周期与数据库是密切相关的;而POJO作为java中的一个对象,有new创建,由GC回收,显然要比PO朴素的多.另外PO往往只存在于一个数据库Connection之中,Connection关闭以后,持久化对象就不存在了,而POJO只要不被GC回收就会一直存在的.
-想比与POJO,PO起码会多一些用来管理数据库entity状态的属性和方法.但是ORM追求的目标就是让PO在使用上尽量和POJO一直,所以我们在日常使用中PO就可以当成一个POJO使用,区分PO和POJO是hibernate的事情.</p>
+<p>PO&#x6301;&#x4E45;&#x5BF9;&#x8C61;&#x662F;ORM&#x6846;&#x67B6;&#x4E2D;&#x7684;&#x6982;&#x5FF5;,&#x800C;POJO&#x662F;java&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x6982;&#x5FF5;.PO&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x6301;&#x4E45;&#x5BF9;&#x8C61;,&#x8868;&#x793A;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x4E00;&#x6761;&#x8BB0;&#x5F55;,&#x6709;insert&#x8BED;&#x53E5;&#x521B;&#x5EFA;,&#x6709;delete&#x8BED;&#x53E5;&#x5220;&#x9664;,PO&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x662F;&#x5BC6;&#x5207;&#x76F8;&#x5173;&#x7684;;&#x800C;POJO&#x4F5C;&#x4E3A;java&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;,&#x6709;new&#x521B;&#x5EFA;,&#x7531;GC&#x56DE;&#x6536;,&#x663E;&#x7136;&#x8981;&#x6BD4;PO&#x6734;&#x7D20;&#x7684;&#x591A;.&#x53E6;&#x5916;PO&#x5F80;&#x5F80;&#x53EA;&#x5B58;&#x5728;&#x4E8E;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;Connection&#x4E4B;&#x4E2D;,Connection&#x5173;&#x95ED;&#x4EE5;&#x540E;,&#x6301;&#x4E45;&#x5316;&#x5BF9;&#x8C61;&#x5C31;&#x4E0D;&#x5B58;&#x5728;&#x4E86;,&#x800C;POJO&#x53EA;&#x8981;&#x4E0D;&#x88AB;GC&#x56DE;&#x6536;&#x5C31;&#x4F1A;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#x7684;.<br>
+&#x60F3;&#x6BD4;&#x4E0E;POJO,PO&#x8D77;&#x7801;&#x4F1A;&#x591A;&#x4E00;&#x4E9B;&#x7528;&#x6765;&#x7BA1;&#x7406;&#x6570;&#x636E;&#x5E93;entity&#x72B6;&#x6001;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;.&#x4F46;&#x662F;ORM&#x8FFD;&#x6C42;&#x7684;&#x76EE;&#x6807;&#x5C31;&#x662F;&#x8BA9;PO&#x5728;&#x4F7F;&#x7528;&#x4E0A;&#x5C3D;&#x91CF;&#x548C;POJO&#x4E00;&#x76F4;,&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5728;&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x4E2D;PO&#x5C31;&#x53EF;&#x4EE5;&#x5F53;&#x6210;&#x4E00;&#x4E2A;POJO&#x4F7F;&#x7528;,&#x533A;&#x5206;PO&#x548C;POJO&#x662F;hibernate&#x7684;&#x4E8B;&#x60C5;.</p>
 </blockquote>
-<h5>VO与VO(-.-)</h5>
+<h5 id="vo&#x4E0E;vo-"><a class="header-anchor" href="#vo&#x4E0E;vo">&#xB6;</a>VO&#x4E0E;VO(-.-)</h5>
 <blockquote>
-<p>以下纯属个人看法,有异议可以提出来共同探讨一下.
-从MCV框架上看,ViewObject是在view层的数据,只用于view层的处理,与其它层完全没有联系(数据交流是DTO的事情).而ValueObject既然是业务处理之间的数据交互,那么它就是modol层的数据.所以完全不是一个东西嘛~</p>
+<p>&#x4EE5;&#x4E0B;&#x7EAF;&#x5C5E;&#x4E2A;&#x4EBA;&#x770B;&#x6CD5;,&#x6709;&#x5F02;&#x8BAE;&#x53EF;&#x4EE5;&#x63D0;&#x51FA;&#x6765;&#x5171;&#x540C;&#x63A2;&#x8BA8;&#x4E00;&#x4E0B;.<br>
+&#x4ECE;MCV&#x6846;&#x67B6;&#x4E0A;&#x770B;,ViewObject&#x662F;&#x5728;view&#x5C42;&#x7684;&#x6570;&#x636E;,&#x53EA;&#x7528;&#x4E8E;view&#x5C42;&#x7684;&#x5904;&#x7406;,&#x4E0E;&#x5176;&#x5B83;&#x5C42;&#x5B8C;&#x5168;&#x6CA1;&#x6709;&#x8054;&#x7CFB;(&#x6570;&#x636E;&#x4EA4;&#x6D41;&#x662F;DTO&#x7684;&#x4E8B;&#x60C5;).&#x800C;ValueObject&#x65E2;&#x7136;&#x662F;&#x4E1A;&#x52A1;&#x5904;&#x7406;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x4EA4;&#x4E92;,&#x90A3;&#x4E48;&#x5B83;&#x5C31;&#x662F;modol&#x5C42;&#x7684;&#x6570;&#x636E;.&#x6240;&#x4EE5;&#x5B8C;&#x5168;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x4E1C;&#x897F;&#x561B;~</p>
 </blockquote>
-<h3>3、相关链接</h3>
+<h3 id="3-&#x76F8;&#x5173;&#x94FE;&#x63A5;"><a class="header-anchor" href="#3-&#x76F8;&#x5173;&#x94FE;&#x63A5;">&#xB6;</a>3&#x3001;&#x76F8;&#x5173;&#x94FE;&#x63A5;</h3>
 <ul>
-<li><a href="http://kb.cnblogs.com/page/522348/" target="_blank" rel="external">浅析VO、DTO、DO、PO的概念、区别和用处</a></li>
-<li><a href="http://www.cnblogs.com/smyhvae/p/4059514.html" target="_blank" rel="external">DAO模式简介</a></li>
-<li><a href="http://www.cnblogs.com/bluepoint2009/p/POJO.html" target="_blank" rel="external">POJO简单java对象</a></li>
-<li><a href="http://wenku.baidu.com/view/9a86348fa0116c175f0e485b.html" target="_blank" rel="external">POJO与PO的区别</a></li>
+<li><a href="http://kb.cnblogs.com/page/522348/" target="_blank" rel="external">&#x6D45;&#x6790;VO&#x3001;DTO&#x3001;DO&#x3001;PO&#x7684;&#x6982;&#x5FF5;&#x3001;&#x533A;&#x522B;&#x548C;&#x7528;&#x5904;</a></li>
+<li><a href="http://www.cnblogs.com/smyhvae/p/4059514.html" target="_blank" rel="external">DAO&#x6A21;&#x5F0F;&#x7B80;&#x4ECB;</a></li>
+<li><a href="http://www.cnblogs.com/bluepoint2009/p/POJO.html" target="_blank" rel="external">POJO&#x7B80;&#x5355;java&#x5BF9;&#x8C61;</a></li>
+<li><a href="http://wenku.baidu.com/view/9a86348fa0116c175f0e485b.html" target="_blank" rel="external">POJO&#x4E0E;PO&#x7684;&#x533A;&#x522B;</a></li>
 </ul>
-<h3>4、相关知识</h3>
+<h3 id="4-&#x76F8;&#x5173;&#x77E5;&#x8BC6;"><a class="header-anchor" href="#4-&#x76F8;&#x5173;&#x77E5;&#x8BC6;">&#xB6;</a>4&#x3001;&#x76F8;&#x5173;&#x77E5;&#x8BC6;</h3>
 <blockquote>
-<p>数据访问者模式?领域对象模式?javaSE 23中设计模式?</p>
+<p>&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x8005;&#x6A21;&#x5F0F;?&#x9886;&#x57DF;&#x5BF9;&#x8C61;&#x6A21;&#x5F0F;?javaSE 23&#x4E2D;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;?</p>
 </blockquote>
 
       
@@ -402,8 +402,6 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/EOVA/">EOVA</a><small>0</small></li>
-  
     <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
   
     <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
@@ -441,7 +439,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
         <embed tplayername="SWF" splayername="SWF"
-            type="application/x-shockwave-flash" src="http://wisdombud.github.io/tagcloud.swf"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
             mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
             id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
             quality="high" wmode="transparent" allowscriptaccess="always"
