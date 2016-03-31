@@ -338,13 +338,21 @@ header time {
   line-height: 1;
 }
 header .title {
-  font-weight: normal;
+  font-weight: bold;
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  margin-bottom: 15px;
 }
 header .title a {
   color: #000;
 }
 header .title a:hover {
   color: #0085ff;
+}
+header .title a:link {
+  text-decoration: none;
+}
+header .title a:visited {
   text-decoration: none;
 }
 .entry {
@@ -363,7 +371,7 @@ header .title a:hover {
 .entry h5,
 .entry h6,
 .entry .video-container {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 .entry blockquote {
   background: #f6f6f6;
@@ -373,7 +381,7 @@ header .title a:hover {
   font-size: 1.2em;
   padding: 0 30px 15px;
   padding-top: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 .entry blockquote footer {
   border-top: none;

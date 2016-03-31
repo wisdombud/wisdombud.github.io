@@ -232,13 +232,9 @@
     </header>
     <div class="entry">
       
-        <h2 id="amd&#x89C4;&#x8303;"><a class="header-anchor" href="#amd&#x89C4;&#x8303;">&#xB6;</a>AMD&#x89C4;&#x8303;</h2>
-<h3 id="&#x5B9A;&#x4E49;"><a class="header-anchor" href="#&#x5B9A;&#x4E49;">&#xB6;</a>&#x5B9A;&#x4E49;</h3>
-<pre><code>Asynchronous Module Definition&#xFF0C;&#x5F02;&#x6B65;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#x3002;
+        <h2 id="amd&#x89C4;&#x8303;"><a href="#AMD&#x89C4;&#x8303;" class="headerlink" title="AMD&#x89C4;&#x8303;"></a>AMD&#x89C4;&#x8303;</h2><h3 id="&#x5B9A;&#x4E49;"><a href="#&#x5B9A;&#x4E49;" class="headerlink" title="&#x5B9A;&#x4E49;"></a>&#x5B9A;&#x4E49;</h3><pre><code>Asynchronous Module Definition&#xFF0C;&#x5F02;&#x6B65;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#x3002;
 &#x63CF;&#x8FF0;&#x4E86;&#x6A21;&#x5757;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x4EE5;&#x53CA;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#x3002;
-</code></pre>
-<h3 id="api"><a class="header-anchor" href="#api">&#xB6;</a>API</h3>
-<pre><code>define([module-name?], [array-of-dependencies?], [module-factory-or-object]);
+</code></pre><h3 id="api"><a href="#API" class="headerlink" title="API"></a>API</h3><pre><code>define([module-name?], [array-of-dependencies?], [module-factory-or-object]);
 module-name: &#x6A21;&#x5757;&#x7684;&#x6807;&#x8BC6;,&#x53EF;&#x9009;&#x53C2;&#x6570;,&#x7701;&#x7565;&#x6B64;&#x53C2;&#x6570;,&#x6A21;&#x5757;&#x7684;&#x540D;&#x5B57;&#x9ED8;&#x8BA4;&#x4E3A;&#x811A;&#x672C;&#x7684;&#x540D;&#x5B57;&#x3002;&#x5982;&#x679C;&#x63D0;&#x4F9B;&#x4E86;&#x8BE5;&#x53C2;&#x6570;&#xFF0C;&#x6A21;&#x5757;&#x540D;&#x5FC5;&#x987B;&#x662F;&#x201C;&#x9876;&#x7EA7;&#x201D;&#x7684;&#x548C;&#x7EDD;&#x5BF9;&#x7684;(&#x4E0D;&#x5141;&#x8BB8;&#x76F8;&#x5BF9;&#x540D;&#x5B57;);
 array-of-dependencies: &#x4F9D;&#x8D56;&#x7684;&#x6A21;&#x5757;, &#x53EF;&#x9009;&#x53C2;&#x6570;,&#x5FFD;&#x7565;&#x6B64;&#x53C2;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;[&quot;require&quot;, &quot;exports&quot;, &quot;module&quot;],&#x5426;&#x5219;&#x6309;&#x7167;&#x4F4D;&#x7F6E;&#x987A;&#x5E8F;&#x4EE5;&#x53C2;&#x6570;&#x7684;&#x5F62;&#x5F0F;&#x4F20;&#x5165;factory;
 module-factory-or-object: &#x6A21;&#x5757;&#x521D;&#x59CB;&#x5316;&#x8981;&#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;&#x6216;&#x5BF9;&#x8C61;,&#x5982;&#x679C;&#x4E3A;&#x51FD;&#x6570;,&#x6709;&#x53C2;&#x6570;&#x5217;&#x8868;&#x5219;&#x4E0D;&#x626B;&#x63CF;&#x4F9D;&#x8D56;&#x6027;,&#x5426;&#x5219;&#x626B;&#x63CF;&#x4F9D;&#x8D56;&#x6027;&#x3002;&#x5982;&#x679C;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x6B64;&#x5BF9;&#x8C61;&#x5E94;&#x8BE5;&#x4E3A;&#x6A21;&#x5757;&#x7684;&#x8F93;&#x51FA;&#x503C;&#x3002;
@@ -251,9 +247,7 @@ define(&apos;test&apos;, [
 function(require, wutil, template) {
     //&#x4EE3;&#x7801;
 });
-</code></pre>
-<h4 id="1require"><a class="header-anchor" href="#1-require">&#xB6;</a>(1)require</h4>
-<pre><code>require(&quot;module-name&quot;),&#x8FD4;&#x56DE;&#x6A21;&#x5757;name&#x6240;&#x4EE3;&#x8868;&#x7684;&#x6A21;&#x5757;
+</code></pre><h4 id="1require"><a href="#1-require" class="headerlink" title="(1)require"></a>(1)require</h4><pre><code>require(&quot;module-name&quot;),&#x8FD4;&#x56DE;&#x6A21;&#x5757;name&#x6240;&#x4EE3;&#x8868;&#x7684;&#x6A21;&#x5757;
 define([&apos;require&apos;], function (require) {
     var a = require(&apos;a&apos;);
 });
@@ -266,13 +260,8 @@ define(function (require) {
         //&#x4EE3;&#x7801;
     });
 });
-</code></pre>
-<h2 id="cmd&#x89C4;&#x8303;"><a class="header-anchor" href="#cmd&#x89C4;&#x8303;">&#xB6;</a>CMD&#x89C4;&#x8303;</h2>
-<h3 id="&#x5B9A;&#x4E49;"><a class="header-anchor" href="#&#x5B9A;&#x4E49;-v2">&#xB6;</a>&#x5B9A;&#x4E49;</h3>
-<pre><code>Common Module Definition &#x5373;&#x901A;&#x7528;&#x6A21;&#x5757;&#x5B9A;&#x4E49;.
-</code></pre>
-<h3 id="api"><a class="header-anchor" href="#api-v2">&#xB6;</a>API</h3>
-<pre><code>define(factory);
+</code></pre><h2 id="cmd&#x89C4;&#x8303;"><a href="#CMD&#x89C4;&#x8303;" class="headerlink" title="CMD&#x89C4;&#x8303;"></a>CMD&#x89C4;&#x8303;</h2><h3 id="&#x5B9A;&#x4E49;"><a href="#&#x5B9A;&#x4E49;-1" class="headerlink" title="&#x5B9A;&#x4E49;"></a>&#x5B9A;&#x4E49;</h3><pre><code>Common Module Definition &#x5373;&#x901A;&#x7528;&#x6A21;&#x5757;&#x5B9A;&#x4E49;.
+</code></pre><h3 id="api"><a href="#API-1" class="headerlink" title="API"></a>API</h3><pre><code>define(factory);
 factory &#x4E3A;&#x5BF9;&#x8C61;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x6A21;&#x5757;&#x7684;&#x63A5;&#x53E3;&#x5C31;&#x662F;&#x8BE5;&#x5BF9;&#x8C61;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x3002;
 factory &#x4E3A;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x662F;&#x6A21;&#x5757;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x3002;&#x6267;&#x884C;&#x8BE5;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6A21;&#x5757;&#x5411;&#x5916;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#x3002;factory &#x65B9;&#x6CD5;&#x5728;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4F1A;&#x4F20;&#x5165;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;require&#x3001;exports &#x548C; module .
 define &#x4E5F;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x4EE5;&#x4E0A;&#x53C2;&#x6570;, define(id?, deps?, factory),&#x6211;&#x611F;&#x89C9;&#x548C;AMD&#x76F8;&#x540C;.....
@@ -280,31 +269,22 @@ define &#x4E5F;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x4EE5;&#x4E0A;&
 define(&apos;hello&apos;, [&apos;jquery&apos;], function(require, exports, module) {
   // &#x6A21;&#x5757;&#x4EE3;&#x7801;
 });
-</code></pre>
-<h4 id="1require"><a class="header-anchor" href="#1-require-v2">&#xB6;</a>(1)require:</h4>
-<pre><code>&#x63A5;&#x53D7;&#x6A21;&#x5757;&#x6807;&#x8BC6;&#x4F5C;&#x4E3A;&#x552F;&#x4E00;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;.
+</code></pre><h4 id="1require"><a href="#1-require-1" class="headerlink" title="(1)require:"></a>(1)require:</h4><pre><code>&#x63A5;&#x53D7;&#x6A21;&#x5757;&#x6807;&#x8BC6;&#x4F5C;&#x4E3A;&#x552F;&#x4E00;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;.
 define(function( require, exports ){
     var a = require(&apos;./a&apos;);
     a.doSomething();
 });
-</code></pre>
-<h4 id="2exports"><a class="header-anchor" href="#2-exports">&#xB6;</a>(2)exports:</h4>
-<pre><code>factory &#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x5411;&#x5916;&#x63D0;&#x4F9B;&#x6A21;&#x5757;&#x63A5;&#x53E3;&#x3002;
+</code></pre><h4 id="2exports"><a href="#2-exports" class="headerlink" title="(2)exports:"></a>(2)exports:</h4><pre><code>factory &#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x5411;&#x5916;&#x63D0;&#x4F9B;&#x6A21;&#x5757;&#x63A5;&#x53E3;&#x3002;
 define(function( require, exports ){
     exports.foo = &apos;bar&apos;; // &#x5411;&#x5916;&#x63D0;&#x4F9B;&#x7684;&#x5C5E;&#x6027;
     exports.do = function(){}; // &#x5411;&#x5916;&#x63D0;&#x4F9B;&#x7684;&#x65B9;&#x6CD5;
 });
-</code></pre>
-<h4 id="3-module"><a class="header-anchor" href="#3-module">&#xB6;</a>(3) module:</h4>
-<pre><code>factory&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5B58;&#x50A8;&#x4E86;&#x4E00;&#x4E9B;&#x4E0E;&#x5F53;&#x524D;&#x6A21;&#x5757;&#x76F8;&#x5173;&#x8054;&#x7684;&#x5C5E;&#x6027;&#x4E0E;&#x65B9;&#x6CD5;&#x3002;
+</code></pre><h4 id="3-module"><a href="#3-module" class="headerlink" title="(3) module:"></a>(3) module:</h4><pre><code>factory&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5B58;&#x50A8;&#x4E86;&#x4E00;&#x4E9B;&#x4E0E;&#x5F53;&#x524D;&#x6A21;&#x5757;&#x76F8;&#x5173;&#x8054;&#x7684;&#x5C5E;&#x6027;&#x4E0E;&#x65B9;&#x6CD5;&#x3002;
 module.id &#x4E3A;&#x6A21;&#x5757;&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x3002;
 module.uri &#x6839;&#x636E;&#x6A21;&#x5757;&#x7CFB;&#x7EDF;&#x7684;&#x8DEF;&#x5F84;&#x89E3;&#x6790;&#x89C4;&#x5219;&#x5F97;&#x5230;&#x6A21;&#x5757;&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;
 module.dependencies &#x8868;&#x793A;&#x6A21;&#x5757;&#x7684;&#x4F9D;&#x8D56;&#x3002;
 module.exports &#x5F53;&#x524D;&#x6A21;&#x5757;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#x3002;
-</code></pre>
-<h2 id="&#x5F02;&#x540C;"><a class="header-anchor" href="#&#x5F02;&#x540C;">&#xB6;</a>&#x5F02;&#x540C;</h2>
-<p>AMD&#x89C4;&#x8303;&#x9700;&#x8981;&#x63D0;&#x58F0;&#x660E;,&#x5728;&#x4F9D;&#x8D56;&#x6570;&#x7EC4;&#x5185;.<br>
-CMD&#x53EF;&#x4EE5;&#x5728;function&#x5185;&#x52A0;&#x8F7D;.</p>
+</code></pre><h2 id="&#x5F02;&#x540C;"><a href="#&#x5F02;&#x540C;" class="headerlink" title="&#x5F02;&#x540C;"></a>&#x5F02;&#x540C;</h2><p>AMD&#x89C4;&#x8303;&#x9700;&#x8981;&#x63D0;&#x58F0;&#x660E;,&#x5728;&#x4F9D;&#x8D56;&#x6570;&#x7EC4;&#x5185;.<br>CMD&#x53EF;&#x4EE5;&#x5728;function&#x5185;&#x52A0;&#x8F7D;.</p>
 
       
     </div>
