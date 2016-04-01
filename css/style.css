@@ -358,6 +358,7 @@ header .title a:visited {
 .entry {
   text-align: justify;
   line-height: 1.6;
+  color: #777;
 }
 .entry p,
 .entry blockquote,
