@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Eclipse新建类详解 | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Eclipse新建类详解"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Eclipse新建类详解</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-03-24T06:16:38.476Z">2016-03-24</time></span>
+        
+          <span style=" display: block;  margin: 10px 0; ">作者：走吧走吧</span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="source-folder-package"><a href="#Source-Folder&#x3001;Package" class="headerlink" title="Source Folder&#x3001;Package"></a>Source Folder&#x3001;Package</h2><blockquote>
+<p>&#x6E90;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x662F;&#x5B58;&#x653E;java&#x6E90;&#x6587;&#x4EF6;(&#x672A;&#x7F16;&#x8BD1;)&#x7684;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x5F53;&#x7136;&#x4E5F;&#x5305;&#x62EC;&#x4E00;&#x4E9B;package&#x6587;&#x4EF6;&#x5939;,&#x8FD8;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5176;&#x4ED6;&#x6587;&#x4EF6;</p>
+<h3 id="packagesource-folderfolder"><a href="#package-source-folder-folder" class="headerlink" title="package,source folder,folder"></a>package,source folder,folder</h3><p>&#x5728;eclipse&#x4E0B;,package,source folder,folder&#x90FD;&#x662F;&#x6587;&#x4EF6;&#x5939;</p>
+</blockquote>
+<p><img src="http://7xrnr1.com1.z0.glb.clouddn.com/java.png" alt=""></p>
+<blockquote>
+<p>&#x4E0A;&#x56FE;&#x4E2D;src/main/java &#x5C31;&#x662F;source folder<br>com.wisdombud.wisdomhr.spider.base&#x5C31;&#x662F;package</p>
+</blockquote>
+<p>&#x5F02;&#x540C;&#xFF1A;</p>
+<blockquote>
+<p>&#x76F8;&#x540C;&#xFF1A;<br>package&#x548C;source folder&#x4E00;&#x6837;&#xFF0C;&#x9664;&#x4E86;java&#x6587;&#x4EF6;&#x4E5F;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x3002;<br>&#x9879;&#x76EE;&#x6784;&#x5EFA;&#x540E;,&#x4E24;&#x8005;&#x91CC;&#x9762;&#x7684;java&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#x6210;class&#x6587;&#x4EF6;&#x5230;&#x76F8;&#x5E94;&#x7684;/web-inf/classes&#x6587;&#x4EF6;&#x5939;&#x4E2D;,&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x4E5F;&#x4F1A;&#x79FB;&#x5230;/web-inf/classes&#x76F8;&#x5E94;&#x7684;&#x76EE;&#x5F55;&#x4E0B;<br>&#x4E0D;&#x540C;&#xFF1A;<br>1.sourceFolder&#x9760;&#x201D;/&#x201C;&#x6765;&#x8FDB;&#x884C;&#x4E0A;&#x4E0B;&#x7EA7;&#x5212;&#x5206;&#xFF0C;package&#x9760;&#x201D;.&#x201D;&#x6765;&#x8FDB;&#x884C;&#x4E0A;&#x4E0B;&#x7EA7;&#x5212;&#x5206;&#x3002;&#x5982;&#x4E0A;&#x56FE;<br>2.source folder&#x4E0B;&#x80FD;&#x5EFA;package,&#x800C;package&#x4E0B;&#x4E0D;&#x80FD;&#x5EFA;source folder<br>3.java&#x6587;&#x4EF6;&#x4E2D;&#x7684;package&#x5C5E;&#x6027;&#x662F;&#x6309;package&#x8DEF;&#x5F84;&#x6765;&#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x7684;&#xFF0C;source folder&#x8DEF;&#x5F84;&#x4E0D;&#x53C2;&#x4E0E;java&#x6587;&#x4EF6;&#x7684;package&#x5C5E;&#x6027;&#x8D4B;&#x503C;&#xFF0C;&#x518D;&#x7531;&#x7B2C;&#x4E8C;&#x6761;&#x4E0D;&#x540C;&#x5F97;&#x5230;&#x7ED3;&#x8BBA;&#xFF0C;&#x6240;&#x6709;source folder&#x4E0B;&#x7684;java&#x6587;&#x4EF6;package&#x5C5E;&#x6027;&#x90FD;&#x4E3A;&#x7A7A;</p>
+<p>package:&#x5F53;&#x4F60;&#x5728;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;package&#x65F6;,&#x5B83;&#x81EA;&#x52A8;&#x5EFA;&#x7ACB;&#x5230;source folder<br> &#x4E0B;,&#x4E5F;&#x53EA;&#x80FD;&#x5EFA;&#x7ACB;&#x5728;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E4B;&#x4E0B;.</p>
+</blockquote>
+<p>folder:</p>
+<blockquote>
+<p>&#x91CC;&#x9762;&#x53EF;&#x4EE5;&#x653E;&#x5165;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;.&#x5305;&#x62EC;java&#x6E90;&#x6587;&#x4EF6;,jar&#x6587;&#x4EF6;,&#x5176;&#x4ED6;&#x6587;&#x4EF6;(&#x4F8B;&#x5982;,&#x56FE;&#x7247;,&#x58F0;&#x97F3;&#x7B49;)&#x3002;&#x5982;&#x679C;&#x91CC;&#x9762;&#x542B;&#x6709;java&#x6E90;&#x6587;&#x4EF6;,&#x4E0D;&#x7BA1;&#x7A0B;&#x5E8F;&#x662F;&#x5426;&#x6B63;&#x786E;,eclipse&#x90FD;&#x4E0D;&#x4F1A;&#x62A5;&#x9519;,&#x628A;&#x5B83;&#x4EEC;&#x5F53;&#x505A;&#x666E;&#x901A;&#x6587;&#x4EF6;&#x5904;&#x7406;&#x3002;</p>
+</blockquote>
+<p>package,source folder,folder &#x4E4B;&#x95F4;&#x76F8;&#x4E92;&#x8F6C;&#x6362; &#x67E5;&#x770B;&#x53C2;&#x8003;&#x6587;&#x7AE0;</p>
+<h2 id="enclosing-type"><a href="#Enclosing-type" class="headerlink" title="Enclosing type"></a>Enclosing type</h2><p>&#x65B0;&#x5EFA;&#x7C7B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x52FE;&#x4E0A;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x8868;&#x793A;&#x65B0;&#x5EFA;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5185;&#x90E8;&#x7C7B;&#x3002;&#x800C;&#x5B83;&#x5728;&#x54EA;&#x4E2A;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#xFF0C;&#x9700;&#x8981;&#x9009;&#x62E9;&#x3002;</p>
+<blockquote>
+<ul>
+<li>&#x5185;&#x90E8;&#x7C7B;&#x662F;&#x6307;&#x5728;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x518D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7C7B;&#x3002;&#x5185;&#x90E8;&#x7684;&#x8FD9;&#x4E2A;&#x7C7B;&#x540D;&#x4E0D;&#x9700;&#x8981;&#x548C;&#x6587;&#x4EF6;&#x5939;&#x540D;&#x76F8;&#x540C;&#x3002;</li>
+<li>&#x5185;&#x90E8;&#x7C7B;&#x53EF;&#x4EE5;&#x662F;&#x9759;&#x6001;static&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x7528;public&#xFF0C;default&#xFF0C;protected&#x548C;private&#x4FEE;&#x9970;&#x3002;&#xFF08;&#x800C;&#x5916;&#x90E8;&#x7C7B;&#x3010;&#x5373;&#x7C7B;&#x540D;&#x548C;&#x6587;&#x4EF6;&#x540D;&#x76F8;&#x540C;&#x7684;&#x7C7B;&#x3011;&#x53EA;&#x80FD;&#x4F7F;&#x7528;public&#x548C;default&#xFF09;</li>
+<li>&#x5185;&#x90E8;&#x7C7B;&#x662F;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x65F6;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4E00;&#x65E6;&#x7F16;&#x8BD1;&#x6210;&#x529F;&#xFF0C;&#x5C31;&#x4F1A;&#x6210;&#x4E3A;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x7684;&#x4E24;&#x7C7B;&#x3002;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;outer&#x7684;&#x5916;&#x90E8;&#x7C7B;&#x548C;&#x5B83;&#x5185;&#x90E8;&#x7684;&#x540D;&#x4E3A;inner&#x7684;&#x5185;&#x90E8;&#x7C7B;&#x3002;&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x540E;&#x51FA;&#x73B0;outer.class&#x548C;outer$inner.class&#x4E24;&#x7C7B;&#x3002;&#x6240;&#x4EE5;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;/&#x65B9;&#x6CD5;&#x540D;&#x53EF;&#x4EE5;&#x548C;&#x5916;&#x90E8;&#x7C7B;&#x7684;&#x76F8;&#x540C;&#x3002;</li>
+</ul>
+</blockquote>
+<p>&#x4F7F;&#x7528;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x597D;&#x5904;</p>
+<blockquote>
+<ul>
+<li>&#x5185;&#x90E8;&#x7C7B;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x7684;&#x5B9E;&#x73B0;&#x9690;&#x85CF;<br>&#x4E00;&#x822C;&#x7684;&#x975E;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x6709; private &#x4E0E;protected&#x6743;&#x9650;&#x7684;&#xFF0C;&#x4F46;&#x5185;&#x90E8;&#x7C7B;&#x53EF;&#x4EE5;</li>
+<li>&#x5185;&#x90E8;&#x7C7B;&#x62E5;&#x6709;&#x5916;&#x56F4;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;</li>
+<li>&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x91CD;&#x7EE7;&#x627F;</li>
+<li>&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x4FEE;&#x6539;&#x63A5;&#x53E3;&#x800C;&#x5B9E;&#x73B0;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#x4E2D;&#x4E24;&#x79CD;&#x540C;&#x540D;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x3002;</li>
+</ul>
+</blockquote>
+<h2 id="name"><a href="#Name" class="headerlink" title="Name"></a>Name</h2><blockquote>
+<p>&#x65B0;&#x5EFA;&#x7C7B;&#x7684;&#x540D;&#x5B57;</p>
+<h2 id="modifiers"><a href="#Modifiers" class="headerlink" title="Modifiers"></a>Modifiers</h2><p><img src="http://7xrnr1.com1.z0.glb.clouddn.com/2.png" alt=""></p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x4FEE;&#x9970;&#x7C7B;&#x7684;&#x8BCD;&#x53EA;&#x6709;4&#x4E2A;&#x9009;&#x9879;&#x3002;</p>
+<blockquote>
+<ul>
+<li>&#x5E76;&#x4E14;&#x9009;&#x62E9;&#x4E0A;&#xFF0C;&#x4E0A;&#x9762;&#x7684;public&#x548C;package&#x662F;&#x4E92;&#x65A5;&#x7684;&#x3002;<br>public&#x8868;&#x793A;&#x8BE5;&#x7C7B;&#x662F;&#x516C;&#x5171;&#x7684;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7684;&#x3002;<br>package&#x8868;&#x793A;&#x53EA;&#x6709;&#x540C;&#x4E00;&#x4E2A;&#x5305;&#x4E0B;&#x7684;&#x7C7B;&#x624D;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x7C7B;&#x3002;</li>
+<li>&#x867D;&#x7136;abstract&#x548C;final&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x9009;&#x62E9;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E24;&#x4E2A;&#x662F;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x9009;&#x62E9;&#x7684;&#x3002;<br>abstract&#x8868;&#x793A;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x7C7B;&#x91CC;&#x9762;&#x4E00;&#x5B9A;&#x6709;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#xFF0C;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x4E00;&#x5B9A;&#x8981;&#x5B50;&#x7C7B;&#x6765;&#x5B9E;&#x73B0;&#x3002;<br>&#x8FD9;&#x4E0E;final&#x4E0D;&#x80FD;&#x7EE7;&#x627F; &#x4E92;&#x65A5;&#x3002;</li>
+</ul>
+</blockquote>
+<h2 id="superclass"><a href="#Superclass" class="headerlink" title="Superclass"></a>Superclass</h2><blockquote>
+<p>&#x8981;&#x7EE7;&#x627F;&#x7684;&#x7236;&#x7C7B;(&#x5355;&#x7EE7;&#x627F;)</p>
+<h2 id="interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h2><p>&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;(&#x591A;&#x5B9E;&#x73B0;)</p>
+<h2 id="&#x81EA;&#x52A8;&#x751F;&#x6210;&#x9009;&#x9879;"><a href="#&#x81EA;&#x52A8;&#x751F;&#x6210;&#x9009;&#x9879;" class="headerlink" title="&#x81EA;&#x52A8;&#x751F;&#x6210;&#x9009;&#x9879;"></a>&#x81EA;&#x52A8;&#x751F;&#x6210;&#x9009;&#x9879;</h2><p><img src="http://7xrnr1.com1.z0.glb.clouddn.com/3.png" alt=""></p>
+<ul>
+<li>public static void main(String[] args)  &#x2013;&#x5165;&#x53E3;&#x51FD;&#x6570;&#xFF1B;</li>
+<li>Constructors from superclass &#x2013;&#x751F;&#x6210;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF1B;</li>
+<li>Inherited abstract methods &#x2013;&#x5982;&#x679C;&#x4F60;&#x7EE7;&#x627F;&#x7684;&#x7C7B;&#x5B58;&#x5728;abstract&#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x9700;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;;</li>
+<li>Generate comments &#x2013;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x6CE8;&#x91CA;&#xFF1B;</li>
+</ul>
+</blockquote>
+<h2 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;"><a href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x7AE0;"></a>&#x53C2;&#x8003;&#x6587;&#x7AE0;</h2><p><a href="http://www.cnblogs.com/slowly-keeping/archive/2012/04/23/2466054.html" target="_blank" rel="external">Source Folder&#x3001;Package&#x53C2;&#x8003;&#x6587;&#x7AE0;</a><br><a href="http://www.cnblogs.com/nerxious/archive/2013/01/24/2875649.html" target="_blank" rel="external">&#x5185;&#x90E8;&#x7C7B;&#x53C2;&#x8003;&#x6587;&#x7AE0;</a><br><a href="http://android.blog.51cto.com/268543/384844/" target="_blank" rel="external">&#x5185;&#x90E8;&#x7C7B;2</a><br><a href="http://andy136566.iteye.com/blog/1061951/" target="_blank" rel="external">&#x5185;&#x90E8;&#x7C7B;3</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/开发工具/">开发工具</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Eclipse/">Eclipse</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/03/24/25.SVN的trunk &branch &tags/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/03/24/26.域名/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-13.Eclipse新建类详解" data-title="Eclipse新建类详解" data-url="http://wisdombud.github.io/2016/03/24/13.Eclipse新建类详解/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
+  
+    <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
+  
+    <li><a href="/categories/WEB/">WEB</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>6</small></li>
+  
+    <li><a href="/categories/javacript/">javacript</a><small>4</small></li>
+  
+    <li><a href="/categories/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/scm/">scm</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/基础知识/">基础知识</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>1</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/常识/">常识</a><small>7</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+        <embed tplayername="SWF" splayername="SWF"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
+            mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
+            id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
+            quality="high" wmode="transparent" allowscriptaccess="always"
+            flashvars="tcolor=0xbd1016&amp;tcolor2=0x808080&amp;hicolor=0x0065ff&amp;tspeed=100&amp;distr=true"
+            height="100%" width="100%">
+        </embed>
+    </div>
+  </div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>

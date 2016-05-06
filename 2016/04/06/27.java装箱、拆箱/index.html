@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java装箱、拆箱 | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Java装箱、拆箱"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Java装箱、拆箱</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-04-06T01:07:19.685Z">2016-04-06</time></span>
+        
+          <span style=" display: block;  margin: 10px 0; ">作者：走吧走吧</span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="&#x6982;&#x5FF5;"><a href="#&#x6982;&#x5FF5;" class="headerlink" title="&#x6982;&#x5FF5;"></a>&#x6982;&#x5FF5;</h2><ul>
+<li><p>&#x88C5;&#x7BB1;&#x548C;&#x62C6;&#x7BB1;</p>
+<blockquote>
+<p>&#x88C5;&#x7BB1;&#xFF1A;&#x628A;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x7528;&#x5B83;&#x4EEC;&#x76F8;&#x5E94;&#x7684;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5305;&#x88C5;&#x8D77;&#x6765;&#xFF0C;&#x4F7F;&#x5176;&#x5177;&#x6709;&#x5BF9;&#x8C61;&#x7684;&#x6027;&#x8D28;&#x3002;int&#x5305;&#x88C5;&#x6210;Integer&#x3001;float&#x5305;&#x88C5;&#x6210;Float<br>&#x62C6;&#x7BB1;&#xFF1A;&#x548C;&#x88C5;&#x7BB1;&#x76F8;&#x53CD;&#xFF0C;&#x5C06;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x7B80;&#x5316;&#x6210;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;</p>
+</blockquote>
+</li>
+<li><p>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x5BF9;&#x8C61;&#x7684;&#x5DEE;&#x522B;</p>
+<blockquote>
+<p>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0D;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4F7F;&#x7528;int&#x3001;double&#x3001;boolean&#x7B49;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#x3001;&#x5E38;&#x91CF;&#x3002;<br>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6CA1;&#x6709;&#x53EF;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x3002;<br>eg&#xFF1A;  int t = 1&#xFF1B;     t.  &#x540E;&#x9762;&#x662F;&#x6CA1;&#x6709;&#x65B9;&#x6CD5;&#x6EF4;&#x3002;<br>Integer t =1&#xFF1B; t.  &#x540E;&#x9762;&#x5C31;&#x6709;&#x5F88;&#x591A;&#x65B9;&#x6CD5;&#x53EF;&#x8BA9;&#x4F60;&#x8C03;&#x7528;&#x4E86;&#x3002;</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="&#x516B;&#x79CD;&#x57FA;&#x672C;&#x7C7B;&#x578B;"><a href="#&#x516B;&#x79CD;&#x57FA;&#x672C;&#x7C7B;&#x578B;" class="headerlink" title="&#x516B;&#x79CD;&#x57FA;&#x672C;&#x7C7B;&#x578B;"></a>&#x516B;&#x79CD;&#x57FA;&#x672C;&#x7C7B;&#x578B;</h2><p><img src="http://7xrnr1.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160331201626.png" alt=""></p>
+<h2 id="integer&#x7684;&#x81EA;&#x52A8;&#x88C5;&#x7BB1;&#x62C6;&#x7BB1;"><a href="#Integer&#x7684;&#x81EA;&#x52A8;&#x88C5;&#x7BB1;-&#x62C6;&#x7BB1;" class="headerlink" title="Integer&#x7684;&#x81EA;&#x52A8;&#x88C5;&#x7BB1;/&#x62C6;&#x7BB1;"></a>Integer&#x7684;&#x81EA;&#x52A8;&#x88C5;&#x7BB1;/&#x62C6;&#x7BB1;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = 200;</span><br><span class="line">Integer i2 = 200;</span><br><span class="line">System.out.println(&quot;i1==i2: &quot; + (i1 == i2));</span><br><span class="line">Integer i3 = 100;</span><br><span class="line">Integer i4 = 100;</span><br><span class="line">System.out.println(&quot;i3==i4: &quot; + (i3 == i4));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x8F93;&#x7684;&#x7ED3;&#x679C;&#x662F;&#xFF1A;<br>i1==i2: false<br>i3==i4: true</p>
+</blockquote>
+<ul>
+<li>equals() &#x6BD4;&#x8F83;&#x7684;&#x662F;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x503C;&#xFF08;&#x5185;&#x5BB9;&#xFF09;&#x662F;&#x5426;&#x76F8;&#x540C;&#x3002;<br>&#x201C;==&#x201D; &#x6BD4;&#x8F83;&#x7684;&#x662F;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#xFF08;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF09;&#x662F;&#x5426;&#x76F8;&#x540C;&#xFF0C;&#x4E5F;&#x7528;&#x6765;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x503C;&#x662F;&#x5426;&#x76F8;&#x7B49;&#x3002;</li>
+</ul>
+<blockquote>
+<p>int &#x7684;&#x81EA;&#x52A8;&#x88C5;&#x7BB1;&#xFF0C;&#x662F;&#x7CFB;&#x7EDF;&#x6267;&#x884C;&#x4E86; Integer.valueOf(int i)&#xFF0C;&#x5148;&#x770B;&#x770B;Integer.java&#x7684;&#x6E90;&#x7801;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static Integer valueOf(int i) {</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;if(i &gt;= -128 &amp;&amp; i &lt;= IntegerCache.high)&#x3000; // &#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x7684;&#x8BDD;&#xFF0C;IngegerCache.high &#x9ED8;&#x8BA4;&#x662F;127</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return IntegerCache.cache[i + 128];</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;else</span><br><span class="line">&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return new Integer(i);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5BF9;&#x4E8E;&#x2013;128&#x5230;127&#xFF08;&#x9ED8;&#x8BA4;&#x662F;127&#xFF09;&#x4E4B;&#x95F4;&#x7684;&#x503C;&#xFF0C;Integer.valueOf(int i) &#x8FD4;&#x56DE;&#x7684;&#x662F;&#x7F13;&#x5B58;&#x7684;Integer&#x5BF9;&#x8C61;&#xFF08;&#x5E76;&#x4E0D;&#x662F;&#x65B0;&#x5EFA;&#x5BF9;&#x8C61;&#xFF09;<br>&#x6240;&#x4EE5;&#x8303;&#x4F8B;&#x4E2D;&#xFF0C;i3 &#x4E0E; i4&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;<br>&#x800C;&#x5176;&#x4ED6;&#x503C;&#xFF0C;&#x6267;&#x884C;Integer.valueOf(int i) &#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x5EFA;&#x7684; Integer&#x5BF9;&#x8C61;&#xFF0C;&#x6240;&#x4EE5;&#x8303;&#x4F8B;&#x4E2D;&#xFF0C;i1&#x4E0E;i2 &#x6307;&#x5411;&#x7684;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+</blockquote>
+<p><em>Integer&#x3001;Short&#x3001;Byte&#x3001;Character&#x3001;Long&#x8FD9;&#x51E0;&#x4E2A;&#x5305;&#x88C5;&#x7C7B;&#x7684;valueOf&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#x3002;</em><br><em>Double&#x3001;Float&#x7684;valueOf&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#x3002;</em><br><em>Boolean&#x7684;valueOf&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x4E2A;&#x4E09;&#x76EE;&#x8FD0;&#x7B97;&#xFF0C;&#x5F62;&#x5982;<code>return (b ? TRUE : FALSE);</code></em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = 17;</span><br><span class="line">int i2 = 17;</span><br><span class="line">   </span><br><span class="line">int i3 = 137;</span><br><span class="line">Integer i4 = 137;</span><br><span class="line">   </span><br><span class="line">System.out.println(i1 == i2); //true</span><br><span class="line">System.out.println(i3 == i4);  //true</span><br><span class="line"></span><br><span class="line">System.out.println(i1.equals(i2)); //true</span><br><span class="line">System.out.println(i3.equals(i4));  //true</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x5F53;&#x5305;&#x88C5;&#x5668;&#x7C7B;&#x578B;&#x548C;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x201C;==&#x201D;&#x6BD4;&#x8F83;&#x65F6;&#xFF0C;&#x5305;&#x88C5;&#x5668;&#x7C7B;&#x578B;&#x4F1A;&#x81EA;&#x52A8;&#x62C6;&#x7BB1;&#x4E3A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//Integer&#x7C7B;&#x7684;equals&#x65B9;&#x6CD5;</span><br><span class="line">public boolean equals(Object obj) {</span><br><span class="line">    if (obj instanceof Integer) {</span><br><span class="line">        return value == ((Integer)obj).intValue();</span><br><span class="line">    }</span><br><span class="line">    return false;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><em>Integer&#x3001;Short&#x3001;Byte&#x3001;Character&#x3001;Long&#x8FD9;&#x51E0;&#x4E2A;&#x5305;&#x88C5;&#x7C7B;&#x7684;intValue&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#x3002;</em><br><em>Double&#x3001;Float&#x7684;intValue&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#x3002;</em><br><em>Boolean&#x7684;booleanValue&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x548C;intValue&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x4E5F;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#x3002;</em></p>
+<h2 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;"><a href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x7AE0;"></a>&#x53C2;&#x8003;&#x6587;&#x7AE0;</h2><p><a href="http://www.cnblogs.com/danne823/archive/2011/04/22/2025332.html" target="_blank" rel="external">java &#x81EA;&#x52A8;&#x88C5;&#x7BB1;&#x4E0E;&#x62C6;&#x7BB1;</a><br><a href="http://blog.csdn.net/jairuschan/article/details/7513045" target="_blank" rel="external">java &#x62C6;&#x7BB1;&#x4E0E;&#x9677;&#x9631;</a><br><a href="http://my.oschina.net/u/2260184/blog/509857?p=1" target="_blank" rel="external">&#x5FEB;&#x770B;&#x5427;</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/基础知识/">基础知识</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Java/">Java</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/05/03/29.maven那点事/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/03/30/24.如何写邮件/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-27.java装箱、拆箱" data-title="Java装箱、拆箱" data-url="http://wisdombud.github.io/2016/04/06/27.java装箱、拆箱/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
+  
+    <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
+  
+    <li><a href="/categories/WEB/">WEB</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>6</small></li>
+  
+    <li><a href="/categories/javacript/">javacript</a><small>4</small></li>
+  
+    <li><a href="/categories/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/scm/">scm</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/基础知识/">基础知识</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>1</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/常识/">常识</a><small>7</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+        <embed tplayername="SWF" splayername="SWF"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
+            mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
+            id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
+            quality="high" wmode="transparent" allowscriptaccess="always"
+            flashvars="tcolor=0xbd1016&amp;tcolor2=0x808080&amp;hicolor=0x0065ff&amp;tspeed=100&amp;distr=true"
+            height="100%" width="100%">
+        </embed>
+    </div>
+  </div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>

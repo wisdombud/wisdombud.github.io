@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript 作用域与闭包 | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="javascript 作用域与闭包"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">javascript 作用域与闭包</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-02-13T08:38:35.000Z">2016-02-13</time></span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <p>[TOC]</p>
+<h2 id="&#x7B2C;&#x4E00;&#x7AE0;-&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x4EC0;&#x4E48;"><a href="#&#x7B2C;&#x4E00;&#x7AE0;-&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x4EC0;&#x4E48;" class="headerlink" title="&#x7B2C;&#x4E00;&#x7AE0; &#x4F5C;&#x7528;&#x57DF;&#x662F;&#x4EC0;&#x4E48;"></a>&#x7B2C;&#x4E00;&#x7AE0; &#x4F5C;&#x7528;&#x57DF;&#x662F;&#x4EC0;&#x4E48;</h2><h3 id="js&#x7F16;&#x8BD1;&#x539F;&#x7406;"><a href="#js&#x7F16;&#x8BD1;&#x539F;&#x7406;" class="headerlink" title="js&#x7F16;&#x8BD1;&#x539F;&#x7406;"></a>js&#x7F16;&#x8BD1;&#x539F;&#x7406;</h3><ol>
+<li>&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#x7684;&#x8BED;&#x8A00;&#xFF1F;<br>&#x52A8;&#x6001;&#x3001;&#x89E3;&#x91CA;&#x578B;&#x8BED;&#x8A00;&#xFF1F;<br>no&#xFF0C;&#x5B83;&#x662F;<strong>&#x7F16;&#x8BD1;&#x578B;</strong>&#x7684;&#x8BED;&#x8A00;<br>why&#xFF1F;<blockquote>
+<p>&#x4E0D;&#x662F;&#x63D0;&#x524D;&#x7F16;&#x8BD1;&#x7684;&#xFF0C;&#x7F16;&#x8BD1;&#x5728;&#x6267;&#x884C;&#x4E4B;&#x524D;&#x7684;&#x51E0;&#x5FAE;&#x5999;&#x751A;&#x81F3;&#x66F4;&#x77ED;<br>&#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x4E0D;&#x80FD;&#x79FB;&#x690D;</p>
+</blockquote>
+</li>
+</ol>
+<ol>
+<li>&#x7F16;&#x8BD1;&#x7684;&#x8FC7;&#x7A0B;<blockquote>
+<p>&#x8BCD;&#x6CD5;&#x5206;&#x6790;-&gt;&#x8BED;&#x6CD5;&#x5206;&#x6790;-&gt;&#x4EE3;&#x7801;&#x751F;&#x6210;</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="&#x7406;&#x89E3;&#x4F5C;&#x7528;&#x57DF;"><a href="#&#x7406;&#x89E3;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x7406;&#x89E3;&#x4F5C;&#x7528;&#x57DF;"></a>&#x7406;&#x89E3;&#x4F5C;&#x7528;&#x57DF;</h3><ol>
+<li><p>js&#x7684;&#x6267;&#x884C;&#x53C2;&#x4E0E;&#x8005;</p>
+<blockquote>
+<ul>
+<li>js&#x5F15;&#x64CE;&#xFF08;v8&#x3001;xx&#xFF09;&#xFF1A;&#x8D1F;&#x8D23;&#x7F16;&#x8BD1;&#x548C;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;</li>
+<li>&#x7F16;&#x8BD1;&#x5668;&#xFF1A;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x3001;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x3001;&#x4EE3;&#x7801;&#x751F;&#x6210;</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#xFF1A;&#x6536;&#x96C6;&#x548C;&#x7EF4;&#x62A4;&#x7531;&#x6240;&#x6709;&#x58F0;&#x660E;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#xFF08;&#x53D8;&#x91CF;&#xFF09;&#x7EC4;&#x6210;&#x7684;&#x4E00;&#x7CFB;&#x5217;&#x67E5;&#x8BE2;&#xFF0C;&#x5E76;&#x5B9E;&#x65BD;&#x4E00;&#x5957;&#x975E;&#x5E38;&#x4E25;&#x683C;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x786E;&#x5B9A;&#x5F53;&#x524D;&#x6267;&#x884C;&#x7684;&#x4EE3;&#x7801;&#x5BF9;&#x8FD9;&#x4E9B;&#x6807;&#x8BC6;&#x7B26;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;</li>
+</ul>
+</blockquote>
+</li>
+<li><p>code</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a=2;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x8BCD;&#x6CD5;&#x5206;&#x6790;: var a = 2<br> &#x8BED;&#x6CD5;&#x5206;&#x6790;&#xFF1A;var a&#xFF1B; &#x4F5C;&#x7528;&#x57DF;&#x662F;&#x5426;&#x6709;a&#xFF1F;&#x6709;&#x5FFD;&#x7565;&#xFF0C;&#x6CA1;&#x6709;&#x58F0;&#x660E;&#x540E;&#x653E;&#x5230;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;<br> &#x751F;&#x6210;&#x4EE3;&#x7801;&#xFF1A;a=2&#xFF1B;<br> &#x6267;&#x884C;&#xFF1A;js&#x5F15;&#x64CE;&#x4F1A;&#x8BE2;&#x95EE;&#x4F5C;&#x7528;&#x57DF;&#x6709;&#x6CA1;&#x6709;a&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8D4B;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5C31;&#x5F02;&#x5E38;&#x4E86;&#x3002;</p>
+</blockquote>
+</li>
+<li><p>code 2</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function foo(a){</span><br><span class="line">    console.log(a+b);</span><br><span class="line">    b=a;</span><br><span class="line">}</span><br><span class="line">foo(2);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ReferenceError&#x5F02;&#x5E38;</p>
+</blockquote>
+</li>
+<li><p>LHS&#x548C;RHS</p>
+<blockquote>
+<p>LHS:&#x67E5;&#x627E;&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x7684;&#x76EE;&#x6807;&#x662F;&#x8C01;&#xFF1F; a=<br>RHS&#xFF1A;&#x67E5;&#x627E;&#x8C01;&#x662F;&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x7684;&#x6E90;&#x5934; console.log(a) &#x6216;&#x8005; =a</p>
+</blockquote>
+</li>
+<li><p>function&#x7684;LHS&#x548C;RHS</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function foo(a){</span><br><span class="line">    console.log(a+b);</span><br><span class="line">    b=a;</span><br><span class="line">}</span><br><span class="line">foo(2);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>LHS: foo(..  a.. b=..<br> RHS: foo.. console.. log&#x2026; a b  a</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>   &#x4E0D;&#x5177;&#x6709;&#x4E00;&#x822C;&#x610F;&#x4E49;&#x7684;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var foo = function(a){</span><br><span class="line">    console.log(a+b);</span><br><span class="line">    b=a;</span><br><span class="line">}</span><br><span class="line">foo(2);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>LHS:foo.. foo(.. a.. b..<br>    RHS:function(.. console.. &#x2026;</p>
+</blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4E0A;&#x9762;&#x7684;LHS&#x548C;RHS&#x5BF9;&#x4E8E;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5C31;&#x4E0D;&#x5BF9;&#x4E86;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x5728;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x65F6;&#x540C;&#x65F6;&#x5904;&#x7406;&#x58F0;&#x660E;&#x548C;&#x503C;&#x7684;&#x5B9A;&#x4E49;&#x3002;</p>
+<hr>
+<ul>
+<li><p>&#x6570;&#x4E00;&#x6570;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> function foo(a){</span><br><span class="line">    var b=a;</span><br><span class="line">    return a+b;</span><br><span class="line"> }</span><br><span class="line">var c= foo(2);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>LHS:3<br>  RHS:4</p>
+<h3 id="&#x4F5C;&#x7528;&#x57DF;&#x5D4C;&#x5957;"><a href="#&#x4F5C;&#x7528;&#x57DF;&#x5D4C;&#x5957;" class="headerlink" title="&#x4F5C;&#x7528;&#x57DF;&#x5D4C;&#x5957;"></a>&#x4F5C;&#x7528;&#x57DF;&#x5D4C;&#x5957;</h3></blockquote>
+</li>
+</ul>
+<ol>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x5D4C;&#x5957;<blockquote>
+<p>&#x5411;&#x4E0A;&#x627E;&#x4E00;&#x76F4;&#x5230;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="&#x5F02;&#x5E38;"><a href="#&#x5F02;&#x5E38;" class="headerlink" title="&#x5F02;&#x5E38;"></a>&#x5F02;&#x5E38;</h3><ol>
+<li><p>LHS&#x548C;RHS&#x5728;&#x5D4C;&#x5957;&#x65F6;&#x7684;&#x4E0D;&#x540C;</p>
+<blockquote>
+<p>LHS:&#x5982;&#x679C;&#x5230;&#x6700;&#x540E;&#x6CA1;&#x6709;&#x627E;&#x5230;&#xFF0C;&#x90A3;&#x5C31;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;(&#x975E;&#x4E25;&#x683C;&#x6A21;&#x5F0F;)&#x6216;&#x8005;&#x629B;&#x4E00;&#x4E2A;&#x5F02;&#x5E38;&#xFF08;ReferenceError&#xFF0C;&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#xFF09;&#xFF1B;<br>RHS:&#x5982;&#x679C;&#x5230;&#x6700;&#x540E;&#x6CA1;&#x6709;&#x627E;&#x5230;&#xFF0C;&#x90A3;&#x5C31;&#x629B;&#x4E00;&#x4E2A;&#x5F02;&#x5E38;&#xFF08;ReferenceError&#xFF09;<br>&#x53EF;&#x4EE5;&#x7406;&#x89E3;<a href="#code2">code2</a>&#x7684;&#x4EE3;&#x7801;</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="&#x5C0F;&#x7ED3;"><a href="#&#x5C0F;&#x7ED3;" class="headerlink" title="&#x5C0F;&#x7ED3;"></a>&#x5C0F;&#x7ED3;</h3><blockquote>
+<ul>
+<li>javascript&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x5305;&#x62EC;&#xFF1A;&#x8BCD;&#x6CD5;&#x5206;&#x6790;-&gt;&#x8BED;&#x6CD5;&#x5206;&#x6790;-&gt;&#x4EE3;&#x7801;&#x751F;&#x6210;</li>
+<li><strong>&#x4F5C;&#x7528;&#x57DF;</strong>&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210;&#x4E00;&#x5957;&#x89C4;&#x5219;&#xFF0C;&#x8FD9;&#x5957;&#x89C4;&#x5219;&#x7528;&#x6765;&#x7BA1;&#x7406;&#x5F15;&#x64CE;&#x5982;&#x4F55;&#x5728;&#x5F53;&#x524D;&#x4F5C;&#x7528;&#x57DF;&#x4EE5;&#x53CA;&#x5D4C;&#x5957;&#x7684;&#x5B50;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x6839;&#x636E;&#x6807;&#x8BC6;&#x7B26;&#x540D;&#x79F0;&#x8FDB;&#x884C;&#x53D8;&#x91CF;&#x7684;&#x67E5;&#x627E;</li>
+<li>&#x53D8;&#x91CF;&#x67E5;&#x627E;&#x65B9;&#x6CD5;&#xFF1A;LHS&#x548C;RHS</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x5D4C;&#x5957;</li>
+</ul>
+</blockquote>
+<h2 id="&#x7B2C;&#x4E8C;&#x7AE0;-&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;"><a href="#&#x7B2C;&#x4E8C;&#x7AE0;-&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x7B2C;&#x4E8C;&#x7AE0; &#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;"></a>&#x7B2C;&#x4E8C;&#x7AE0; &#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;</h2><p>&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x5DE5;&#x4F5C;&#x6A21;&#x578B;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;</li>
+</ul>
+<ul>
+<li>&#x52A8;&#x6001;&#x4F5C;&#x7528;&#x57DF;&#xFF08;Bash Perl&#xFF09;<h3 id="&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;"><a href="#&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;"></a>&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;</h3><h4 id="&#x5B9A;&#x4E49;&#x4E0E;&#x4E3E;&#x4F8B;"><a href="#&#x5B9A;&#x4E49;&#x4E0E;&#x4E3E;&#x4F8B;" class="headerlink" title="&#x5B9A;&#x4E49;&#x4E0E;&#x4E3E;&#x4F8B;"></a>&#x5B9A;&#x4E49;&#x4E0E;&#x4E3E;&#x4F8B;</h4>&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x6307;&#x5B9A;&#x4E49;&#x5728;&#x8BCD;&#x6CD5;&#x9636;&#x6BB5;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x3002;<blockquote>
+<p>&#x8BF4;&#x4EBA;&#x8BDD;&#xFF1A;&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;&#x5C31;&#x662F;&#x4F60;&#x5728;&#x5199;&#x4EE3;&#x7801;&#x65F6;&#x5B9A;&#x4E49;&#x5728;&#x54EA;&#xFF0C;&#x5C31;&#x662F;&#x54EA;&#x4E2A;&#x7684;&#x4F5C;&#x7528;&#x57DF;</p>
+</blockquote>
+</li>
+</ul>
+<p>&#x4EE3;&#x7801;&#x793A;&#x4F8B;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    function foo(a) {</span><br><span class="line">        var b=a*2;</span><br><span class="line">        function bar(c) {</span><br><span class="line">            console.log(a,b,c);</span><br><span class="line">        }</span><br><span class="line">        bar(b*3);</span><br><span class="line">    }</span><br><span class="line">    foo(2);</span><br><span class="line">    console.log(a);</span><br><span class="line">    console.log(b);</span><br><span class="line">    console.log(c);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol>
+<li>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</li>
+<li>LHS&#x548C;RHS&#x5206;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF1F;</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x6709;&#x51E0;&#x4E2A;&#xFF1F;</li>
+</ol>
+<h4 id="&#x67E5;&#x627E;"><a href="#&#x67E5;&#x627E;" class="headerlink" title="&#x67E5;&#x627E;"></a>&#x67E5;&#x627E;</h4><ul>
+<li>&#x906E;&#x853D;&#x6548;&#x5E94;&#xFF08;&#x5168;&#x5C40;&#x5982;&#x679C;&#x88AB;&#x906E;&#x853D;&#xFF0C;&#x53EF;&#x4EE5;window.a&#x8BBF;&#x95EE;&#xFF09;</li>
+<li>&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;&#x53EA;&#x7531;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x65F6;&#x7684;&#x6240;&#x5904;&#x7684;&#x4F4D;&#x7F6E;&#x51B3;&#x5B9A;</li>
+<li>&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;&#x67E5;&#x627E;&#x53EA;&#x4F1A;&#x67E5;&#x627E;&#x4E00;&#x7EA7;&#x6807;&#x8BC6;&#x7B26;&#xFF08;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x4E0D;&#x4F1A;&#x67E5;&#x627E;&#xFF09;</li>
+</ul>
+<h3 id="&#x5982;&#x4F55;&#x6B3A;&#x9A97;&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;&#x4E00;&#x5B9A;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x4E86;&#x89E3;"><a href="#&#x5982;&#x4F55;&#x6B3A;&#x9A97;&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;&#x2014;&#x4E00;&#x5B9A;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#xFF0C;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x4E86;&#x89E3;" class="headerlink" title="&#x5982;&#x4F55;&#x6B3A;&#x9A97;&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;&#x2014;&#x4E00;&#x5B9A;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#xFF0C;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x4E86;&#x89E3;"></a>&#x5982;&#x4F55;&#x6B3A;&#x9A97;&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;&#x2014;<strong>&#x4E00;&#x5B9A;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#xFF0C;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x4E86;&#x89E3;</strong></h3><p><strong>&#x4E0D;&#x7BA1;&#x600E;&#x4E48;&#x8BF4;&#xFF0C;&#x90FD;&#x4E0D;&#x8981;&#x7528;</strong><br><em>&#x8BB2;&#x7684;&#x76EE;&#x7684;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x770B;&#x61C2;&#x522B;&#x4EBA;&#x8FD9;&#x4E48;&#x5199;&#x7684;&#x4EE3;&#x7801;</em></p>
+<blockquote>
+<p>&#x5728;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x52A8;&#x6001;&#x7684;&#x4FEE;&#x6539;&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;</p>
+</blockquote>
+<p>####eval</p>
+<blockquote>
+<p>&#x529F;&#x80FD;&#xFF1A;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x770B;&#x6210;&#x5728;&#x5199;&#x4EE3;&#x7801;&#x65F6;&#x5C31;&#x52A0;&#x8FDB;&#x53BB;&#x7684;&#x4E00;&#x6837;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function foo(str, a) {</span><br><span class="line">    eval(str);</span><br><span class="line">    console.log(a, b);</span><br><span class="line">}</span><br><span class="line">var b = 2;</span><br><span class="line">foo(&quot;var b=3;&quot;, 1);//1,3</span><br></pre></td></tr></table></figure>
+<p>&#x8865;&#x5145;&#xFF1A;</p>
+<blockquote>
+<p>&#x5B9E;&#x9645;&#x4E2D;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#x540E;&#x518D;&#x4F20;str</p>
+</blockquote>
+<p>&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#xFF1A; eval&#x4F1A;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x4E0D;&#x4F1A;&#x4FEE;&#x6539;&#x63D2;&#x5165;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E86;</p>
+<p>&#x5176;&#x5B83;&#xFF1A;</p>
+<blockquote>
+<p>setTimeOut(..) setInterval(..)&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x5B57;&#x7B26;&#x4E32;<br>new Function(..) &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x63A5;&#x53D7;&#x4EE3;&#x7801;&#x5B57;&#x7B26;&#x4E32;</p>
+</blockquote>
+<p><strong>&#x4E0D;&#x7BA1;&#x600E;&#x4E48;&#x8BF4;&#xFF0C;&#x90FD;&#x4E0D;&#x8981;&#x7528;</strong><br><em>&#x8BB2;&#x7684;&#x76EE;&#x7684;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x770B;&#x61C2;&#x522B;&#x4EBA;&#x8FD9;&#x4E48;&#x5199;&#x7684;&#x4EE3;&#x7801;</em></p>
+<p>####with<br><strong>with &#x4F1A;&#x6839;&#x636E;&#x4F60;&#x4F20;&#x9012;&#x7ED9;&#x4ED6;&#x7684;&#x5BF9;&#x8C61;&#x4E2D;&#x51ED;&#x7A7A;&#x521B;&#x9020;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;</strong></p>
+<ol>
+<li><p>&#x6B63;&#x5E38;&#x5199;&#x6CD5;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = {</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2,</span><br><span class="line">    c: 3</span><br><span class="line">}</span><br><span class="line">console.log(obj.a);</span><br><span class="line">console.log(obj.b);</span><br><span class="line">console.log(obj.c);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x7B80;&#x5355;&#x5199;&#x6CD5;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    var obj = {</span><br><span class="line">        a: 1,</span><br><span class="line">        b: 2,</span><br><span class="line">        c: 3</span><br><span class="line">    }</span><br><span class="line">    with(obj) {</span><br><span class="line">        console.log(a);</span><br><span class="line">        console.log(b);</span><br><span class="line">        console.log(c);</span><br><span class="line">    }</span><br><span class="line">    ```  </span><br><span class="line"></span><br><span class="line">3. &#x6240;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;</span><br><span class="line"></span><br><span class="line">    ```javacript</span><br></pre></td></tr></table></figure>
+<p> function test(obj) {</p>
+<pre><code>with(obj) {
+    a = 2;
+}
+</code></pre><p> }<br> var obj1 = {</p>
+<pre><code>a: 1
+</code></pre><p> }<br> var obj2 = {</p>
+<pre><code>b: 1
+</code></pre><p> }<br> test(obj1);<br> console.log(obj1.a);<br> test(obj2);<br> console.log(obj2.a);<br> console.log(a);</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    &gt;&#x7F3A;&#x70B9;&#xFF1A;</span><br><span class="line">    * &#x6B3A;&#x9A97;&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;&#x4F1A;&#x5BFC;&#x81F4;&#x4E0D;&#x53EF;&#x9884;&#x77E5;&#x7684;&#x7ED3;&#x679C;&#xFF08;&#x5BF9;&#x4E8E;&#x4E0D;&#x61C2;&#x7684;&#x4EBA;&#x6765;&#x8BF4;&#xFF09;</span><br><span class="line">    * &#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x4E0D;&#x652F;&#x6301;</span><br><span class="line">    * &#x6027;&#x80FD;</span><br><span class="line"></span><br><span class="line">**&#x4E0D;&#x7BA1;&#x600E;&#x4E48;&#x8BF4;&#xFF0C;&#x90FD;&#x4E0D;&#x8981;&#x7528;**</span><br><span class="line">*&#x8BB2;&#x7684;&#x76EE;&#x7684;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x770B;&#x61C2;&#x522B;&#x4EBA;&#x8FD9;&#x4E48;&#x5199;&#x7684;&#x4EE3;&#x7801;*    </span><br><span class="line">###&#x5C0F;&#x7ED3;</span><br><span class="line">&gt; * &#x5B9A;&#x4E49;</span><br><span class="line">* &#x6B3A;&#x9A97;&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF; **&#x5343;&#x4E07;&#x4E0D;&#x8981;&#x4F7F;&#x7528;**</span><br><span class="line"></span><br><span class="line">### &#x8865;&#x5145;&#x77E5;&#x8BC6;</span><br><span class="line">&gt; &#x52A8;&#x6001;&#x4F5C;&#x7528;&#x57DF;</span><br><span class="line">&gt;&gt; &#x4E0D;&#x5173;&#x5FC3;&#x5728;&#x4F55;&#x5904;&#x58F0;&#x660E;&#xFF0C;&#x53EA;&#x5173;&#x5FC3;&#x5728;&#x4F55;&#x5904;&#x8C03;&#x7528;</span><br><span class="line">   &gt;&gt; ```javascript</span><br></pre></td></tr></table></figure>
+<p> function test1() {</p>
+<pre><code>console.log(a);
+</code></pre><p> }<br> function bar() {</p>
+<pre><code>var a = 3;
+test1();
+</code></pre><p> }<br> var a = 2;<br> bar();</p>
+<blockquote>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## &#x51FD;&#x6570;&#x4F5C;&#x7528;&#x57DF;&#x548C;&#x5757;&#x4F5C;&#x7528;&#x57DF;</span><br><span class="line">### &#x51FD;&#x6570;</span><br><span class="line">## &#x63D0;&#x5347;</span><br><span class="line">## &#x95ED;&#x5305;</span><br><span class="line"></span><br><span class="line">## &#x770B;&#x4EE3;&#x7801;&#x8BF4;&#x7ED3;&#x679C;</span><br><span class="line">####&#x4EE3;&#x7801;1:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+<p> var a = 1;<br> function foo() {</p>
+<pre><code>var b = 2;
+function bar() {
+    var b = &apos;bar2&apos;;
+    console.log(b);
+    function baz() {
+        console.log(a);
+    }
+    baz();
+}
+bar();
+console.log(b);
+</code></pre><p> }<br> foo();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    bar2</span><br><span class="line">    1</span><br><span class="line">    2</span><br><span class="line"></span><br><span class="line">####&#x4EE3;&#x7801;2:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> a = 2;<br> var a;<br> console.log( a );</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    2</span><br><span class="line">####&#x4EE3;&#x7801;3:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> console.log( a );<br> var a = 2;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    undefined  </span><br><span class="line">####&#x4EE3;&#x7801;4:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> foo();<br> function foo() {</p>
+<pre><code>console.log(&apos;foo&apos;);
+</code></pre><p> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    foo</span><br><span class="line">####&#x4EE3;&#x7801;5:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> //foo();<br> bar();<br> var foo = function bar() {</p>
+<pre><code>console.log(&apos;foo&apos;);
+</code></pre><p> };</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    foo is not function</span><br><span class="line">    bar is not defined</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">####&#x4EE3;&#x7801;6:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> var foo;<br> function foo() { console.log( &#x201C;a&#x201D; ); }<br> function foo() { console.log( &#x201C;b&#x201D; ); }</p>
+<p> foo();<br> foo = true;<br> if (foo) {</p>
+<p> }<br> else {</p>
+<p> }<br> foo();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    b</span><br><span class="line">    foo is not a function</span><br><span class="line"></span><br><span class="line">####&#x4EE3;&#x7801;7:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> var i;<br> for (i=1; i&lt;= 5; i++) {</p>
+<pre><code>setTimeout( function timer(){
+    console.log( i );
+}, i*1000);
+</code></pre><p> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    5</span><br><span class="line">    5</span><br><span class="line">    5</span><br><span class="line">    5</span><br><span class="line">    5</span><br><span class="line">####&#x4EE3;&#x7801;8:</span><br><span class="line">var baz;</span><br><span class="line">function foo() {</span><br><span class="line">    var a;</span><br><span class="line">    function bar() {</span><br><span class="line">        console.log( a );</span><br><span class="line">    }</span><br><span class="line">    a = 2;</span><br><span class="line">    return bar;</span><br><span class="line">}</span><br><span class="line">baz = foo();</span><br><span class="line">baz();</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo(j){</p>
+<pre><code> function timer(){
+     console.log(j);
+ }
+return timer();
+</code></pre><p> }</p>
+<p> for (var i=1; i&lt;=5; i++) {</p>
+<pre><code>setTimeout(foo(i), i*1000 );
+</code></pre><p> }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">    2</span><br><span class="line">    3</span><br><span class="line">    4</span><br><span class="line">    5</span><br><span class="line">####&#x4EE3;&#x7801;9:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo() {</p>
+<pre><code>var a = 2;
+function bar() {
+    console.log( a );
+}
+return bar;
+</code></pre><p> }<br> var baz = foo();<br> baz();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    2</span><br><span class="line">####&#x4EE3;&#x7801;10:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo(a){</p>
+<pre><code>console.log(a+b);
+b=a;
+</code></pre><p> }<br> foo(2);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   b is not defined</span><br><span class="line"></span><br><span class="line">####&#x4EE3;&#x7801;11:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo(a){</p>
+<pre><code>window.b=a;
+console.log(a+b);
+</code></pre><p> }<br> a=2;<br> foo(2);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    4</span><br><span class="line">####&#x4EE3;&#x7801;12:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p>  var foo = function(a){</p>
+<pre><code>    console.log(a+b);
+    b=a;
+}
+foo(2);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####&#x4EE3;&#x7801;13:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p>  function foo(a) {</p>
+<pre><code>    var b=a*2;
+    function bar(c) {
+        console.log(a,b,c);
+    }
+    bar(b*3);
+}
+foo(2);
+console.log(a);
+console.log(b);
+console.log(c);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    2,4,12</span><br><span class="line">    a is not defined;</span><br><span class="line">####&#x4EE3;&#x7801;14:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function foo(str, a) {</p>
+<pre><code>eval(str);
+console.log(a, b);
+</code></pre><p> }<br> var b = 2;<br> foo(&#x201C;var b=3;&#x201D;, 1);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    1,3</span><br><span class="line">####&#x4EE3;&#x7801;15:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function test(obj) {</p>
+<pre><code>with(obj) {
+    a = 2;
+}
+</code></pre><p> }<br> var obj1 = {</p>
+<pre><code>a: 1
+</code></pre><p> }<br> var obj2 = {</p>
+<pre><code>b: 1
+</code></pre><p> }<br> test(obj1);<br> console.log(obj1.a);<br> test(obj2);<br> console.log(obj2.a);<br> console.log(a);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    2</span><br><span class="line">    undefined</span><br><span class="line">    2</span><br><span class="line">####&#x4EE3;&#x7801;16:</span><br><span class="line">&#x8BCD;&#x6CD5;&#x4F5C;&#x7528;&#x57DF;</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p>  function test1() {</p>
+<pre><code>console.log(a);
+</code></pre><p> }<br> function bar() {</p>
+<pre><code>var a = 3;
+test1();
+</code></pre><p> }<br> var a = 2;<br> bar();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   2</span><br><span class="line">####&#x4EE3;&#x7801;17:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Person(name){</p>
+<pre><code>this.name=name;
+this.fn=function(){
+    alert(this.name);
+}
+</code></pre><p> }<br> var person1=new Person(&#x2018;Byron&#x2019;);<br> console.log(person1.constructor==Person);<br> console.log(person1 instanceof Person);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    true</span><br><span class="line">    true</span><br><span class="line">####&#x4EE3;&#x7801;18:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Person(name){</p>
+<pre><code>this.name=name;
+this.fn=function(){
+    alert(this.name);
+}
+</code></pre><p> }<br> var person1=new Person(&#x2018;Byron&#x2019;);<br> var person2=new Person(&#x2018;Frank&#x2019;);<br> console.log(person1.fn==person2.fn);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####&#x4EE3;&#x7801;19:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Person(name){</p>
+<pre><code>this.name=name;
+</code></pre><p> }<br> Person.prototype.share=[];<br> Person.prototype.printName=function(){</p>
+<pre><code>alert(this.name);
+</code></pre><p> }<br> var person1=new Person(&#x2018;Byron&#x2019;);<br> var person2=new Person(&#x2018;Frank&#x2019;);<br> console.log(person1.printName==person2.printName);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####&#x4EE3;&#x7801;20:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p>  var myObj = {</p>
+<pre><code>get a() {
+    return this.h;
+},
+set a(val){
+    this.h=val*2;
+}
+</code></pre><p> }<br> Object.defineProperty(myObj, &#x201C;b&#x201D;, {</p>
+<pre><code>get: function() {
+    return 3;
+    //enumerable: true
+}
+</code></pre><p> });<br> myObj.a=2;<br> console.log(myObj.a);<br> console.log(myObj.b);<br> myObj.hasOwnProperty(&#x201C;a&#x201D;);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####&#x4EE3;&#x7801;21:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> var oneObj={</p>
+<pre><code>a:2
+</code></pre><p> }<br> var twoObj=Object.create(oneObj);<br> console.log(twoObj.a);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####&#x4EE3;&#x7801;22:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Test1(str) {</p>
+<pre><code>this.a = str;
+</code></pre><p> }<br> var myTest = new Test1(&#x201C;test1&#x201D;);<br> console.log(myTest.a);<br> function Test1WithoutNew(str) {</p>
+<pre><code>this.a = str;
+</code></pre><p> }<br> var myTestWithoutNew = Test1WithoutNew(&#x201C;test1&#x201D;);<br> console.log(myTestWithoutNew.a);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####&#x4EE3;&#x7801;23:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Test1(str) {</p>
+<pre><code>this.a = str;
+return this.a;
+</code></pre><p> }<br> var myTest = new Test1(&#x201C;test1&#x201D;);<br> console.log(myTest);<br> function Test1WithoutNew(str) {</p>
+<pre><code>this.a = str;
+return this.a;
+</code></pre><p> }<br> var myTestWithoutNew = Test1WithoutNew(&#x201C;test1&#x201D;);<br> console.log(myTestWithoutNew);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">####&#x4EE3;&#x7801;24:</span><br><span class="line">```javascript</span><br></pre></td></tr></table></figure>
+<p> function Test1(str) {</p>
+<pre><code>this.a = str;
+return new String(this.a);
+</code></pre><p> }<br> var myTest = new Test1(&#x201C;test1&#x201D;);<br> console.log(myTest);<br>```<br> test1</p>
+<h2 id="&#x95ED;&#x5305;&#x7684;&#x4F5C;&#x7528;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x6A21;&#x5757;&#x5316;"><a href="#&#x95ED;&#x5305;&#x7684;&#x4F5C;&#x7528;&#xFF08;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x6A21;&#x5757;&#x5316;&#xFF09;" class="headerlink" title="&#x95ED;&#x5305;&#x7684;&#x4F5C;&#x7528;&#xFF08;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x6A21;&#x5757;&#x5316;&#xFF09;"></a>&#x95ED;&#x5305;&#x7684;&#x4F5C;&#x7528;&#xFF08;<strong>&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x6A21;&#x5757;&#x5316;</strong>&#xFF09;</h2></li>
+</ol>
+<h2 id="&#x5BF9;&#x8C61;"><a href="#&#x5BF9;&#x8C61;" class="headerlink" title="&#x5BF9;&#x8C61;"></a>&#x5BF9;&#x8C61;</h2><h3 id="&#x51FD;&#x6570;"><a href="#&#x51FD;&#x6570;" class="headerlink" title="&#x51FD;&#x6570;"></a>&#x51FD;&#x6570;</h3><h2 id="&#x7C7B;&#x4E0E;&#x9762;&#x5411;&#x5BF9;&#x8C61;"><a href="#&#x201C;&#x7C7B;&#x201D;&#x4E0E;&#x9762;&#x5411;&#x5BF9;&#x8C61;" class="headerlink" title="&#x201C;&#x7C7B;&#x201D;&#x4E0E;&#x9762;&#x5411;&#x5BF9;&#x8C61;"></a>&#x201C;&#x7C7B;&#x201D;&#x4E0E;&#x9762;&#x5411;&#x5BF9;&#x8C61;</h2><h2 id="&#x539F;&#x578B;"><a href="#&#x539F;&#x578B;" class="headerlink" title="&#x539F;&#x578B;"></a>&#x539F;&#x578B;</h2><h2 id="&#x884C;&#x4E3A;&#x59D4;&#x6258;"><a href="#&#x884C;&#x4E3A;&#x59D4;&#x6258;" class="headerlink" title="&#x884C;&#x4E3A;&#x59D4;&#x6258;"></a>&#x884C;&#x4E3A;&#x59D4;&#x6258;</h2>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/javacript/">javacript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/javacript/">javacript</a>, <a href="/tags/scope/">scope</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2016/02/14/4.javascript new/" class="alignleft prev" >上一页</a>
+    
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-3.javascript 作用域和闭包" data-title="javascript 作用域与闭包" data-url="http://wisdombud.github.io/2016/02/13/3.javascript 作用域和闭包/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
+  
+    <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
+  
+    <li><a href="/categories/WEB/">WEB</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>6</small></li>
+  
+    <li><a href="/categories/javacript/">javacript</a><small>4</small></li>
+  
+    <li><a href="/categories/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/scm/">scm</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/基础知识/">基础知识</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>1</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/常识/">常识</a><small>7</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+        <embed tplayername="SWF" splayername="SWF"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
+            mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
+            id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
+            quality="high" wmode="transparent" allowscriptaccess="always"
+            flashvars="tcolor=0xbd1016&amp;tcolor2=0x808080&amp;hicolor=0x0065ff&amp;tspeed=100&amp;distr=true"
+            height="100%" width="100%">
+        </embed>
+    </div>
+  </div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
