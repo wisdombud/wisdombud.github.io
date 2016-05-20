@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java匿名内部类 | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="java匿名内部类"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">java匿名内部类</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-05-20T09:09:41.663Z">2016-05-20</time></span>
+        
+          <span style=" display: block;  margin: 10px 0; ">作者：走吧走吧</span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x662F;&#x4EC0;&#x4E48;"><a href="#&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x662F;&#x4EC0;&#x4E48;" class="headerlink" title="&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x662F;&#x4EC0;&#x4E48;"></a>&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x662F;&#x4EC0;&#x4E48;</h2><blockquote>
+<p>&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x4E5F;&#x5C31;&#x662F;&#x6CA1;&#x6709;&#x540D;&#x5B57;&#x7684;&#x5185;&#x90E8;&#x7C7B;<br>&#x6B63;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x540D;&#x5B57;&#xFF0C;&#x6240;&#x4EE5;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x5B83;&#x901A;&#x5E38;&#x7528;&#x6765;&#x7B80;&#x5316;&#x4EE3;&#x7801;&#x7F16;&#x5199;</p>
+</blockquote>
+<h2 id="&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x5F0F;"><a href="#&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x5F0F;" class="headerlink" title="&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x5F0F;"></a>&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x5F0F;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new &#x7236;&#x7C7B;&#x6784;&#x9020;&#x5668;&#xFF08;&#x53C2;&#x6570;&#x5217;&#x8868;&#xFF09;|&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#xFF08;&#xFF09;    </span><br><span class="line">    {    </span><br><span class="line">     //&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x7C7B;&#x4F53;&#x90E8;&#x5206;    </span><br><span class="line">    }</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4F7F;&#x7528;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x8981;&#x7EE7;&#x627F;&#x4E00;&#x4E2A;&#x7236;&#x7C7B;&#x6216;&#x8005;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x4EC5;&#x80FD;&#x53EA;&#x7EE7;&#x627F;&#x4E00;&#x4E2A;&#x7236;&#x7C7B;&#x6216;&#x8005;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x3002;&#x540C;&#x65F6;&#x5B83;&#x4E5F;&#x662F;&#x6CA1;&#x6709;class&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528;new&#x6765;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x3002;&#x5F53;&#x7136;&#x8FD9;&#x4E2A;&#x5F15;&#x7528;&#x662F;&#x9690;&#x5F0F;&#x7684;&#x3002;</p>
+</blockquote>
+<pre><code>&#x5BF9;&#x4E8E;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x4F7F;&#x7528;&#x5B83;&#x662F;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x7F3A;&#x9677;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x5B83;&#x4EC5;&#x80FD;&#x88AB;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x521B;&#x5EFA;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x65F6;&#x5B83;&#x4F1A;&#x7ACB;&#x5373;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8BE5;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x8BE5;&#x7C7B;&#x7684;&#x5B9A;&#x4E49;&#x4F1A;&#x7ACB;&#x5373;&#x6D88;&#x5931;&#xFF0C;&#x6240;&#x4EE5;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x662F;&#x4E0D;&#x80FD;&#x591F;&#x88AB;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x3002;
+</code></pre><h2 id="&#x5E38;&#x7528;&#x7684;&#x573A;&#x666F;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5B9E;&#x73B0;&#x4E0A;"><a href="#&#x5E38;&#x7528;&#x7684;&#x573A;&#x666F;&#x2013;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5B9E;&#x73B0;&#x4E0A;" class="headerlink" title="&#x5E38;&#x7528;&#x7684;&#x573A;&#x666F;&#x2013;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5B9E;&#x73B0;&#x4E0A;"></a>&#x5E38;&#x7528;&#x7684;&#x573A;&#x666F;&#x2013;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5B9E;&#x73B0;&#x4E0A;</h2><p>&#x8981;&#x5B9E;&#x73B0;&#x591A;&#x7EBF;&#x7A0B;&#x5FC5;&#x987B;&#x7EE7;&#x627F;Thread&#x7C7B;&#x6216;&#x662F;&#x7EE7;&#x627F;Runnable&#x63A5;&#x53E3;</p>
+<p>eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Demo {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        Thread t = new Thread() {</span><br><span class="line">            public void run() {</span><br><span class="line">                for (int i = 1; i &lt;= 5; i++) {</span><br><span class="line">                    System.out.print(i + &quot; &quot;);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        };</span><br><span class="line">        t.start();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><a href="#&#x6CE8;&#x610F;&#x4E8B;&#x9879;" class="headerlink" title="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"></a>&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h2><pre><code> &#x5728;&#x4F7F;&#x7528;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x5982;&#x4E0B;&#x51E0;&#x70B9;&#xFF1A;
+1&#x3001;&#x4F7F;&#x7528;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x662F;&#x7EE7;&#x627F;&#x4E00;&#x4E2A;&#x7C7B;&#x6216;&#x8005;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4F46;&#x662F;&#x4E24;&#x8005;&#x4E0D;&#x53EF;&#x517C;&#x5F97;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x53EA;&#x80FD;&#x7EE7;&#x627F;&#x4E00;&#x4E2A;&#x7C7B;&#x6216;&#x8005;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x3002;
+2&#x3001;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x4E2D;&#x662F;&#x4E0D;&#x80FD;&#x5B9A;&#x4E49;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x3002;
+3&#x3001;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x4E2D;&#x4E0D;&#x80FD;&#x5B58;&#x5728;&#x4EFB;&#x4F55;&#x7684;&#x9759;&#x6001;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x3002;
+4&#x3001;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x4E3A;&#x5C40;&#x90E8;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;&#x5C40;&#x90E8;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x9650;&#x5236;&#x540C;&#x6837;&#x5BF9;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x751F;&#x6548;&#x3002;
+5&#x3001;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x4E0D;&#x80FD;&#x662F;&#x62BD;&#x8C61;&#x7684;&#xFF0C;&#x5B83;&#x5FC5;&#x987B;&#x8981;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#x7684;&#x7C7B;&#x6216;&#x8005;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x3002;
+</code></pre><h2 id="&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x5F62;&#x53C2;&#x4E3A;&#x4F55;&#x8981;&#x4E3A;final"><a href="#&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x5F62;&#x53C2;&#x4E3A;&#x4F55;&#x8981;&#x4E3A;final" class="headerlink" title="&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x5F62;&#x53C2;&#x4E3A;&#x4F55;&#x8981;&#x4E3A;final"></a>&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x5F62;&#x53C2;&#x4E3A;&#x4F55;&#x8981;&#x4E3A;final</h2><blockquote>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5F62;&#x53C2;&#x9700;&#x8981;&#x88AB;&#x5185;&#x90E8;&#x7C7B;&#x91CC;&#x9762;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x8BE5;&#x5F62;&#x53C2;&#x5FC5;&#x987B;&#x4E3A;final&#x3002;<br> &#x542B;&#x6709;&#x5185;&#x90E8;&#x7C7B;&#x7684;&#x7C7B;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x4E4B;&#x540E;&#x4F1A;&#x751F;&#x6210;&#x4E24;&#x4E2A;.class&#x6587;&#x4EF6;&#x3002;<br> &#x5185;&#x90E8;&#x7C7B;&#x7684;.class&#x6587;&#x4EF6;&#x4EC5;&#x4EC5;&#x4FDD;&#x7559;&#x4E86;&#x5BF9;&#x5916;&#x90E8;&#x7C7B;&#x53C2;&#x6570;&#x7684;&#x5F15;&#x7528;&#x3002;</p>
+</blockquote>
+<p> &#x4ECE;java&#x7A0B;&#x5E8F;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#x662F;&#x76F4;&#x63A5;&#x88AB;&#x8C03;&#x7528;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> public class OuterClass {  </span><br><span class="line">    public void display(final String name,String age){  </span><br><span class="line">        class InnerClass{  </span><br><span class="line">            void display(){  </span><br><span class="line">                System.out.println(name);  </span><br><span class="line">            }  </span><br><span class="line">        }  </span><br><span class="line">    }  </span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#x770B;&#x597D;&#x50CF;name&#x53C2;&#x6570;&#x5E94;&#x8BE5;&#x662F;&#x88AB;&#x5185;&#x90E8;&#x7C7B;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#xFF1F;&#x5176;&#x5B9E;&#x4E0D;&#x7136;&#xFF0C;&#x5728;java&#x7F16;&#x8BD1;&#x4E4B;&#x540E;&#x5B9E;&#x9645;&#x7684;&#x64CD;&#x4F5C;&#x5982;&#x4E0B;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class OuterClass$InnerClass {  </span><br><span class="line">    public InnerClass(String name,String age){  </span><br><span class="line">        this.InnerClass$name = name;  </span><br><span class="line">        this.InnerClass$age = age;  </span><br><span class="line">    }  </span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">    public void display(){  </span><br><span class="line">        System.out.println(this.InnerClass$name + &quot;----&quot; + this.InnerClass$age );  </span><br><span class="line">    }  </span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<pre><code>  &#x6240;&#x4EE5;&#x4ECE;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x6765;&#x770B;&#xFF0C;&#x5185;&#x90E8;&#x7C7B;&#x5E76;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x800C;&#x662F;&#x5229;&#x7528;&#x81EA;&#x8EAB;&#x7684;&#x6784;&#x9020;&#x5668;&#x5BF9;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x5907;&#x4EFD;&#xFF0C;&#x81EA;&#x5DF1;&#x5185;&#x90E8;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x7684;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x5C5E;&#x6027;&#x800C;&#x4E0D;&#x662F;&#x5916;&#x90E8;&#x65B9;&#x6CD5;&#x4F20;&#x9012;&#x8FDB;&#x6765;&#x7684;&#x53C2;&#x6570;&#x3002;
+ &#x76F4;&#x5230;&#x8FD9;&#x91CC;&#x8FD8;&#x6CA1;&#x6709;&#x89E3;&#x91CA;&#x4E3A;&#x4EC0;&#x4E48;&#x662F;final&#xFF1F;&#x5728;&#x5185;&#x90E8;&#x7C7B;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x5916;&#x90E8;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x4E24;&#x8005;&#x4ECE;&#x5916;&#x8868;&#x4E0A;&#x770B;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x4E1C;&#x897F;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x5374;&#x4E0D;&#x662F;&#xFF0C;&#x6240;&#x4EE5;&#x4ED6;&#x4EEC;&#x4E24;&#x8005;&#x662F;&#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5728;&#x5185;&#x90E8;&#x7C7B;&#x4E2D;&#x6211;&#x5BF9;&#x5C5E;&#x6027;&#x7684;&#x6539;&#x53D8;&#x5E76;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x5916;&#x90E8;&#x7684;&#x5F62;&#x53C2;&#xFF0C;&#x800C;&#x7136;&#x8FD9;&#x4ECE;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#x8FD9;&#x662F;&#x4E0D;&#x53EF;&#x884C;&#x7684;&#xFF0C;&#x6BD5;&#x7ADF;&#x7AD9;&#x5728;&#x7A0B;&#x5E8F;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#x8FD9;&#x4E24;&#x4E2A;&#x6839;&#x672C;&#x5C31;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#xFF0C;&#x5982;&#x679C;&#x5185;&#x90E8;&#x7C7B;&#x6539;&#x53D8;&#x4E86;&#xFF0C;&#x800C;&#x5916;&#x90E8;&#x65B9;&#x6CD5;&#x7684;&#x5F62;&#x53C2;&#x5374;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x8FD9;&#x662F;&#x96BE;&#x4EE5;&#x7406;&#x89E3;&#x548C;&#x4E0D;&#x53EF;&#x63A5;&#x53D7;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x53C2;&#x6570;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5C31;&#x89C4;&#x5B9A;&#x4F7F;&#x7528;final&#x6765;&#x907F;&#x514D;&#x5F62;&#x53C2;&#x7684;&#x4E0D;&#x6539;&#x53D8;&#x3002;
+&#x7B80;&#x5355;&#x7406;&#x89E3;&#x5C31;&#x662F;&#xFF0C;&#x62F7;&#x8D1D;&#x5F15;&#x7528;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x5F15;&#x7528;&#x503C;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C;&#x4F8B;&#x5982;&#x88AB;&#x5916;&#x90E8;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x4FEE;&#x6539;&#x7B49;&#xFF0C;&#x800C;&#x5BFC;&#x81F4;&#x5185;&#x90E8;&#x7C7B;&#x5F97;&#x5230;&#x7684;&#x503C;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x4E8E;&#x662F;&#x7528;final&#x6765;&#x8BA9;&#x8BE5;&#x5F15;&#x7528;&#x4E0D;&#x53EF;&#x6539;&#x53D8;&#x3002;
+&#x6545;&#x5982;&#x679C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x5E76;&#x4E14;&#x5E0C;&#x671B;&#x5B83;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x5176;&#x5916;&#x90E8;&#x5B9A;&#x4E49;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x8981;&#x6C42;&#x8BE5;&#x53C2;&#x6570;&#x5F15;&#x7528;&#x662F;final&#x7684;&#x3002;
+</code></pre><h2 id="&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x521D;&#x59CB;&#x5316;"><a href="#&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x521D;&#x59CB;&#x5316;" class="headerlink" title="&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x521D;&#x59CB;&#x5316;"></a>&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x521D;&#x59CB;&#x5316;</h2><blockquote>
+<p>&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x5229;&#x7528;&#x6784;&#x9020;&#x5668;&#x6765;&#x5B8C;&#x6210;&#x67D0;&#x4E2A;&#x5B9E;&#x4F8B;&#x7684;&#x521D;&#x59CB;&#x5316;&#x5DE5;&#x4F5C;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x662F;&#x6CA1;&#x6709;&#x6784;&#x9020;&#x5668;&#x7684;&#xFF01;&#x90A3;&#x600E;&#x4E48;&#x6765;&#x521D;&#x59CB;&#x5316;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x5462;&#xFF1F;&#x4F7F;&#x7528;&#x6784;&#x9020;&#x4EE3;&#x7801;&#x5757;&#xFF01;&#x5229;&#x7528;&#x6784;&#x9020;&#x4EE3;&#x7801;&#x5757;&#x80FD;&#x591F;&#x8FBE;&#x5230;&#x4E3A;&#x533F;&#x540D;&#x5185;&#x90E8;&#x7C7B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x5668;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+</blockquote>
+<p>eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class OutClass {  </span><br><span class="line">    public InnerClass getInnerClass(final int age,final String name){  </span><br><span class="line">        return new InnerClass() {  </span><br><span class="line">            int age_ ;  </span><br><span class="line">            String name_;  </span><br><span class="line">            //&#x6784;&#x9020;&#x4EE3;&#x7801;&#x5757;&#x5B8C;&#x6210;&#x521D;&#x59CB;&#x5316;&#x5DE5;&#x4F5C;  </span><br><span class="line">            {  </span><br><span class="line">                if(0 &lt; age &amp;&amp; age &lt; 200){  </span><br><span class="line">                    age_ = age;  </span><br><span class="line">                    name_ = name;  </span><br><span class="line">                }  </span><br><span class="line">            }  </span><br><span class="line">            public String getName() {  </span><br><span class="line">                return name_;  </span><br><span class="line">            }  </span><br><span class="line">              </span><br><span class="line">            public int getAge() {  </span><br><span class="line">                return age_;  </span><br><span class="line">            }  </span><br><span class="line">        };  </span><br><span class="line">    }  </span><br><span class="line">      </span><br><span class="line">    public static void main(String[] args) {  </span><br><span class="line">        OutClass out = new OutClass();  </span><br><span class="line">          </span><br><span class="line">        InnerClass inner_1 = out.getInnerClass(201, &quot;chenssy&quot;);  </span><br><span class="line">        System.out.println(inner_1.getName());  </span><br><span class="line">          </span><br><span class="line">        InnerClass inner_2 = out.getInnerClass(23, &quot;chenssy&quot;);  </span><br><span class="line">        System.out.println(inner_2.getName());  </span><br><span class="line">    }  </span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;"><a href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x7AE0;"></a>&#x53C2;&#x8003;&#x6587;&#x7AE0;</h2><p><a href="http://zhangbo-peipei-163-com.iteye.com/blog/2023001" target="_blank" rel="external">http://zhangbo-peipei-163-com.iteye.com/blog/2023001</a><br><a href="http://blog.csdn.net/chenssy/article/details/13170015" target="_blank" rel="external">http://blog.csdn.net/chenssy/article/details/13170015</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/开发工具/">开发工具</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/java/">java</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2016/05/20/35.微信公众号开发/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-34.java匿名内部类" data-title="java匿名内部类" data-url="http://wisdombud.github.io/2016/05/20/34.java匿名内部类/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
+  
+    <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
+  
+    <li><a href="/categories/WEB/">WEB</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>7</small></li>
+  
+    <li><a href="/categories/javacript/">javacript</a><small>4</small></li>
+  
+    <li><a href="/categories/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/scm/">scm</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/基础知识/">基础知识</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>1</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/常识/">常识</a><small>8</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>2</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+        <embed tplayername="SWF" splayername="SWF"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
+            mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
+            id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
+            quality="high" wmode="transparent" allowscriptaccess="always"
+            flashvars="tcolor=0xbd1016&amp;tcolor2=0x808080&amp;hicolor=0x0065ff&amp;tspeed=100&amp;distr=true"
+            height="100%" width="100%">
+        </embed>
+    </div>
+  </div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
