@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>对包含文件或目录路径信息的String操作 | 技术博客</title>
+  <meta name="author" content="Joseph">
+  
+  <meta name="description" content="部门的技术博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="对包含文件或目录路径信息的String操作"/>
+  <meta property="og:site_name" content="技术博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="http://wisdombud.github.io/atom.xml" title="技术博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">技术博客</a></h1>
+  <h2><a href="/">慧萌信安互联网</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">对包含文件或目录路径信息的String操作</h1>
+  
+
+      
+        <div class="icon"></div>
+        <p style="font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans GB", sans-serif;">
+           <span style=" display: block;  margin: 10px 0; ">
+ 	时间：<time style="display:inline" datetime="2016-05-25T06:36:52.847Z">2016-05-25</time></span>
+        
+          <span style=" display: block;  margin: 10px 0; ">作者：joseph</span>
+        
+      
+
+    </header>
+    <div class="entry">
+      
+        <p>&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x4E2D;&#x6709;&#x4E00;&#x7C7B;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x662F;&#x5BF9;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;&#x8DEF;&#x5F84;&#x4FE1;&#x606F;&#x7684; System.String &#x5B9E;&#x4F8B;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x3002;&#x6BD4;&#x5982;&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x8DEF;&#x5F84;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x83B7;&#x53D6;&#x5176;&#x4EE3;&#x8868;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x3001;&#x6587;&#x4EF6;&#x5939;&#x8DEF;&#x5F84;&#x3001;&#x6587;&#x4EF6;&#x6269;&#x5C55;&#x540D;&#x7B49;&#x3002;&#x5728;&#x5F88;&#x591A;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x559C;&#x6B22;&#x7528;substring&#x52A0;indexof&#x6765;&#x8FDB;&#x884C;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x4FEE;&#x6539;&#x3002;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>string filePath = @&quot;C:\test\test2\test3.txt&quot;;
+
+//&#x901A;&#x8FC7;substring&#x52A0;indexof&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#x6587;&#x4EF6;&#x4FE1;&#x606F;
+string fileName = filePath.Substring(filePath.LastIndexOf(&apos;\\&apos;) + 1);
+
+//&#x901A;&#x8FC7;substring&#x52A0;indexof&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#x6587;&#x4EF6;&#x4FE1;&#x606F;
+string fileExtenstion = filePath.Substring(filePath.LastIndexOf(&apos;.&apos;) + 1);
+
+//&#x901A;&#x8FC7;substring&#x52A0;indexof&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#x6587;&#x4EF6;&#x4FE1;&#x606F;
+string fileNameWithOutExtenstion = filePath.Substring(
+    filePath.LastIndexOf(&apos;\\&apos;) + 1,
+    filePath.LastIndexOf(&apos;.&apos;) - filePath.LastIndexOf(&apos;\\&apos;) - 1);
+</code></pre><p>&#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#x524D;&#x4E24;&#x4E2A;&#x8FD8;&#x7B97;&#x6BD4;&#x8F83;&#x597D;&#x5199;&#xFF0C;&#x53EA;&#x8981;&#x6CE8;&#x610F;&#x4E0B;+1&#x5C31;&#x884C;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5374;&#x4E0D;&#x662F;&#x4E00;&#x4E0B;&#x5C31;&#x80FD;&#x5199;&#x5BF9;&#x7684;&#xFF0C;&#x6211;&#x8C03;&#x4E86;&#x4E24;&#x6B21;&#x624D;&#x6539;&#x5BF9;&#x7684;&#x3002;&#x800C;&#x4E14;&#x8FD9;&#x79CD;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x9605;&#x8BFB;&#x6027;&#x975E;&#x5E38;&#x4E0D;&#x597D;&#xFF0C;&#x4E0D;&#x52A0;&#x6CE8;&#x91CA;&#x7684;&#x8BDD;&#xFF0C;&#x65B0;&#x624B;&#x5F88;&#x96BE;&#x4E00;&#x4E0B;&#x770B;&#x660E;&#x767D;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x53E6;&#x4E00;&#x79CD;&#x5199;&#x6CD5;&#xFF0C;&#x4E3B;&#x8981;&#x8FD0;&#x7528;FileInfo&#x8FD9;&#x4E2A;&#x7C7B;&#x3002;</p>
+<pre><code>var fileInfo = new FileInfo(filePath);
+string name = fileInfo.Name;
+string extens = fileInfo.Extension;
+string nameWithOutExtenstion = name.Remove(name.IndexOf(&quot;.&quot;, StringComparison.Ordinal));
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x770B;&#x8D77;&#x6765;&#x8981;&#x6BD4;&#x6700;&#x5F00;&#x59CB;&#x7684;substring+indexof&#x65B9;&#x6848;&#x9605;&#x8BFB;&#x6027;&#x66F4;&#x597D;&#xFF0C;&#x800C;&#x4E14;&#x5199;&#x7684;&#x65F6;&#x5019;&#x66F4;&#x9760;&#x8C31;&#xFF0C;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x51FA;&#x73B0;&#x50CF;&#x4E0A;&#x9762;&#x90A3;&#x79CD;&#x5FD8;&#x8BB0;&#x201C;+1&#x201D;&#x7684;&#x9519;&#x8BEF;&#x3002;&#x4F46;&#x662F;&#x5B58;&#x5728;&#x5982;&#x4E0B;&#x95EE;&#x9898;&#xFF1A;</p>
+<pre><code>1. &#x5F15;&#x5165;&#x4E86;FileInfo&#x8FD9;&#x4E2A;&#x7C7B;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x64CD;&#x4F5C;&#x7684;&#x7C7B;&#xFF0C;&#x4EC5;&#x4EC5;&#x4E3A;&#x4E86;&#x83B7;&#x53D6;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x7B49;&#x6709;&#x4E9B;&#x5927;&#x6750;&#x5C0F;&#x7528;&#xFF1B;
+2. &#x8FD8;&#x662F;&#x6CA1;&#x6CD5;&#x83B7;&#x53D6;&#x4E0D;&#x5E26;&#x6587;&#x4EF6;&#x6269;&#x5C55;&#x540D;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#xFF1B;
+</code></pre><p>&#x5176;&#x5B9E;.Net &#x7ED9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x597D;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x5C31;&#x662F;&#x5927;&#x5BB6;&#x7ECF;&#x5E38;&#x7528;&#x5230;&#x7684;Path&#x7C7B;&#x3002;&#x5B8C;&#x6210;&#x4E0A;&#x9762;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>string nameFromPath = Path.GetFileName(filePath);
+string extenstionFromPath = Path.GetExtension(filePath);
+string nameWithoutExtensionFromPath = Path.GetFileNameWithoutExtension(filePath);
+</code></pre><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x975E;&#x5E38;&#x7B80;&#x6D01;&#x6613;&#x61C2;&#xFF0C;&#x800C;&#x4E14;&#x5199;&#x6CD5;&#x9AD8;&#x6548;&#xFF0C;&#x975E;&#x5E38;&#x503C;&#x5F97;&#x63A8;&#x8350;&#x3002;&#x4EE5;&#x4E0B;&#x662F;Path&#x7684;&#x4E00;&#x4E9B;&#x5176;&#x5B83;API&#xFF1A;</p>
+<pre><code>//&#x5F97;&#x5230;&#x6587;&#x4EF6;&#x7684;&#x76EE;&#x5F55;
+string dirName = Path.GetDirectoryName(filePath);
+
+//&#x5F97;&#x5230;&#x6587;&#x4EF6;&#x7684;&#x5168;&#x8DEF;&#x5F84;
+string fullPath = Path.GetFullPath(filePath);
+
+// &#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#x7684;&#x6839;&#x76EE;&#x5F55;&#x4FE1;&#x606F;&#x3002;
+//&#x5982;&#x679C; path &#x4E3A; null&#xFF0C;&#x5219;&#x4E3A; null&#xFF1B;
+//&#x5982;&#x679C; path &#x4E0D;&#x5305;&#x542B;&#x6839;&#x76EE;&#x5F55;&#x4FE1;&#x606F;&#xFF08;&#x6BD4;&#x5982;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF09;&#xFF0C;&#x5219;&#x4E3A;&#x7A7A;&#x3002;
+string pathRoot = Path.GetPathRoot(filePath);
+
+//&#x5F97;&#x5230;&#x968F;&#x673A;&#x6587;&#x4EF6;&#x5939;&#x540D;&#x6216;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x7701;&#x5F97;&#x8D77;&#x540D;&#x5B57;&#x4E86;&#xFF0C;&#x4F46;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x540D;&#x5B57;&#x5E26;&#x540E;&#x7F00;&#x3002;
+string randomName = Path.GetRandomFileName();
+
+// &#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x7528;&#x6237;&#x7684;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x5939;&#x7684;&#x8DEF;&#x5F84;,&#x4EE5;&#x53CD;&#x659C;&#x6760;&#x7ED3;&#x5C3E;&#x3002;
+string tempPath = Path.GetTempPath();
+
+//&#x83B7;&#x53D6;&#x5305;&#x542B;&#x4E0D;&#x5141;&#x8BB8;&#x5728;&#x6587;&#x4EF6;&#x540D;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x5B57;&#x7B26;&#x7684;&#x6570;&#x7EC4;,&#x5728;&#x5199;&#x754C;&#x9762;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x589E;&#x52A0;&#x8F93;&#x5165;&#x5408;&#x6CD5;&#x6027;&#x7684;&#x5224;&#x65AD;
+char[] invalidFileName = Path.GetInvalidFileNameChars();
+
+//&#x83B7;&#x53D6;&#x5305;&#x542B;&#x4E0D;&#x5141;&#x8BB8;&#x5728;&#x8DEF;&#x5F84;&#x540D;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x5B57;&#x7B26;&#x7684;&#x6570;&#x7EC4;
+char[] invalidPathName = Path.GetInvalidPathChars();
+
+//&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x7EC4;&#x7EC4;&#x5408;&#x6210;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#x3002;&#xFF08;&#x6BD4;&#x4EE5;&#x524D;&#x597D;&#x7528;&#x591A;&#x4E86;&#xFF0C;&#x589E;&#x52A0;&#x4E0D;&#x5B9A;&#x53C2;&#x6570;&#x7684;&#x652F;&#x6301;&#xFF09;
+string combinePath = Path.Combine(filePath1, filePath2, filePath3);
+
+//&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x8BE5;&#x503C;&#x6307;&#x793A;&#x6307;&#x5B9A;&#x7684;&#x8DEF;&#x5F84;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x5305;&#x542B;&#x6839;
+bool isContainsRoot = Path.IsPathRooted(filePath);
+</code></pre><p>&#x9664;&#x4E86;&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x5176;&#x5B83;readonly&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x5199;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x53EF;&#x4EE5;&#x62FF;&#x6765;&#x7528;&#x3002;&#x5177;&#x4F53;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>// &#x6458;&#x8981;: 
+//     &#x63D0;&#x4F9B;&#x5E73;&#x53F0;&#x7279;&#x5B9A;&#x7684;&#x66FF;&#x6362;&#x5B57;&#x7B26;&#xFF0C;&#x8BE5;&#x66FF;&#x6362;&#x5B57;&#x7B26;&#x7528;&#x4E8E;&#x5728;&#x53CD;&#x6620;&#x5206;&#x5C42;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7EC4;&#x7EC7;&#x7684;&#x8DEF;&#x5F84;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x5206;&#x9694;&#x76EE;&#x5F55;&#x7EA7;&#x522B;&#x3002;
+public static readonly char AltDirectorySeparatorChar;
+//
+// &#x6458;&#x8981;: 
+//     &#x63D0;&#x4F9B;&#x5E73;&#x53F0;&#x7279;&#x5B9A;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x8BE5;&#x5B57;&#x7B26;&#x7528;&#x4E8E;&#x5728;&#x53CD;&#x6620;&#x5206;&#x5C42;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7EC4;&#x7EC7;&#x7684;&#x8DEF;&#x5F84;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x5206;&#x9694;&#x76EE;&#x5F55;&#x7EA7;&#x522B;&#x3002;
+public static readonly char DirectorySeparatorChar;
+//
+// &#x6458;&#x8981;: 
+//     &#x7528;&#x4E8E;&#x5728;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x4E2D;&#x5206;&#x9694;&#x8DEF;&#x5F84;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5E73;&#x53F0;&#x7279;&#x5B9A;&#x7684;&#x5206;&#x9694;&#x7B26;&#x3002;
+public static readonly char PathSeparator;
+//
+// &#x6458;&#x8981;: 
+//     &#x63D0;&#x4F9B;&#x5E73;&#x53F0;&#x7279;&#x5B9A;&#x7684;&#x5377;&#x5206;&#x9694;&#x7B26;&#x3002;
+public static readonly char VolumeSeparatorChar;
+</code></pre><p>##&#x603B;&#x7ED3;</p>
+<pre><code>1. &#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x63D0;&#x4F9B;&#x4E86;&#x8F6E;&#x5B50;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x8981;&#x81EA;&#x5DF1;&#x9020;&#x8F6E;&#x5B50;&#xFF1B;
+2. &#x5982;&#x679C;&#x63D0;&#x4F9B;&#x4E86;&#x597D;&#x51E0;&#x79CD;&#x8F6E;&#x5B50;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6311;&#x5B89;&#x5168;&#x3001;&#x597D;&#x7528;&#x7684;&#x8F6E;&#x5B50;&#x3002;
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/C/">C#</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/C-path/">C# path</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2016/05/25/37.SplashScreen/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="post-38.对包含文件或目录路径信息的 System.String 实例执行操作" data-title="对包含文件或目录路径信息的String操作" data-url="http://wisdombud.github.io/2016/05/25/38.对包含文件或目录路径信息的 System.String 实例执行操作/"></div>
+
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"wisdombud"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:wisdombud.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>慧萌信安</li>
+<li>Mis And 互联网</li>
+<li></li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+</ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C/">C#</a><small>3</small></li>
+  
+    <li><a href="/categories/J2EE-web/">J2EE-web</a><small>3</small></li>
+  
+    <li><a href="/categories/SCM/">SCM</a><small>0</small></li>
+  
+    <li><a href="/categories/WEB/">WEB</a><small>1</small></li>
+  
+    <li><a href="/categories/java/">java</a><small>7</small></li>
+  
+    <li><a href="/categories/javacript/">javacript</a><small>4</small></li>
+  
+    <li><a href="/categories/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/categories/log/">log</a><small>1</small></li>
+  
+    <li><a href="/categories/scm/">scm</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/基础知识/">基础知识</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>1</small></li>
+  
+    <li><a href="/categories/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/categories/常识/">常识</a><small>8</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>2</small></li>
+  
+    <li><a href="/categories/数据库/">数据库</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+        <embed tplayername="SWF" splayername="SWF"
+            type="application/x-shockwave-flash" src="/tagcloud.swf"
+            mediawrapchecked="true" pluginspage="http://www.macromedia.com/go/getflashplayer"
+            id="tagcloudflash" name="tagcloudflash" bgcolor="#f3f3f3"
+            quality="high" wmode="transparent" allowscriptaccess="always"
+            flashvars="tcolor=0xbd1016&amp;tcolor2=0x808080&amp;hicolor=0x0065ff&amp;tspeed=100&amp;distr=true"
+            height="100%" width="100%">
+        </embed>
+    </div>
+  </div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+本博客由<a href="https://github.com/RoonyLi">李钊</a>维护，欢迎<a href="mailto:lizhao@wisdombud.com">投稿</a>
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wisdombud" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/imgs/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
